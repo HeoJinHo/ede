@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Team Ede Test1</h1>
-
+	<h1>main</h1>
+	<a href="./category/categoryList.category">Category</a>
 </body>
 </html>
