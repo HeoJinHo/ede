@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD:WebContent/index.jsp~test
 	<h1>team ede</h1>
 
+=======
+	<h1>Team Ede branasdasdchTest</h1>
+	<h1>its me</h1>
+>>>>>>> test:WebContent/test.jsp
 </body>
 </html>
