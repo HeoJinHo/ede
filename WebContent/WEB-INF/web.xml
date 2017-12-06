@@ -33,4 +33,18 @@
     <servlet-name>meet</servlet-name>
     <url-pattern>*.meet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>member</servlet-name>
+  	<servlet-class>com.ede.controller.MemberController</servlet-class>
+  	<init-param>
+  		<param-name>properties</param-name>
+  		<param-value>member.property</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>member</servlet-name>
+  	<url-pattern>*.member</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
