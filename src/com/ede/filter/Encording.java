@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class Encording
  */
-@WebFilter("/Encording")
+
 public class Encording implements Filter {
 	private String enc;
 
