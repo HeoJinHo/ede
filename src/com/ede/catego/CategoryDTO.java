@@ -1,4 +1,4 @@
-package com.ede.category;
+package com.ede.catego;
 
 public class CategoryDTO {
 	private String name;

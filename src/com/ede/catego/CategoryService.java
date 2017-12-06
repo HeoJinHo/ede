@@ -1,4 +1,4 @@
-package com.ede.category;
+package com.ede.catego;
 
 import java.util.List;
 
@@ -18,6 +18,7 @@ public class CategoryService implements Action{
 			System.out.println((ar.get(0)).getBrand());
 			request.setAttribute("list", ar);
 		} catch (Exception e) {
+			System.out.println("hi");
 		}
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/category/categoryList.jsp");

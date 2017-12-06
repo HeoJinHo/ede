@@ -1,4 +1,4 @@
-package com.ede.category;
+package com.ede.catego;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
