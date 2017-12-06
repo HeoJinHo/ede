@@ -40,7 +40,7 @@ public class MeetController extends HttpServlet {
     	//1. command  객체 생성
     	command = new HashMap<>();
     	//2. property 파일의 경로 명 가져 오기
-    	String filePath=config.getServletContext().getRealPath("WEB-INF/property");
+    	String filePath=config.getServletContext().getRealPath("WEB-INF/properties");
     	//3. property 파일 이름 가져 오기
     	String fileName=config.getInitParameter("property");
     	//4. 파일의 내용을 읽어올 준비

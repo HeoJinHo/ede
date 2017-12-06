@@ -28,6 +28,10 @@
   <servlet>
     <servlet-name>meet</servlet-name>
     <servlet-class>com.ede.controller.MeetController</servlet-class>
+    <init-param>
+      <param-name>property</param-name>
+      <param-value>meet.properties</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>meet</servlet-name>
