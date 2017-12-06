@@ -16,12 +16,6 @@
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file="../temp/header.jsp" %>
-	<section id="main">
-	
-	
-	</section>
-	<%@ include file="../temp/footer.jsp" %>
 
 </body>
 </html>

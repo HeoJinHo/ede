@@ -32,7 +32,6 @@ public class CategoryDAO {
 			categoryDTO.setPic_compName(rs.getString("pic_compName"));
 			categoryDTO.setEvt(rs.getInt("evt"));
 			categoryDTO.setPro_num(rs.getInt("pro_num"));
-			//자바에서 카멜기법으로 불러도 db를 제대로 가져오는지
 			ar.add(categoryDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
