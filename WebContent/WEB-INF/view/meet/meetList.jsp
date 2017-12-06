@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>meetList</h1>
+	<a href ="./meet/meetView.meet">title(view)</a>
 </body>
 </html>
