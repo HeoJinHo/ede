@@ -72,12 +72,9 @@ public class MeetDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from meet where m_seq = ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		System.out.println(num);
 		st.setInt(1, num);
 		ResultSet rs = st.executeQuery();
-		System.out.println("오셨나여~!=====================================================1");
 		if(rs.next()) {
-			System.out.println("오셨나여~!=====================================================2");
 			meetDTO = new MeetDTO();
 			meetDTO.setM_seq((rs.getInt("m_seq"))); 
 			meetDTO.setId(rs.getString("id"));
