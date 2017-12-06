@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 
-public class CategoryService implements Action{
+public class CategoryListService implements Action{
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
