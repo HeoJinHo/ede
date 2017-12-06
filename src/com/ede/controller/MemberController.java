@@ -14,8 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
-import org.apache.tomcat.jni.File;
 
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
