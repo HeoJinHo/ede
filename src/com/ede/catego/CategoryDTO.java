@@ -1,7 +1,6 @@
 package com.ede.catego;
 
 public class CategoryDTO {
-	private String name;
 	private String brand;
 	private String pro_name;
 	private int pro_price;
@@ -17,14 +16,6 @@ public class CategoryDTO {
 	private int evt;
 	private int pro_num;
 	
-	
-	
-	String getName() {
-		return name;
-	}
-	void setName(String name) {
-		this.name = name;
-	}
 	String getBrand() {
 		return brand;
 	}

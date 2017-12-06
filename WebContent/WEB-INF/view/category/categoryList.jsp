@@ -10,6 +10,6 @@
 </head>
 <body>
 	<h1>category List</h1>
-	<h1>${list[0].brand}</h1>
+	<h1>${list.brand }</h1>
 </body>
 </html>

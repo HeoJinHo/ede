@@ -8,17 +8,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 
-public class CategoryListService implements Action{
+public class CategoryListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		CategoryDAO categoryDAO = new CategoryDAO();
+		List<CategoryDTO> ar = null;
 		try {
-			List<CategoryDTO> ar = categoryDAO.selectList();
+			ar = categoryDAO.selectList();
 			System.out.println((ar.get(0)).getBrand());
-			request.setAttribute("list", ar);
+			CategoryDTO categoryDTO = new CategoryDTO();
+			categoryDTO.setBrand((ar.get(0)).getBrand());
+			System.out.println(categoryDTO.getBrand());
+			request.setAttribute("list", categoryDTO);
 		} catch (Exception e) {
-			System.out.println("hi");
 		}
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/category/categoryList.jsp");
