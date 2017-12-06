@@ -10,5 +10,6 @@
 	<h1>team ede</h1>
 	<!-- category by kj -->
 	<a href ="./category/categoryList.category">category</a>
+	<a href ="./meet/meetList.meet">모임</a>
 </body>
 </html>
