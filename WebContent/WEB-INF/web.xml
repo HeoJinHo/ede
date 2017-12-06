@@ -43,7 +43,11 @@
   </filter-mapping>
   <servlet>
     <servlet-name>category</servlet-name>
-    <servlet-class>com.ede.category</servlet-class>
+    <servlet-class>com.ede.controller.CategoryController</servlet-class>
+    <init-param>
+    	<param-name>property</param-name>
+    	<param-value>category.property</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>category</servlet-name>

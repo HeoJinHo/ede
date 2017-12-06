@@ -86,6 +86,6 @@ public class MemberDTO {
 	public void setLev(int lev) {
 		this.lev = lev;
 	}
-	
+
 	
 }
