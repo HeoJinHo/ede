@@ -8,12 +8,16 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ede.action.Action;
+import com.ede.action.ActionFoward;
 
 /**
  * Servlet implementation class CategoryController
@@ -34,8 +38,8 @@ public class CategoryController extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
     	command = new HashMap<>();
+    	String filePath = config.getServletContext().getRealPath("WEB-INF/properties");
     	String fileName = config.getInitParameter("properties");
-    	String filePath = config.getServletContext().getRealPath("WEB-INF/property");
     	File file = new File(filePath, fileName);
     	FileInputStream fi = null;
     	Properties prop = new Properties();
@@ -65,8 +69,23 @@ public class CategoryController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		String path = request.getServletPath();
+		Action action = null;
+		ActionFoward actionFoward = null;
+		
+		action = (Action)command.get(path);
+		
+		actionFoward = action.doProcess(request, response);
+		
+		if(actionFoward.isCheck()) {
+			RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
+			view.forward(request, response);
+		} else {
+			response.sendRedirect(actionFoward.getPath());
+		}
 	}
 
 	/**
