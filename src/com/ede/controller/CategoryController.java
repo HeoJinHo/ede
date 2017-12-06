@@ -39,7 +39,7 @@ public class CategoryController extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	command = new HashMap<>();
     	String filePath = config.getServletContext().getRealPath("WEB-INF/properties");
-    	String fileName = config.getInitParameter("properties");
+    	String fileName = config.getInitParameter("property");
     	File file = new File(filePath, fileName);
     	FileInputStream fi = null;
     	Properties prop = new Properties();
