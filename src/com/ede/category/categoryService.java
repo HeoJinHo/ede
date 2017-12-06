@@ -13,12 +13,11 @@ public class CategoryService implements Action{
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		CategoryDAO categoryDAO = new CategoryDAO();
-		CategoryDTO categoryDTO = new CategoryDTO();
 		try {
 			List<CategoryDTO> ar = categoryDAO.selectList();
+			System.out.println((ar.get(0)).getBrand());
 			request.setAttribute("list", ar);
 		} catch (Exception e) {
-			
 		}
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/category/categoryList.jsp");

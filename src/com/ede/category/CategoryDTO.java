@@ -1,6 +1,7 @@
 package com.ede.category;
 
 public class CategoryDTO {
+	private String name;
 	private String brand;
 	private String pro_name;
 	private int pro_price;
@@ -16,11 +17,13 @@ public class CategoryDTO {
 	private int evt;
 	private int pro_num;
 	
-	String getInfo() {
-		return info;
+	
+	
+	String getName() {
+		return name;
 	}
-	void setInfo(String info) {
-		this.info = info;
+	void setName(String name) {
+		this.name = name;
 	}
 	String getBrand() {
 		return brand;
@@ -45,6 +48,12 @@ public class CategoryDTO {
 	}
 	void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+	String getInfo() {
+		return info;
+	}
+	void setInfo(String info) {
+		this.info = info;
 	}
 	int getGrade1() {
 		return grade1;

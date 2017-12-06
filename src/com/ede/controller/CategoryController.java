@@ -40,6 +40,8 @@ public class CategoryController extends HttpServlet {
     	command = new HashMap<>();
     	String filePath = config.getServletContext().getRealPath("WEB-INF/properties");
     	String fileName = config.getInitParameter("property");
+    	System.out.println(filePath);
+    	System.out.println(fileName);
     	File file = new File(filePath, fileName);
     	FileInputStream fi = null;
     	Properties prop = new Properties();
@@ -69,9 +71,6 @@ public class CategoryController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
 		String path = request.getServletPath();
 		Action action = null;
 		ActionFoward actionFoward = null;

@@ -22,7 +22,7 @@
     <servlet-class>com.ede.controller.CategoryController</servlet-class>
     <init-param>
     	<param-name>property</param-name>
-    	<param-value>category.property</param-value>
+    	<param-value>category.properties</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
