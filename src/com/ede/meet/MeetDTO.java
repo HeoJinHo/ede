@@ -21,11 +21,12 @@ public class MeetDTO {
 	private String m_phone;
 	private String m_email;
 	
-	public int getmSeq() {
+	
+	public int getM_seq() {
 		return m_seq;
 	}
-	public void setmSeq(int mSeq) {
-		this.m_seq = mSeq;
+	public void setM_seq(int m_seq) {
+		this.m_seq = m_seq;
 	}
 	public String getId() {
 		return id;
@@ -123,4 +124,6 @@ public class MeetDTO {
 	public void setM_email(String m_email) {
 		this.m_email = m_email;
 	}
+	
+	
 }

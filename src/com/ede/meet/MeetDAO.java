@@ -43,7 +43,7 @@ public class MeetDAO {
 		
 		while (rs.next()) {
 			MeetDTO meetDTO = new MeetDTO();
-			meetDTO.setmSeq(rs.getInt("m_seq"));
+			meetDTO.setM_seq((rs.getInt("m_seq")));
 			meetDTO.setId(rs.getString("id"));
 			meetDTO.setM_name(rs.getString("m_name"));
 			meetDTO.setM_title(rs.getString("m_title"));
@@ -65,5 +65,40 @@ public class MeetDAO {
 		}
 		DBConnector.disConnect(rs, st, con);
 		return ar;
+	}
+	
+	public MeetDTO selectOne(int num) throws Exception {
+		MeetDTO meetDTO = null;
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from meet where m_seq = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		System.out.println(num);
+		st.setInt(1, num);
+		ResultSet rs = st.executeQuery();
+		System.out.println("오셨나여~!=====================================================1");
+		if(rs.next()) {
+			System.out.println("오셨나여~!=====================================================2");
+			meetDTO = new MeetDTO();
+			meetDTO.setM_seq((rs.getInt("m_seq"))); 
+			meetDTO.setId(rs.getString("id"));
+			meetDTO.setM_name(rs.getString("m_name"));
+			meetDTO.setM_title(rs.getString("m_title"));
+			meetDTO.setM_contents(rs.getString("m_contents"));
+			meetDTO.setStart_date(rs.getString("start_date"));
+			meetDTO.setLast_date(rs.getString("last_date"));
+			meetDTO.setStart_apply(rs.getString("start_apply"));
+			meetDTO.setLast_apply(rs.getString("last_apply"));
+			meetDTO.setM_addr(rs.getString("m_addr"));
+			meetDTO.setM_detail_addr(rs.getString("m_detail_addr"));
+			meetDTO.setM_price(rs.getInt("m_price"));
+			meetDTO.setM_ref(rs.getInt("m_ref"));
+			meetDTO.setM_step(rs.getInt("m_step"));
+			meetDTO.setM_depth(rs.getInt("m_depth"));
+			meetDTO.setM_phone(rs.getString("m_phone"));
+			meetDTO.setM_email(rs.getString("m_email"));
+			System.out.println(meetDTO.getM_depth());
+		}
+		DBConnector.disConnect(rs, st, con);
+		return meetDTO;
 	}
 }

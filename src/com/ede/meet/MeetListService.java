@@ -11,7 +11,7 @@ import com.ede.util.MakePage;
 import com.ede.util.MakeRow;
 import com.ede.util.Pageing;
 
-public class MeetService implements Action {
+public class MeetListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
