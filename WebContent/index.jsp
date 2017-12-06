@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
-
-
-
+	<h1>team ede</h1>
+	<!-- category by kj -->
+	<a href ="./category/categoryList.category">category</a>
 </body>
 </html>
