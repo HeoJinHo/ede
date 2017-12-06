@@ -1,5 +1,6 @@
 package com.ede.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,23 +16,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.jni.File;
-
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 
 /**
- * Servlet implementation class MemberController
+ * Servlet implementation class CategoryController
  */
-@WebServlet("/MemberController")
-public class MemberController extends HttpServlet {
+@WebServlet("/CategoryController")
+public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private Map<String, Object> command;
-	
+	private Map<String, Object> command;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberController() {
+    public CategoryController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,52 +38,52 @@ public class MemberController extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
     	command = new HashMap<>();
-    	String fileName = config.getInitParameter("properties");
     	String filePath = config.getServletContext().getRealPath("WEB-INF/properties");
-    	FileInputStream fi= null;
+    	String fileName = config.getInitParameter("properties");
+    	File file = new File(filePath, fileName);
+    	FileInputStream fi = null;
     	Properties prop = new Properties();
     	try {
-			fi = new FileInputStream(new File(filePath, fileName));
+			fi = new FileInputStream(file);
 			prop.load(fi);
 			Iterator<Object> it = prop.keySet().iterator();
 			while(it.hasNext()) {
 				String key = (String)it.next();
-				String value= (String)prop.get(key);
+				String value = (String)prop.get(key);
 				Class cls = Class.forName(value);
-				Object ins = cls.newInstance();
-				command.put(key, ins);
+				Object obj = cls.newInstance();
+				command.put(key, obj);
 			}
-			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				fi.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-    	
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
-		String uri = request.getServletPath();
-		ActionFoward actionFoward=null;
-		Action action=null;
+		String path = request.getServletPath();
+		Action action = null;
+		ActionFoward actionFoward = null;
 		
-		action= (Action)command.get(uri);
+		action = (Action)command.get(path);
+		
 		actionFoward = action.doProcess(request, response);
 		
 		if(actionFoward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
 			view.forward(request, response);
-		}else {
+		} else {
 			response.sendRedirect(actionFoward.getPath());
 		}
 	}

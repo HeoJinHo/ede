@@ -19,7 +19,7 @@
   </filter-mapping>
   <servlet>
     <servlet-name>category</servlet-name>
-    <servlet-class>com.ede.category</servlet-class>
+    <servlet-class>com.ede.controller.CategoryController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>category</servlet-name>
