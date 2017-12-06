@@ -2,16 +2,16 @@ package com.ede.member;
 
 public interface MemberDAO {
 
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int join(MemberDTO memberDTO) throws Exception;
 	
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	public MemberDTO login(MemberDTO memberDTO) throws Exception;
 	
-	//¼öÁ¤ 
+	//ï¿½ï¿½ï¿½ï¿½
 	public int update(MemberDTO memberDTO) throws Exception;
 	
-	//Å»Åð
+	//Å»ï¿½ï¿½
 	public int delete(String id) throws Exception;
 	
 	

@@ -80,11 +80,11 @@ public class MemberDTO {
 	public void setPic_path(String pic_path) {
 		this.pic_path = pic_path;
 	}
-	public int getLelvle() {
-		return lelvle;
+	public int getLev() {
+		return lev;
 	}
-	public void setLelvle(int lelvle) {
-		this.lelvle = lelvle;
+	public void setLev(int lev) {
+		this.lev = lev;
 	}
 	
 	
