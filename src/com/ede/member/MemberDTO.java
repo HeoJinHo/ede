@@ -13,7 +13,7 @@ public class MemberDTO {
 	private int point;
 	private String pic_name;
 	private String pic_path;
-	private int lelvle;
+	private int lev;
 	public String getId() {
 		return id;
 	}
