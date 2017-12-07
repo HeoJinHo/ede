@@ -13,6 +13,7 @@ public class MemberJoinService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		if(request.getMethod().equals("POST")) {
 			MemberDTO memberDTO = new MemberDTO();
+			
 			memberDTO.setId(request.getParameter("id"));
 			memberDTO.setPw(request.getParameter("pw"));
 			memberDTO.setAddr(request.getParameter("addr"));
@@ -21,10 +22,10 @@ public class MemberJoinService implements Action {
 			memberDTO.setName(request.getParameter("name"));
 			memberDTO.setBirth(request.getParameter("birth"));
 			memberDTO.setGender(request.getParameter("gender"));
-			memberDTO.setPoint(Integer.parseInt(request.getParameter("point")));
-			memberDTO.setPic_name(request.getParameter("pic_name"));
-			memberDTO.setPic_path(request.getParameter("pic_path"));
-			memberDTO.setLev(Integer.parseInt(request.getParameter("lev")));
+			memberDTO.setEmail(request.getParameter("email"));
+		/*	memberDTO.setPic_name(request.getParameter("pic_name"));
+			memberDTO.setPic_path(request.getParameter("pic_path"));*/
+			System.out.println(memberDTO.getId());
 			MemberDAO memberDAO = new MemberDAO();
 			int result=0;
 			try {
