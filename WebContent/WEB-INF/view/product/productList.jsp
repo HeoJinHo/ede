@@ -10,6 +10,8 @@
 </head>
 <body>
 	<h1>product List</h1>
+	<a href="#">category</a>
+	<a href="#">brand</a>
 	<c:forEach items="${list}" var="i">
 		<tr>
 			<td>${i.brand}</td>
@@ -28,5 +30,6 @@
 			<td>${i.pro_num}</td>
 		</tr>
 	</c:forEach>
+	<a href="./productRegist.product">Register</a>
 </body>
 </html>

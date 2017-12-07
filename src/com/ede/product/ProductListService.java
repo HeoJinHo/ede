@@ -15,7 +15,6 @@ public class ProductListService implements Action{
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		ProductDAO categoryDAO = new ProductDAO();
-		System.out.println(request.getServletContext());
 		try {
 			List<ProductDTO> ar = categoryDAO.selectList();
 			request.setAttribute("list", ar);
