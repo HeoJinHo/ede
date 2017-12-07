@@ -56,16 +56,11 @@
 		
 		<c:forEach items="${list}" var="i">
 			<tr>
-				<td>${i.num}</td>
-				<td>
-				<c:catch>
-				<c:forEach begin="1" end="${i.depth}">--</c:forEach>
-				</c:catch>				
-				<a href="./${board}View.${board}?num=${i.num}">${i.title}</a>
-				</td>
-				<td>${i.writer} </td>
-				<td>${i.reg_date}</td>
-				<td>${i.hit}</td>
+				<td>${i.m_num}</td>
+				<td><a href="./meetView.meet?num=${i.m_num}">${i.m_title}</a></td>
+				<td>${i.id} </td>
+				<td>${i.start_date}</td>
+				<td>${i.m_hit}</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -81,6 +76,6 @@
 		<input type="button" class="list" title="${page.lastNum+1}" value="[다음]">  
 	</c:if>
 	
-	<a href="./${board}Write.${board}">Write</a>
+	<a href="./meetWrite.meet">Write</a>
 </body>
 </html>

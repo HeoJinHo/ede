@@ -3,7 +3,7 @@ package com.ede.meet;
 
 public class MeetDTO {
 
-	private int m_seq;
+	private int m_num;
 	private String id;
 	private String m_name;
 	private String m_title;
@@ -20,13 +20,14 @@ public class MeetDTO {
 	private int m_depth;
 	private String m_phone;
 	private String m_email;
+	private int m_hit;
 	
 	
-	public int getM_seq() {
-		return m_seq;
+	public int getM_num() {
+		return m_num;
 	}
-	public void setM_seq(int m_seq) {
-		this.m_seq = m_seq;
+	public void setM_num(int m_num) {
+		this.m_num = m_num;
 	}
 	public String getId() {
 		return id;
@@ -123,6 +124,12 @@ public class MeetDTO {
 	}
 	public void setM_email(String m_email) {
 		this.m_email = m_email;
+	}
+	public int getM_hit() {
+		return m_hit;
+	}
+	public void setM_hit(int m_hit) {
+		this.m_hit = m_hit;
 	}
 	
 	

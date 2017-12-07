@@ -10,17 +10,52 @@ import com.ede.util.DBConnector;
 import com.ede.util.MakeRow;
 
 public class MeetDAO {
+	
+	public static void main(String[] args) {
+		for(int i=0;i<50;i++) {
+			
+		}
+	}
+	
+	public int getNum() throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="select m_seq.nextval from dual";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int num = rs.getInt(1);
+		DBConnector.disConnect(rs, st, con);
+		
+		return num;
+	}
+	
+	public int insert(MeetDTO meetDTO) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "insert to meet values(?,?,?,?,?,"
+				+ "?,?,?,?,?,"
+				+ "?,?,?,?,?,"
+				+ "?,?)";
+		
+		
+		int result = 0;
+		return result;
+	}
 
 	//totalCount
 	public int getTotalCount(MakeRow makeRow) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select nvl(count(num), 0) from meet where "+makeRow.getKind() +" like ?";
+		//sql문에 kind 들어가야하는데 그러려면 makerow 고쳐야댐ㅠㅠ 손대기 싫다.
+		
+		String sql ="select nvl(count(m_num), 0) from meet where m_title like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
 		ResultSet rs = st.executeQuery();
-		rs.next();
-		int totalCount= rs.getInt(1);
-		
+		int totalCount= 0;
+		if(rs.next()) {
+			totalCount= rs.getInt(1);
+		}else {
+			// to do
+		}
 		DBConnector.disConnect(rs, st, con);
 		
 		return totalCount;
@@ -33,7 +68,7 @@ public class MeetDAO {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
 				+ "(select rownum R, M.* from "
-				+ "(select * from meet where "+makeRow.getKind()+" like ? order by num desc) M) "
+				+ "(select * from meet where m_title like ? order by m_num desc) M) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
@@ -43,7 +78,7 @@ public class MeetDAO {
 		
 		while (rs.next()) {
 			MeetDTO meetDTO = new MeetDTO();
-			meetDTO.setM_seq((rs.getInt("m_seq")));
+			meetDTO.setM_num((rs.getInt("m_num")));
 			meetDTO.setId(rs.getString("id"));
 			meetDTO.setM_name(rs.getString("m_name"));
 			meetDTO.setM_title(rs.getString("m_title"));
@@ -70,13 +105,13 @@ public class MeetDAO {
 	public MeetDTO selectOne(int num) throws Exception {
 		MeetDTO meetDTO = null;
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from meet where m_seq = ?";
+		String sql = "select * from meet where m_num = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
 			meetDTO = new MeetDTO();
-			meetDTO.setM_seq((rs.getInt("m_seq"))); 
+			meetDTO.setM_num((rs.getInt("m_num"))); 
 			meetDTO.setId(rs.getString("id"));
 			meetDTO.setM_name(rs.getString("m_name"));
 			meetDTO.setM_title(rs.getString("m_title"));
