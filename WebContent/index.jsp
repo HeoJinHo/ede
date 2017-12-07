@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>team ede</h1>
+	<!-- category by kj -->
+	<a href ="./product/productList.product">product</a>
+	<a href ="./meet/meetList.meet">모임</a>
 	<a href="./notice/noticeList.notice">Notice List</a>
 	<a href="./qna/qnaList.qna">Qna List</a>
 	<c:if test="${empty member}">

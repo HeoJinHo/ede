@@ -18,16 +18,24 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <servlet>
-    <servlet-name>category</servlet-name>
-    <servlet-class>com.ede.controller.CategoryController</servlet-class>
+    <servlet-name>product</servlet-name>
+    <servlet-class>com.ede.controller.ProductController</servlet-class>
+    <init-param>
+    	<param-name>property</param-name>
+    	<param-value>product.properties</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>category</servlet-name>
-    <url-pattern>*.category</url-pattern>
+    <servlet-name>product</servlet-name>
+    <url-pattern>*.product</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>meet</servlet-name>
-    <servlet-class>com.ede.meet</servlet-class>
+    <servlet-class>com.ede.controller.MeetController</servlet-class>
+    <init-param>
+      <param-name>property</param-name>
+      <param-value>meet.properties</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>meet</servlet-name>
