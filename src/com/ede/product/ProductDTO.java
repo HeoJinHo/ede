@@ -1,6 +1,6 @@
-package com.ede.category;
+package com.ede.product;
 
-public class CategoryDTO {
+public class ProductDTO {
 	private String brand;
 	private String pro_name;
 	private int pro_price;
@@ -15,6 +15,16 @@ public class CategoryDTO {
 	private String pic_compName;
 	private int evt;
 	private int pro_num;
+	private String category;
+	
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	public String getPro_name() {
 		return pro_name;

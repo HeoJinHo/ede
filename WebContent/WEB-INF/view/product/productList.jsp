@@ -28,7 +28,5 @@
 			<td>${i.pro_num}</td>
 		</tr>
 	</c:forEach>
-	
-	
 </body>
 </html>

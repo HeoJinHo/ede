@@ -23,14 +23,14 @@ import com.ede.action.ActionFoward;
  * Servlet implementation class CategoryController
  */
 @WebServlet("/CategoryController")
-public class CategoryController extends HttpServlet {
+public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Map<String, Object> command;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CategoryController() {
+    public ProductController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,8 +40,6 @@ public class CategoryController extends HttpServlet {
     	command = new HashMap<>();
     	String filePath = config.getServletContext().getRealPath("WEB-INF/properties");
     	String fileName = config.getInitParameter("property");
-    	System.out.println(filePath);
-    	System.out.println(fileName);
     	File file = new File(filePath, fileName);
     	FileInputStream fi = null;
     	Properties prop = new Properties();

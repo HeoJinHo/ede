@@ -1,4 +1,4 @@
-package com.ede.category;
+package com.ede.product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,15 +8,15 @@ import java.util.List;
 
 import com.ede.util.DBConnector;
 
-public class CategoryDAO {
-	public List<CategoryDTO> selectList() throws Exception {
-		List<CategoryDTO> ar = new ArrayList<CategoryDTO>();
+public class ProductDAO {
+	public List<ProductDTO> selectList() throws Exception {
+		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from product";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
-			CategoryDTO categoryDTO = new CategoryDTO();
+			ProductDTO categoryDTO = new ProductDTO();
 			categoryDTO.setBrand(rs.getString("brand"));
 			categoryDTO.setPro_name(rs.getString("pro_name"));
 			categoryDTO.setPro_price(rs.getInt("pro_price"));
@@ -31,6 +31,7 @@ public class CategoryDAO {
 			categoryDTO.setPic_compName(rs.getString("pic_compName"));
 			categoryDTO.setEvt(rs.getInt("evt"));
 			categoryDTO.setPro_num(rs.getInt("pro_num"));
+			categoryDTO.setCategory(rs.getString("category"));
 			ar.add(categoryDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
