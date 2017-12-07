@@ -16,8 +16,8 @@
 	<!-- notice, qna by suin -->
 	<a href="./notice/noticeList.notice">Notice List</a>
 	<a href="./qna/qnaList.qna">Qna List</a>
-	<a href="./notice/noticeList.notice">Notice List</a>
-	<a href="./qna/qnaList.qna">Qna List</a>
+
+
 	<c:if test="${empty member}">
 	<a href="./member/memberJoin.member">Join</a>
 	<a href="./member/memberLogin.member">Login</a>
@@ -27,7 +27,7 @@
 	<a href="./member/memberMypage.member">MyPage</a>
 	</c:if>
 	<a href="./json/json_1.json">JSON Test</a>
-	 <img src="./upload/iu_11.jpg">
+	<img src="./upload/iu_11.jpg">
 
 </body>
 </html>

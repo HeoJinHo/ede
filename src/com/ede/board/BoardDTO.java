@@ -4,24 +4,23 @@ import java.sql.Date;
 
 public class BoardDTO {
 
-	private int not_num;
-	private String not_title;
+	private int num;
+	private String title;
 	private String writer;
 	private String contents;
 	private int hit;
 	private Date reg_date;
-	
-	public int getNot_num() {
-		return not_num;
+	public int getNum() {
+		return num;
 	}
-	public void setNot_num(int not_num) {
-		this.not_num = not_num;
+	public void setNum(int num) {
+		this.num = num;
 	}
-	public String getNot_title() {
-		return not_title;
+	public String getTitle() {
+		return title;
 	}
-	public void setNot_title(String not_title) {
-		this.not_title = not_title;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getWriter() {
 		return writer;
@@ -47,6 +46,9 @@ public class BoardDTO {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
+	
+	
+
 	
 	
 }

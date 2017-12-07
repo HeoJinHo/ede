@@ -8,14 +8,15 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.Action;
-
+import com.ede.action.Action;
+import com.ede.action.ActionFoward;
 /**
  * Servlet implementation class NoticeController
  */
@@ -75,7 +76,16 @@ public class NoticeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
-		
+		Action action = null;
+		ActionFoward actionFoward = null;
+		action = (Action)command.get(path);
+		actionFoward = action.doProcess(request, response);
+		if(actionFoward.isCheck()) {
+			RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
+			view.forward(request, response);
+		}else {
+			response.sendRedirect(actionFoward.getPath());
+		}
 	}
 
 	/**
