@@ -15,15 +15,13 @@ public class CategoryListService implements Action{
 		CategoryDAO categoryDAO = new CategoryDAO();
 		try {
 			List<CategoryDTO> ar = categoryDAO.selectList();
-			System.out.println((ar.get(0)).getBrand());
-			System.out.println((ar.get(0)).getCapacity());
 			request.setAttribute("list", ar);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/category/categoryList.jsp");
-
-
 		return actionFoward;
 	}
+
 }
