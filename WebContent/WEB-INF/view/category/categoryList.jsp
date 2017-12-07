@@ -10,6 +10,23 @@
 </head>
 <body>
 	<h1>category List</h1>
-	<h1>${list[0].brand}</h1>
+	<c:forEach items="${list}" var="i">
+		<tr>
+			<td>${i.brand}</td>
+			<td>${i.pro_name}</td>
+			<td>${i.pro_price}</td>
+			<td>${i.capacity}</td>
+			<td>${i.info}</td>
+			<td>${i.grade1}</td>
+			<td>${i.grade2}</td>
+			<td>${i.grade3}</td>
+			<td>${i.grade4}</td>
+			<td>${i.grade5}</td>
+			<td>${i.pic_realName}</td>
+			<td>${i.pic_compName}</td>
+			<td>${i.evt}</td>
+			<td>${i.pro_num}</td>
+		</tr>
+	</c:forEach>
 </body>
 </html>
