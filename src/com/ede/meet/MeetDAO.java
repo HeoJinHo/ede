@@ -31,13 +31,31 @@ public class MeetDAO {
 	
 	public int insert(MeetDTO meetDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert to meet values(?,?,?,?,?,"
+		String sql = "insert into meet values(?,?,?,?,?,"
 				+ "?,?,?,?,?,"
 				+ "?,?,?,?,?,"
-				+ "?,?)";
-		
-		
-		int result = 0;
+				+ "?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, meetDTO.getM_num());
+		st.setString(2, meetDTO.getId());
+		st.setString(3, meetDTO.getM_name());
+		st.setString(4, meetDTO.getM_title());
+		st.setString(5, meetDTO.getM_contents());
+		st.setString(6, meetDTO.getStart_date());
+		st.setString(7, meetDTO.getLast_date());
+		st.setString(8, meetDTO.getStart_apply());
+		st.setString(9, meetDTO.getLast_apply());
+		st.setString(10, meetDTO.getM_addr());
+		st.setString(11, meetDTO.getM_detail_addr());
+		st.setInt(12, meetDTO.getM_price());
+		st.setInt(13, meetDTO.getM_ref());
+		st.setInt(14, meetDTO.getM_step());
+		st.setInt(15, meetDTO.getM_depth());
+		st.setString(16, meetDTO.getM_phone());
+		st.setString(17, meetDTO.getM_email());
+		st.setInt(18, meetDTO.getM_hit());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
 		return result;
 	}
 
@@ -128,7 +146,7 @@ public class MeetDAO {
 			meetDTO.setM_depth(rs.getInt("m_depth"));
 			meetDTO.setM_phone(rs.getString("m_phone"));
 			meetDTO.setM_email(rs.getString("m_email"));
-			System.out.println(meetDTO.getM_depth());
+			meetDTO.setM_hit(rs.getInt("m_hit"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return meetDTO;

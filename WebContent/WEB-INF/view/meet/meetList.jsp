@@ -30,7 +30,6 @@
 </head>
 <body>
 	<h1>meetList</h1>
-	<a href ="./meetView.meet?num=1">title(view)</a>
 		
 	<div>
 		<form name="frm" action="./meetList.meet">

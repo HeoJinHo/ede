@@ -9,6 +9,6 @@
 </head>
 <body>
 	<h1>meetView</h1>
-	<h1>${view.m_seq }</h1>
+	<h1>${view.m_num}</h1>
 </body>
 </html>

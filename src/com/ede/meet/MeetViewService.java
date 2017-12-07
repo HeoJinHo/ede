@@ -21,9 +21,7 @@ public class MeetViewService implements Action {
 		MeetDTO meetDTO = null;
 		try {
 			meetDTO = meetDAO.selectOne(m_seq);
-			System.out.println("===================================");
 			System.out.println(meetDTO.getM_addr()); 
-			System.out.println("===================================");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
