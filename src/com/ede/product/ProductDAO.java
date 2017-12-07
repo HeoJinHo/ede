@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.jdt.core.compiler.CategorizedProblem;
+import java.util.Random;
 
 import com.ede.util.DBConnector;
 
@@ -56,20 +55,29 @@ public class ProductDAO {
 	//regist
 	public int regist(ProductDTO productDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql =  "insert into product values(?,?,?,?,?,0,0,0,0,0,?,?,?,?,?)";
+		String sql =  "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
 		st.setInt(3, productDTO.getPro_price());
 		st.setInt(4, productDTO.getCapacity());
 		st.setString(5, productDTO.getInfo());
-		st.setString(6, "pic_realName");
-		st.setString(7, "pic_compName");
-		st.setInt(8, 20);
-		st.setInt(9, productDTO.getPro_num());
-		st.setString(10, "category");
+		st.setInt(6, productDTO.getGrade1());
+		st.setInt(7, productDTO.getGrade2());
+		st.setInt(8, productDTO.getGrade3());
+		st.setInt(9, productDTO.getGrade4());
+		st.setInt(10, productDTO.getGrade5());
+		st.setString(11, "pic_realName");
+		st.setString(12, "pic_compName");
+		st.setInt(13, productDTO.getEvt());
+		st.setInt(14, productDTO.getPro_num());
+		st.setString(15, productDTO.getCategory());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+
+
+
+		 
 }

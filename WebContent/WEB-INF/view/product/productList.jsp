@@ -12,6 +12,7 @@
 	<h1>product List</h1>
 	<a href="#">category</a>
 	<a href="#">brand</a>
+	<br>
 	<c:forEach items="${list}" var="i">
 		<tr>
 			<td>${i.brand}</td>
@@ -28,8 +29,10 @@
 			<td>${i.pic_compName}</td>
 			<td>${i.evt}</td>
 			<td>${i.pro_num}</td>
+			<td>${i.category }
 		</tr>
 	</c:forEach>
+	<br>
 	<a href="./productRegist.product">Register</a>
 </body>
 </html>
