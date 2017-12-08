@@ -1,1 +1,2 @@
 /member/memberJoin.member=com.ede.member.MemberJoinService
+/member/memberLogin.member=com.ede.member.MemberLoginService
