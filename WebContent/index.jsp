@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 	<h1>team ede</h1>
+	
 	<!-- category by kj -->
 	<a href ="./product/productList.product">product</a>
 	<a href ="./meet/meetList.meet">모임</a>
@@ -19,7 +21,7 @@
 	</c:if>
 	<c:if test="${not empty member}">
 	<a href="./member/memberLogout.member">Logout</a>
-	<a href="./member/memberMypage.member">MyPage</a>
+	<a href="./member/memberMyPage.member">MyPage</a>
 	</c:if>
 	<a href="./json/json_1.json">JSON Test</a>
 	 <img src="./upload/iu_11.jpg">
