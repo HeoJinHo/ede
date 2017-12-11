@@ -28,7 +28,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into notice values(?,?,?,?,sysdate,0)";
+		String sql ="insert into notice values(?,?,?,?,0,sysdate)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
