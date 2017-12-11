@@ -2,8 +2,10 @@ package com.ede.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.ede.util.DBConnector;
+import com.ede.member.MemberDTO;
 
 public class MemberDAO {
 
@@ -29,10 +31,68 @@ public class MemberDAO {
 		return result;
 	}
 
+	public MemberDTO login(MemberDTO memberDTO) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="select * from member where id=? and pw=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, memberDTO.getId());
+		st.setString(2, memberDTO.getPw());
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			memberDTO.setName(rs.getString("name"));
+			memberDTO.setNickname(rs.getString("nickname"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setPhone(rs.getString("phone"));
+			memberDTO.setGender(rs.getString("gender"));
+			memberDTO.setBirth(rs.getString("birth"));
+			memberDTO.setAddr(rs.getString("addr"));
+		}else {
+			memberDTO=null;
+		}
+		DBConnector.disConnect(rs, st, con);
+		return memberDTO;
+	}
 	
-	
-	
+	public int update(MemberDTO memberDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "update member set pw=?, birth=?, gender=?, addr=?, phone=?, email=? where id=? ";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, memberDTO.getPw());
+		st.setString(2, memberDTO.getBirth());
+		st.setString(3, memberDTO.getGender());
+		st.setString(4, memberDTO.getAddr());
+		st.setString(5, memberDTO.getPhone());
+		st.setString(6, memberDTO.getEmail());
+		st.setString(7, memberDTO.getId());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 	
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
