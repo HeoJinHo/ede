@@ -21,8 +21,21 @@ public class MeetDTO {
 	private String m_phone;
 	private String m_email;
 	private int m_hit;
+	private int total_seats;
+	private int applied_seats;
 	
-	
+	public int getTotal_seats() {
+		return total_seats;
+	}
+	public void setTotal_seats(int total_seats) {
+		this.total_seats = total_seats;
+	}
+	public int getApplied_seats() {
+		return applied_seats;
+	}
+	public void setApplied_seats(int applied_seats) {
+		this.applied_seats = applied_seats;
+	}
 	public int getM_num() {
 		return m_num;
 	}

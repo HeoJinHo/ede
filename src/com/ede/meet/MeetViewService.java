@@ -11,17 +11,16 @@ public class MeetViewService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		int m_seq = 0;
+		int m_num = 0;
 		try {
-			m_seq = Integer.parseInt(request.getParameter("num"));
+			m_num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		MeetDAO meetDAO = new MeetDAO();
 		MeetDTO meetDTO = null;
 		try {
-			meetDTO = meetDAO.selectOne(m_seq);
-			System.out.println(meetDTO.getM_addr()); 
+			meetDTO = meetDAO.selectOne(m_num);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -17,6 +17,23 @@ public class MeetDAO {
 		}
 	}
 	
+	public int applyInsert(ApplyDTO applyDTO) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into meet_apply values(?,?,?,?,?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, applyDTO.getId());
+		st.setInt(2, applyDTO.getM_num());
+		st.setString(3, applyDTO.getA_name());
+		st.setString(4, applyDTO.getA_gender());
+		st.setInt(5, applyDTO.getA_age());
+		st.setString(6, applyDTO.getA_phone());
+		st.setString(7, applyDTO.getA_email());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	
 	public int getNum() throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql ="select m_seq.nextval from dual";
@@ -33,27 +50,33 @@ public class MeetDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into meet values(?,?,?,?,?,"
 				+ "?,?,?,?,?,"
-				+ "?,?,?,?,?,"
-				+ "?,?,?)";
+				+ "?,?,?,0,0,"
+				+ "?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, meetDTO.getM_num());
 		st.setString(2, meetDTO.getId());
 		st.setString(3, meetDTO.getM_name());
 		st.setString(4, meetDTO.getM_title());
 		st.setString(5, meetDTO.getM_contents());
+		
 		st.setString(6, meetDTO.getStart_date());
 		st.setString(7, meetDTO.getLast_date());
 		st.setString(8, meetDTO.getStart_apply());
 		st.setString(9, meetDTO.getLast_apply());
 		st.setString(10, meetDTO.getM_addr());
+		
 		st.setString(11, meetDTO.getM_detail_addr());
 		st.setInt(12, meetDTO.getM_price());
-		st.setInt(13, meetDTO.getM_ref());
-		st.setInt(14, meetDTO.getM_step());
-		st.setInt(15, meetDTO.getM_depth());
-		st.setString(16, meetDTO.getM_phone());
-		st.setString(17, meetDTO.getM_email());
-		st.setInt(18, meetDTO.getM_hit());
+		st.setInt(13, meetDTO.getM_num());
+		//st.setInt(14, meetDTO.getM_step());
+		//st.setInt(15, meetDTO.getM_depth());
+		
+		st.setString(14, meetDTO.getM_phone());
+		st.setString(15, meetDTO.getM_email());
+		st.setInt(16, meetDTO.getM_hit());
+		st.setInt(17, meetDTO.getTotal_seats());
+		st.setInt(18, meetDTO.getApplied_seats());
+		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
@@ -113,10 +136,14 @@ public class MeetDAO {
 			meetDTO.setM_depth(rs.getInt("m_depth"));
 			meetDTO.setM_phone(rs.getString("m_phone"));
 			meetDTO.setM_email(rs.getString("m_email"));
+			meetDTO.setM_hit(rs.getInt("m_hit"));
+			meetDTO.setApplied_seats(rs.getInt("applied_seats"));
+			meetDTO.setTotal_seats(rs.getInt("total_seats"));
 			ar.add(meetDTO);
 			
 		}
 		DBConnector.disConnect(rs, st, con);
+		
 		return ar;
 	}
 	
@@ -147,8 +174,11 @@ public class MeetDAO {
 			meetDTO.setM_phone(rs.getString("m_phone"));
 			meetDTO.setM_email(rs.getString("m_email"));
 			meetDTO.setM_hit(rs.getInt("m_hit"));
+			meetDTO.setApplied_seats(rs.getInt("applied_seats"));
+			meetDTO.setTotal_seats(rs.getInt("total_seats"));
 		}
 		DBConnector.disConnect(rs, st, con);
+		
 		return meetDTO;
 	}
 }
