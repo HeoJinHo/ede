@@ -28,6 +28,7 @@ public class MemberLoginService implements Action {
 				e.printStackTrace();
 			}
 			if(memberDTO != null ) {
+				System.out.println(memberDTO.getId());
 				request.getSession().setAttribute("member", memberDTO);
 				actionFoward.setCheck(false);
 				actionFoward.setPath("../index.jsp");
