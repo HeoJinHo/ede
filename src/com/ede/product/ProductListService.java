@@ -17,7 +17,7 @@ public class ProductListService implements Action{
 		String brand =request.getParameter("brand");
 		ProductDAO productDAO = null;
 		if(del.equals("category")) {
-			productDAO =  new ProductDAO();
+			productDAO = new ProductDAO();
 			try {
 				List<ProductDTO> ar = productDAO.productList(del,brand);
 				request.setAttribute("list", ar);
