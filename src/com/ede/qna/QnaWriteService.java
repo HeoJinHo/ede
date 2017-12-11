@@ -1,4 +1,4 @@
-package com.ede.notice;
+package com.ede.qna;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,18 +11,20 @@ import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.files.FileDAO;
 import com.ede.files.FileDTO;
+import com.ede.qna.QnaDAO;
+import com.ede.qna.QnaDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class NoticeWriteService implements Action {
+public class QnaWriteService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();//GET, POST
 		if(method.equals("POST")) {
-			NoticeDAO noticeDAO = new NoticeDAO();
-			NoticeDTO noticeDTO = new NoticeDTO();
+			QnaDAO qnaDAO = new QnaDAO();
+			QnaDTO qnaDTO = new QnaDTO();
 			int result=0;
 			int result2=0;
 			String filePath = request.getServletContext().getRealPath("upload");
@@ -31,13 +33,13 @@ public class NoticeWriteService implements Action {
 				file.mkdirs();
 			}
 			int maxSize=1024*1024*10;
-			
 			try {
 				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-				result = noticeDAO.getNum();
-				noticeDTO.setWriter(multi.getParameter("writer"));
-				noticeDTO.setTitle(multi.getParameter("title"));
-				noticeDTO.setContents(multi.getParameter("contents"));
+				result = qnaDAO.getNum();
+				qnaDTO.setNum(result);
+				qnaDTO.setWriter(multi.getParameter("writer"));
+				qnaDTO.setTitle(multi.getParameter("title"));
+				qnaDTO.setContents(multi.getParameter("contents"));
 				//parameter names
 				Enumeration<Object> names = multi.getFileNames();
 				while(names.hasMoreElements()) {
@@ -50,51 +52,36 @@ public class NoticeWriteService implements Action {
 		            fileDTO.setfName(fName);
 		            fileDTO.setNum(result);
 		            FileDAO fileDAO = new FileDAO();
+		            result = fileDAO.insert(fileDTO);
+		            	            
 		            try {
-		            	result = fileDAO.insert(fileDTO);
-	            	
-		            }catch (Exception e) {
-						// TODO: handle exception
-		            	result=0;
-					}
-		            try {
-		            	result2 = noticeDAO.insert(noticeDTO);
-		            } catch (Exception e1) {
+		            	result2=qnaDAO.insert(qnaDTO);
+		            } catch (Exception e) {
 		            	// TODO Auto-generated catch block
-		            	e1.printStackTrace();
+		            	e.printStackTrace();
 		            }
+		            
 				}
-				
-				
-				
+							
 			} catch (Exception e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
-			}
-			
-			
-			
+			}		
 			if(result2*result>0) {
 				actionFoward.setCheck(false);
-				actionFoward.setPath("./noticeList.notice");
+				actionFoward.setPath("./qnaList.qna");
 			}else {
 				request.setAttribute("message", "Fail");
-				request.setAttribute("path", "./noticeList.notice");
+				request.setAttribute("path", "./qnaList.qna");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 				
 			}
-			
-			//insert
 		}else {
-			request.setAttribute("board", "notice");
+			request.setAttribute("board", "qna");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardWrite.jsp");
 		}
-		
-		
-		
-		
 		return actionFoward;
 	}
 

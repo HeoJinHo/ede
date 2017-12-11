@@ -53,23 +53,8 @@
     <servlet-name>product</servlet-name>
     <url-pattern>*.product</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>meet</servlet-name>
-    <servlet-class>com.ede.controller.MeetController</servlet-class>
-    <init-param>
-      <param-name>property</param-name>
-      <param-value>meet.properties</param-value>
-    </init-param>
-    <init-param>
-    	<param-name>properties</param-name>
-    	<param-value>category.properties</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>category</servlet-name>
-    <url-pattern>*.category</url-pattern>
-  </servlet-mapping> 
-  
+
+
  
   <servlet>
   	<servlet-name>member</servlet-name>
