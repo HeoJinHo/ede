@@ -32,5 +32,7 @@
 	 <img src="./upload/iu_11.jpg">
 	<img src="./upload/iu_11.jpg">
 
+	<a href ="./product/categoryList.product?del=category">product</a>
+	<a href ="./meet/meetList.meet">모임</a>
 </body>
 </html>
