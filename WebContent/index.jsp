@@ -9,7 +9,7 @@
 <body>
 	<h1>team ede</h1>
 	<!-- category by kj -->
-	<a href ="./product/productList.product">product</a>
+	<a href ="./product/categoryList.product?del=category">product</a>
 	<a href ="./meet/meetList.meet">모임</a>
 </body>
 </html>
