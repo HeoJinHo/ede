@@ -8,16 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Update ${member}</h1>
-	<form action="./${member}Update.${member}" method="post">
-		아이디 : <input type="hidden" name="id" value="${view.id}">
-		비밀번호 : <input type="password" name="pw" readonly="readonly" value="${view.pw}">
-		생년월일 : <input type="date" name="birth" value="${view.birth}">
-		성별 : <input type="radio" name="gender" value="${view.gender}"><input type="radio" name="gender" value="${view.gender}">
-		주소 : <input type="text" name="addr" value="${view.addr}">
-		핸드폰번호 : <input type="text" name="phone" value="${view.phone}">
-		이메일 : <input type="email" name="email" value="${view.email}">
+<h1>Update ${member2}</h1>
+	<%-- <form action="./${member2}Update.${member2}" method="post"> --%>
+		아이디 : <input type="hidden" name="id" readonly="readonly" value="${member.id}">
+		비밀번호 : <input type="password" name="pw" value="${member.pw}">
+		생년월일 : <input type="date" name="birth" value="${member.birth}">
+		성별 : <input type="radio" name="gender" value="${member.gender}"><input type="radio" name="gender" value="${member.gender}">
+		주소 : <input type="text" name="addr" value="${member.addr}">
+		핸드폰번호 : <input type="text" name="phone" value="${member.phone}">
+		이메일 : <input type="email" name="email" value="${member.email}">
 		<button>Update</button>
-	</form>	
+<!-- 	</form>	 -->
 </body>
 </html>

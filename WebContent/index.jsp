@@ -33,6 +33,6 @@
 	<a href="./json/json_1.json">JSON Test</a>
 	 <img src="./upload/iu_11.jpg">
 	<img src="./upload/iu_11.jpg">
-
+	<a href="./test.jsp">test</a>
 </body>
 </html>
