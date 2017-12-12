@@ -20,7 +20,13 @@ public class MeetApplyService implements Action {
 			int num = 0;
 			//applyDTO.setId(request.getParameter("id")); 세션에서 꺼내기
 			applyDTO.setId("testapply");
-			//요기부터
+			applyDTO.setM_num(Integer.parseInt(request.getParameter("m_num")));
+			System.out.println(request.getParameter("m_num"));
+			applyDTO.setA_name(request.getParameter("a_name"));
+			applyDTO.setA_gender(request.getParameter("a_gender"));
+			applyDTO.setA_age(Integer.parseInt(request.getParameter("a_age")));
+			applyDTO.setA_phone(request.getParameter("a_phone"));
+			applyDTO.setA_email(request.getParameter("a_email"));
 			
 			try {
 				num=meetDAO.applyInsert(applyDTO);
@@ -28,10 +34,15 @@ public class MeetApplyService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+			request.setAttribute("message", "you are applied");
+			request.setAttribute("path", "../meet/meetList.meet");
 			
 			
 		}else {
+			int a = Integer.parseInt(request.getParameter("m_num"));
+			request.setAttribute("m_num", a);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/meet/meetApply.jsp");
 		}
