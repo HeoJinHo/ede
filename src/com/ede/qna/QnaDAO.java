@@ -140,13 +140,43 @@ public class QnaDAO implements BoardDAO {
 
 	@Override
 	public int hit(int num) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = DBConnector.getConnect();
+		String sql ="update qna set hit=hit+1 where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		
+		return result;
 	}
 	
-	public int reply(BoardDTO boardDTO)throws Exception{
-		
-		return 0;
+	public int replyInsert(QnaDTO qnaDTO, QnaDTO parent)throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, qnaDTO.getTitle());
+		st.setString(2, qnaDTO.getContents());
+		st.setString(3, qnaDTO.getWriter());
+		st.setInt(4, parent.getRef());
+		st.setInt(5, parent.getStep()+1);
+		st.setInt(6, parent.getDepth()+1);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
 	}
-
+	
+	public int replyUpdate(QnaDTO qnaDTO) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update qna set step=step+1 where ref=? and step>?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, qnaDTO.getRef());
+		st.setInt(2, qnaDTO.getStep());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+		
+	}
 }

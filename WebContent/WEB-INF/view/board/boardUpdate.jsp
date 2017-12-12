@@ -58,12 +58,13 @@
 		<p><input type="hidden" name="num" value="${view.num}"></p>
 		<div>작성자 : ${view.writer}</div>
 		<p>제목 : <input type="text" name="title" value="${view.title}"></p>
-		<p><textarea rows="" cols="" name="contents" id="contents">${view.contents}</textarea></p>
+		<p><textarea rows="" cols="" name="contents" id="contents" >${view.contents}</textarea></p>
 		<div id="files">
 			<input type="file" name="f1">
 		</div>
 		<input type="button" id="btn" value="Add File">
-		<button>Update</button>
+		<input type="button" value="UPDATE" id="savebutton">
+		
 	</form>
 	
 

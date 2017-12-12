@@ -13,13 +13,14 @@ public class NoticeViewService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		int num=0;
+		NoticeDAO noticeDAO = new NoticeDAO();
+		BoardDTO boardDTO=null;
 		try {
-		num = Integer.parseInt(request.getParameter("num"));
+			num = Integer.parseInt(request.getParameter("num"));
+			noticeDAO.hit(num);
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
-		NoticeDAO noticeDAO = new NoticeDAO();
-		BoardDTO boardDTO=null;
 		try {
 			boardDTO = noticeDAO.selectOne(num);
 		} catch (Exception e) {
@@ -27,6 +28,7 @@ public class NoticeViewService implements Action {
 			e.printStackTrace();
 		}
 		if(boardDTO != null) {
+
 			request.setAttribute("board", "notice");
 			request.setAttribute("view", boardDTO);
 			actionFoward.setPath("../WEB-INF/view/board/boardView.jsp");
@@ -36,8 +38,8 @@ public class NoticeViewService implements Action {
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		actionFoward.setCheck(true);
-		
-		
+
+
 		return actionFoward;
 	}
 
