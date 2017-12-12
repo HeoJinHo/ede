@@ -35,24 +35,26 @@ public class NoticeWriteService implements Action {
 
 			try {
 				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-				num = noticeDAO.getNum();
+				num = noticeDAO.getNum();	
+				noticeDTO.setNum(num);
 				noticeDTO.setWriter(multi.getParameter("writer"));
 				noticeDTO.setTitle(multi.getParameter("title"));
 				noticeDTO.setContents(multi.getParameter("contents"));
 
 				try {
 					result = noticeDAO.insert(noticeDTO);
+					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					result=0;
 				}
 				if(result>0) {
 					Enumeration<Object> names = multi.getFileNames();
 					while(names.hasMoreElements()) {
 						String name = (String)names.nextElement();
 						String fName = multi.getFilesystemName(name);
-						String oName = multi.getOriginalFileName(name);
-
+						String oName = multi.getOriginalFileName(name);						
 						FileDTO fileDTO = new FileDTO();
 						fileDTO.setoName(oName);
 						fileDTO.setfName(fName);
@@ -60,21 +62,24 @@ public class NoticeWriteService implements Action {
 						FileDAO fileDAO = new FileDAO();
 						try {
 							result2 = fileDAO.insert(fileDTO);	
-							if(result2>0) {
-								actionFoward.setCheck(false);
-								actionFoward.setPath("./noticeList.notice");
-							}else {
-								request.setAttribute("message", "Fail");
-								request.setAttribute("path", "./noticeList.notice");
-								actionFoward.setCheck(true);
-								actionFoward.setPath("../WEB-INF/view/common/result.jsp");
-							}
+							
 						}catch (Exception e) {
 							// TODO: handle exception
 							e.printStackTrace();
+							result2=0;
 						}		            	
 					}
 
+						if(result2>0) {
+							actionFoward.setCheck(false);
+							actionFoward.setPath("./noticeList.notice");
+						}else {
+							request.setAttribute("message", "Fail");
+							request.setAttribute("path", "./noticeList.notice");
+							actionFoward.setCheck(true);
+							actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+						}
+					
 				}else {
 					request.setAttribute("message", "Fail");
 					request.setAttribute("path", "./noticeList.notice");
@@ -84,25 +89,19 @@ public class NoticeWriteService implements Action {
 
 
 
-			}//노티스랑 파일 트라이
+			}
 			catch (Exception e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
 
-
-
-			//insert
-		}//post 끝
+		}
 		
 		else {
 			request.setAttribute("board", "notice");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardWrite.jsp");
 		}
-
-
-
 
 		return actionFoward;
 	}
