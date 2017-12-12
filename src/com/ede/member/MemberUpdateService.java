@@ -40,16 +40,11 @@ public class MemberUpdateService implements Action {
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
 		}else {
-			String id = null;
-			try {
-				id = request.getParameter("id");			
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			
 			if(memberDTO != null) {
 				request.setAttribute("view", memberDTO);
-				actionFoward.setPath("../WEB-INF/member/memberUpdateForm.jsp");
 				request.setAttribute("member", "member");
+				actionFoward.setPath("../WEB-INF/member/memberUpdateForm.jsp");
 			}else {
 				request.setAttribute("message", "Fail");
 				request.setAttribute("path", "./memberMyPage.member");
