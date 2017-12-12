@@ -1,11 +1,15 @@
 package com.ede.qna;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.board.BoardDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class QnaUpdateService implements Action {
 
@@ -18,16 +22,27 @@ public class QnaUpdateService implements Action {
 		if(method.equals("POST")) {
 			boardDTO = new BoardDTO();
 			int result = 0;
+			String filePath = request.getServletContext().getRealPath("upload");
+			File file = new File(filePath);
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+			int maxSize=1024*1024*10;
 			try {
-				boardDTO.setNum(Integer.parseInt(request.getParameter("num")));
-				boardDTO.setTitle(request.getParameter("title"));
-				boardDTO.setContents(request.getParameter("contents"));
+				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+				boardDTO.setNum(Integer.parseInt(multi.getParameter("num")));
+				boardDTO.setTitle(multi.getParameter("title"));
+				boardDTO.setContents(multi.getParameter("contents"));
+				System.out.println(multi.getParameter("contents"));
 				result=qnaDAO.update(boardDTO);
+				
 			} catch (Exception e) {
+				
 				// TODO: handle exception
 			}
 			
 			if(result>0) {
+
 				actionFoward.setCheck(false);
 				actionFoward.setPath("./qnaList.qna");
 			}else {

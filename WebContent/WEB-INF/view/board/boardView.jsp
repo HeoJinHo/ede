@@ -31,7 +31,8 @@
 	<h1>${board}View</h1>
 	<h3>NUM : ${view.num}</h3>
 	<h3>TITLE : ${view.title}</h3>
-	<h3>${view.contents}</h3>
+	<h3>WRITER : ${view.writer}</h3>
+	<h3>CONTENTS : ${view.contents}</h3>
 	<% for(int i=0;i<ar.size();i++){ %>
 		<%if (ar.get(i).getfName()!=null && ar.get(i).getoName()!=null){ %>
 		<div>

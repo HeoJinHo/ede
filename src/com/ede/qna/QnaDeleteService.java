@@ -10,8 +10,27 @@ public class QnaDeleteService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionFoward actionFoward = new ActionFoward();
+		int num=0;
+		int result=0;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+			QnaDAO qnaDAO = new QnaDAO();
+			result = qnaDAO.delete(num);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		if(result>0) {
+			actionFoward.setCheck(false);
+			actionFoward.setPath("./qnaList.qna");
+		}else {
+			request.setAttribute("message", "Fail");
+			request.setAttribute("path", "./qnaList.qna");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		}
+		
+		return actionFoward;
 	}
 
 }

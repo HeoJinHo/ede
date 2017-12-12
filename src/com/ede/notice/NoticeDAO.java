@@ -132,8 +132,17 @@ public class NoticeDAO implements BoardDAO {
 
 	@Override
 	public int hit(int num) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = DBConnector.getConnect();
+		String sql ="update notice set hit=hit+1 where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		
+		return result;
 	}
 
 }

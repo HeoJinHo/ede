@@ -13,13 +13,14 @@ public class QnaViewService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		int num=0;
+		QnaDAO qnaDAO = new QnaDAO();
+		BoardDTO boardDTO = null;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
+			qnaDAO.hit(num);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		QnaDAO qnaDAO = new QnaDAO();
-		BoardDTO boardDTO = null;
 		try {
 			boardDTO = qnaDAO.selectOne(num);
 		} catch (Exception e) {
