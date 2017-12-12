@@ -26,6 +26,7 @@
 		<p>m_phone<input type="text" name="m_phone"> </p>
 		<p>m_email<input type="text" name="m_email"> </p>
 		<p>m_hit<input type="number" name="m_hit"> </p>
+		<p>total_seats<input type="number" name="total_seats"> </p>
 		<button>write</button>
 	</form>
 </body>

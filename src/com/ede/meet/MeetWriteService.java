@@ -41,6 +41,7 @@ public class MeetWriteService implements Action {
 			meetDTO.setM_phone(request.getParameter("m_phone"));
 			meetDTO.setM_email(request.getParameter("m_email"));
 			meetDTO.setM_hit(Integer.parseInt(request.getParameter("m_hit")));
+			meetDTO.setTotal_seats(Integer.parseInt(request.getParameter("total_seats")));
 			int result = 0; 
 			try {
 				result = meetDAO.insert(meetDTO);

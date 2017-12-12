@@ -1,4 +1,4 @@
-package com.ede.notice;
+package com.ede.qna;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,38 +11,38 @@ import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.files.FileDAO;
 import com.ede.files.FileDTO;
+import com.ede.qna.QnaDAO;
+import com.ede.qna.QnaDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class NoticeWriteService implements Action {
+public class QnaWriteService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();//GET, POST
 		if(method.equals("POST")) {
-			NoticeDAO noticeDAO = new NoticeDAO();
-			NoticeDTO noticeDTO = new NoticeDTO();
+			QnaDAO qnaDAO = new QnaDAO();
+			QnaDTO qnaDTO = new QnaDTO();
 			int result=0;
 			int result2=0;
-			int num=0;
+			int num = 0;
 			String filePath = request.getServletContext().getRealPath("upload");
 			File file = new File(filePath);
 			if(!file.exists()) {
 				file.mkdirs();
 			}
 			int maxSize=1024*1024*10;
-
 			try {
 				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-				num = noticeDAO.getNum();	
-				noticeDTO.setNum(num);
-				noticeDTO.setWriter(multi.getParameter("writer"));
-				noticeDTO.setTitle(multi.getParameter("title"));
-				noticeDTO.setContents(multi.getParameter("contents"));
-
+				num = qnaDAO.getNum();
+				qnaDTO.setNum(num);
+				qnaDTO.setWriter(multi.getParameter("writer"));
+				qnaDTO.setTitle(multi.getParameter("title"));
+				qnaDTO.setContents(multi.getParameter("contents"));
 				try {
-					result = noticeDAO.insert(noticeDTO);
+					result = qnaDAO.insert(qnaDTO);
 					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -72,17 +72,17 @@ public class NoticeWriteService implements Action {
 
 						if(result2>0) {
 							actionFoward.setCheck(false);
-							actionFoward.setPath("./noticeList.notice");
+							actionFoward.setPath("./qnaList.qna");
 						}else {
 							request.setAttribute("message", "Fail");
-							request.setAttribute("path", "./noticeList.notice");
+							request.setAttribute("path", "./qnaList.qna");
 							actionFoward.setCheck(true);
 							actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 						}
 					
 				}else {
 					request.setAttribute("message", "Fail");
-					request.setAttribute("path", "./noticeList.notice");
+					request.setAttribute("path", "./qnaList.qna");
 					actionFoward.setCheck(true);
 					actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 				}
@@ -98,11 +98,10 @@ public class NoticeWriteService implements Action {
 		}
 		
 		else {
-			request.setAttribute("board", "notice");
+			request.setAttribute("board", "qna");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardWrite.jsp");
 		}
-
 		return actionFoward;
 	}
 

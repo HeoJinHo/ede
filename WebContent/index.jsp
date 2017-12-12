@@ -9,13 +9,11 @@
 
 </head>
 <body>
-
+	hi
 	<h1>team ede</h1>
 	
 	<!-- category by kj -->
-	<a href ="./product/productList.product">product</a>
-	<a href="./notice/noticeList.notice">Notice List</a>
-	<a href="./qna/qnaList.qna">Qna List</a>
+	<a href ="./product/categoryList.product?del=category">product</a>
 	
 	<!-- notice, qna by suin -->
 	<a href="./notice/noticeList.notice">Notice List</a>
@@ -33,6 +31,8 @@
 	<a href="./json/json_1.json">JSON Test</a>
 	 <img src="./upload/iu_11.jpg">
 	<img src="./upload/iu_11.jpg">
-	<a href="./test.jsp">test</a>
+
+	<a href ="./meet/meetList.meet">모임</a>
+
 </body>
 </html>

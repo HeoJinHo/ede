@@ -1,39 +1,42 @@
-package com.ede.meet;
+package com.ede.qna;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
+import com.ede.board.BoardDTO;
 
-public class MeetViewService implements Action {
+public class QnaViewService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		int m_num = 0;
+		int num=0;
 		try {
-			m_num = Integer.parseInt(request.getParameter("num"));
+			num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		MeetDAO meetDAO = new MeetDAO();
-		MeetDTO meetDTO = null;
+		QnaDAO qnaDAO = new QnaDAO();
+		BoardDTO boardDTO = null;
 		try {
-			meetDTO = meetDAO.selectOne(m_num);
+			boardDTO = qnaDAO.selectOne(num);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// TODO: handle exception
 			e.printStackTrace();
 		}
-		if(meetDTO != null) {
-			actionFoward.setPath("../WEB-INF/view/meet/meetView.jsp");
-			request.setAttribute("view", meetDTO);
+		if(boardDTO != null) {
+			request.setAttribute("board", "qna");
+			request.setAttribute("view", boardDTO);
+			actionFoward.setPath("../WEB-INF/view/board/boardView.jsp");
 		}else {
-			request.setAttribute("message", "viewfail");
-			request.setAttribute("path", "./meetList.meet");
+			request.setAttribute("message", "Fail");
+			request.setAttribute("path", "./qnaList.qna");
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		actionFoward.setCheck(true);
+		
 		return actionFoward;
 	}
 
