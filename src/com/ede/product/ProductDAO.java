@@ -22,16 +22,16 @@ public class ProductDAO {
 	}
 	
 	//review
-	public int review(int pro_num) throws Exception {
+	public int review(ReplyDTO replyDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		//todo 벨류값 적절히 바꾸기
-		st.setString(1, id);
-		st.setString(2, contents);
-		st.setString(3, report);
-		st.setInt(4, grade);
-		st.setInt(5, product_num);
+		st.setString(1, replyDTO.getId());
+		st.setString(2, replyDTO.getContents());
+		st.setString(3, replyDTO.getReport());
+		st.setInt(4, replyDTO.getGrade());
+		st.setInt(5, replyDTO.getPro_num());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;

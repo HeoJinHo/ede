@@ -4,12 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<form action="./productWrite.product" method="post">
-	<p>댓글<input type="text"></p>
-	<!-- pro_num에 대한 request 가 살 아있는지 모름 -->
+	<p>contents<input type="text" name="contents"></p>
+	<p>report<input type="text" name="report"></p>
+	<p>grade<input type="text" name="grade"></p>
+	<input type="hidden" name="pro_num" value="${pro_num}">
+	
 	<button>write</button>
 	</form>
 

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
+import com.ede.member.MemberDTO;
 
 public class ProductWriteService implements Action {
 
@@ -12,21 +13,40 @@ public class ProductWriteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
-		int pro_num = Integer.parseInt(request.getParameter("pro_num")); 
-		System.out.println(pro_num+"request가 살아서 왔는지 check");
-		int num=0;
+		
 		if(method.equals("POST")) {
 			ProductDAO productDAO = new ProductDAO();
 			ProductDTO productDTO = new ProductDTO();
+			ReplyDTO replyDTO = new ReplyDTO();
+			int result=0;
 			try {
-				num = productDAO.review(pro_num);
+				MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+				String id = memberDTO.getId();
+				replyDTO.setId(id);
+				replyDTO.setContents(request.getParameter("contents"));
+				replyDTO.setReport(request.getParameter("report"));
+				replyDTO.setGrade(Integer.parseInt(request.getParameter("grade")));
+				replyDTO.setPro_num(Integer.parseInt(request.getParameter("pro_num")));
+				result = productDAO.review(replyDTO);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			//todo
+			if(result >0) {
+				actionFoward.setCheck(false);
+				actionFoward.setPath("./productView.product?pro_name");
+				System.out.println("insert됨");
+			} else {
+				request.setAttribute("message", "fail");
+				request.setAttribute("path", "./productView.product");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+				System.out.println("insert안됨");
+			}
 			
 			
 		} else if (method.equals("GET")) {
+			int pro_num = Integer.parseInt(request.getParameter("pro_num"));
+			request.setAttribute("pro_num",pro_num);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/product/productWrite.jsp");
 		}
