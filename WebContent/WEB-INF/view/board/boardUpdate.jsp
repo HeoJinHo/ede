@@ -53,7 +53,7 @@
 </head>
 <body>
 	<h1>Update ${board}</h1>
-	
+	 
 	<form id="frm" action="./${board}Update.${board}" method="post" enctype="multipart/form-data">
 		<p><input type="hidden" name="num" value="${view.num}"></p>
 		<div>작성자 : ${view.writer}</div>
