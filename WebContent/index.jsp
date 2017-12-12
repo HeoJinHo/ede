@@ -9,11 +9,11 @@
 
 </head>
 <body>
-
+	hi
 	<h1>team ede</h1>
 	
 	<!-- category by kj -->
-	<a href ="./product/productList.product">product</a>
+	<a href ="./product/categoryList.product?del=category">product</a>
 	
 	<!-- notice, qna by suin -->
 	<a href="./notice/noticeList.notice">Notice List</a>
@@ -32,5 +32,6 @@
 	 <img src="./upload/iu_11.jpg">
 	<img src="./upload/iu_11.jpg">
 
+	<a href ="./meet/meetList.meet">모임</a>
 </body>
 </html>
