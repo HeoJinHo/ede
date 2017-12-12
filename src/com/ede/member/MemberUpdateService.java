@@ -17,6 +17,14 @@ public class MemberUpdateService implements Action {
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 		if(method.equals("POST")) {
 			memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+			memberDTO.setPw(request.getParameter("pw"));
+			memberDTO.setName(request.getParameter("name"));
+			memberDTO.setNickname(request.getParameter("nickname"));
+			memberDTO.setBirth(request.getParameter("birth"));
+			memberDTO.setGender(request.getParameter("gender"));
+			memberDTO.setAddr(request.getParameter("addr"));
+			memberDTO.setPhone(request.getParameter("phone"));
+			memberDTO.setEmail(request.getParameter("email"));
 			int result = 0;
 			try {
 				result=memberDAO.update(memberDTO);

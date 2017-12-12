@@ -23,6 +23,7 @@
 </head>
 <body>
 <h1>Update ${member2}</h1>
+	<form action="./memberUpdate.member" method="post">
 		아이디 : <input type="text" name="id" readonly="readonly" value="${member.id}" id="id"><br><br>
 		비밀번호 : <input type="password" name="pw" value="${member.pw}"><br><br>
 		이름 : <input type="text" name="name" value="${member.name}"><br><br>
@@ -37,7 +38,10 @@
 		주소 : <input type="text" name="addr" value="${member.addr}"><input type="button" value="addr" id="nn"><br><br>
 		핸드폰번호 : <input type="text" name="phone" value="${member.phone}"><br><br>
 		이메일 : <input type="email" name="email" value="${member.email}"><br><br>
-		<button>Update</button>
-
+		<input type="submit" value="회원정보 수정" id="btn">
+	</form>
+	<form action="./memberDelete.member" method="post">
+		<input type="submit" value="회원탈퇴">
+	</form>
 </body>
 </html>
