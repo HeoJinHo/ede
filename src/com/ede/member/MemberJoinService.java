@@ -23,6 +23,7 @@ public class MemberJoinService implements Action {
 			memberDTO.setBirth(request.getParameter("birth"));
 			memberDTO.setGender(request.getParameter("gender"));
 			memberDTO.setEmail(request.getParameter("email"));
+			memberDTO.setSkin(request.getParameter("skin"));
 		/*	memberDTO.setPic_name(request.getParameter("pic_name"));
 			memberDTO.setPic_path(request.getParameter("pic_path"));*/
 			System.out.println(memberDTO.getId());

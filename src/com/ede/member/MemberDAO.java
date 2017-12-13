@@ -13,7 +13,7 @@ public class MemberDAO {
 	//회원가입
 	public int join(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0)";
+		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, memberDTO.getId());
 		st.setString(2, memberDTO.getPw());
@@ -24,6 +24,7 @@ public class MemberDAO {
 		st.setString(7, memberDTO.getGender());
 		st.setString(8, memberDTO.getBirth());
 		st.setString(9, memberDTO.getAddr());
+		st.setString(10, memberDTO.getSkin());
 	/*	st.setString(10, memberDTO.getPic_name());
 		st.setString(11, memberDTO.getPic_path());*/
 		int result = st.executeUpdate();
@@ -55,7 +56,7 @@ public class MemberDAO {
 	
 	public int update(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "update member set pw=?, name=?, nickname=?, birth=?, gender=?, addr=?, phone=?, email=? where id=? ";
+		String sql = "update member set pw=?, name=?, nickname=?, birth=?, gender=?, skin=?, addr=?, phone=?, email=? where id=? ";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, memberDTO.getPw());
@@ -63,16 +64,17 @@ public class MemberDAO {
 		st.setString(3, memberDTO.getNickname());
 		st.setString(4, memberDTO.getBirth());
 		st.setString(5, memberDTO.getGender());
-		st.setString(6, memberDTO.getAddr());
-		st.setString(7, memberDTO.getPhone());
-		st.setString(8, memberDTO.getEmail());
-		st.setString(9, memberDTO.getId());
+		st.setString(6, memberDTO.getSkin());
+		st.setString(7, memberDTO.getAddr());
+		st.setString(8, memberDTO.getPhone());
+		st.setString(9, memberDTO.getEmail());
+		st.setString(10, memberDTO.getId());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
 	}
 	
-	public int delte(String id) throws Exception{
+	public int delete(String id) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "delete member where id=?";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -82,6 +84,23 @@ public class MemberDAO {
 		return result;
 	}
 	
+	//idCheck
+	public boolean idCheck(String id) throws Exception {
+		boolean check=true;
+		Connection con = DBConnector.getConnect();
+		String sql ="select * from member where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, id);
+		
+		ResultSet rs = st.executeQuery();
+		
+		if(rs.next()) {
+			check=false;
+		}
+		DBConnector.disConnect(rs, st, con);
+		return check;
+	}
 }
 
 

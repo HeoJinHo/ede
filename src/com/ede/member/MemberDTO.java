@@ -15,6 +15,13 @@ public class MemberDTO {
 	private String pic_path;
 	private int lev;
 	private String email;
+	private String skin;
+	public String getSkin() {
+		return skin;
+	}
+	public void setSkin(String skin) {
+		this.skin = skin;
+	}
 	public String getEmail() {
 		return email;
 	}

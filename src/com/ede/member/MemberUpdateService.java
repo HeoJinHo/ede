@@ -25,6 +25,7 @@ public class MemberUpdateService implements Action {
 			memberDTO.setAddr(request.getParameter("addr"));
 			memberDTO.setPhone(request.getParameter("phone"));
 			memberDTO.setEmail(request.getParameter("email"));
+			memberDTO.setSkin(request.getParameter("skin"));
 			int result = 0;
 			try {
 				result=memberDAO.update(memberDTO);
