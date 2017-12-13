@@ -33,8 +33,35 @@
 		성별 : F<input type="radio" name="gender" value="F">M<input type="radio" name="gender" checked="checked" value="M"><br><br>
 		</c:if>
 		<c:if test = "${sessionScope.member.gender eq 'F'}">
-		성별 : F<input type="radio" name="gender" value="F" checked="checked">M<input type="radio" name="gender" value="M"><br><br>
-		</c:if><br><br>
+		성별 : F<input type="radio" name="gender" value="F" checked="checked">M<input type="radio" name="gender" value="M"><br>
+		</c:if>
+		
+		<c:if test = "${sessionScope.member.skin eq 'dry'}">
+		피부타입 : 건성<input type="radio" name="gender" checked="checked" value="dry">중성<input type="radio" name="gender" value="neutral"><br>
+		           지성<input type="radio" name="gender" value="oily">민감성<input type="radio" name="gender" value="complex"> 복합성<input type="radio" name="gender" value="sensitive">
+		</c:if>
+		
+		<c:if test = "${sessionScope.member.skin eq 'neutral'}">
+		피부타입 : 건성<input type="radio" name="gender" value="dry">중성<input type="radio" name="gender" checked="checked" value="neutral"><br>
+		           지성<input type="radio" name="gender" value="oily">민감성<input type="radio" name="gender" value="complex"> 복합성<input type="radio" name="gender" value="sensitive">
+		</c:if>
+		
+		<c:if test = "${sessionScope.member.skin eq 'oily'}">
+		피부타입 : 건성<input type="radio" name="gender" value="dry">중성<input type="radio" name="gender" value="neutral"><br>
+		           지성<input type="radio" name="gender" checked="checked" value="oily">민감성<input type="radio" name="gender" value="complex"> 복합성<input type="radio" name="gender" value="sensitive">
+		</c:if>
+		
+		<c:if test = "${sessionScope.member.skin eq 'complex'}">
+		피부타입 : 건성<input type="radio" name="gender" value="dry">중성<input type="radio" name="gender" value="neutral"><br>
+		           지성<input type="radio" name="gender" value="oily">민감성<input type="radio" name="gender" checked="checked" value="complex"> 복합성<input type="radio" name="gender" value="sensitive">
+		</c:if>
+		
+		<c:if test = "${sessionScope.member.skin eq 'sensitive'}">
+		피부타입 : 건성<input type="radio" name="gender" value="dry">중성<input type="radio" name="gender" value="neutral"><br>
+		           지성<input type="radio" name="gender" value="oily">민감성<input type="radio" name="gender" value="complex"> 복합성<input type="radio" name="gender" checked="checked" value="sensitive">
+		</c:if>
+		
+		
 		주소 : <input type="text" name="addr" value="${member.addr}"><input type="button" value="addr" id="nn"><br><br>
 		핸드폰번호 : <input type="text" name="phone" value="${member.phone}"><br><br>
 		이메일 : <input type="email" name="email" value="${member.email}"><br><br>
