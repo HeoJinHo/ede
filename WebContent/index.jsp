@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
@@ -29,7 +29,7 @@
 	<a href="./member/memberMyPage.member">MyPage</a>
 	</c:if>
 	<a href="./json/json_1.json">JSON Test</a>
-	 <img src="./upload/iu_11.jpg">
+	<img src="./upload/iu_11.jpg">
 	<img src="./upload/iu_11.jpg">
 
 	<a href ="./meet/meetList.meet">모임</a>

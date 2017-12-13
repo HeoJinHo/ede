@@ -26,7 +26,6 @@ public class ProductDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		//todo 벨류값 적절히 바꾸기
 		st.setString(1, replyDTO.getId());
 		st.setString(2, replyDTO.getContents());
 		st.setString(3, replyDTO.getReport());
@@ -35,6 +34,29 @@ public class ProductDAO {
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
+	}
+	
+	//selectReview
+	public List<ReplyDTO> reviewList(int pro_num) throws Exception {
+		ReplyDTO replyDTO = null;
+		List<ReplyDTO> ar = new ArrayList<ReplyDTO>();
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from reply where pro_num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, pro_num);
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			replyDTO=new ReplyDTO();
+			replyDTO.setNum(rs.getInt("num"));
+			replyDTO.setId(rs.getString("id"));
+			replyDTO.setContents(rs.getString("contents"));
+			replyDTO.setReport(rs.getString("report"));
+			replyDTO.setGrade(rs.getInt("grade"));
+			replyDTO.setPro_num(pro_num);
+			ar.add(replyDTO);
+		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
 	}
 	
 	//categoryList
@@ -149,12 +171,12 @@ public class ProductDAO {
 	}
 	
 	//view
-	public ProductDTO view(String pro_name) throws Exception {
+	public ProductDTO view(int pro_num) throws Exception {
 		ProductDTO productDTO = null;
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from product where pro_name=?";
+		String sql = "select * from product where pro_num=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, pro_name);
+		st.setInt(1, pro_num);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
 			productDTO = new ProductDTO();

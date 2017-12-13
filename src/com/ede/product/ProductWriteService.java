@@ -18,6 +18,7 @@ public class ProductWriteService implements Action {
 			ProductDAO productDAO = new ProductDAO();
 			ProductDTO productDTO = new ProductDTO();
 			ReplyDTO replyDTO = new ReplyDTO();
+			int pro_num = Integer.parseInt(request.getParameter("pro_num"));
 			int result=0;
 			try {
 				MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
@@ -28,19 +29,17 @@ public class ProductWriteService implements Action {
 				replyDTO.setGrade(Integer.parseInt(request.getParameter("grade")));
 				replyDTO.setPro_num(Integer.parseInt(request.getParameter("pro_num")));
 				result = productDAO.review(replyDTO);
+				if(result >0) {
+					actionFoward.setCheck(false);
+					actionFoward.setPath("./productView.product?pro_num="+pro_num);
+				} else {
+					request.setAttribute("message", "fail");
+					request.setAttribute("path", "./productView.product");
+					actionFoward.setCheck(true);
+					actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			if(result >0) {
-				actionFoward.setCheck(false);
-				actionFoward.setPath("./productView.product?pro_name");
-				System.out.println("insert됨");
-			} else {
-				request.setAttribute("message", "fail");
-				request.setAttribute("path", "./productView.product");
-				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
-				System.out.println("insert안됨");
 			}
 			
 			
