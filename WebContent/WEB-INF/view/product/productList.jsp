@@ -10,6 +10,8 @@
 </head>
 <body>
 	<h1>Product List</h1>
+	<h3>filter</h3>
+	
 	<table>
 	<tr>
 		<th>brand</th>

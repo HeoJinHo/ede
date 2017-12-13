@@ -13,7 +13,7 @@
 	<a href="./categoryList.product?del=category">category</a>
 	<a href="./categoryList.product?del=brand">brand</a>
 	<table>
-	<c:forEach items="${list}" var="i">
+	<c:forEach items="${list}" var="i" varStatus="s">
 		<tr>
 			<td><a href="./productList.product?del=category">${i.category }</a></td>
 		</tr>
