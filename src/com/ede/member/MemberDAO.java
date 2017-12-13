@@ -47,6 +47,7 @@ public class MemberDAO {
 			memberDTO.setGender(rs.getString("gender"));
 			memberDTO.setBirth(rs.getString("birth"));
 			memberDTO.setAddr(rs.getString("addr"));
+			memberDTO.setSkin(rs.getString("skin"));
 		}else {
 			memberDTO=null;
 		}
