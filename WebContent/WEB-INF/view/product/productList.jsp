@@ -11,7 +11,15 @@
 <body>
 	<h1>Product List</h1>
 	<h3>filter</h3>
-	
+	피부타입<select name="type">
+		<option value="dry">건성</option>
+		<option value="neutral">중성</option>
+		<option value="oily">지성</option>
+		<option value="complex">복합성</option>
+		<option value="sensitive">민감성</option>
+	</select>
+	최신순<input type="radio" name="category" value="recent"> 댓글순<input type="radio" name="category" value="reviewCount"> 평점순<input type="radio" name="category" value="avg">
+	<button>검색</button>
 	<table>
 	<tr>
 		<th>brand</th>
