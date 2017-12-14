@@ -21,6 +21,7 @@ public class ProductListService implements Action{
 			try {
 				List<ProductDTO> ar = productDAO.productList(del,brand);
 				request.setAttribute("list", ar);
+				request.setAttribute("del", "category");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -29,6 +30,7 @@ public class ProductListService implements Action{
 			try {
 				List<ProductDTO> ar = productDAO.productList(del,brand);
 				request.setAttribute("list", ar);
+				request.setAttribute("del", "brand");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
