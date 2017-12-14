@@ -1,5 +1,6 @@
 package com.ede.member;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,14 +27,14 @@ public class MemberJoinService implements Action {
 			memberDTO.setSkin(request.getParameter("skin"));
 		/*	memberDTO.setPic_name(request.getParameter("pic_name"));
 			memberDTO.setPic_path(request.getParameter("pic_path"));*/
-			System.out.println(memberDTO.getId());
 			MemberDAO memberDAO = new MemberDAO();
 			int result=0;
 			try {
-				result = memberDAO.join(memberDTO);
+				//result = memberDAO.join(memberDTO);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
+		
 			actionFoward.setCheck(false);
 			actionFoward.setPath("../index.jsp");	
 			
