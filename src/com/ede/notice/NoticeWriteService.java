@@ -10,6 +10,7 @@ import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.files.FileDAO;
 import com.ede.files.FileDTO;
+import com.ede.member.MemberDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -34,9 +35,11 @@ public class NoticeWriteService implements Action {
 
 			try {
 				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-				num = noticeDAO.getNum();	
+				num = noticeDAO.getNum();
+				MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
+				String id = memberDTO.getId();
 				noticeDTO.setNum(num);
-				noticeDTO.setWriter(multi.getParameter("writer"));
+				noticeDTO.setWriter(id);
 				noticeDTO.setTitle(multi.getParameter("title"));
 				noticeDTO.setContents(multi.getParameter("contents"));
 

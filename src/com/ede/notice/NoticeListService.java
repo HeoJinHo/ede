@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.board.BoardDTO;
+import com.ede.member.MemberDTO;
 import com.ede.util.MakePage;
 import com.ede.util.MakeRow;
 import com.ede.util.Pageing;
@@ -17,38 +18,47 @@ public class NoticeListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward= new ActionFoward();
-		int curPage=1;
-		try {
-			curPage= Integer.parseInt(request.getParameter("curPage"));
-		} catch (Exception e) {
-			// TODO: handle exception
+		MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
+		if(memberDTO!=null) {
+
+			int curPage=1;
+			try {
+				curPage= Integer.parseInt(request.getParameter("curPage"));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			MakeRow makeRow = new MakeRow();
+			String kind=request.getParameter("kind");
+			makeRow.setKind(kind);
+			makeRow.setSearch(request.getParameter("search"));
+
+			NoticeDAO noticeDAO = new NoticeDAO();
+			int totalCount;
+			try {
+				totalCount = noticeDAO.getTotalCount(makeRow);
+				MakePage makepage = new MakePage(curPage, totalCount);
+				makeRow=makepage.getMakeRow(makeRow);
+				List<BoardDTO> ar = noticeDAO.selectList(makeRow);
+
+				Pageing pageing = makepage.pageing();
+
+				request.setAttribute("board", "notice");
+				request.setAttribute("list", ar);
+				request.setAttribute("page", pageing);
+				request.setAttribute("make", makeRow);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/board/boardList.jsp");
+		}else {
+			request.setAttribute("message", "로그인하렴");
+			request.setAttribute("path", "../index.jsp");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
-		MakeRow makeRow = new MakeRow();
-		String kind=request.getParameter("kind");
-		makeRow.setKind(kind);
-		makeRow.setSearch(request.getParameter("search"));
-		
-		NoticeDAO noticeDAO = new NoticeDAO();
-		int totalCount;
-		try {
-			totalCount = noticeDAO.getTotalCount(makeRow);
-			MakePage makepage = new MakePage(curPage, totalCount);
-			makeRow=makepage.getMakeRow(makeRow);
-			List<BoardDTO> ar = noticeDAO.selectList(makeRow);
-			
-			Pageing pageing = makepage.pageing();
-			
-			request.setAttribute("board", "notice");
-			request.setAttribute("list", ar);
-			request.setAttribute("page", pageing);
-			request.setAttribute("make", makeRow);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/board/boardList.jsp");
 		return actionFoward;
 	}
 

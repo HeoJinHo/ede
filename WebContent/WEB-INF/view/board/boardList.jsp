@@ -1,6 +1,11 @@
+<%@page import="com.ede.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<% MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
+   String id = memberDTO.getId();
+   
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +56,7 @@
 			<td>DATE</td>
 			<td>HIT</td>
 		</tr>
-		
+	
 		<c:forEach items="${list}" var="i">
 			<tr>
 				<td>${i.num}</td>
@@ -84,9 +89,7 @@
 	<c:if test="${page.curBlock lt page.totalBlock}">
 		<input type="button" class="list" title="${page.lastNum+1}" value="[다음]">  
 	</c:if>
-	
-	<a href="./${board}Write.${board}">Write</a>
-	
+		<a href="./${board}Write.${board}">Write</a>
 </body>
 </html>
 

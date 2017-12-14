@@ -1,5 +1,8 @@
+<%@page import="com.ede.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
+			String id = memberDTO.getId();%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +55,7 @@
 </head>
 <body>
 	<form id="frm" action="./${board}Write.${board}" method="post" enctype="multipart/form-data">
-		<p>Writer : <input type="text" name="writer"></p>
+		<p>Writer : <input type="text" name="writer" value="<%=id%>" readonly="readonly"></p>
 		<p>Title : <input type="text" name="title"></p>
 		<p><textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 		<div id="files">
