@@ -13,7 +13,8 @@
 	<h3>filter</h3>
 	<form action="./productFilter.product">
 	<input type="hidden" name="del" value="${del}">
-	피부타입<select name="type">
+	<input type="hidden" name="brand" value="${brand}">
+	<select name="type">
 		<option value="dry">건성</option>
 		<option value="neutral">중성</option>
 		<option value="oily">지성</option>

@@ -16,17 +16,28 @@ public class ProductFilterService implements Action {
 		ProductDAO productDAO = null;
 		String type = request.getParameter("type");
 		String category = request.getParameter("category");
+		String brand = request.getParameter("brand");
 		
 		if(del.equals("category")) {
 			productDAO = new ProductDAO();
 			try {
-				List<ProductDTO> ar = productDAO.filterList(del, type, category);
+				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+				request.setAttribute("list", ar);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if(del.equals("brand")) {
-			
+			try {
+				productDAO = new ProductDAO();
+				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+				request.setAttribute("list", ar);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/product/productList.jsp");
 		return actionFoward;
 	}
 
