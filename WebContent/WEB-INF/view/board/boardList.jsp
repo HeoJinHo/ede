@@ -57,7 +57,13 @@
 				<td>${i.num}</td>
 				<td>
 				<c:catch>
-				<c:forEach begin="1" end="${i.depth}">--</c:forEach>
+				<c:if test="${i.depth eq 1}">
+					--[${i.ref}번의 답변]
+				</c:if>
+				<c:if test="${i.depth gt 1}">
+					<c:forEach begin="1" end="${i.depth}">--</c:forEach>
+					[${i.ref}번의 추가답변]
+				</c:if>
 				</c:catch>				
 				<a href="./${board}View.${board}?num=${i.num}">${i.title}</a>
 				</td>

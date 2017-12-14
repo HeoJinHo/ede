@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <servlet>
+    <servlet-name>help</servlet-name>
+    <servlet-class>com.ede.controller.HelpController</servlet-class>
+    <init-param>
+      <param-name>properties</param-name>
+      <param-value>help.properties</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>help</servlet-name>
+    <url-pattern>*.help</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>qna</servlet-name>
     <servlet-class>com.ede.controller.QnaController</servlet-class>
     <init-param>
@@ -45,39 +57,36 @@
     <servlet-name>product</servlet-name>
     <servlet-class>com.ede.controller.ProductController</servlet-class>
     <init-param>
-    	<param-name>property</param-name>
-    	<param-value>product.properties</param-value>
+      <param-name>property</param-name>
+      <param-value>product.properties</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>product</servlet-name>
     <url-pattern>*.product</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>meet</servlet-name>
     <servlet-class>com.ede.controller.MeetController</servlet-class>
     <init-param>
-    	<param-name>property</param-name>
-    	<param-value>meet.properties</param-value>
+      <param-name>property</param-name>
+      <param-value>meet.properties</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>meet</servlet-name>
     <url-pattern>*.meet</url-pattern>
   </servlet-mapping>
-
   <servlet>
-  	<servlet-name>member</servlet-name>
-  	<servlet-class>com.ede.controller.MemberController</servlet-class>
-  	<init-param>
-  		<param-name>properties</param-name>
-  		<param-value>member.properties</param-value>
-  	</init-param>
+    <servlet-name>member</servlet-name>
+    <servlet-class>com.ede.controller.MemberController</servlet-class>
+    <init-param>
+      <param-name>properties</param-name>
+      <param-value>member.properties</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>member</servlet-name>
-  	<url-pattern>*.member</url-pattern>
+    <servlet-name>member</servlet-name>
+    <url-pattern>*.member</url-pattern>
   </servlet-mapping>
-  
 </web-app>
