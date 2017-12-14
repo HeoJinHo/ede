@@ -102,6 +102,22 @@ public class MemberDAO {
 		DBConnector.disConnect(rs, st, con);
 		return check;
 	}
+	
+	//addrUse
+	public boolean addrUse(String addr) throws Exception{
+		boolean use = true;
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from member where addr=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, addr);
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			use=false;
+		}
+		DBConnector.disConnect(rs, st, con);
+		return use;
+	}
 }
 
 

@@ -1,18 +1,38 @@
+<%@page import="com.ede.member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
+	String addr = request.getParameter("addr");
+	MemberDAO memberDAO = new MemberDAO();
+	boolean use = memberDAO.addrUse(addr);
+    %>
 <!DOCTYPE html PUBLIC">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.getElementById("btn");
+		btn.addEventListener("click", function(){
+		window.opener.document.frm.addr.value='<%=use%>';
+		window.opener.document.frm.addrUse.value="1";
+		window.self.close();
+	});
+}
+</script>
 </head>
 <body>
+<form id="frm">
 <input type="text" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
-<button>적용하기</button>
+</form>
+<button id="btn">적용하기</button>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
