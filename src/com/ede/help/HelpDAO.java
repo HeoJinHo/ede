@@ -29,7 +29,7 @@ public class HelpDAO implements BoardDAO {
 	@Override
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into qna values(?,?,?,?,0,sysdate,?,0,0,0)";
+		String sql ="insert into qna values(?,?,?,?,0,sysdate,?,0,0,1)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
@@ -98,8 +98,9 @@ public class HelpDAO implements BoardDAO {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from qna where "+makeRow.getKind()+" like ? order by ref desc, step asc) N) "
+				+ "(select * from qna where partition=1 and "+makeRow.getKind()+" like ? order by ref desc, step asc) N) "
 				+ "where R between ? and ?";
+				
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
 		st.setInt(2, makeRow.getStartRow());
@@ -155,7 +156,7 @@ public class HelpDAO implements BoardDAO {
 	
 	public int replyInsert(HelpDTO qnaDTO, HelpDTO parent)throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,0)";
+		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,1)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, qnaDTO.getTitle());
 		st.setString(2, qnaDTO.getContents());

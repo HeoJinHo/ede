@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.board.BoardDTO;
+import com.ede.member.MemberDTO;
 import com.ede.qna.QnaDAO;
 import com.ede.util.MakePage;
 import com.ede.util.MakeRow;
@@ -18,6 +19,8 @@ public class QnaListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
+		if(memberDTO!=null) {
 		int curPage=1;
 		try {
 			curPage= Integer.parseInt(request.getParameter("curPage"));
@@ -48,7 +51,12 @@ public class QnaListService implements Action {
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/board/boardList.jsp");
-		
+		}else {
+			request.setAttribute("message", "로그인하렴");
+			request.setAttribute("path", "../index.jsp");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		}
 		return actionFoward;
 	}
 

@@ -1,7 +1,10 @@
+<%@page import="com.ede.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
+	MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
+	String id = memberDTO.getId();
 %>
 <!DOCTYPE html>
 <html>
@@ -56,7 +59,7 @@
 <body>
 	<form id="frm" action="./${board}Reply.${board}" method="post">
 		<input type="hidden" value="<%=num%>" name="num">
-		<p>Writer : <input type="text" name="writer"></p>
+		<p>Writer : <input type="text" name="writer" value="<%=id%>" readonly="readonly"></p>
 		<p>Title : <input type="text" name="title"></p>
 		<p><textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 		
