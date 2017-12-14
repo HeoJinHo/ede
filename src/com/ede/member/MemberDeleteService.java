@@ -21,6 +21,9 @@ public class MemberDeleteService implements Action {
 		}
 		try {
 			result = memberDAO.delete(method);
+			String id = request.getParameter("id");
+			memberDAO = new MemberDAO();
+			result = memberDAO.delete(id);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

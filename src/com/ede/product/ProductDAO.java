@@ -9,7 +9,69 @@ import java.util.List;
 import com.ede.util.DBConnector;
 
 public class ProductDAO {
-	//getNum
+
+	// Fileter
+	public List<ProductDTO> filterList(String del, String type, String category, String brand) throws Exception {
+		List<ProductDTO> ar = new ArrayList<ProductDTO>();
+		Connection con = DBConnector.getConnect();
+		if (del.equals("category")) {
+			String sql = "select * from product where pro_num in ((select pro_num from reply group by pro_num))";
+			PreparedStatement st = con.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				ProductDTO productDTO = new ProductDTO();
+				productDTO.setBrand(rs.getString("brand"));
+				productDTO.setPro_name(rs.getString("pro_name"));
+				productDTO.setPro_price(rs.getInt("pro_price"));
+				productDTO.setCapacity(rs.getInt("capacity"));
+				productDTO.setInfo(rs.getString("info"));
+				productDTO.setGrade1(rs.getInt("grade1"));
+				productDTO.setGrade2(rs.getInt("grade2"));
+				productDTO.setGrade3(rs.getInt("grade3"));
+				productDTO.setGrade4(rs.getInt("grade4"));
+				productDTO.setGrade5(rs.getInt("grade5"));
+				productDTO.setPic_realName(rs.getString("pic_realName"));
+				productDTO.setPic_compName(rs.getString("pic_compName"));
+				productDTO.setEvt(rs.getInt("evt"));
+				productDTO.setPro_num(rs.getInt("pro_num"));
+				productDTO.setCategory(rs.getString("category"));
+				ar.add(productDTO);
+			}
+			DBConnector.disConnect(rs, st, con);
+		} else if (del.equals("brand")) {
+			System.out.println("brand in");
+			String sql = "select * from product where pro_num in(\r\n" + 
+					"(select pro_num from (\r\n" + 
+					"select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc))) and brand=?";
+			PreparedStatement st = con.prepareStatement(sql);
+			System.out.println(brand);
+			st.setString(1, brand);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				ProductDTO productDTO = new ProductDTO();
+				productDTO.setBrand(rs.getString("brand"));
+				productDTO.setPro_name(rs.getString("pro_name"));
+				productDTO.setPro_price(rs.getInt("pro_price"));
+				productDTO.setCapacity(rs.getInt("capacity"));
+				productDTO.setInfo(rs.getString("info"));
+				productDTO.setGrade1(rs.getInt("grade1"));
+				productDTO.setGrade2(rs.getInt("grade2"));
+				productDTO.setGrade3(rs.getInt("grade3"));
+				productDTO.setGrade4(rs.getInt("grade4"));
+				productDTO.setGrade5(rs.getInt("grade5"));
+				productDTO.setPic_realName(rs.getString("pic_realName"));
+				productDTO.setPic_compName(rs.getString("pic_compName"));
+				productDTO.setEvt(rs.getInt("evt"));
+				productDTO.setPro_num(rs.getInt("pro_num"));
+				productDTO.setCategory(rs.getString("category"));
+				ar.add(productDTO);
+			}
+			DBConnector.disConnect(rs, st, con);
+		}
+		return ar;
+	}
+
+	// getNum
 	public int getNum() throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select inc_seq.nextval from dual";
@@ -20,8 +82,8 @@ public class ProductDAO {
 		DBConnector.disConnect(rs, st, con);
 		return num;
 	}
-	
-	//review
+
+	// review
 	public int review(ReplyDTO replyDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?)";
@@ -35,8 +97,8 @@ public class ProductDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	
-	//selectReview
+
+	// selectReview
 	public List<ReplyDTO> reviewList(int pro_num) throws Exception {
 		ReplyDTO replyDTO = null;
 		List<ReplyDTO> ar = new ArrayList<ReplyDTO>();
@@ -45,8 +107,8 @@ public class ProductDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		ResultSet rs = st.executeQuery();
-		while(rs.next()) {
-			replyDTO=new ReplyDTO();
+		while (rs.next()) {
+			replyDTO = new ReplyDTO();
 			replyDTO.setNum(rs.getInt("num"));
 			replyDTO.setId(rs.getString("id"));
 			replyDTO.setContents(rs.getString("contents"));
@@ -58,97 +120,78 @@ public class ProductDAO {
 		DBConnector.disConnect(rs, st, con);
 		return ar;
 	}
-	
-	//categoryList
+
+	// categoryList
 	public List<ProductDTO> categoryList(String del) throws Exception {
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
-		if(del.equals("category")) {
+		if (del.equals("category")) {
 			String sql = "select category from product group by category";
-			PreparedStatement st =  con.prepareStatement(sql);
+			PreparedStatement st = con.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setCategory(rs.getString("category"));
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
-		} else  if(del.equals("brand")) {
+		} else if (del.equals("brand")) {
 			String sql = "select brand,count(brand) from product group by brand";
 			PreparedStatement st = con.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setBrand(rs.getString(1));
-				productDTO.setCapacity(rs.getInt(2));	//등록된 갯수
+				productDTO.setCapacity(rs.getInt(2)); // 등록된 갯수
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
 		}
 		return ar;
 	}
-	
-	//productList
+
+	// productList
 	public List<ProductDTO> productList(String del, String brand) throws Exception {
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
-		if(del.equals("category")) {
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		if (del.equals("category")) {
 			String sql = "select * from product order by grade5 desc";
-			PreparedStatement st = con.prepareStatement(sql);
-			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				ProductDTO productDTO = new ProductDTO();
-				productDTO.setBrand(rs.getString("brand"));
-				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getInt("pro_price"));
-				productDTO.setCapacity(rs.getInt("capacity"));
-				productDTO.setInfo(rs.getString("info"));
-				productDTO.setGrade1(rs.getInt("grade1"));
-				productDTO.setGrade2(rs.getInt("grade2"));
-				productDTO.setGrade3(rs.getInt("grade3"));
-				productDTO.setGrade4(rs.getInt("grade4"));
-				productDTO.setGrade5(rs.getInt("grade5"));
-				productDTO.setPic_realName(rs.getString("pic_realName"));
-				productDTO.setPic_compName(rs.getString("pic_compName"));
-				productDTO.setEvt(rs.getInt("evt"));
-				productDTO.setPro_num(rs.getInt("pro_num"));
-				productDTO.setCategory(rs.getString("category"));
-				ar.add(productDTO);
-			}
-			DBConnector.disConnect(rs, st, con);
-		} else  if(del.equals("brand")) {
+			st = con.prepareStatement(sql);
+		} else if (del.equals("brand")) {
 			String sql = "select * from product where brand=? order by grade5 desc ";
-			PreparedStatement st = con.prepareStatement(sql);
+			st = con.prepareStatement(sql);
 			st.setString(1, brand);
-			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				ProductDTO productDTO = new ProductDTO();
-				productDTO.setBrand(rs.getString("brand"));
-				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getInt("pro_price"));
-				productDTO.setCapacity(rs.getInt("capacity"));
-				productDTO.setInfo(rs.getString("info"));
-				productDTO.setGrade1(rs.getInt("grade1"));
-				productDTO.setGrade2(rs.getInt("grade2"));
-				productDTO.setGrade3(rs.getInt("grade3"));
-				productDTO.setGrade4(rs.getInt("grade4"));
-				productDTO.setGrade5(rs.getInt("grade5"));
-				productDTO.setPic_realName(rs.getString("pic_realName"));
-				productDTO.setPic_compName(rs.getString("pic_compName"));
-				productDTO.setEvt(rs.getInt("evt"));
-				productDTO.setPro_num(rs.getInt("pro_num"));
-				productDTO.setCategory(rs.getString("category"));
-				ar.add(productDTO);
-			}
-			DBConnector.disConnect(rs, st, con);
 		}
+		rs = st.executeQuery();
+		while (rs.next()) {
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setBrand(rs.getString("brand"));
+			productDTO.setPro_name(rs.getString("pro_name"));
+			productDTO.setPro_price(rs.getInt("pro_price"));
+			productDTO.setCapacity(rs.getInt("capacity"));
+			productDTO.setInfo(rs.getString("info"));
+			productDTO.setGrade1(rs.getInt("grade1"));
+			productDTO.setGrade2(rs.getInt("grade2"));
+			productDTO.setGrade3(rs.getInt("grade3"));
+			productDTO.setGrade4(rs.getInt("grade4"));
+			productDTO.setGrade5(rs.getInt("grade5"));
+			productDTO.setPic_realName(rs.getString("pic_realName"));
+			productDTO.setPic_compName(rs.getString("pic_compName"));
+			productDTO.setEvt(rs.getInt("evt"));
+			productDTO.setPro_num(rs.getInt("pro_num"));
+			productDTO.setCategory(rs.getString("category"));
+			ar.add(productDTO);
+		}
+		DBConnector.disConnect(rs, st, con);
 		return ar;
 	}
-	
-	//Regist
+
+	// Regist
 	public int regist(ProductDTO productDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql =  "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
@@ -169,8 +212,8 @@ public class ProductDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	
-	//view
+
+	// view
 	public ProductDTO view(int pro_num) throws Exception {
 		ProductDTO productDTO = null;
 		Connection con = DBConnector.getConnect();
@@ -178,7 +221,7 @@ public class ProductDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		ResultSet rs = st.executeQuery();
-		if(rs.next()) {
+		if (rs.next()) {
 			productDTO = new ProductDTO();
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
