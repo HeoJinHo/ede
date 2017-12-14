@@ -1,6 +1,5 @@
 package com.ede.member;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,8 +12,7 @@ public class MemberJoinService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		if(request.getMethod().equals("POST")) {
-			MemberDTO memberDTO = new MemberDTO();
-			
+			MemberDTO memberDTO = new MemberDTO();		
 			memberDTO.setId(request.getParameter("id"));
 			memberDTO.setPw(request.getParameter("pw"));
 			memberDTO.setAddr(request.getParameter("addr"));
@@ -30,14 +28,19 @@ public class MemberJoinService implements Action {
 			MemberDAO memberDAO = new MemberDAO();
 			int result=0;
 			try {
-				//result = memberDAO.join(memberDTO);
+				result = memberDAO.join(memberDTO);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-		
+			if(result>0) {
 			actionFoward.setCheck(false);
 			actionFoward.setPath("../index.jsp");	
-			
+			}else {
+				request.setAttribute("message", "Fail");
+				request.setAttribute("path", "./memberJoin.member");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+			}
 		}else {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberJoinForm.jsp");

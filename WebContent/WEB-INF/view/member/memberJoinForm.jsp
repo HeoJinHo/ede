@@ -63,6 +63,6 @@
 	</p>
 	<p>주소:<input type="text" name="addr" placeholder="우변번호" id="addr"> - <input type="button" value="우편번호" id="nn"></p>
 	</form>	
-	<button id="btn">Join</button>
+	<button id="btn">Join</button><a href="../index.jsp">회원가입 취소</a>
 </body>
 </html>

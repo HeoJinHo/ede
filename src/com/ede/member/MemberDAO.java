@@ -31,6 +31,23 @@ public class MemberDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	
+/*	//addrUse
+	public String addrUse(String addr) throws Exception{
+		String use = null;
+		MemberDTO memberDTO = new MemberDTO();
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into member (?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, addr);
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			use=memberDTO.getAddr();
+		}
+		DBConnector.disConnect(rs, st, con);
+		return use;
+	}*/
 
 	public MemberDTO login(MemberDTO memberDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -103,21 +120,6 @@ public class MemberDAO {
 		return check;
 	}
 	
-	//addrUse
-	public boolean addrUse(String addr) throws Exception{
-		boolean use = true;
-		Connection con = DBConnector.getConnect();
-		String sql = "select * from member where addr=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setString(1, addr);
-		ResultSet rs = st.executeQuery();
-		if(rs.next()) {
-			use=false;
-		}
-		DBConnector.disConnect(rs, st, con);
-		return use;
-	}
 }
 
 
