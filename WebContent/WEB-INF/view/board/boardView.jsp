@@ -18,7 +18,6 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -44,8 +43,10 @@
 	<%} %>
 
 	<a href="${board}Delete.${board}?num=${view.num}">Delete</a>
-	<a href="${board}Update.${board}?num=${view.num}">update</a>
-
+	<a href="${board}Update.${board}?num=${view.num}">Update</a>
+	<% if(request.getAttribute("board").equals("qna")){%>
+		<a href="${board}Reply.${board}?num=${view.num}">Reply</a>
+	<%} %>
 
 </body>
 </html>

@@ -18,6 +18,8 @@
 	<!-- notice, qna by suin -->
 	<a href="./notice/noticeList.notice">Notice List</a>
 	<a href="./qna/qnaList.qna">Qna List</a>
+	<a href="./help/helpList.help">1:1 문의</a>
+	
 
 
 	<c:if test="${empty member}">

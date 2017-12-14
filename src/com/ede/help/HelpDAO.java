@@ -1,4 +1,4 @@
-package com.ede.qna;
+package com.ede.help;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import com.ede.util.MakeRow;
 import com.ede.qna.QnaDTO;
 import com.ede.util.DBConnector;
 
-public class QnaDAO implements BoardDAO {
+public class HelpDAO implements BoardDAO {
 
 	public int getNum() throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -153,7 +153,7 @@ public class QnaDAO implements BoardDAO {
 		return result;
 	}
 	
-	public int replyInsert(QnaDTO qnaDTO, QnaDTO parent)throws Exception{
+	public int replyInsert(HelpDTO qnaDTO, HelpDTO parent)throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,0)";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -168,7 +168,7 @@ public class QnaDAO implements BoardDAO {
 		return result;
 	}
 	
-	public int replyUpdate(QnaDTO qnaDTO) throws Exception {
+	public int replyUpdate(HelpDTO qnaDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "update qna set step=step+1 where ref=? and step>?";
 		PreparedStatement st = con.prepareStatement(sql);
