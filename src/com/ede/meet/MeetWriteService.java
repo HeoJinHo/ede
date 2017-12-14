@@ -27,6 +27,7 @@ public class MeetWriteService implements Action {
 			meetDTO.setId(request.getParameter("id"));
 			meetDTO.setM_name(request.getParameter("m_name"));
 			meetDTO.setM_title(request.getParameter("m_title"));
+			meetDTO.setM_subtitle(request.getParameter("m_subtitle"));
 			meetDTO.setM_contents(request.getParameter("m_contents"));
 			meetDTO.setStart_date(request.getParameter("start_date"));
 			meetDTO.setLast_date(request.getParameter("last_date"));
@@ -42,6 +43,8 @@ public class MeetWriteService implements Action {
 			meetDTO.setM_email(request.getParameter("m_email"));
 			meetDTO.setM_hit(Integer.parseInt(request.getParameter("m_hit")));
 			meetDTO.setTotal_seats(Integer.parseInt(request.getParameter("total_seats")));
+			meetDTO.setApplied_seats(Integer.parseInt(request.getParameter("applied_seats")));
+			meetDTO.setM_category(Integer.parseInt(request.getParameter("m_category")));
 			int result = 0; 
 			try {
 				result = meetDAO.insert(meetDTO);

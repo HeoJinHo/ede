@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<h1>meetView</h1>
 	<form action="./meetApply.meet">
+		<input type="hidden" value="${view.m_num}" name="m_num"> 
+		<p>글번호 : ${view.m_num}</p>
 		<p>조회수 : ${view.m_hit}</p>
 		<p>제목 : ${view.m_title}</p>
 		<p>개설자 : ${view.m_name}</p>

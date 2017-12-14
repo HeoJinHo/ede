@@ -23,7 +23,21 @@ public class MeetDTO {
 	private int m_hit;
 	private int total_seats;
 	private int applied_seats;
+	private int m_category;
+	private String m_subtitle;
 	
+	public int getM_category() {
+		return m_category;
+	}
+	public void setM_category(int m_category) {
+		this.m_category = m_category;
+	}
+	public String getM_subtitle() {
+		return m_subtitle;
+	}
+	public void setM_subtitle(String m_subtitle) {
+		this.m_subtitle = m_subtitle;
+	}
 	public int getTotal_seats() {
 		return total_seats;
 	}
