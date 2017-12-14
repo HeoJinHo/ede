@@ -51,7 +51,8 @@ public class MeetDAO {
 		String sql = "insert into meet values(?,?,?,?,?,"
 				+ "?,?,?,?,?,"
 				+ "?,?,?,0,0,"
-				+ "?,?,?,?,?)";
+				+ "?,?,?,?,?,"
+				+ "?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, meetDTO.getM_num());
 		st.setString(2, meetDTO.getId());
@@ -77,6 +78,8 @@ public class MeetDAO {
 		st.setInt(17, meetDTO.getTotal_seats());
 		st.setInt(18, meetDTO.getApplied_seats());
 		
+		st.setInt(19, meetDTO.getM_category());
+		st.setString(20, meetDTO.getM_subtitle());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
@@ -123,6 +126,7 @@ public class MeetDAO {
 			meetDTO.setId(rs.getString("id"));
 			meetDTO.setM_name(rs.getString("m_name"));
 			meetDTO.setM_title(rs.getString("m_title"));
+			meetDTO.setM_subtitle(rs.getString("m_subtitle"));
 			meetDTO.setM_contents(rs.getString("m_contents"));
 			meetDTO.setStart_date(rs.getString("start_date"));
 			meetDTO.setLast_date(rs.getString("last_date"));
@@ -137,8 +141,9 @@ public class MeetDAO {
 			meetDTO.setM_phone(rs.getString("m_phone"));
 			meetDTO.setM_email(rs.getString("m_email"));
 			meetDTO.setM_hit(rs.getInt("m_hit"));
-			meetDTO.setApplied_seats(rs.getInt("applied_seats"));
 			meetDTO.setTotal_seats(rs.getInt("total_seats"));
+			meetDTO.setApplied_seats(rs.getInt("applied_seats"));
+			meetDTO.setM_category(rs.getInt("m_category"));
 			ar.add(meetDTO);
 			
 		}
@@ -160,6 +165,7 @@ public class MeetDAO {
 			meetDTO.setId(rs.getString("id"));
 			meetDTO.setM_name(rs.getString("m_name"));
 			meetDTO.setM_title(rs.getString("m_title"));
+			meetDTO.setM_subtitle(rs.getString("m_subtitle"));
 			meetDTO.setM_contents(rs.getString("m_contents"));
 			meetDTO.setStart_date(rs.getString("start_date"));
 			meetDTO.setLast_date(rs.getString("last_date"));
@@ -174,8 +180,9 @@ public class MeetDAO {
 			meetDTO.setM_phone(rs.getString("m_phone"));
 			meetDTO.setM_email(rs.getString("m_email"));
 			meetDTO.setM_hit(rs.getInt("m_hit"));
-			meetDTO.setApplied_seats(rs.getInt("applied_seats"));
 			meetDTO.setTotal_seats(rs.getInt("total_seats"));
+			meetDTO.setApplied_seats(rs.getInt("applied_seats"));
+			meetDTO.setM_category(rs.getInt("m_category"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		

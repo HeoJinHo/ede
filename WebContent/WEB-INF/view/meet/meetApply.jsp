@@ -14,9 +14,10 @@
 		<input type="hidden" value="${m_num }" name="m_num">
 		<p>이름 :<input type="text" name="a_name"> </p>	
 		<p>성별 :<input type="text" name="a_gender"> </p>	
-		<p>나이 :<input type="text" name="a_age"> </p>	
+		<p>나이 :<input type="number" name="a_age"> </p>	
 		<p>연락처 :<input type="text" name="a_phone"> </p>	
 		<p>이메일 :<input type="text" name="a_email"> </p>
+		<p>직업(소속) :<input type="text" name="a_job"> </p>
 		<button>신청하기</button>	
 	</form>
 </body>
