@@ -34,10 +34,10 @@ public class HelpListService implements Action {
 			HelpDAO helpDAO = new HelpDAO();
 			int totalCount;
 			try {
-				totalCount = helpDAO.getTotalCount(makeRow);
+				totalCount = helpDAO.getTotalCount(makeRow, memberDTO);
 				MakePage makePage = new MakePage(curPage, totalCount);
 				makeRow=makePage.getMakeRow(makeRow);
-				List<BoardDTO> ar=helpDAO.selectList(makeRow);
+				List<BoardDTO> ar=helpDAO.selectList(makeRow, memberDTO);
 				Pageing pageing = makePage.pageing();
 
 				request.setAttribute("board", "help");

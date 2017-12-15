@@ -1,7 +1,6 @@
 package com.ede.help;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +10,6 @@ import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 import com.ede.files.FileDAO;
 import com.ede.files.FileDTO;
-import com.ede.qna.QnaDAO;
-import com.ede.qna.QnaDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 

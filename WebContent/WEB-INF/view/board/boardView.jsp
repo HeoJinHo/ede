@@ -44,7 +44,7 @@
 
 	<a href="${board}Delete.${board}?num=${view.num}">Delete</a>
 	<a href="${board}Update.${board}?num=${view.num}">Update</a>
-	<% if(request.getAttribute("board").equals("qna")){%>
+	<% if(request.getAttribute("board").equals("qna")||request.getAttribute("board").equals("help")){%>
 		<a href="${board}Reply.${board}?num=${view.num}">Reply</a>
 	<%} %>
 

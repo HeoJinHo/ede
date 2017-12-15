@@ -7,6 +7,7 @@ public class HelpDTO extends BoardDTO {
 	private int step;
 	private int depth;
 
+
 	public int getRef() {
 		return ref;
 	}
@@ -24,7 +25,7 @@ public class HelpDTO extends BoardDTO {
 	}
 	public void setDepth(int depth) {
 		this.depth = depth;
-	}
-	
+	}	
+
 	
 }
