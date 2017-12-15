@@ -14,19 +14,18 @@ public class HelpReplyService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		if(method.equals("POST")) {
-			HelpDTO qnaDTO = new HelpDTO();
-			qnaDTO.setNum(Integer.parseInt(request.getParameter("num")));
-			qnaDTO.setTitle(request.getParameter("title"));
-			qnaDTO.setContents(request.getParameter("contents"));
-			qnaDTO.setWriter(request.getParameter("writer"));
-			System.out.println(qnaDTO);
-			HelpDAO qnaDAO = new HelpDAO();
+			HelpDTO helpDTO = new HelpDTO();
+			helpDTO.setNum(Integer.parseInt(request.getParameter("num")));
+			helpDTO.setTitle(request.getParameter("title"));
+			helpDTO.setContents(request.getParameter("contents"));
+			helpDTO.setWriter(request.getParameter("writer"));
+			HelpDAO helpDAO = new HelpDAO();
 			HelpDTO parent;
 			int result =0;
 			try {
-				parent = (HelpDTO) qnaDAO.selectOne(qnaDTO.getNum());
-				qnaDAO.replyUpdate(parent);
-				result = qnaDAO.replyInsert(qnaDTO, parent);
+				parent = (HelpDTO) helpDAO.selectOne(helpDTO.getNum());
+				helpDAO.replyUpdate(parent);
+				result = helpDAO.replyInsert(helpDTO, parent);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -45,7 +44,7 @@ public class HelpReplyService implements Action {
 			
 			
 		}else {
-			request.setAttribute("board", "qna");
+			request.setAttribute("board", "help");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardReply.jsp");
 						

@@ -8,8 +8,8 @@ import java.util.List;
 
 import com.ede.board.BoardDAO;
 import com.ede.board.BoardDTO;
+import com.ede.member.MemberDTO;
 import com.ede.util.MakeRow;
-import com.ede.qna.QnaDTO;
 import com.ede.util.DBConnector;
 
 public class HelpDAO implements BoardDAO {
@@ -29,14 +29,15 @@ public class HelpDAO implements BoardDAO {
 	@Override
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into qna values(?,?,?,?,0,sysdate,?,0,0,1)";
+		String sql ="insert into qna values(?,?,?,?,0,sysdate,?,0,0,1,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
 		st.setString(3, boardDTO.getContents());
 		st.setString(4, boardDTO.getWriter());
 		st.setInt(5, boardDTO.getNum());
-		int result = st.executeUpdate();
+		st.setString(6, boardDTO.getWriter());
+ 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		
 		return result;
@@ -75,49 +76,55 @@ public class HelpDAO implements BoardDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		ResultSet rs = st.executeQuery();
-		QnaDTO qnaDTO = null;
+		HelpDTO helpDTO = null;
 		if(rs.next()) {
-			qnaDTO = new QnaDTO();
-			qnaDTO.setNum(rs.getInt("num"));
-			qnaDTO.setTitle(rs.getString("title"));
-			qnaDTO.setWriter(rs.getString("writer"));
-			qnaDTO.setContents(rs.getString("contents"));
-			qnaDTO.setReg_date(rs.getDate("reg_date"));
-			qnaDTO.setHit(rs.getInt("hit"));
-			qnaDTO.setRef(rs.getInt("ref"));
-			qnaDTO.setStep(rs.getInt("step"));
-			qnaDTO.setDepth(rs.getInt("depth"));
+			helpDTO = new HelpDTO();
+			helpDTO.setNum(rs.getInt("num"));
+			helpDTO.setTitle(rs.getString("title"));
+			helpDTO.setWriter(rs.getString("writer"));
+			helpDTO.setContents(rs.getString("contents"));
+			helpDTO.setReg_date(rs.getDate("reg_date"));
+			helpDTO.setHit(rs.getInt("hit"));
+			helpDTO.setRef(rs.getInt("ref"));
+			helpDTO.setStep(rs.getInt("step"));
+			helpDTO.setDepth(rs.getInt("depth"));
+
 		}
 		DBConnector.disConnect(rs, st, con);
-		return qnaDTO;
+		return helpDTO;
 	}
 
 	@Override
-	public List<BoardDTO> selectList(MakeRow makeRow) throws Exception {
+	public List<BoardDTO> selectList(MakeRow makeRow) throws Exception {		
+		return null;
+	}
+	
+	public List<BoardDTO> selectList(MakeRow makeRow, MemberDTO memberDTO) throws Exception {
 		List<BoardDTO> ar = new ArrayList<BoardDTO>();
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from qna where partition=1 and "+makeRow.getKind()+" like ? order by ref desc, step asc) N) "
+				+ "(select * from qna where partition=1 and (id=? or 1=?) order by ref desc, step asc) N) "
 				+ "where R between ? and ?";
 				
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, "%"+makeRow.getSearch()+"%");
-		st.setInt(2, makeRow.getStartRow());
-		st.setInt(3, makeRow.getLastRow());
+		st.setString(1, memberDTO.getId());
+		st.setInt(2, memberDTO.getLev());
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
-			QnaDTO qnaDTO = new QnaDTO();
-			qnaDTO.setNum(rs.getInt("num"));
-			qnaDTO.setTitle(rs.getString("title"));
-			qnaDTO.setWriter(rs.getString("writer"));
-			qnaDTO.setContents(rs.getString("contents"));
-			qnaDTO.setReg_date(rs.getDate("reg_date"));
-			qnaDTO.setHit(rs.getInt("hit"));
-			qnaDTO.setRef(rs.getInt("ref"));
-			qnaDTO.setStep(rs.getInt("step"));
-			qnaDTO.setDepth(rs.getInt("depth"));
-			ar.add(qnaDTO);
+			HelpDTO helpDTO = new HelpDTO();
+			helpDTO.setNum(rs.getInt("num"));
+			helpDTO.setTitle(rs.getString("title"));
+			helpDTO.setWriter(rs.getString("writer"));
+			helpDTO.setContents(rs.getString("contents"));
+			helpDTO.setReg_date(rs.getDate("reg_date"));
+			helpDTO.setHit(rs.getInt("hit"));
+			helpDTO.setRef(rs.getInt("ref"));
+			helpDTO.setStep(rs.getInt("step"));
+			helpDTO.setDepth(rs.getInt("depth"));
+			ar.add(helpDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
 		
@@ -125,11 +132,16 @@ public class HelpDAO implements BoardDAO {
 	}
 
 	@Override
-	public int getTotalCount(MakeRow makeRow) throws Exception {
+	public int getTotalCount(MakeRow makeRow) throws Exception {		
+		return 0;
+	}
+	
+	public int getTotalCount(MakeRow makeRow, MemberDTO memberDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="select nvl(count(num), 0) from qna where "+makeRow.getKind() +" like ?";
+		String sql ="select nvl(count(num), 0) from qna where partition=1 and (id=? or 1=?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, "%"+makeRow.getSearch()+"%");
+		st.setString(1, memberDTO.getId());
+		st.setInt(2, memberDTO.getLev());
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		int totalCount= rs.getInt(1);
@@ -154,27 +166,28 @@ public class HelpDAO implements BoardDAO {
 		return result;
 	}
 	
-	public int replyInsert(HelpDTO qnaDTO, HelpDTO parent)throws Exception{
+	public int replyInsert(HelpDTO helpDTO, HelpDTO parent)throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,1)";
+		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,1,?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, qnaDTO.getTitle());
-		st.setString(2, qnaDTO.getContents());
-		st.setString(3, qnaDTO.getWriter());
+		st.setString(1, helpDTO.getTitle());
+		st.setString(2, helpDTO.getContents());
+		st.setString(3, helpDTO.getWriter());
 		st.setInt(4, parent.getRef());
 		st.setInt(5, parent.getStep()+1);
 		st.setInt(6, parent.getDepth()+1);
+		st.setString(7, parent.getWriter());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
 	}
 	
-	public int replyUpdate(HelpDTO qnaDTO) throws Exception {
+	public int replyUpdate(HelpDTO helpDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "update qna set step=step+1 where ref=? and step>?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, qnaDTO.getRef());
-		st.setInt(2, qnaDTO.getStep());
+		st.setInt(1, helpDTO.getRef());
+		st.setInt(2, helpDTO.getStep());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;

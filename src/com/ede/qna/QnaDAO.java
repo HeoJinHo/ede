@@ -98,7 +98,7 @@ public class QnaDAO implements BoardDAO {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from qna where "+makeRow.getKind()+" like ? order by ref desc, step asc) N) "
+				+ "(select * from qna where partition=0 and "+makeRow.getKind()+" like ? order by ref desc, step asc) N) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");

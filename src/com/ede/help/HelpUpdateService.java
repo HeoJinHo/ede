@@ -17,7 +17,7 @@ public class HelpUpdateService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
-		HelpDAO qnaDAO = new HelpDAO();
+		HelpDAO helpDAO = new HelpDAO();
 		BoardDTO boardDTO = null;
 		if(method.equals("POST")) {
 			boardDTO = new BoardDTO();
@@ -34,7 +34,7 @@ public class HelpUpdateService implements Action {
 				boardDTO.setTitle(multi.getParameter("title"));
 				boardDTO.setContents(multi.getParameter("contents"));
 				System.out.println(multi.getParameter("contents"));
-				result=qnaDAO.update(boardDTO);
+				result=helpDAO.update(boardDTO);
 				
 			} catch (Exception e) {
 				
@@ -56,17 +56,17 @@ public class HelpUpdateService implements Action {
 			int num=0;
 			try {
 			num = (Integer.parseInt(request.getParameter("num")));
-			boardDTO=qnaDAO.selectOne(num);
+			boardDTO=helpDAO.selectOne(num);
 			}catch (Exception e) {
 				// TODO: handle exception
 			}
 			if(boardDTO != null) {
 				request.setAttribute("view", boardDTO);
 				actionFoward.setPath("../WEB-INF/view/board/boardUpdate.jsp");
-				request.setAttribute("board", "qna");
+				request.setAttribute("board", "help");
 			}else {
 				request.setAttribute("message", "Fail");
-				request.setAttribute("path", "./qhelpList.help");
+				request.setAttribute("path", "./helpList.help");
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
 			actionFoward.setCheck(true);

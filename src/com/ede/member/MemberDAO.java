@@ -48,6 +48,7 @@ public class MemberDAO {
 			memberDTO.setBirth(rs.getString("birth"));
 			memberDTO.setAddr(rs.getString("addr"));
 			memberDTO.setSkin(rs.getString("skin"));
+			memberDTO.setLev(rs.getInt("lev"));
 		}else {
 			memberDTO=null;
 		}
