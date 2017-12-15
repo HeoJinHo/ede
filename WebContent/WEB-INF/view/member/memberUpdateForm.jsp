@@ -63,8 +63,6 @@
 		이메일 : <input type="email" name="email" value="${member.email}"><br><br>
 		<input type="submit" value="회원정보 수정" id="btn">
 	</form>
-	<form action="./memberDelete.member" method="post">
-		<input type="submit" value="회원탈퇴">
-	</form>
+	
 </body>
 </html>

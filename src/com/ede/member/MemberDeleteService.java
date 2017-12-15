@@ -13,31 +13,32 @@ public class MemberDeleteService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		MemberDAO memberDAO = new MemberDAO();
+		MemberDeleteDTO memberDeleteDTO = new MemberDeleteDTO();
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 		if (method.equals("POST")) {
+			
 			int result = 0;
-			try {
-				result = memberDAO.delete(memberDTO.getId());
-
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			if(result>0) {
-				request.getSession().invalidate();
-				actionFoward.setCheck(false);
-				actionFoward.setPath("../index.jsp");
-			}else{
-				request.setAttribute("message", "Fail");
-				request.setAttribute("path", "./memberUpdate.member");
+			int result2 = 0;
+			memberDeleteDTO.setDeletereason(request.getParameter("delete"));
+			memberDeleteDTO.setReason(request.getParameter("delete2"));
+				try {
+					result = memberDAO.delete(memberDTO.getId());
+					result2 = memberDAO.userdelete(memberDeleteDTO, memberDTO);
+					request.getSession().invalidate();
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				request.setAttribute("message", "탈퇴완료!!");
+				request.setAttribute("path", "../index.jsp");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
-			}
+			
 		}else{
 			request.setAttribute("message", "Fail");
 			request.setAttribute("path", "./memberMyPage.member");
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+			actionFoward.setPath("../WEB-INF/view/member/memberDeleteForm.jsp");
 		}
 
 

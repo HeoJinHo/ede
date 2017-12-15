@@ -32,23 +32,6 @@ public class MemberDAO {
 		return result;
 	}
 	
-/*	//addrUse
-	public String addrUse(String addr) throws Exception{
-		String use = null;
-		MemberDTO memberDTO = new MemberDTO();
-		Connection con = DBConnector.getConnect();
-		String sql = "insert into member (?)";
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setString(1, addr);
-		ResultSet rs = st.executeQuery();
-		if(rs.next()) {
-			use=memberDTO.getAddr();
-		}
-		DBConnector.disConnect(rs, st, con);
-		return use;
-	}*/
-
 	public MemberDTO login(MemberDTO memberDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from member where id=? and pw=?";
@@ -65,6 +48,7 @@ public class MemberDAO {
 			memberDTO.setBirth(rs.getString("birth"));
 			memberDTO.setAddr(rs.getString("addr"));
 			memberDTO.setSkin(rs.getString("skin"));
+			memberDTO.setLev(rs.getInt("lev"));
 		}else {
 			memberDTO=null;
 		}
@@ -100,6 +84,18 @@ public class MemberDAO {
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
+	}
+	
+	public int userdelete(MemberDeleteDTO memberDeleteDTO, MemberDTO memberDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into userdelete values(?, ?, ?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, memberDeleteDTO.getDeletereason());
+		st.setString(2, memberDeleteDTO.getReason());
+		st.setString(3, memberDTO.getId());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;	
 	}
 	
 	//idCheck

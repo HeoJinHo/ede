@@ -79,7 +79,6 @@ public class MemberController extends HttpServlet {
 		Action action=null;
 		
 		action= (Action)command.get(uri);
-		System.out.println(uri);
 		actionFoward = action.doProcess(request, response);
 		
 		if(actionFoward.isCheck()) {
