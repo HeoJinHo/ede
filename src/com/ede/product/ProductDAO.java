@@ -9,13 +9,38 @@ import java.util.List;
 import com.ede.util.DBConnector;
 
 public class ProductDAO {
+	
+	//avgUpdate
+	public int avgUpdate (int grade,int pro_num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql=null;
+		if(grade==5) {
+			System.out.println("grade5 in");
+			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+			System.out.println("sql success");
+		} else if (grade==4) {
+			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		} else if (grade==3) {
+			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		} else if (grade==2) {
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		} else if (grade==1) {
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		}
+		System.out.println(sql);
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, pro_num);
+		int result=st.executeUpdate();
+		return result;
+	}
 
 	// Fileter
 	public List<ProductDTO> filterList(String del, String type, String category, String brand) throws Exception {
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
 		if (del.equals("category")) {
-			String sql = "select * from product where pro_num in ((select pro_num from reply group by pro_num))";
+			String sql = "select * from product where pro_num in\r\n" + 
+					"((select pro_num from (select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc)))";
 			PreparedStatement st = con.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {

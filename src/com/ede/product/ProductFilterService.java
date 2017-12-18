@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.jdt.core.compiler.CategorizedProblem;
+
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 
@@ -19,21 +21,35 @@ public class ProductFilterService implements Action {
 		String brand = request.getParameter("brand");
 		
 		if(del.equals("category")) {
-			productDAO = new ProductDAO();
-			try {
-				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
-				request.setAttribute("list", ar);
+			if(category.equals("reviewCount")) {
+				productDAO = new ProductDAO();
+				try {
+					List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+					request.setAttribute("list", ar);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (category.equals("recent")) {
 				
-			} catch (Exception e) {
-				e.printStackTrace();
+			} else if (category.equals("avg")) {
+				//todo
+				
+				
 			}
 		} else if(del.equals("brand")) {
-			try {
-				productDAO = new ProductDAO();
-				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
-				request.setAttribute("list", ar);
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(category.equals("reviewCount")) {
+				try {
+					productDAO = new ProductDAO();
+					List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+					request.setAttribute("list", ar);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (category.equals("recent")) {
+				
+			} else if (category.equals("avg")) {
+				
 			}
 		}
 		actionFoward.setCheck(true);
