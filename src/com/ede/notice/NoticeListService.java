@@ -39,7 +39,7 @@ public class NoticeListService implements Action {
 				MakePage makepage = new MakePage(curPage, totalCount);
 				makeRow=makepage.getMakeRow(makeRow);
 				List<BoardDTO> ar = noticeDAO.selectList(makeRow);
-
+ 
 				Pageing pageing = makepage.pageing();
 
 				request.setAttribute("board", "notice");

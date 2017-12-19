@@ -13,6 +13,8 @@
 		PW <input type="password" name="pw">
 		<button>Login</button>
 	</form>
-
+	<form action="./memberJoin.member">
+		<button>Join</button>
+	</form>
 </body>
 </html>
