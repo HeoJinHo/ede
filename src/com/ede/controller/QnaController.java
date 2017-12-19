@@ -41,6 +41,7 @@ public class QnaController extends HttpServlet {
 	   String filePath = config.getServletContext().getRealPath("WEB-INF/properties");
 	   String fileName = config.getInitParameter("properties");
 	   File file = new File(filePath, fileName);
+	   System.out.println(filePath);
 	   FileInputStream fi = null;
 	   Properties prop = new Properties();
 	   
