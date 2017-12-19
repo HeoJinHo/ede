@@ -9,6 +9,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#nn").click(function(){
+			var addr = document.frm.addr.value;
 			 window.open("../MemberAddrsearch.jsp", "", "top=300, left=750, width=400, height=400");
 		});
 		$("#check").click(function(){
@@ -61,7 +62,9 @@
 	<p>피부타입: 건성 <input type="radio" name="skin" value="dry" id="skin"> 중성 <input type="radio" name="skin" value="neutral" id="skin"><br>
 			     지성 <input type="radio" name="skin" value="oily" id="skin"> 민감성 <input type="radio" name="skin" value="complex" id="skin"> 복합성 <input type="radio" name="skin" value="sensitive" id="skin">
 	</p>
-	<p>주소:<input type="text" name="addr" placeholder="우변번호" id="addr"> - <input type="button" value="우편번호" id="nn"></p>
+	<p>주소:<input type="text" name="addr" placeholder="우변번호" id="addr"> - <input type="button" value="우편번호 찾기" id="nn"></p>
+		  <p><input type="text" placeholder="기본주소" name="addr2" id="addr2"></p>
+		   <p><input type="text" placeholder="나머지주소" name="addr4" id="addr3"></p>
 	</form>	
 	<button id="btn">Join</button><a href="../index.jsp">회원가입 취소</a>
 </body>

@@ -6,16 +6,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.getElementById("btn");
+		
+		btn.addEventListener("click", function(){
+			window.opener.document.frm.addr.value=document.getElementById("sample4_postcode").value;
+			window.opener.document.frm.addr2.value=document.getElementById("sample4_roadAddress").value;
+			window.self.close();
+		});
+		
+		
+	}
+	</script>
 </head>
 <body>
-<form id="frm">
-<input type="text" id="sample4_postcode" placeholder="우편번호" name="addruser">
-<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addruser">
-<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="addruser">
-<span id="guide" style="color:#999"></span>
+<form id="frm" action="./MemberAddrsearch.jsp">
+	<input type="text" id="sample4_postcode" placeholder="우편번호" name="addruser1">
+	<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+	<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="addruser2">
+	<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="addruser3">
+	<span id="guide" style="color:#999"></span>
 </form>
-<button id="btn">적용하기</button>
+	<button id="btn">적용하기</button>
+
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
