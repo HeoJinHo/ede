@@ -30,13 +30,10 @@ public class ProductWriteService implements Action {
 				replyDTO.setGrade(grade);
 				replyDTO.setPro_num(Integer.parseInt(request.getParameter("pro_num")));
 				result = productDAO.review(replyDTO);	//새 댓글 insert
-				System.out.println(1);
 				System.out.println(grade);//들어옴
 				System.out.println(pro_num);//들어옴
 				productDAO.avgUpdate(grade, pro_num);
-				//todo
-				
-				System.out.println(2);
+				System.out.println("after update");
 				if(result >0) {
 					actionFoward.setCheck(false);
 					actionFoward.setPath("./productView.product?pro_num="+pro_num);

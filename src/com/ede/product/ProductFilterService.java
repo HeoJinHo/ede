@@ -14,44 +14,32 @@ public class ProductFilterService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		String del = request.getParameter("del");
 		ProductDAO productDAO = null;
-		String type = request.getParameter("type");
+		String del = request.getParameter("del");
 		String category = request.getParameter("category");
 		String brand = request.getParameter("brand");
-		
-		if(del.equals("category")) {
-			if(category.equals("reviewCount")) {
-				productDAO = new ProductDAO();
-				try {
-					List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
-					request.setAttribute("list", ar);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else if (category.equals("recent")) {
-				
-			} else if (category.equals("avg")) {
-				//todo
-				
-				
+		String[] type = request.getParameterValues("type");
+		//System.out.println(brand+" : brand in filterService");
+		if (del.equals("category")) {
+			productDAO = new ProductDAO();
+			try {
+				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+				request.setAttribute("list", ar);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} else if(del.equals("brand")) {
-			if(category.equals("reviewCount")) {
-				try {
-					productDAO = new ProductDAO();
-					List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
-					request.setAttribute("list", ar);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else if (category.equals("recent")) {
-				
-			} else if (category.equals("avg")) {
-				
+		} else if (del.equals("brand")) {
+			productDAO = new ProductDAO();
+			try {
+				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+				request.setAttribute("list", ar);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
+		request.setAttribute("del", del);
+		request.setAttribute("brand", brand);
+		request.setAttribute("type", type);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/product/productList.jsp");
 		return actionFoward;

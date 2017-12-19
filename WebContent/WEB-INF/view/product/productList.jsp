@@ -7,26 +7,48 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#dry").click(function(){
+			document.frm.submit();
+		});
+		$("#neutral").click(function(){
+			document.frm.submit();
+		});
+		$("#oily").click(function(){
+			document.frm.submit();
+		});
+		$("#complex").click(function(){
+			document.frm.submit();
+		});
+		$("#sensitive").click(function(){
+			document.frm.submit();
+		});
+		
+		<c:forEach items="${type}" var="i">
+		$("#${i}").prop("checked",true);
+		</c:forEach>
+	});
+</script>
 </head>
 <body>
 	<h1>Product List</h1>
 	<h3>filter</h3>
-	<form action="./productFilter.product">
+	<form action="./productFilter.product" name="frm">
 	<input type="hidden" name="del" value="${del}">
 	<input type="hidden" name="brand" value="${brand}">
-	<select name="type">
-		<option value="dry">건성</option>
-		<option value="neutral">중성</option>
-		<option value="oily">지성</option>
-		<option value="complex">복합성</option>
-		<option value="sensitive">민감성</option>
-	</select>
-	최신순<input type="radio" name="category" value="recent" checked="checked">
-	댓글순<input type="radio" name="category" value="reviewCount"> 
+	
+	건성<input type="checkbox" name="type" value="dry" id="dry">
+	중성<input type="checkbox" name="type" value="neutral" id="neutral">
+	지성<input type="checkbox" name="type" value="oily" id="oily">
+	복합성<input type="checkbox" name="type" value="complex" id="complex">
+	민감성<input type="checkbox" name="type" value="sensitive" id="sensitive">
+	<br>
+	댓글순<input type="radio" name="category" value="reviewCount" checked="checked">
 	평점순<input type="radio" name="category" value="avg">
-	<button>검색</button>
 	</form>
 	
+	<div id="result">
 	<table>
 	<tr>
 		<th>brand</th>
@@ -44,6 +66,8 @@
 		<th>evt</th>
 		<th>pro_num</th>
 		<th>category</th>
+		<th>type</th>
+		<th>avg</th>
 	</tr>
 		<c:forEach items="${list}" var="i">
 			<tr>
@@ -62,9 +86,11 @@
 				<td>${i.evt}</td>
 				<td>${i.pro_num}</td>
 				<td>${i.category }
+				<td>${i.type }</td>
+				<td>${i.avg }</td>
 			</tr>
 		</c:forEach>
 	</table>
-
+	</div>
 </body>
 </html>
