@@ -14,24 +14,15 @@
 </head>
 <body>
 	<h1>team ede</h1>
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-	</nav>
+	<%@ include file="./temp/header.jsp" %>
+
 	<!-- category by kj -->
 	<a href ="./product/categoryList.product?del=category">product</a>
 	
 	<!-- notice, qna by suin -->
 	<a href="./notice/noticeList.notice">Notice List</a>
 	<a href="./qna/qnaList.qna">Qna List</a>
-	<a href="./help/helpList.help">1:1 문의</a> 
-	
-	
+	<a href="./help/helpList.help">1:1 문의</a> 	
 
 
 	<c:if test="${empty member}">
