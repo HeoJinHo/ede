@@ -14,6 +14,13 @@
 				$("#reply").html(data);
 			});
 		})
+		
+		$('#blog-btn').click(()=>{
+			alert("ininin");
+			$.get('/WEB-INF/view/product/productViewBlog.jsp', (data)=>{
+				$('#blog-info').html(data);
+			});
+		});
 	});
 </script>
 </head>
@@ -51,6 +58,11 @@
 			${i.pro_num}
 			<br>
 		</c:forEach>
-
+		<button id="blog-btn">BLOG</button>
+			<div id="blog-info"></div>
+			
+			
+		<button id="buy-btn">BUY_INFO</button>
+		<a href="http://shopping.naver.com/search/all_search.nhn?query=빌리프 위치헤이즐 허벌 익스트랙트 토너&amp;sort=price_asc" target="_blank" class="plus_more pull-right">더보기 </a>
 </body>
 </html>
