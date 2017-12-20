@@ -17,13 +17,14 @@
 
 	<%@ include file="./WEB-INF/view/temp/header.jsp" %>
 
-	<h1>team ede</h1>
+	<!-- main 시작 -->
+	<section id="main">
+		
 	<h1>상단바에 있는 메뉴를 클릭해서 가세요</h1>
 
-
-	<a href="./json/json_1.json">JSON Test</a>
-	<img src="./upload/iu_11.jpg">
-	<img src="./upload/iu_11.jpg">
+	</section>
+	<!-- main 끝   -->
+	<%@ include file="./WEB-INF/view/temp/footer.jsp" %>
 
 
 </body>
