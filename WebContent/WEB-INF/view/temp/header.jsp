@@ -2,28 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>메인 홈페이지</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+
 <!-- Header 시작 -->
 <body>
 	<header>
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
-				<div id="glowpick">
+				<div class="glowpick">
 					<ul>
-						<li>GLOWPICK</li>
+						<li id="gp"><a id="glowpick" href="<%=request.getContextPath()%>/index.jsp">GLOWPICK</a></li>
 					</ul>
 				</div>
 				<div class="navbar-header">
@@ -34,8 +21,8 @@
 					<a class="navbar-brand" href="#">Logo</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
+					<ul class="nav navbar-nav navbar-center">
+						<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 						<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product</a></li>
 						<li><a href="#">전문가</a></li>
 						<li><a href="#">Event</a></li>
@@ -43,7 +30,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:if test="${empty member}">
-							<li><a href="<%=request.getContextPath()%>/member/memberLogin.member">Login</a></li>
+							<li><a href="<%=request.getContextPath()%>/member/memberLogin.member">Login/Join</a></li>
 							<li><a href="<%=request.getContextPath()%>/notice/noticeList.notice">고객센터</a></li>
 						</c:if>
 						<c:if test="${not empty member}">
@@ -56,4 +43,3 @@
 			</div>
 		</nav>
 	</header>
-</body>

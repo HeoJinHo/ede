@@ -11,7 +11,11 @@
 	border: 0px;
 	}
 </style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<link href="../css/header.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		$("#nn").click(function(){
@@ -22,6 +26,7 @@
 </script>
 </head>
 <body>
+<%@ include file="../temp/header.jsp" %>
 <h1>Update ${member2}</h1>
 	<form action="./memberUpdate.member" method="post">
 		아이디 : <input type="text" name="id" readonly="readonly" value="${member.id}" id="id"><br><br>

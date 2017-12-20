@@ -31,9 +31,8 @@ public class NoticeListService implements Action {
 			String kind=request.getParameter("kind");
 			makeRow.setKind(kind);
 			makeRow.setSearch(request.getParameter("search"));
-
 			NoticeDAO noticeDAO = new NoticeDAO();
-			int totalCount;
+			int totalCount=0;
 			try {
 				totalCount = noticeDAO.getTotalCount(makeRow);
 				MakePage makepage = new MakePage(curPage, totalCount);

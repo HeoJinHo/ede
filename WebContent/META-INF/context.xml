@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Context>
-<Resource maxWait="-1" maxIdle="10" maxActive="20" username="user04" password="user04" url="jdbc:oracle:thin:@localhost:1521:xe" driverClassName="oracle.jdbc.driver.OracleDriver" auth="Container" name="jdbc/user04" type="javax.sql.DataSource" />
-</Context>
