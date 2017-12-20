@@ -16,7 +16,25 @@ public class ProductDTO {
 	private int evt;
 	private int pro_num;
 	private String category;
+	private String type;
+	private double avg;
 	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public double getAvg() {
+		return avg;
+	}
+
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
 
 	public String getCategory() {
 		return category;

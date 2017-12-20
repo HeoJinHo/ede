@@ -31,6 +31,8 @@ public class ProductListService implements Action{
 				List<ProductDTO> ar = productDAO.productList(del,brand);
 				request.setAttribute("list", ar);
 				request.setAttribute("del", "brand");
+				//System.out.println(brand+" : brand in productService");
+				request.setAttribute("brand", brand);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

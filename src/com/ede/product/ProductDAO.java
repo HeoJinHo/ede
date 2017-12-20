@@ -8,15 +8,78 @@ import java.util.List;
 
 import com.ede.util.DBConnector;
 
+import oracle.net.aso.p;
+
 public class ProductDAO {
+	
+	//avgUpdate
+	public int avgUpdate (int grade,int pro_num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql=null;
+		if(grade==5) {
+			//System.out.println("grade5 in");
+			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+			//System.out.println("sql success");
+		} else if (grade==4) {
+			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		} else if (grade==3) {
+			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		} else if (grade==2) {
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		} else if (grade==1) {
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+		}
+		//System.out.println(sql);
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, pro_num);
+		st.setInt(2, pro_num);
+		int result=st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 
 	// Fileter
-	public List<ProductDTO> filterList(String del, String type, String category, String brand) throws Exception {
+	public List<ProductDTO> filterList(String del, String[] type, String category, String brand) throws Exception {
+		
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
+		String sql = null;
 		if (del.equals("category")) {
-			String sql = "select * from product where pro_num in ((select pro_num from reply group by pro_num))";
-			PreparedStatement st = con.prepareStatement(sql);
+			PreparedStatement st = null;
+			if(category.equals("reviewCount")) {
+				sql = "select * from product where pro_num in\r\n" + 
+						"((select pro_num from (select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc)))";
+				if(type.length>0) {
+					sql=sql+" and type in (";
+					for(int i=0;i<type.length;i++) {
+						sql=sql+"?";
+						if(i != type.length-1) {
+							sql=sql+",";
+						}
+					}
+					sql=sql+")";
+				}
+				st = con.prepareStatement(sql);
+				for(int i=0;i<type.length;i++) {
+					st.setString(i+1, type[i]);
+				}
+			} else if (category.equals("avg")) {
+				sql = "select * from product ";
+				if(type.length>0) {
+					sql=sql+"where type in (";
+					for(int i=0;i<type.length;i++) {
+						sql=sql+"?";
+						if(i != type.length-1) {
+							sql=sql+",";
+						}
+					}
+					sql=sql+") order by nvl(avg,0) desc";
+				}
+				st = con.prepareStatement(sql);
+				for(int i=0;i<type.length;i++) {
+					st.setString(i+1, type[i]);
+				}
+			}
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
@@ -35,17 +98,24 @@ public class ProductDAO {
 				productDTO.setEvt(rs.getInt("evt"));
 				productDTO.setPro_num(rs.getInt("pro_num"));
 				productDTO.setCategory(rs.getString("category"));
+				productDTO.setType(rs.getString("type"));
+				productDTO.setAvg(rs.getDouble("avg"));
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
 		} else if (del.equals("brand")) {
-			System.out.println("brand in");
-			String sql = "select * from product where pro_num in(\r\n" + 
-					"(select pro_num from (\r\n" + 
-					"select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc))) and brand=?";
-			PreparedStatement st = con.prepareStatement(sql);
-			System.out.println(brand);
-			st.setString(1, brand);
+			PreparedStatement st =null;
+			if(category.equals("reviewCount")) {
+				sql = "select * from product where pro_num in(\r\n" + 
+						"(select pro_num from (\r\n" + 
+						"select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc))) and brand=?";
+				st = con.prepareStatement(sql);
+				st.setString(1, brand);
+			} else if (category.equals("avg")) {
+				sql = "select * from product where brand=? order by nvl(avg,0) desc";
+				st = con.prepareStatement(sql);
+				st.setString(1, brand);
+			}
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
@@ -64,6 +134,8 @@ public class ProductDAO {
 				productDTO.setEvt(rs.getInt("evt"));
 				productDTO.setPro_num(rs.getInt("pro_num"));
 				productDTO.setCategory(rs.getString("category"));
+				productDTO.setType(rs.getString("type"));
+				productDTO.setAvg(rs.getDouble("avg"));
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
@@ -182,6 +254,8 @@ public class ProductDAO {
 			productDTO.setEvt(rs.getInt("evt"));
 			productDTO.setPro_num(rs.getInt("pro_num"));
 			productDTO.setCategory(rs.getString("category"));
+			productDTO.setType(rs.getString("type"));
+			productDTO.setAvg(rs.getDouble("avg"));
 			ar.add(productDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
@@ -238,6 +312,8 @@ public class ProductDAO {
 			productDTO.setEvt(rs.getInt("evt"));
 			productDTO.setPro_num(rs.getInt("pro_num"));
 			productDTO.setCategory(rs.getString("category"));
+			productDTO.setType(rs.getString("type"));
+			productDTO.setAvg(rs.getDouble("avg"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return productDTO;
