@@ -64,7 +64,7 @@
 	</p>
 	<p>주소:<input type="text" name="addr4" placeholder="우변번호" id="addr4"> - <input type="button" value="우편번호 찾기" id="nn"></p>
 		  <p><input type="text" placeholder="도로명주소" name="addr" id="addr"></p>
-		   <p><input type="text" placeholder="나머지주소" name="addr2" id="addr2"></p>
+		  <p><input type="text" placeholder="나머지주소" name="addr2" id="addr2"></p>
 	</form>	
 	<button id="btn">Join</button><a href="../index.jsp">회원가입 취소</a>
 </body>

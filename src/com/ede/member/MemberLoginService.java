@@ -12,7 +12,7 @@ public class MemberLoginService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		
+		System.out.println("asdasdasdsad");
 		ActionFoward actionFoward= new ActionFoward();
 		String method=request.getMethod();
 		if(method.equals("POST")) {
