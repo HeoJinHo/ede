@@ -5,7 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<link href="../css/header.css" rel="stylesheet">
 <script type="text/javascript" src="../SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
@@ -52,6 +56,7 @@
 </script>
 </head>
 <body>
+<%@ include file="../temp/header.jsp" %>
 	<h1>Update ${board}</h1>
 	 
 	<form id="frm" action="./${board}Update.${board}" method="post" enctype="multipart/form-data">
