@@ -13,7 +13,7 @@ public class MemberDAO {
 	//회원가입
 	public int join(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0,?)";
+		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, ?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, memberDTO.getId());
 		st.setString(2, memberDTO.getPw());
@@ -24,7 +24,8 @@ public class MemberDAO {
 		st.setString(7, memberDTO.getGender());
 		st.setString(8, memberDTO.getBirth());
 		st.setString(9, memberDTO.getAddr());
-		st.setString(10, memberDTO.getSkin());
+		st.setString(10, memberDTO.getAddr2());
+		st.setString(11, memberDTO.getSkin());
 	/*	st.setString(10, memberDTO.getPic_name());
 		st.setString(11, memberDTO.getPic_path());*/
 		int result = st.executeUpdate();

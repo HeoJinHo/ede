@@ -16,8 +16,15 @@ public class MemberDTO {
 	private int lev;
 	private String email;
 	private String skin;
+	private String addr2;
 	public String getSkin() {
 		return skin;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
 	}
 	public void setSkin(String skin) {
 		this.skin = skin;

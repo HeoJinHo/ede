@@ -11,8 +11,8 @@
 		var btn = document.getElementById("btn");
 		
 		btn.addEventListener("click", function(){
-			window.opener.document.frm.addr.value=document.getElementById("sample4_postcode").value;
-			window.opener.document.frm.addr2.value=document.getElementById("sample4_roadAddress").value;
+			window.opener.document.frm.addr4.value=document.getElementById("sample4_postcode").value;
+			window.opener.document.frm.addr.value=document.getElementById("sample4_roadAddress").value;
 			window.self.close();
 		});
 		

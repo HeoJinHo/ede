@@ -16,6 +16,7 @@ public class MemberJoinService implements Action {
 			memberDTO.setId(request.getParameter("id"));
 			memberDTO.setPw(request.getParameter("pw"));
 			memberDTO.setAddr(request.getParameter("addr"));
+			memberDTO.setAddr(request.getParameter("addr2"));
 			memberDTO.setPhone(request.getParameter("phone"));
 			memberDTO.setNickname(request.getParameter("nickname"));
 			memberDTO.setName(request.getParameter("name"));
