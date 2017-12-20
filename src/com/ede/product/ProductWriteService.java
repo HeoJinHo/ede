@@ -19,6 +19,7 @@ public class ProductWriteService implements Action {
 			ProductDTO productDTO = new ProductDTO();
 			ReplyDTO replyDTO = new ReplyDTO();
 			int pro_num = Integer.parseInt(request.getParameter("pro_num"));
+			int grade = Integer.parseInt(request.getParameter("grade"));
 			int result=0;
 			try {
 				MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
@@ -26,9 +27,13 @@ public class ProductWriteService implements Action {
 				replyDTO.setId(id);
 				replyDTO.setContents(request.getParameter("contents"));
 				replyDTO.setReport(request.getParameter("report"));
-				replyDTO.setGrade(Integer.parseInt(request.getParameter("grade")));
+				replyDTO.setGrade(grade);
 				replyDTO.setPro_num(Integer.parseInt(request.getParameter("pro_num")));
-				result = productDAO.review(replyDTO);
+				result = productDAO.review(replyDTO);	//새 댓글 insert
+				System.out.println(grade);//들어옴
+				System.out.println(pro_num);//들어옴
+				productDAO.avgUpdate(grade, pro_num);
+				System.out.println("after update");
 				if(result >0) {
 					actionFoward.setCheck(false);
 					actionFoward.setPath("./productView.product?pro_num="+pro_num);
