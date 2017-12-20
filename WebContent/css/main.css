@@ -6,28 +6,31 @@
 	height: 46px;
 	margin: 0 auto;
 }
-#gp{
-	font-size : xx-large;
+
+#gp {
+	font-size: xx-large;
 	list-style: none;
 	text-align: center;
 	margin-top: 10px;
 }
-#glowpick{
+
+#glowpick {
 	color: white;
 	text-align: center;
 	text-decoration: none;
 }
+
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
 }
-.navbar.navbar-inverse{
+
+.navbar.navbar-inverse {
 	height: 120px;
 }
 
-.nav.navbar-nav.navbar-center{
+.nav.navbar-nav.navbar-center {
 	margin-left: 400.3px;
-	
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -43,11 +46,7 @@
 }
 
 /* Set black background color, white text and some padding */
-footer {
-	background-color: #555;
-	color: white;
-	padding: 15px;
-}
+
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
@@ -60,4 +59,104 @@ footer {
 	}
 }
 /*header 끝*/
+
+/********** main 시작 *************/
+#main {
+	width: 100%;
+	height: 942px;
+	padding-top: 51px;
+	margin-top: 67px;
+}
+/********** main 끝 *************/
+
+
+
+footer.footerNew{
+    padding-top:20px;
+    box-sizing:border-box;}
+footer.footerNew *{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+    border:0;
+    outline:0;
+    }
+footer.footerNew a{
+    text-decoration:none;}
+footer.footerNew button{
+    background:transparent;}
+footer.footerNew ul{
+    list-style:none;}
+footer.footerNew>div{
+    top:0;
+    left:0;
+    width:100%;
+    height:auto;
+    padding:30px 4vw;
+    background:#e0e0e0;
+    }
+footer.footerNew>div>div{
+    top:0;left:0;width:100%;height:auto;}
+
+footer.footerNew>div>div>section:nth-child(1):after{display:block;content:"";clear:both;}
+footer.footerNew>div>div>section:nth-child(1){
+    top:0;left:0;width:100%;height:auto;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1){
+    float:left;
+    top:0;
+    left:0;
+    width:50%;
+    height:auto;
+    }
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>img{
+    display:block;
+    top:0;left:0;width:102px;height:14px;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>p{
+    display:block;
+    top:0;left:0;width:auto;height:auto;
+    color:#707070;font-size:11px;font-weight:normal;
+    padding-top:14px;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(2){
+    float:right;position:relative;
+    top:0;left:0;width:50%;height:auto;}
+footer.footerNew .entrepreneurInfoBtn{
+    display:block;position:absolute;
+    top:0;right:0;width:auto;height:auto;
+    border:solid 1px #707070;
+    background:#e0e0e0;
+    cursor:pointer;}
+footer.footerNew .entrepreneurInfoBtn>button{
+    display:block;
+    top:0;left:0;width:auto;height:21px;
+    text-align:center;vertical-align:middle;
+    padding:0 6px;
+    font-size:11px;font-weight:normal;color:#707070;
+    cursor:pointer;
+    line-height:21px;
+}
+
+footer.footerNew>div>div>section:nth-child(2){
+    top:0;left:0;width:100%;height:auto;
+    padding-top:9px;}
+footer.footerNew>div>div>section:nth-child(2)>ul{
+    top:0;left:0;width:100%;height:auto;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li:after{display:block;content:"";clear:both;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li{
+    top:0;left:0;width:100%;height:auto;
+    padding:3px 0;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li>p:nth-child(1){
+    float:left;display:block;
+    top:0;left:0;width:34%;height:auto;
+    color:#707070;font-size:11px;font-weight:normal;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li>p:nth-child(2){
+    float:right;display:block;
+    top:0;left:0;width:66%;height:auto;
+    padding-left:3%;
+    color:#707070;font-size:11px;font-weight:bold;}
+
+footer.footerNew>div>div>p{
+    top:0;left:0;width:100%;height:auto;
+    padding-top:12px;
+    text-align:center;
+    color:#707070;font-size:11px;font-weight:normal;}
 
