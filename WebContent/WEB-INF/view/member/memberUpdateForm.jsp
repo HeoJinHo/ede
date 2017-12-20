@@ -15,7 +15,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#nn").click(function(){
-			 window.open("../MemberAddrsearch.jsp", "", "top=300, left=750, width=400, height=400");
+			 window.open("../MemberAddrsearch2.jsp", "", "top=300, left=750, width=400, height=400");
 		});
 		
 	});
@@ -23,7 +23,7 @@
 </head>
 <body>
 <h1>Update ${member2}</h1>
-	<form action="./memberUpdate.member" method="post">
+	<form action="./memberUpdate.member" method="post" name="frm2">
 		아이디 : <input type="text" name="id" readonly="readonly" value="${member.id}" id="id"><br><br>
 		비밀번호 : <input type="password" name="pw" value="${member.pw}"><br><br>
 		이름 : <input type="text" name="name" value="${member.name}"><br><br>
@@ -50,7 +50,7 @@
 		</c:if>	
 		<c:if test = "${sessionScope.member.skin eq 'complex'}">
 		피부타입 : 건성<input type="radio" name="skin" value="dry">중성<input type="radio" name="skin" value="neutral"><br>
-		           지성<input type="radio" name="skin" value="oily">민감성<input type="radio" name="skin" checked="checked" value="complex"> 복합성<input type="radio" name="skin" value="sensitive">
+		           지성<input type="radio" name="skin" value="oily">민감성<input type="radio" name="skin" checked="checked" value="complex"> 복합성<input type="radio" name="skin" value="sensitive">ㄴㅁㅇ
 		</c:if>	
 		<c:if test = "${sessionScope.member.skin eq 'sensitive'}">
 		피부타입 : 건성<input type="radio" name="skin" value="dry">중성<input type="radio" name="skin" value="neutral"><br>
@@ -58,7 +58,8 @@
 		</c:if><br><br>
 		
 		
-		주소 : <input type="text" name="addr" value="${member.addr}"><input type="button" value="addr" id="nn"><br><br>
+		주소 : <input type="text" name="addr" value="${member.addr}"> - <input type="button" value="우편번호 찾기" id="nn"><br>
+			 <input type="text" name="addr2" value="${member.addr2}"><br>
 		핸드폰번호 : <input type="text" name="phone" value="${member.phone}"><br><br>
 		이메일 : <input type="email" name="email" value="${member.email}"><br><br>
 		<input type="submit" value="회원정보 수정" id="btn">

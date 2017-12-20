@@ -23,6 +23,7 @@ public class MemberUpdateService implements Action {
 			memberDTO.setBirth(request.getParameter("birth"));
 			memberDTO.setGender(request.getParameter("gender"));
 			memberDTO.setAddr(request.getParameter("addr"));
+			memberDTO.setAddr2(request.getParameter("addr2"));
 			memberDTO.setPhone(request.getParameter("phone"));
 			memberDTO.setEmail(request.getParameter("email"));
 			memberDTO.setSkin(request.getParameter("skin"));

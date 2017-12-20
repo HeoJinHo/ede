@@ -44,6 +44,10 @@
 </head>
 <body>
 
+
+
+
+	
 	<h1>Member Join</h1>
 	<form action="./memberJoin.member" method="post" name="frm">
 	<input type="hidden" name="idCheck" value="0">

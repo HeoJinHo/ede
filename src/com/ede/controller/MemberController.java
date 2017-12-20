@@ -52,8 +52,6 @@ public class MemberController extends HttpServlet {
 				String value= (String)prop.get(key);
 				Class cls = Class.forName(value);
 				Object ins = cls.newInstance();
-				System.out.println(key);
-				System.out.println(ins);
 				command.put(key, ins);
 			}
 			
@@ -77,7 +75,6 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String uri = request.getServletPath();
-		System.out.println(uri);
 		ActionFoward actionFoward=null;
 		Action action=null;
 		
