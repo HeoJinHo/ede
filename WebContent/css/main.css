@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* Remove the navbar's default margin-bottom and rounded borders */
+/*header*/
 .glowpick {
 	width: 100%;
 	height: 46px;
@@ -58,4 +59,5 @@ footer {
 		height: auto;
 	}
 }
+/*header 끝*/
 

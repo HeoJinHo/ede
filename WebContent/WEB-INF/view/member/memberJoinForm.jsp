@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="js/bootstrap.js"></script>
+<link href="../css/header.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -43,11 +47,15 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 
 
 
 
 	
+=======
+<%@ include file="../temp/header.jsp" %>
+>>>>>>> master
 	<h1>Member Join</h1>
 	<form action="./memberJoin.member" method="post" name="frm">
 	<input type="hidden" name="idCheck" value="0">
