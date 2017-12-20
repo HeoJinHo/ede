@@ -11,6 +11,8 @@ public class MemberJoinService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		System.out.println("create memberJoinservice");
+		System.out.println("method : "+request.getMethod());
 		if(request.getMethod().equals("POST")) {
 			MemberDTO memberDTO = new MemberDTO();		
 			memberDTO.setId(request.getParameter("id"));
@@ -34,7 +36,7 @@ public class MemberJoinService implements Action {
 				// TODO: handle exception
 			}
 			if(result>0) {
-			actionFoward.setCheck(false);
+			actionFoward.setCheck(true);
 			actionFoward.setPath("../index.jsp");	
 			}else {
 				request.setAttribute("message", "Fail");
@@ -42,7 +44,8 @@ public class MemberJoinService implements Action {
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
-		}else {
+		} else {
+			System.out.println("get in");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberJoinForm.jsp");
 		}

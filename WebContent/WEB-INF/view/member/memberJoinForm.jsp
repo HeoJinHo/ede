@@ -70,6 +70,6 @@
 		  <p><input type="text" placeholder="도로명주소" name="addr" id="addr"></p>
 		  <p><input type="text" placeholder="나머지주소" name="addr2" id="addr2"></p>
 	</form>	
-	<button id="btn">Join</button><a href="../index.jsp">회원가입 취소</a>
+	<button id="btn">Join</button> <a href="../index.jsp">회원가입 취소</a>
 </body>
 </html>

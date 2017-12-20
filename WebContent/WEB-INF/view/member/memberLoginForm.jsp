@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Member Loginsasadsdsdada</h1>
+	<h1>Member Login</h1>
 	<form action="./memberLogin.member" method="post">
 		ID <input type="text" name="id">
 		PW <input type="password" name="pw">
 		<button>Login</button>
 	</form>
-	<form action="./memberJoin.member">
+	<form action="../MemberAgree.jsp">
 		<button>Join</button>
 	</form>
 </body>
