@@ -47,15 +47,9 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 
-
-
-
-	
-=======
 <%@ include file="../temp/header.jsp" %>
->>>>>>> master
+
 	<h1>Member Join</h1>
 	<form action="./memberJoin.member" method="post" name="frm">
 	<input type="hidden" name="idCheck" value="0">

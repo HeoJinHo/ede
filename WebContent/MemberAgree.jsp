@@ -6,25 +6,43 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입 동의</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<link href="./css/header.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
-		$("#btn").click(function(){
-			if($("#allCheck"))
+		$("#allCheck").click(function(){
+			var check = document.getElementById("check");
+			var check2 = document.getElementById("check2");
+			check.checked = true;
+			check2.checked = true;
 		});
+		
+		 $(function(){
+			$("#btn").click(function(){
+				if($("#allCheck").prop("checked"){
+					frm.submit();
+				}else{
+					alert("약관에 동의 하세요~~");
+				}
+			});
+		});  
 	});
 	
 </script>
 </head>
 <body>
 
-
+<%@ include file="./WEB-INF/view/temp/header.jsp" %>
 	<h1>회원가입 약관 동의 </h1>
-	<form action="./member/memberJoin.member">
+	<form action="./member/memberJoin.member" name="frm" id="frm">
 	<table>
 		<tr>
 			<td>이용약관, 개인정보 수집 및 어용,<br>
 			위치정보 이용약관(선택), 프로모션 안내<br>
-			메일  수신(선택)에 모두 동의 합니다.  <input type="checkbox" id="allCheck"> </td>
+			메일  수신(선택)에 모두 동의 합니다.  <input type="checkbox" id="allCheck" checked="checked"> </td>
 		</tr>
 		
 		
