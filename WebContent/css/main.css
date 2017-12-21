@@ -15,8 +15,10 @@
 }
 
 #glowpick {
-	color: white;
+	color: #25CBD3;
+	font-weight: bolder;
 	text-align: center;
+	font-size: larger;
 	text-decoration: none;
 }
 
@@ -24,15 +26,41 @@
 	margin-bottom: 0;
 	border-radius: 0;
 }
-
+.navbar-header{
+	width: 230px;
+}
+.bar-right{
+	width: 230px;
+	float: right;
+}
 .navbar.navbar-inverse {
 	height: 120px;
 }
-
-.nav.navbar-nav.navbar-center {
-	margin-left: 400.3px;
+.nav.navbar-nav.navbar-right {
+	float: right;
 }
-
+.nav.navbar-nav.navbar-right a{
+	font-size: small;
+}
+.nav.navbar-nav.navbar-center {
+	float: none;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+.nav.navbar-nav.navbar-center a:hover{
+	color:#bfffff;
+}
+.nav.navbar-nav.navbar-center a{
+	color: #f6f6f6;
+	font-size: medium;	
+}
+.dropdown-menu{
+	background-color: black;
+}
+.dropdown-menu:hover{
+	color: orange;
+}
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
 	height: 450px
@@ -58,29 +86,45 @@
 		height: auto;
 	}
 }
+
 /*header 끝*/
 
 /********** main 시작 *************/
-#main {
-	width: 100%;
-	height: 942px;
-	padding-top: 51px;
-	margin-top: 67px;
+.carousel-inner img {
+    /*-webkit-filter: grayscale(90%);
+    filter: grayscale(90%); make all photos black and white */ 
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff;
+}
+.main_contents img{
+	 width: 80%;
+	 margin: 126.3 126.3;
+	 padding-top: 100px;
+}
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
 }
 /********** main 끝 *************/
+/********** footer 시작 *************/
 
 
+
+#downLinkBottom.died ~ .footerNew{
+    padding-bottom:0 !important;
+}
 
 footer.footerNew{
     padding-top:20px;
     box-sizing:border-box;}
 footer.footerNew *{
     box-sizing:border-box;
-    padding:0;
-    margin:0;
-    border:0;
-    outline:0;
-    }
+    padding:0;margin:0;border:0;outline:0;}
 footer.footerNew a{
     text-decoration:none;}
 footer.footerNew button{
@@ -88,13 +132,9 @@ footer.footerNew button{
 footer.footerNew ul{
     list-style:none;}
 footer.footerNew>div{
-    top:0;
-    left:0;
-    width:100%;
-    height:auto;
+    top:0;left:0;width:100%;height:auto;
     padding:30px 4vw;
-    background:#e0e0e0;
-    }
+    background:#e0e0e0;}
 footer.footerNew>div>div{
     top:0;left:0;width:100%;height:auto;}
 
@@ -103,11 +143,7 @@ footer.footerNew>div>div>section:nth-child(1){
     top:0;left:0;width:100%;height:auto;}
 footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1){
     float:left;
-    top:0;
-    left:0;
-    width:50%;
-    height:auto;
-    }
+    top:0;left:0;width:50%;height:auto;}
 footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>img{
     display:block;
     top:0;left:0;width:102px;height:14px;}
@@ -159,4 +195,49 @@ footer.footerNew>div>div>p{
     padding-top:12px;
     text-align:center;
     color:#707070;font-size:11px;font-weight:normal;}
+@media all and (max-width:450px){
+    footer.footerNew{
+        padding-bottom:64px;}
+}
+@media all and (max-width:550px) and (min-width:451px){
+    footer.footerNew{
+        padding-bottom:76px;}
+}
+@media all and (max-width:767px) and (min-width:551px){
+    footer.footerNew{
+        padding-bottom:107px;}
+}
+@media all and (min-width:768px){
+    footer.footerNew>div{
+        padding:30px 20vw;}
 
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>img{
+        width:122px;height:17px;}
+}
+@media all and (min-width:1024px){
+    footer.footerNew>div{
+        padding:30px 202px;}
+    footer.footerNew>div>div{
+        width:608px;left:0;right:0;
+        margin:0 auto;}
+    footer.footerNew>div>div:after{display:block;content:"";clear:both;}
+    footer.footerNew>div>div>*{
+        float:left;}
+
+    footer.footerNew>div>div>section:nth-child(1){
+        width:151px;
+        padding:6px 10px;}
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1){
+        width:100%;}
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(2){
+        float:left;
+        width:auto;
+        padding-top:7px;}
+    footer.footerNew .entrepreneurInfoBtn{
+        position:relative;}
+
+    footer.footerNew>div>div>section:nth-child(2){
+        width:457px;
+        padding-top:0;padding-left:20px;}
+}
+/********** footer 끝 *************/

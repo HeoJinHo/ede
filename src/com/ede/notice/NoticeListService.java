@@ -52,7 +52,7 @@ public class NoticeListService implements Action {
 
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardList.jsp");
-		}else {
+		}else {			
 			request.setAttribute("message", "로그인하렴");
 			request.setAttribute("path", "../index.jsp");
 			actionFoward.setCheck(true);

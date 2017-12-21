@@ -15,6 +15,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../css/header.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
@@ -41,9 +42,13 @@
 	<%@ include file="../temp/header.jsp" %>
 
  	
-	<a href="<%=request.getContextPath()%>/notice/noticeList.notice">NOTICE</a>
-	<a href="<%=request.getContextPath()%>/qna/qnaList.qna">QNA</a>
-	<a href="<%=request.getContextPath()%>/help/helpList.help">1:1 문의</a>
+	<div class="container">
+	  <ul class="breadcrumb">
+	    <li class="active"><a href="<%=request.getContextPath()%>/notice/noticeList.notice">NOTICE</a></li>
+	    <li><a href="<%=request.getContextPath()%>/qna/qnaList.qna">QNA</a></li>
+	    <li><a href="<%=request.getContextPath()%>/help/helpList.help">1:1 문의</a></li>   
+	  </ul>
+	</div>
 
 	<h2>${board}</h2>
 	<div>
