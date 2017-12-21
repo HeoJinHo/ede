@@ -19,7 +19,13 @@ public class ProductFilterService implements Action {
 		String category = request.getParameter("category");
 		String brand = request.getParameter("brand");
 		String[] type = request.getParameterValues("type");
-		//System.out.println(brand+" : brand in filterService");
+		System.out.println("del : "+del);
+		System.out.println("category : "+category);
+		System.out.println("brand : "+brand);
+		for(int i=0;i<type.length;i++) {
+			System.out.println("type : "+type[i]);
+		}
+
 		if (del.equals("category")) {
 			productDAO = new ProductDAO();
 			try {

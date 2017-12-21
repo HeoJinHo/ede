@@ -47,17 +47,16 @@ public class ProductDAO {
 		if (del.equals("category")) {
 			PreparedStatement st = null;
 			if(category.equals("reviewCount")) {
-				sql = "select * from product where pro_num in\r\n" + 
-						"((select pro_num from (select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc)))";
+				sql = "select * from product where";
 				if(type.length>0) {
-					sql=sql+" and type in (";
+					sql=sql+"  type in (";
 					for(int i=0;i<type.length;i++) {
 						sql=sql+"?";
 						if(i != type.length-1) {
 							sql=sql+",";
 						}
 					}
-					sql=sql+")";
+					sql=sql+") order by reply desc";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
@@ -265,23 +264,17 @@ public class ProductDAO {
 	// Regist
 	public int regist(ProductDTO productDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into product values(?,?,?,?,?,0,0,0,0,0,'re','co',?,?,?,?,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
 		st.setInt(3, productDTO.getPro_price());
 		st.setInt(4, productDTO.getCapacity());
 		st.setString(5, productDTO.getInfo());
-		st.setInt(6, productDTO.getGrade1());
-		st.setInt(7, productDTO.getGrade2());
-		st.setInt(8, productDTO.getGrade3());
-		st.setInt(9, productDTO.getGrade4());
-		st.setInt(10, productDTO.getGrade5());
-		st.setString(11, "pic_realName");
-		st.setString(12, "pic_compName");
-		st.setInt(13, productDTO.getEvt());
-		st.setInt(14, productDTO.getPro_num());
-		st.setString(15, productDTO.getCategory());
+		st.setInt(6, productDTO.getEvt());
+		st.setInt(7, productDTO.getPro_num());
+		st.setString(8, productDTO.getCategory());
+		st.setString(9, productDTO.getType());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;

@@ -1,54 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$("#dry").click(function(){
-			document.frm.submit();
-		});
-		$("#neutral").click(function(){
-			document.frm.submit();
-		});
-		$("#oily").click(function(){
-			document.frm.submit();
-		});
-		$("#complex").click(function(){
-			document.frm.submit();
-		});
-		$("#sensitive").click(function(){
-			document.frm.submit();
-		});
-		
-		<c:forEach items="${type}" var="i">
-		$("#${i}").prop("checked",true);
-		</c:forEach>
-	});
-</script>
-</head>
-<body>
-	<h1>Product List</h1>
-	<h3>filter</h3>
-	<form action="./productFilter.product" name="frm">
-	<input type="hidden" name="del" value="${del}">
-	<input type="hidden" name="brand" value="${brand}">
-	
-	건성<input type="checkbox" name="type" value="dry" id="dry">
-	중성<input type="checkbox" name="type" value="neutral" id="neutral">
-	지성<input type="checkbox" name="type" value="oily" id="oily">
-	복합성<input type="checkbox" name="type" value="complex" id="complex">
-	민감성<input type="checkbox" name="type" value="sensitive" id="sensitive">
-	<br>
-	댓글순<input type="radio" name="category" value="reviewCount" checked="checked">
-	평점순<input type="radio" name="category" value="avg">
-	</form>
-	
-	<div id="result">
+	<!-- todo type을 어케 담아줄지 필요하다 -->
+	<!-- del brand 도 -->
+	<h1>ajax</h1>
 	<table>
 	<tr>
 		<th>brand</th>
@@ -91,6 +47,3 @@
 			</tr>
 		</c:forEach>
 	</table>
-	</div>
-</body>
-</html>

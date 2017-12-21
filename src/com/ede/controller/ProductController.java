@@ -51,9 +51,7 @@ public class ProductController extends HttpServlet {
 				String key = (String)it.next();
 				String value = (String)prop.get(key);
 				Class cls = Class.forName(value);
-				System.out.println(key);
 				Object obj = cls.newInstance();
-				System.out.println(obj);
 				command.put(key, obj);
 			}
 		} catch (Exception e) {

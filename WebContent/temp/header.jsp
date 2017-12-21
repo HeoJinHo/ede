@@ -36,7 +36,7 @@
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
-						<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product</a></li>
+						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Product</a></li>
 						<li><a href="#">전문가</a></li>
 						<li><a href="#">Event</a></li>
 						<li><a href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>

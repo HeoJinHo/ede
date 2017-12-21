@@ -26,15 +26,9 @@ public class ProductRegistService implements Action{
 			productDTO.setPro_price(Integer.parseInt(request.getParameter("pro_price")));
 			productDTO.setCapacity(Integer.parseInt(request.getParameter("capacity")));
 			productDTO.setInfo(request.getParameter("info"));
-			productDTO.setGrade1(Integer.parseInt(request.getParameter("grade1")));
-			productDTO.setGrade2(Integer.parseInt(request.getParameter("grade2")));
-			productDTO.setGrade3(Integer.parseInt(request.getParameter("grade3")));
-			productDTO.setGrade4(Integer.parseInt(request.getParameter("grade4")));
-			productDTO.setGrade5(Integer.parseInt(request.getParameter("grade5")));
-			productDTO.setPic_realName(request.getParameter("pic_realName"));
-			productDTO.setPic_compName(request.getParameter("pic_compName"));
 			productDTO.setEvt(Integer.parseInt(request.getParameter("evt")));
 			productDTO.setCategory(request.getParameter("category"));
+			productDTO.setType(request.getParameter("type"));
 			int result = 0;
 			try {
 				result=productDAO.regist(productDTO);
@@ -49,7 +43,7 @@ public class ProductRegistService implements Action{
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/product/productRegist.jsp");
 		}
-		
+		request.setAttribute("del", "category");
 		return actionFoward;
 	}
 }

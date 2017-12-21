@@ -17,19 +17,13 @@
 </head>
 <body>
 <form id="frm" action="./productRegist.product" method="post">
-	<p>brand : <input type="text" name="brand"><p>
-	<p>pro_name : <input type="text" name="pro_name"><p>
-	<p>pro_price : <input type="text" name="pro_price"><p>
-	<p>capacity :<input type="text" name="capacity"><p>
-	<p>grade1 :<input type="text" name="grade1"><p>
-	<p>grade2 :<input type="text" name="grade2"><p>
-	<p>grade3 :<input type="text" name="grade3"><p>
-	<p>grade4 :<input type="text" name="grade4"><p>
-	<p>grade5 :<input type="text" name="grade5"><p>
-	<p>pic_realName : <input type="text" name="pic_realName"><p>
-	<p>pic_compName : <input type="text" name="pic_compName"><p>
-	<p>evt : <input type="text" name="evt"><p>
-	<p>category : <input type="text" name="category"><p>
+	<p>brand : <input type="text" name="brand"></p>
+	<p>pro_name : <input type="text" name="pro_name"></p>
+	<p>pro_price : <input type="text" name="pro_price"></p>
+	<p>capacity :<input type="text" name="capacity"></p>
+	<p>evt : <input type="text" name="evt"></p>
+	<p>category : <input type="text" name="category"></p>
+	<p>type : <input type="text" name="type"></p>
 	
 	<input type="button" value="write" id="savebutton">
 </form>

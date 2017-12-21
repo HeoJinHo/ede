@@ -18,7 +18,7 @@
 
 
 	<!-- category by kj -->
-	<a href ="./product/categoryList.product?del=category">product</a>
+	<a href ="./product/mainList.product?del=category">product</a>
 	
 	<!-- notice, qna by suin -->
 	<a href="./notice/noticeList.notice">Notice List</a>
