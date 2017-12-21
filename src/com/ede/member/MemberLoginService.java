@@ -18,6 +18,7 @@ public class MemberLoginService implements Action {
 			MemberDTO memberDTO = new MemberDTO();
 			memberDTO.setId(request.getParameter("id"));
 			memberDTO.setPw(request.getParameter("pw"));
+			System.out.println(memberDTO.getId());
 			//job
 			MemberDAO memberDAO = new MemberDAO();
 			try {
