@@ -14,6 +14,7 @@ public class CategoryListService implements Action{
 		ActionFoward actionFoward = new ActionFoward();
 		ProductDAO categoryDAO = new ProductDAO();
 		String del = request.getParameter("del");
+		//System.out.println(del);
 		if(del.equals("category")) {
 			try {
 				List<ProductDTO> ar = categoryDAO.categoryList(del);

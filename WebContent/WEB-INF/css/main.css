@@ -1,0 +1,243 @@
+@charset "UTF-8";
+/* Remove the navbar's default margin-bottom and rounded borders */
+/*header*/
+.glowpick {
+	width: 100%;
+	height: 46px;
+	margin: 0 auto;
+}
+
+#gp {
+	font-size: xx-large;
+	list-style: none;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#glowpick {
+	color: #25CBD3;
+	font-weight: bolder;
+	text-align: center;
+	font-size: larger;
+	text-decoration: none;
+}
+
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+.navbar-header{
+	width: 230px;
+}
+.bar-right{
+	width: 230px;
+	float: right;
+}
+.navbar.navbar-inverse {
+	height: 120px;
+}
+.nav.navbar-nav.navbar-right {
+	float: right;
+}
+.nav.navbar-nav.navbar-right a{
+	font-size: small;
+}
+.nav.navbar-nav.navbar-center {
+	float: none;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+.nav.navbar-nav.navbar-center a:hover{
+	color:#bfffff;
+}
+.nav.navbar-nav.navbar-center a{
+	color: #f6f6f6;
+	font-size: medium;	
+}
+.dropdown-menu{
+	background-color: black;
+}
+.dropdown-menu:hover{
+	color: orange;
+}
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+	height: 450px
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+/*header 끝*/
+
+/********** main 시작 *************/
+.carousel-inner img {
+    /*-webkit-filter: grayscale(90%);
+    filter: grayscale(90%); make all photos black and white */ 
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff;
+}
+.main_contents img{
+	 width: 80%;
+	 margin: 126.3 126.3;
+	 padding-top: 100px;
+}
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+/********** main 끝 *************/
+/********** footer 시작 *************/
+
+
+
+#downLinkBottom.died ~ .footerNew{
+    padding-bottom:0 !important;
+}
+
+footer.footerNew{
+    padding-top:20px;
+    box-sizing:border-box;}
+footer.footerNew *{
+    box-sizing:border-box;
+    padding:0;margin:0;border:0;outline:0;}
+footer.footerNew a{
+    text-decoration:none;}
+footer.footerNew button{
+    background:transparent;}
+footer.footerNew ul{
+    list-style:none;}
+footer.footerNew>div{
+    top:0;left:0;width:100%;height:auto;
+    padding:30px 4vw;
+    background:#e0e0e0;}
+footer.footerNew>div>div{
+    top:0;left:0;width:100%;height:auto;}
+
+footer.footerNew>div>div>section:nth-child(1):after{display:block;content:"";clear:both;}
+footer.footerNew>div>div>section:nth-child(1){
+    top:0;left:0;width:100%;height:auto;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1){
+    float:left;
+    top:0;left:0;width:50%;height:auto;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>img{
+    display:block;
+    top:0;left:0;width:102px;height:14px;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>p{
+    display:block;
+    top:0;left:0;width:auto;height:auto;
+    color:#707070;font-size:11px;font-weight:normal;
+    padding-top:14px;}
+footer.footerNew>div>div>section:nth-child(1)>div:nth-child(2){
+    float:right;position:relative;
+    top:0;left:0;width:50%;height:auto;}
+footer.footerNew .entrepreneurInfoBtn{
+    display:block;position:absolute;
+    top:0;right:0;width:auto;height:auto;
+    border:solid 1px #707070;
+    background:#e0e0e0;
+    cursor:pointer;}
+footer.footerNew .entrepreneurInfoBtn>button{
+    display:block;
+    top:0;left:0;width:auto;height:21px;
+    text-align:center;vertical-align:middle;
+    padding:0 6px;
+    font-size:11px;font-weight:normal;color:#707070;
+    cursor:pointer;
+    line-height:21px;
+}
+
+footer.footerNew>div>div>section:nth-child(2){
+    top:0;left:0;width:100%;height:auto;
+    padding-top:9px;}
+footer.footerNew>div>div>section:nth-child(2)>ul{
+    top:0;left:0;width:100%;height:auto;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li:after{display:block;content:"";clear:both;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li{
+    top:0;left:0;width:100%;height:auto;
+    padding:3px 0;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li>p:nth-child(1){
+    float:left;display:block;
+    top:0;left:0;width:34%;height:auto;
+    color:#707070;font-size:11px;font-weight:normal;}
+footer.footerNew>div>div>section:nth-child(2)>ul>li>p:nth-child(2){
+    float:right;display:block;
+    top:0;left:0;width:66%;height:auto;
+    padding-left:3%;
+    color:#707070;font-size:11px;font-weight:bold;}
+
+footer.footerNew>div>div>p{
+    top:0;left:0;width:100%;height:auto;
+    padding-top:12px;
+    text-align:center;
+    color:#707070;font-size:11px;font-weight:normal;}
+@media all and (max-width:450px){
+    footer.footerNew{
+        padding-bottom:64px;}
+}
+@media all and (max-width:550px) and (min-width:451px){
+    footer.footerNew{
+        padding-bottom:76px;}
+}
+@media all and (max-width:767px) and (min-width:551px){
+    footer.footerNew{
+        padding-bottom:107px;}
+}
+@media all and (min-width:768px){
+    footer.footerNew>div{
+        padding:30px 20vw;}
+
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>img{
+        width:122px;height:17px;}
+}
+@media all and (min-width:1024px){
+    footer.footerNew>div{
+        padding:30px 202px;}
+    footer.footerNew>div>div{
+        width:608px;left:0;right:0;
+        margin:0 auto;}
+    footer.footerNew>div>div:after{display:block;content:"";clear:both;}
+    footer.footerNew>div>div>*{
+        float:left;}
+
+    footer.footerNew>div>div>section:nth-child(1){
+        width:151px;
+        padding:6px 10px;}
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1){
+        width:100%;}
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(2){
+        float:left;
+        width:auto;
+        padding-top:7px;}
+    footer.footerNew .entrepreneurInfoBtn{
+        position:relative;}
+
+    footer.footerNew>div>div>section:nth-child(2){
+        width:457px;
+        padding-top:0;padding-left:20px;}
+}
+/********** footer 끝 *************/

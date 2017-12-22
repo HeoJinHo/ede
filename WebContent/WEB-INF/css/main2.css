@@ -1,0 +1,46 @@
+@charset "UTF-8";
+@media all and (max-width:450px){
+    footer.footerNew{
+        padding-bottom:64px;}
+}
+@media all and (max-width:550px) and (min-width:451px){
+    footer.footerNew{
+        padding-bottom:76px;}
+}
+@media all and (max-width:767px) and (min-width:551px){
+    footer.footerNew{
+        padding-bottom:107px;}
+}
+@media all and (min-width:768px){
+    footer.footerNew>div{
+        padding:30px 20vw;}
+
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1)>img{
+        width:122px;height:17px;}
+}
+@media all and (min-width:1024px){
+    footer.footerNew>div{
+        padding:30px 202px;}
+    footer.footerNew>div>div{
+        width:608px;left:0;right:0;
+        margin:0 auto;}
+    footer.footerNew>div>div:after{display:block;content:"";clear:both;}
+    footer.footerNew>div>div>*{
+        float:left;}
+
+    footer.footerNew>div>div>section:nth-child(1){
+        width:151px;
+        padding:6px 10px;}
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(1){
+        width:100%;}
+    footer.footerNew>div>div>section:nth-child(1)>div:nth-child(2){
+        float:left;
+        width:auto;
+        padding-top:7px;}
+    footer.footerNew .entrepreneurInfoBtn{
+        position:relative;}
+
+    footer.footerNew>div>div>section:nth-child(2){
+        width:457px;
+        padding-top:0;padding-left:20px;}
+}
