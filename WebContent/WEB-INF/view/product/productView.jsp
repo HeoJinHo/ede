@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+	$('#blog-btn').click(()=>{
+		alert("ininin");
+		$.get('/WEB-INF/view/product/productViewBlog.jsp', (data)=>{
+			var result = data;
+			alert(result);
+		});
+	});
+</script>
 </head>
 <body>
 		<p>${list.pic_realName}</p>
@@ -43,20 +52,10 @@
 			${i.pro_num}
 			<br>
 		</c:forEach>
+
 		<button id="blog-btn">BLOG</button>
-<<<<<<< HEAD
-<<<<<<< HEAD
-			<div id="blog-info">전체 글</div>
 		<button id="blog-more">더보기</button>
-=======
-			<div id="blog-info"></div>
-			
->>>>>>> parent of 61a8ec5... blog 1221 21:20
-=======
-			<div id="blog-info"></div>
-			
->>>>>>> parent of 61a8ec5... blog 1221 21:20
-			
+
 		<button id="buy-btn">BUY_INFO</button>
 		<a href="http://shopping.naver.com/search/all_search.nhn?query=빌리프 위치헤이즐 허벌 익스트랙트 토너&amp;sort=price_asc" target="_blank" class="plus_more pull-right">더보기 </a>
 </body>

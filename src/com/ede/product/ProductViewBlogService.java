@@ -50,11 +50,7 @@ public class ProductViewBlogService implements Action {
                 getResult.append(inputLine);
             }
             br.close();
-            JSONObject jsonObject = new JSONObject();
-            System.out.println(getResult.toString());
-            jsonObject.put("result", getResult.toString().replace("\"", "\"").replace("\\", "").trim());
-            jsonObject.put("startNum", start);
-            request.setAttribute("result", jsonObject);
+            request.setAttribute("result", getResult.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
