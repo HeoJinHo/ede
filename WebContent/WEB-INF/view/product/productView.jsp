@@ -7,72 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-<<<<<<< HEAD
-		
-		function getResultSearch(){
-		}
-		
-		
-		$('#blog-btn').click(()=>{
-			//전체 글 수를 담을 p태그 생성
-			var name = $('#name').text();
-			var start = 1;
-			var display = 10;
-			
-			$.get("./productViewBlog.product?query="+name+"&start="+start+"&display="+display, function(data){
-				var result2 = JSON.parse(data);
-				var result = JSON.parse(result2.result);
-				var start = result2.startNum;
-				//alert(start);
-				alert(result.items[0].title);
-				
-				$('#blog-info').text(result.total);
 
-				//$("#blog-info").append(result.total);
-				var count = 0;
-				for(var i=start;i<start+10;i++){
-					var divId = "<div id='blog-inner"+i+"'></div>";
-					$("#blog-info").append(divId);
-					
-					var title = $("<p></p>").html(result.items[count].title);
-					var description = $("<p></p>").html(result.items[count].description);
-					var bloggername = $("<p></p>").html(result.items[count].bloggername);
-					var postdate = $("<p></p>").html(result.items[count].postdate);
-					var link = $("<p></p>").html(result.items[count].link);
-					$("#blog-inner"+i).html(title, description, bloggername, postdate, link);
-					
-					count++;
-				}
-			});
-			
-			/* 
-			var result = ${result}; //service에서 json받기
-			alert("hi");
-			alert(result);
-			*/
-			
-			
-			
-
-		});
-=======
-		$("#btn").click(function(){
-			$.get("../ajax_1/server_1.jsp?age="+age, function(data){
-				$("#reply").html(data);
-			});
-		})
->>>>>>> parent of 61a8ec5... blog 1221 21:20
-		
-		$('#blog-btn').click(()=>{
-			alert("ininin");
-			$.get('/WEB-INF/view/product/productViewBlog.jsp', (data)=>{
-				$('#blog-info').html(data);
-			});
-		});
-	});
-</script>
 </head>
 <body>
 		<p>${list.pic_realName}</p>
@@ -110,8 +45,13 @@
 		</c:forEach>
 		<button id="blog-btn">BLOG</button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<div id="blog-info">전체 글</div>
 		<button id="blog-more">더보기</button>
+=======
+			<div id="blog-info"></div>
+			
+>>>>>>> parent of 61a8ec5... blog 1221 21:20
 =======
 			<div id="blog-info"></div>
 			
