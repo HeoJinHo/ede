@@ -9,49 +9,73 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
-		
-		var type;
-		var a =0;
-		$(".type").each(function(){
-			if($(this).prop("checked")==true) {
-				alert($(this).value);
-			};
-		});
-		
+		var type = [];
+		var category;
 		
 		$("#dry").click(function(){
+			type = [];
+			var category = $("input[type=radio][name=category]:checked").val()
 			$(".type").each(function(){
-				alert($(this).prop("checked"));
+				if($(this).prop("checked")==true) {
+					type.push($(this).val());
+				};
 			});
 			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
 				$("#result").html(data);
 			});
 		});
 		$("#neutral").click(function(){
+			type = [];
+			var category = $("input[type=radio][name=category]:checked").val()
+			$(".type").each(function(){
+				if($(this).prop("checked")==true) {
+					type.push($(this).val());
+				};
+			});
 			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
 				$("#result").html(data);
 			});
 		});
 		$("#oily").click(function(){
+			type = [];
+			var category = $("input[type=radio][name=category]:checked").val()
 			$(".type").each(function(){
-				alert($(this).prop("checked"));
+				if($(this).prop("checked")==true) {
+					type.push($(this).val());
+				};
 			});
-			alert(type);
 			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
 				$("#result").html(data);
 			});
 		});
 		$("#complex").click(function(){
+			type = [];
+			var category = $("input[type=radio][name=category]:checked").val()
+			$(".type").each(function(){
+				if($(this).prop("checked")==true) {
+					type.push($(this).val());
+				};
+			});
 			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
 				$("#result").html(data);
 			});
 		});
 		$("#sensitive").click(function(){
+			type =[];
+			var category = $("input[type=radio][name=category]:checked").val()
+			$(".type").each(function(){
+				if($(this).prop("checked")==true) {
+					type.push($(this).val());
+				};
+			});
 			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
 				$("#result").html(data);
 			});
 		});
+		
+		$("#check").click(function(){
+			alert(type);
+		})
 		
 		<c:forEach items="${type}" var="i">
 		$("#${i}").prop("checked",true);
@@ -66,15 +90,16 @@
 	<input type="hidden" name="del" value="${del}">
 	<input type="hidden" name="brand" value="${brand}">
 	
-	건성<input type="checkbox" name="type" value="dry" id="dry" class="type">
-	중성<input type="checkbox" name="type" value="neutral" id="neutral" class="type">
-	지성<input type="checkbox" name="type" value="oily" id="oily" class="type">
-	복합성<input type="checkbox" name="type" value="complex" id="complex" class="type">
-	민감성<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type">
+	건성<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">
+	중성<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">
+	지성<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">
+	복합성<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">
+	민감성<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">
 	<br>
 	댓글순<input type="radio" name="category" value="reviewCount" checked="checked" class="category">
 	평점순<input type="radio" name="category" value="avg" class="category">
 	</form>
+	<button id="check">hi</button>
 	
 	<div id="result">
 	<table>
