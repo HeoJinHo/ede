@@ -7,13 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style type="text/css">
-div{
-	border : 1px solid red;
-}
-</style>
 <script type="text/javascript">
 	$(function(){
+<<<<<<< HEAD
 		
 		function getResultSearch(){
 		}
@@ -61,16 +57,20 @@ div{
 			
 
 		});
-		
-		var start = 11;
-		$('#blog-more').click(()=>{
-			var name = $('#name').text();
-			$.get("./productViewBlog.product?query="+name+"&start="+start+"&display="+display, (data)=>{
-				$('#blog-info').append(data);
+=======
+		$("#btn").click(function(){
+			$.get("../ajax_1/server_1.jsp?age="+age, function(data){
+				$("#reply").html(data);
 			});
-			start += 10;
-		});
+		})
+>>>>>>> parent of 61a8ec5... blog 1221 21:20
 		
+		$('#blog-btn').click(()=>{
+			alert("ininin");
+			$.get('/WEB-INF/view/product/productViewBlog.jsp', (data)=>{
+				$('#blog-info').html(data);
+			});
+		});
 	});
 </script>
 </head>
@@ -78,7 +78,7 @@ div{
 		<p>${list.pic_realName}</p>
 		<p>${list.pic_compName}</p>
 		<p>${list.brand}</p>
-		<p id="name">${list.pro_name}</p>
+		<p>${list.pro_name}</p>
 		<p>${list.pro_price}</p>
 		<p>${list.capacity}</p>
 		<p>${list.grade1}</p>
@@ -109,10 +109,15 @@ div{
 			<br>
 		</c:forEach>
 		<button id="blog-btn">BLOG</button>
+<<<<<<< HEAD
 			<div id="blog-info">전체 글</div>
 		<button id="blog-more">더보기</button>
+=======
+			<div id="blog-info"></div>
+			
+>>>>>>> parent of 61a8ec5... blog 1221 21:20
 			
 		<button id="buy-btn">BUY_INFO</button>
-		<a href="http://shopping.naver.com/search/all_search.nhn?query=빌리프 위치헤이즐 허벌 익스트랙트 토너&amp;sort=price_asc" target="_blank" class="plus_more pull-right">상품보기 </a>
+		<a href="http://shopping.naver.com/search/all_search.nhn?query=빌리프 위치헤이즐 허벌 익스트랙트 토너&amp;sort=price_asc" target="_blank" class="plus_more pull-right">더보기 </a>
 </body>
 </html>
