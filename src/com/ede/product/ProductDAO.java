@@ -8,8 +8,6 @@ import java.util.List;
 
 import com.ede.util.DBConnector;
 
-import oracle.net.aso.p;
-
 public class ProductDAO {
 	
 	//avgUpdate

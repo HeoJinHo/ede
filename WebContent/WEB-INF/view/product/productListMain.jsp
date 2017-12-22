@@ -6,7 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="../css/header.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		var type = [];
@@ -93,22 +98,34 @@
 </script>
 </head>
 <body>
-	<h1>Product List</h1>
-	<h3>filter</h3>
+<%@ include file="../temp/header.jsp"%>
 	<input type="hidden" name="del" value="${del}">
 	<input type="hidden" name="brand" value="${brand}">
-	
-	건성<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">
-	중성<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">
-	지성<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">
-	복합성<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">
-	민감성<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">
+	<label class="checkbox-inline">
+	<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">건성
+	</label>
+    <label class="checkbox-inline">
+	<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">중성
+	</label>
+	<label class="checkbox-inline">
+	<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">지성
+	</label>
+	<label class="checkbox-inline">
+	<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">복합성
+	</label>
+	<label class="checkbox-inline">
+	<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">민감성
+	</label>
 	<br>
-	댓글순<input type="radio" name="category" value="reviewCount" checked="checked" class="category">
-	평점순<input type="radio" name="category" value="avg" class="category">
+	<label class="radio-inline">
+	<input type="radio" name="category" value="reviewCount" checked="checked" class="category">댓글순
+	</label>
+	<label class="radio-inline">
+	<input type="radio" name="category" value="avg" class="category">평점순
+	</label>
 	
 	<div id="result">
-	<table>
+	<table class="table">
 	<tr>
 		<th>brand</th>
 		<th>pro_Name</th>
@@ -153,5 +170,6 @@
 		</c:forEach>
 	</table>
 	</div>
+	<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
