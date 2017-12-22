@@ -4,7 +4,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- todo type을 어케 담아줄지 필요하다 -->
 	<!-- del brand 도 -->
-	<h1>ajax</h1>
 	<table>
 	<tr>
 		<th>brand</th>
@@ -24,6 +23,7 @@
 		<th>category</th>
 		<th>type</th>
 		<th>avg</th>
+		<th>reply</th>
 	</tr>
 		<c:forEach items="${list}" var="i">
 			<tr>
@@ -44,6 +44,7 @@
 				<td>${i.category }
 				<td>${i.type }</td>
 				<td>${i.avg }</td>
+				<td>${i.reply }</td>
 			</tr>
 		</c:forEach>
 	</table>

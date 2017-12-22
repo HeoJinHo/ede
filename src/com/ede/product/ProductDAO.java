@@ -20,17 +20,17 @@ public class ProductDAO {
 			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
 					",reply=(select max(reply)+1 reply from product where pro_num=?),grade5=(select max(grade5)+1 grade5 from product) where pro_num=?";
 		} else if (grade==4) {
-			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
-					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product) where pro_num=?";
 		} else if (grade==3) {
-			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
-					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product) where pro_num=?";
 		} else if (grade==2) {
-			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
-					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product) where pro_num=?";
 		} else if (grade==1) {
-			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
-					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product) where pro_num=?";
 		}
 		//System.out.println(sql);
 		PreparedStatement st = con.prepareStatement(sql);
@@ -103,6 +103,7 @@ public class ProductDAO {
 				productDTO.setCategory(rs.getString("category"));
 				productDTO.setType(rs.getString("type"));
 				productDTO.setAvg(rs.getDouble("avg"));
+				productDTO.setReply(rs.getInt("reply"));
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
@@ -161,6 +162,7 @@ public class ProductDAO {
 				productDTO.setCategory(rs.getString("category"));
 				productDTO.setType(rs.getString("type"));
 				productDTO.setAvg(rs.getDouble("avg"));
+				productDTO.setReply(rs.getInt("reply"));
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
@@ -254,10 +256,10 @@ public class ProductDAO {
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		if (del.equals("category")) {
-			String sql = "select * from product order by grade5 desc";
+			String sql = "select * from product order by reply desc";
 			st = con.prepareStatement(sql);
 		} else if (del.equals("brand")) {
-			String sql = "select * from product where brand=? order by grade5 desc ";
+			String sql = "select * from product where brand=? order by reply desc ";
 			st = con.prepareStatement(sql);
 			st.setString(1, brand);
 		}
@@ -281,6 +283,7 @@ public class ProductDAO {
 			productDTO.setCategory(rs.getString("category"));
 			productDTO.setType(rs.getString("type"));
 			productDTO.setAvg(rs.getDouble("avg"));
+			productDTO.setReply(rs.getInt("reply"));
 			ar.add(productDTO);
 		}
 		DBConnector.disConnect(rs, st, con);

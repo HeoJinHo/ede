@@ -9,9 +9,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$("#btn").click(function(){
-			$.get("../ajax_1/server_1.jsp?age="+age, function(data){
-				$("#reply").html(data);
+		$("#replyWrite").click(function(){
+			var contents = $("#contents").val();
+			var report = $("#report").val();
+			var grade = $("#grade").val();
+			var pro_num = ${list.pro_num};
+			alert(contents);
+			alert(report);
+			alert(grade);
+			alert(pro_num);
+			$.get("./productWrite.product?contents="+contents+"&report="+report+"&grade="+grade+"&pro_num="+pro_num, function(data){
+				$("#result").html(data);
 			});
 		})
 	});
@@ -33,24 +41,27 @@
 		<p>${list.evt}</p>
 		<p>${list.pro_num}</p>
 		<p>${list.category}</p>
-		<!-- ajax로 바꿔야함 -->
-		<form action="./productWrite.product" method="post">
-			<p>contents<input type="text" name="contents"></p>
-			<p>report<input type="text" name="report"></p>
-			<p>grade<input type="text" name="grade"></p>
-			<input type="hidden" name="pro_num" value="${list.pro_num}">
-		<button>write</button>
-		</form>
-		<%-- <a href="./productWrite.product?pro_num=${list.pro_num}">글쓰기</a> --%>
-		<br>
-		<c:forEach items="${replyList}" var="i">
-			${i.id}
-			${i.contents}
-			${i.report}
-			${i.grade}
-			${i.pro_num}
-			<br>
-		</c:forEach>
+		
+		
+		<button id="reply">reply</button><button id="blog">blog</button><button id="buy">buy</button>
+		
+		<div id="blog or buy">
+		<p>contents<input type="text" name="contents" value="" id="contents"></p>
+		<p>report<input type="text" name="report" value="" id="report"></p>
+		<p>grade<input type="text" name="grade" value="" id="grade"></p>
+		<button id="replyWrite">replyWrite</button>
+		
+		<div id="result">
+			<c:forEach items="${replyList}" var="i">
+				${i.id}
+				${i.contents}
+				${i.report}
+				${i.grade}
+				${i.pro_num}
+				<br>
+			</c:forEach>
+		</div>
+		</div>
 
 </body>
 </html>

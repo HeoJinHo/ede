@@ -73,9 +73,18 @@
 			});
 		});
 		
-		$("#check").click(function(){
-			alert(type);
-		})
+		$(".category").click(function(){
+			type =[];
+			var category = $("input[type=radio][name=category]:checked").val()
+			$(".type").each(function(){
+				if($(this).prop("checked")==true) {
+					type.push($(this).val());
+				};
+			});
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+				$("#result").html(data);
+			});
+		});
 		
 		<c:forEach items="${type}" var="i">
 		$("#${i}").prop("checked",true);
@@ -86,7 +95,6 @@
 <body>
 	<h1>Product List</h1>
 	<h3>filter</h3>
-	<form action="./productFilter.product" name="frm">
 	<input type="hidden" name="del" value="${del}">
 	<input type="hidden" name="brand" value="${brand}">
 	
@@ -98,8 +106,6 @@
 	<br>
 	댓글순<input type="radio" name="category" value="reviewCount" checked="checked" class="category">
 	평점순<input type="radio" name="category" value="avg" class="category">
-	</form>
-	<button id="check">hi</button>
 	
 	<div id="result">
 	<table>
@@ -121,6 +127,7 @@
 		<th>category</th>
 		<th>type</th>
 		<th>avg</th>
+		<th>reply</th>
 	</tr>
 		<c:forEach items="${list}" var="i">
 			<tr>
@@ -141,6 +148,7 @@
 				<td>${i.category }
 				<td>${i.type }</td>
 				<td>${i.avg }</td>
+				<td>${i.reply }</td>
 			</tr>
 		</c:forEach>
 	</table>
