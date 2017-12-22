@@ -36,7 +36,7 @@ public class MemberJoinService implements Action {
 				// TODO: handle exception
 			}
 			if(result>0) {
-			actionFoward.setCheck(true);
+			actionFoward.setCheck(false);
 			actionFoward.setPath("../index.jsp");	
 			}else {
 				request.setAttribute("message", "Fail");
@@ -45,7 +45,6 @@ public class MemberJoinService implements Action {
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
 		} else {
-			System.out.println("get in");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberJoinForm.jsp");
 		}

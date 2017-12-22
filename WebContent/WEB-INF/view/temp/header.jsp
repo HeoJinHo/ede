@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Header 시작 -->
 <body>
 	<header>
@@ -55,19 +56,22 @@
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
-				<div class="modal-content">
+				<div class="modal-content" id="modal" style="background-color: #333; margin-top: 45%">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">회원가입</h4>
+						<h4 class="modal-title" style="color: white; text-align: center; float: center;">로그인</h4>
 					</div>
 					<div class="modal-body">
-						<form action="./memberLogin.member" method="post">
-							ID <input type="text" name="id"> PW <input
-								type="password" name="pw">
-							<button class="btn btn-primary">로그인</button>
+						<form action="<%=request.getContextPath()%>/member/memberLogin.member" method="post">
+							<input type="text" name="id" placeholder="User ID" class="form-control" style="width: 50%; display: block; margin-left: auto; margin-right: auto;"><br>
+							<input type="password" name="pw" placeholder="User PassWord" class="form-control" style="width: 50%; display: block; margin-left: auto; margin-right: auto;"><br><br>
+							<button class="btn" style="background-color: #74c200; width: 30%; display: block; margin-left: auto; margin-right: auto; color: white;">로그인</button>
 						</form>
-						<form action="../MemberAgree.jsp">
-							<button class="btn btn-primary" id="join">회원가입</button>
+						<div class="modal-footer">
+						<h6 class="modal-title" style="color: white; text-align: center; float: center;">아직 회원이 아니신가요?</h4>
+					</div>
+						<form action="./MemberAgree.jsp">
+							<button class="btn" id="join" style="background-color: #b3b3b3; width: 45%; display: block; margin-left: auto; margin-right: auto; color: white;">회원가입</button>
 						</form>
 					</div>
 					<div class="modal-footer">

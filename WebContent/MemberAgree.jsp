@@ -5,59 +5,64 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입 동의</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <link href="./css/header.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		$("#allCheck").click(function(){
-			var check = document.getElementById("check");
-			var check2 = document.getElementById("check2");
-			check.checked = true;
-			check2.checked = true;
+			$("#check").prop("checked",true);
+			$("#check2").prop("checked",true);
 		});
-		
-		 $(function(){
-			$("#btn").click(function(){
-				if($("#allCheck").prop("checked"){
-					frm.submit();
-				}else{
-					alert("약관에 동의 하세요~~");
-				}
-			});
-		});  
 	});
 	
 </script>
+
 </head>
-<body>
+<body style="background-color: #f5f6f7;">
 
 <%@ include file="./WEB-INF/view/temp/header.jsp" %>
-	<h1>회원가입 약관 동의 </h1>
+	<h1 style="color: #25CBD3; text-align: center; float: center;">GLOWPICK </h1>
+<div class="container" style="width: 30%">
 	<form action="./member/memberJoin.member" name="frm" id="frm">
-	<table>
+	<table class="table table-bordered">
 		<tr>
-			<td>이용약관, 개인정보 수집 및 어용,<br>
+			<td style="font-size: 14px; font-weight: 700; line-height: 24px; color: #333;">이용약관, 개인정보 수집 및 어용,<br>
 			위치정보 이용약관(선택), 프로모션 안내<br>
-			메일  수신(선택)에 모두 동의 합니다.  <input type="checkbox" id="allCheck" checked="checked"> </td>
+			메일  수신(선택)에 모두 동의 합니다.</td><td>
+			<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-success active">
+				<input type="checkbox" id="allCheck" autocomplete="off" checked >
+				<span class="glyphicon glyphicon-ok"></span>
+			</label>
+			</div>
 		</tr>
 		
 		
 		<tr>
-			<td>글로우픽 이용약관 동의(필수) <input type="checkbox" id="check"></td>
+			<td style="font-size: 14px; font-weight: 800; line-height: 24px; color: #333;">글로우픽 이용약관 동의 <span style="font-size: 12px; font-weight: 400; color: #08a600;">(필수)</span></td> 
+			<td>
+			<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-success active">
+				<input type="checkbox" id="check" autocomplete="off" checked >
+				<span class="glyphicon glyphicon-ok"></span>
+			</label>
+			</div>
 		</tr>
 		<tr>
-			<td><textarea rows="10" cols="50">제 1 조 (목적)
-이 약관은 네이버 주식회사 ("회사" 또는 "네이버")가 제공하는 네이버 및 네이버 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+			<td colspan="2"><div style="overflow: scroll; height: 150px; font-size: 12px; line-height: 16px; color: #666;"><h3 style="font-size: 12px; font-weight: 700; color: #666; line-height: 16px;">제 1 조 (목적)</h3>
+이 약관은 네이버 주식회사 ("회사" 또는 "네이버")가 제공하는 네이버 및 네이버 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.<br>
 
-제 2 조 (정의)
-이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
-
-①"서비스"라 함은 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와 상관없이 "회원"이 이용할 수 있는 네이버 및 네이버 관련 제반 서비스를 의미합니다.
-②"회원"이라 함은 회사의 "서비스"에 접속하여 이 약관에 따라 "회사"와 이용계약을 체결하고 "회사"가 제공하는 "서비스"를 이용하는 고객을 말합니다.
+<h3 style="font-size: 12px; font-weight: 700; color: #666; line-height: 16px;">제 2 조 (정의)</h3>
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다.<br>
+①"서비스"라 함은 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와<br> 상관없이 "회원"이 이용할 수 있는 네이버 및 네이버 관련 제반 서비스를 의미합니다.
+②"회원"<br>이라 함은 회사의 "서비스"에 접속하여 이 약관에 따라 "회사"와 이용계약을 체결하고 "회사"가<br> 제공하는 "서비스"를 이용하는 고객을 말합니다.
 ③"아이디(ID)"라 함은 "회원"의 식별과 "서비스" 이용을 위하여 "회원"이 정하고 "회사"가 승인하는 문자와 숫자의 조합을 의미합니다.
 ④"비밀번호"라 함은 "회원"이 부여 받은 "아이디와 일치되는 "회원"임을 확인하고 비밀보호를 위해 "회원" 자신이 정한 문자 또는 숫자의 조합을 의미합니다.
 ⑤"유료서비스"라 함은 "회사"가 유료로 제공하는 각종 온라인디지털콘텐츠(각종 정보콘텐츠, VOD, 아이템 기타 유료콘텐츠를 포함) 및 제반 서비스를 의미합니다.
@@ -174,17 +179,26 @@
 제 22 조 (준거법 및 재판관할)
 ①"회사"와 "회원"간 제기된 소송은 대한민국법을 준거법으로 합니다.
 ②"회사"와 "회원"간 발생한 분쟁에 관한 소송은 제소 당시의 "회원"의 주소에 의하고, 주소가 없는 경우 거소를 관할하는 지방법원의 전속관할로 합니다. 단, 제소 당시 "회원"의 주소 또는 거소가 명확하지 아니한 경우의 관할법원은 민사소송법에 따라 정합니다.
-③해외에 주소나 거소가 있는 '회원' 의 경우 '회사'와 '회원'간 발생한 분쟁에 관한 소송은 전항에도 불구하고 대한민국 서울중앙지방법원을 관할 법원으로 합니다.</textarea> </td>
-		</tr>
-		
-		
-		<tr>
-			<td>개인정보 수집 및 이용에 대한 안내(필수) <input type="checkbox"id="check2"></td>
-		</tr>
-		<tr>
-			<td><textarea rows="10" cols="50">정보통신망법 규정에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+③해외에 주소나 거소가 있는 '회원' 의 경우 '회사'와 '회원'간 발생한 분쟁에 관한 소송은 전항에도 불구하고 대한민국 서울중앙지방법원을 관할 법원으로 합니다. </div></td>
 
-1. 수집하는 개인정보
+		</tr>
+		
+		
+		<tr>
+			<td style="font-size: 14px; font-weight: 700; line-height: 24px; color: #333;">개인정보 수집 및 이용에 대한 안내 <span style="font-size: 12px; font-weight: 400; color: #08a600;">(필수)</span></td> <td style="border-left: 0px;">
+			<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-success active">
+				<input type="checkbox" id="check2" autocomplete="off" checked >
+				<span class="glyphicon glyphicon-ok"></span>
+			</label>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div style="overflow: scroll; height: 150px; font-size: 12px; line-height: 16px; color: #666;"><br><br>정보통신망법 규정에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.<br>
+
+<h3 style="font-size: 12px; font-weight: 700; color: #666; line-height: 16px;">1. 수집하는 개인정보</h3><br>
 이용자는 회원가입을 하지 않아도 정보 검색, 뉴스 보기 등 대부분의 네이버 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페, 블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 네이버는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
 
 회원가입 시점에 네이버가 이용자로부터 수집하는 개인정보는 아래와 같습니다.
@@ -192,14 +206,14 @@
 - 단체아이디로 회원가입 시 단체아이디, 비밀번호, 단체이름, 이메일주소, 가입인증 휴대폰번호를 필수항목으로 수집합니다. 그리고 단체 대표자명, 비밀번호 발급용 멤버 이름 및 이메일주소를 선택항목으로 수집합니다.
 서비스 이용 과정에서 이용자로부터 수집하는 개인정보는 아래와 같습니다.
 NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정에서 해당 서비스의 이용자에 한해 추가 개인정보 수집이 발생할 수 있습니다. 추가로 개인정보를 수집할 경우에는 해당 개인정보 수집 시점에서 이용자에게 ‘수집하는 개인정보 항목, 개인정보의 수집 및 이용목적, 개인정보의 보관기간’에 대해 안내 드리고 동의를 받습니다.
-
+<br>
 서비스 이용 과정에서 IP 주소, 쿠키, 서비스 이용 기록, 기기정보, 위치정보가 생성되어 수집될 수 있습니다.
 구체적으로 1) 서비스 이용 과정에서 이용자에 관한 정보를 정보통신서비스 제공자가 자동화된 방법으로 생성하여 이를 저장(수집)하거나, 
 2) 이용자 기기의 고유한 정보를 원래의 값을 확인하지 못 하도록 안전하게 변환한 후에 수집하는 경우를 의미합니다.
 네이버 위치기반서비스 이용 시 수집·저장되는 위치정보의 이용 등에 대한 자세한 사항은 ‘네이버 위치정보 이용약관’에서 규정하고 있습니다.
 
-2. 수집한 개인정보의 이용
-네이버는 회원관리, 서비스 개발・제공 및 향상, 안전한 인터넷 이용환경 구축 등 아래의 목적으로만 개인정보를 이용합니다.
+2. 수집한 개인정보의 이용<br>
+네이버는 회원관리, 서비스 개발・제공 및 향상, 안전한 인터넷 이용환경 구축 등 아래의 목적으로만 개인정보를 이용합니다.<br>
 
 - 회원 가입 의사의 확인, 연령 확인 및 법정대리인 동의 진행, 이용자 및 법정대리인의 본인 확인, 이용자 식별, 회원탈퇴 의사의 확인 등 회원관리를 위하여 개인정보를 이용합니다.
 - 콘텐츠 등 기존 서비스 제공(광고 포함)에 더하여, 인구통계학적 분석, 서비스 방문 및 이용기록의 분석, 개인정보 및 관심에 기반한 이용자간 관계의 형성, 지인 및 관심사 등에 기반한 맞춤형 서비스 제공 등 신규 서비스 요소의 발굴 및 기존 서비스 개선 등을 위하여 개인정보를 이용합니다.
@@ -224,21 +238,36 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
 - 전자금융거래법 
 전자금융에 관한 기록: 5년 보관
 - 통신비밀보호법 
-로그인 기록: 3개월</textarea></td>
+로그인 기록: 3개월</div></td>
 		</tr>
 	
-	
 		<tr>
-			<td>이벤트 등 프로모션 알림 메일 수신(선택) <input type="checkbox" id="check3"></td>
+			<td style="font-size: 14px; font-weight: 800; line-height: 24px; color: #333;">이벤트 등 프로모션 알림 메일 수신 <span style="font-size: 12px; font-weight: 400; color: #8e8e8e;">(선택)</span></td> <td>
+			
+			<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-success active">
+				<input type="checkbox" id="check3" autocomplete="off" checked >
+				<span class="glyphicon glyphicon-ok"></span>
+			</label>
+			</div>
+			
+			</td>
 		</tr>
 		
 	</table>
-	<button id="btn">동의</button>
+	<hr class="colorgraph">
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+	<button id="btn" class="btn btn-lg btn-success btn-block">동의</button>
+			</div>
+		</div>
 	</form>
-	<button id="btn2">비동의</button>
-
-
-
-
+	<hr class="colorgraph">
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+	<button id="btn2" class="btn btn-lg btn-primary btn-block">비동의</button>
+		</div>
+			</div>
+</div>
 </body>
 </html>
