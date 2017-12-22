@@ -11,6 +11,9 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 
@@ -47,8 +50,11 @@ public class ProductViewBlogService implements Action {
                 getResult.append(inputLine);
             }
             br.close();
-            request.setAttribute("result", getResult.toString());
-            request.setAttribute("start", start);
+            JSONObject jsonObject = new JSONObject();
+            System.out.println(getResult.toString());
+            jsonObject.put("result", getResult.toString().replace("\"", "\"").replace("\\", "").trim());
+            jsonObject.put("startNum", start);
+            request.setAttribute("result", jsonObject);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -14,13 +14,51 @@ div{
 </style>
 <script type="text/javascript">
 	$(function(){
-		var display = 10;
+		
+		function getResultSearch(){
+		}
+		
+		
 		$('#blog-btn').click(()=>{
-			var start = 1;
+			//전체 글 수를 담을 p태그 생성
 			var name = $('#name').text();
-			$.get("./productViewBlog.product?query="+name+"&start="+start+"&display="+display, (data)=>{
-				$('#blog-info').html(data);
+			var start = 1;
+			var display = 10;
+			
+			$.get("./productViewBlog.product?query="+name+"&start="+start+"&display="+display, function(data){
+				var result2 = JSON.parse(data);
+				var result = JSON.parse(result2.result);
+				var start = result2.startNum;
+				//alert(start);
+				alert(result.items[0].title);
+				
+				$('#blog-info').text(result.total);
+
+				//$("#blog-info").append(result.total);
+				var count = 0;
+				for(var i=start;i<start+10;i++){
+					var divId = "<div id='blog-inner"+i+"'></div>";
+					$("#blog-info").append(divId);
+					
+					var title = $("<p></p>").html(result.items[count].title);
+					var description = $("<p></p>").html(result.items[count].description);
+					var bloggername = $("<p></p>").html(result.items[count].bloggername);
+					var postdate = $("<p></p>").html(result.items[count].postdate);
+					var link = $("<p></p>").html(result.items[count].link);
+					$("#blog-inner"+i).html(title, description, bloggername, postdate, link);
+					
+					count++;
+				}
 			});
+			
+			/* 
+			var result = ${result}; //service에서 json받기
+			alert("hi");
+			alert(result);
+			*/
+			
+			
+			
 
 		});
 		
@@ -71,7 +109,7 @@ div{
 			<br>
 		</c:forEach>
 		<button id="blog-btn">BLOG</button>
-			<div id="blog-info"></div>
+			<div id="blog-info">전체 글</div>
 		<button id="blog-more">더보기</button>
 			
 		<button id="buy-btn">BUY_INFO</button>
