@@ -17,22 +17,26 @@ public class ProductDAO {
 		Connection con = DBConnector.getConnect();
 		String sql=null;
 		if(grade==5) {
-			//System.out.println("grade5 in");
-			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
-			//System.out.println("sql success");
+			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade5=(select max(grade5)+1 grade5 from product) where pro_num=?";
 		} else if (grade==4) {
-			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
+					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product) where pro_num=?";
 		} else if (grade==3) {
-			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
+					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product) where pro_num=?";
 		} else if (grade==2) {
-			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
+					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product) where pro_num=?";
 		} else if (grade==1) {
-			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) from product where pro_num=?) where pro_num=?";
+			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\\r\\n\" + \r\n" + 
+					"					\",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product) where pro_num=?";
 		}
 		//System.out.println(sql);
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		st.setInt(2, pro_num);
+		st.setInt(3, pro_num);
 		int result=st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
@@ -47,17 +51,16 @@ public class ProductDAO {
 		if (del.equals("category")) {
 			PreparedStatement st = null;
 			if(category.equals("reviewCount")) {
-				sql = "select * from product where pro_num in\r\n" + 
-						"((select pro_num from (select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc)))";
+				sql = "select * from product where";
 				if(type.length>0) {
-					sql=sql+" and type in (";
+					sql=sql+"  type in (";
 					for(int i=0;i<type.length;i++) {
 						sql=sql+"?";
 						if(i != type.length-1) {
 							sql=sql+",";
 						}
 					}
-					sql=sql+")";
+					sql=sql+") order by reply desc";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
@@ -73,7 +76,7 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") order by nvl(avg,0) desc";
+					sql=sql+") order by avg desc";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
@@ -106,15 +109,37 @@ public class ProductDAO {
 		} else if (del.equals("brand")) {
 			PreparedStatement st =null;
 			if(category.equals("reviewCount")) {
-				sql = "select * from product where pro_num in(\r\n" + 
-						"(select pro_num from (\r\n" + 
-						"select count(pro_num),pro_num from reply group by pro_num order by count(pro_num) desc))) and brand=?";
+				sql = "select * from product where";
+				if(type.length>0) {
+					sql=sql+"  type in (";
+					for(int i=0;i<type.length;i++) {
+						sql=sql+"?";
+						if(i != type.length-1) {
+							sql=sql+",";
+						}
+					}
+					sql=sql+") and brand='"+brand+"' order by reply desc";
+				}
 				st = con.prepareStatement(sql);
-				st.setString(1, brand);
+				for(int i=0;i<type.length;i++) {
+					st.setString(i+1, type[i]);
+				}
 			} else if (category.equals("avg")) {
-				sql = "select * from product where brand=? order by nvl(avg,0) desc";
+				sql = "select * from product ";
+				if(type.length>0) {
+					sql=sql+"where type in (";
+					for(int i=0;i<type.length;i++) {
+						sql=sql+"?";
+						if(i != type.length-1) {
+							sql=sql+",";
+						}
+					}
+					sql=sql+") and brand='"+brand+"' order by avg desc";
+				}
 				st = con.prepareStatement(sql);
-				st.setString(1, brand);
+				for(int i=0;i<type.length;i++) {
+					st.setString(i+1, type[i]);
+				}
 			}
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
@@ -265,23 +290,17 @@ public class ProductDAO {
 	// Regist
 	public int regist(ProductDTO productDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into product values(?,?,?,?,?,0,0,0,0,0,'re','co',?,?,?,?,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
 		st.setInt(3, productDTO.getPro_price());
 		st.setInt(4, productDTO.getCapacity());
 		st.setString(5, productDTO.getInfo());
-		st.setInt(6, productDTO.getGrade1());
-		st.setInt(7, productDTO.getGrade2());
-		st.setInt(8, productDTO.getGrade3());
-		st.setInt(9, productDTO.getGrade4());
-		st.setInt(10, productDTO.getGrade5());
-		st.setString(11, "pic_realName");
-		st.setString(12, "pic_compName");
-		st.setInt(13, productDTO.getEvt());
-		st.setInt(14, productDTO.getPro_num());
-		st.setString(15, productDTO.getCategory());
+		st.setInt(6, productDTO.getEvt());
+		st.setInt(7, productDTO.getPro_num());
+		st.setString(8, productDTO.getCategory());
+		st.setString(9, productDTO.getType());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;

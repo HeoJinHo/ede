@@ -32,7 +32,7 @@ public class ProductWriteService implements Action {
 				result = productDAO.review(replyDTO);	//새 댓글 insert
 				System.out.println(grade);//들어옴
 				System.out.println(pro_num);//들어옴
-				productDAO.avgUpdate(grade, pro_num);
+				productDAO.avgUpdate(grade, pro_num);	//avg update
 				System.out.println("after update");
 				if(result >0) {
 					actionFoward.setCheck(false);

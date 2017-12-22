@@ -18,7 +18,16 @@ public class ProductDTO {
 	private String category;
 	private String type;
 	private double avg;
+	private int reply;
 	
+
+	public int getReply() {
+		return reply;
+	}
+
+	public void setReply(int reply) {
+		this.reply = reply;
+	}
 
 	public String getType() {
 		return type;
