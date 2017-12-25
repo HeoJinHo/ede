@@ -50,6 +50,7 @@ public class ProductViewBlogService implements Action {
                 getResult.append(inputLine);
             }
             br.close();
+            System.out.println(getResult.toString());
             request.setAttribute("result", getResult.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

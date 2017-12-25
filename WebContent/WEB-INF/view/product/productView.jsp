@@ -9,20 +9,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	$('#blog-btn').click(()=>{
+
+$(function(){
+	$("#blog-btn").on("click", ()=>{
 		alert("ininin");
-		$.get('/WEB-INF/view/product/productViewBlog.jsp', (data)=>{
-			var result = data;
-			alert(result);
+		var query = $("#name").text();
+		alert(query)
+		$.get("./productViewBlog.product?query="+query+"&start=1&display=10", (data)=>{
+			var result = JSON.parse(data);
+			alert(result.items[0].title);
+			
+			for(var i=start;i<start+10;i++){
+				var a = result.items[0].title;
+				$("#blog-info").append("<div class='hi'>"+a+"</div>");
+			}
+			
 		});
+		
 	});
+	
+})
 </script>
 </head>
 <body>
 		<p>${list.pic_realName}</p>
 		<p>${list.pic_compName}</p>
 		<p>${list.brand}</p>
-		<p>${list.pro_name}</p>
+		<p id="name">${list.pro_name}</p>
 		<p>${list.pro_price}</p>
 		<p>${list.capacity}</p>
 		<p>${list.grade1}</p>
@@ -54,6 +67,7 @@
 		</c:forEach>
 
 		<button id="blog-btn">BLOG</button>
+		<div id="blog-info">BLOG</div>
 		<button id="blog-more">더보기</button>
 
 		<button id="buy-btn">BUY_INFO</button>
