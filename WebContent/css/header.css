@@ -58,7 +58,7 @@
 .dropdown-menu{
 	background-color: black;
 }
-.dropdown-menu:hover{
+#dropdown-menu>li>a{
 	color: orange;
 }
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */

@@ -58,7 +58,7 @@
 .dropdown-menu{
 	background-color: black;
 }
-.dropdown-menu:hover{
+#dropdown-menu>li>a{
 	color: orange;
 }
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -102,9 +102,12 @@
     color: #fff;
 }
 .main_contents img{
-	 width: 80%;
-	 margin: 126.3 126.3;
-	 padding-top: 100px;
+	 width: 70%;
+	display: block;
+	margin-left: auto;	
+	margin-right: auto;	
+	padding-top: 150px;
+	padding-bottom: 100px;
 }
 @media (max-width: 600px) {
     .carousel-caption {
