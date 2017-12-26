@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.navbar.navbar-inverse.nav-kj {
+	height: 60px;
+}
+.nav-kj .nav.navbar-nav {
+	float: none;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
