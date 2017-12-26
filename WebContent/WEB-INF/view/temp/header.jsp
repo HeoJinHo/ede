@@ -47,7 +47,7 @@
         						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
         					</ul>
       						<ul class="dropdown-menu" id="dropdown-menu">
-        						<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Category</a></li>
+        						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
 								<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
       						</ul>
      					</li>
