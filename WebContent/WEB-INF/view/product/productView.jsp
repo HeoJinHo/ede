@@ -16,12 +16,20 @@ $(function(){
 		var query = $("#name").text();
 		alert(query)
 		$.get("./productViewBlog.product?query="+query+"&start=1&display=10", (data)=>{
+			alert(data);
 			var result = JSON.parse(data);
-			alert(result.items[0].title);
-			
+			alert(result);
+			var start =0;
 			for(var i=start;i<start+10;i++){
-				var a = result.items[0].title;
-				$("#blog-info").append("<div class='hi'>"+a+"</div>");
+				$("#blog-info").after(
+					"<div>"
+						+"<p>${result.items[i].title}<p>"+
+						+"<p>${result.items[i].description}<p>"+
+						+"<p>${result.items[i].bloggername}<p>"+
+						+"<p>${result.items[i].link}<p>"+
+						+"<p>${result.items[i].postdate}<p>"+
+					"</div>"
+				);
 			}
 			
 		});
@@ -68,6 +76,7 @@ $(function(){
 
 		<button id="blog-btn">BLOG</button>
 		<div id="blog-info">BLOG</div>
+		
 		<button id="blog-more">더보기</button>
 
 		<button id="buy-btn">BUY_INFO</button>
