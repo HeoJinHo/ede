@@ -64,6 +64,7 @@
 		</div>
 		<div class="main_contents">
 			<img src="<%=request.getContextPath()%>/images/main/main_contents.png">
+			<img src="<%=request.getContextPath()%>/images/main/main_contents2.png">
 		</div>
 
 	</section>
