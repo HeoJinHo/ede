@@ -35,6 +35,7 @@
 }
 .navbar.navbar-inverse {
 	height: 120px;
+	margin-bottom: 0;
 }
 .nav.navbar-nav.navbar-right {
 	float: right;

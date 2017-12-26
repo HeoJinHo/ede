@@ -40,6 +40,7 @@ public class HelpListService implements Action {
 				List<BoardDTO> ar=helpDAO.selectList(makeRow, memberDTO);
 				Pageing pageing = makePage.pageing();
 
+				request.setAttribute("title", "1:1 문의 게시판");
 				request.setAttribute("board", "help");
 				request.setAttribute("list", ar);
 				request.setAttribute("page", pageing);

@@ -27,7 +27,7 @@
 					<div class="bar-right">
 						<ul class="nav navbar-nav navbar-right">
 							<c:if test="${empty member}">
-								<li><a href="<%=request.getContextPath()%>/member/memberLogin.member">Login/Join</a></li>
+								<li><a data-toggle="modal" data-target="#myModal">Login/Join</a></li>
 								<li><a href="<%=request.getContextPath()%>/notice/noticeList.notice">고객센터</a></li>
 							</c:if>
 							<c:if test="${not empty member}">
@@ -45,36 +45,17 @@
       						<span class="caret"></span></a>
       						<ul class="dropdown-menu">
         						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
+        					</ul>
       						<ul class="dropdown-menu" id="dropdown-menu">
         						<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Category</a></li>
 								<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
       						</ul>
      					</li>
 
-						<li><a
-							href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product</a></li>
 
 						<li><a href="#">전문가</a></li>
 						<li><a href="#">Event</a></li>
-						<li><a
-							href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-						<c:if test="${empty member}">
-							<li><a data-toggle="modal"
-								data-target="#myModal">Login/Join</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/notice/noticeList.notice">고객센터</a></li>
-						</c:if>
-						<c:if test="${not empty member}">
-							<li><a
-								href="<%=request.getContextPath()%>/member/memberLogout.member">Logout</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/member/memberMyPage.member">MyPage</a></li>
-							<li><a
-								href="<%=request.getContextPath()%>/notice/noticeList.notice">고객센터</a></li>
-						</c:if>
+						<li><a href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>
 					</ul>
 
 				</div>

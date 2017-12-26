@@ -40,7 +40,8 @@ public class NoticeListService implements Action {
 				List<BoardDTO> ar = noticeDAO.selectList(makeRow);
  
 				Pageing pageing = makepage.pageing();
-
+				
+				request.setAttribute("title", "공지사항");
 				request.setAttribute("board", "notice");
 				request.setAttribute("list", ar);
 				request.setAttribute("page", pageing);
