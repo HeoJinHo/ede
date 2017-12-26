@@ -7,36 +7,58 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<style type="text/css">
+div{
+	border : 1px solid red;
+}
+.blog-inner{
+	border-color: blue;
+	width : 70%;
+}
+</style>
 <script type="text/javascript">
 
 $(function(){
-	$("#blog-btn").on("click", ()=>{
-		alert("ininin");
+	// blog 글 1~10
+	$("#blog-btn").click(function(){
 		var query = $("#name").text();
-		alert(query)
-		$.get("./productViewBlog.product?query="+query+"&start=1&display=10", (data)=>{
-			alert(data);
+		$.get("./productViewBlog.product?query="+query+"&start=1&display=10", function(data){
 			var result = JSON.parse(data);
-			alert(result);
-			var start =0;
-			for(var i=start;i<start+10;i++){
-				$("#blog-info").after(
-					"<div>"
-						+"<p>${result.items[i].title}<p>"+
-						+"<p>${result.items[i].description}<p>"+
-						+"<p>${result.items[i].bloggername}<p>"+
-						+"<p>${result.items[i].link}<p>"+
-						+"<p>${result.items[i].postdate}<p>"+
-					"</div>"
-				);
+			alert(data);
+			for(var i = 0;i<10;i++){
+				$("#blog-info").append("<div class='blog-inner'></div>");
+				var title = $("<p></p>").html("<b style='color:blue'>title</b> "+result.items[i].title);
+				var description = $("<p></p>").html(result.items[i].description);
+				var link = $("<p></p>").html("<b style='color:blue'>link</b> "+result.items[i].link);
+				var bloggername = $("<p></p>").html("<b style='color:blue'>blog by</b> "+result.items[i].bloggername);
+				var blogdate = $("<p></p>").html(result.items[i].blogdate);
+				$(".blog-inner:last-child").append(title, description, link, bloggername, blogdate);
+				$("#blog-more").show(); // blog-btn을 누르면 더보기 버튼 나타남
 			}
-			
 		});
-		
 	});
 	
-})
+	// blog 글 11번 ~ : 더보기 버튼 function
+	$("#blog-more").click(function(){
+		var query = $("#name").text();
+		var start = $(".blog-inner").length + 1; // .blog-inner의 갯수를 읽어옴
+		//alert(start);  -> 10 출력
+		$.get("./productViewBlog.product?query="+query+"&start="+start+"1&display=10", function(data){
+			var result = JSON.parse(data);
+			alert(data);
+			for(var i = 0;i<10;i++){
+				$("#blog-info").append("<div class='blog-inner'></div>");
+				var title = $("<p></p>").html("<b style='color:blue'>title</b> "+result.items[i].title);
+				var description = $("<p></p>").html(result.items[i].description);
+				var link = $("<p></p>").html("<b style='color:blue'>link</b> "+result.items[i].link);
+				var bloggername = $("<p></p>").html("<b style='color:blue'>blog by</b> "+result.items[i].bloggername);
+				var blogdate = $("<p></p>").html(result.items[i].blogdate);
+				$(".blog-inner:last-child").append(title, description, link, bloggername, blogdate);
+			}
+		});
+	});
+	
+});
 </script>
 </head>
 <body>
@@ -77,9 +99,10 @@ $(function(){
 		<button id="blog-btn">BLOG</button>
 		<div id="blog-info">BLOG</div>
 		
-		<button id="blog-more">더보기</button>
+		<button id="blog-more" style="display: none">더보기</button><br>
+		
+		<hr>
 
-		<button id="buy-btn">BUY_INFO</button>
-		<a href="http://shopping.naver.com/search/all_search.nhn?query=빌리프 위치헤이즐 허벌 익스트랙트 토너&amp;sort=price_asc" target="_blank" class="plus_more pull-right">더보기 </a>
+		<button id="buy-btn" onclick="location.href='http://shopping.naver.com/search/all_search.nhn?query=${list.pro_name}&amp;sort=price_asc'">BUY_INFO</button>
 </body>
 </html>
