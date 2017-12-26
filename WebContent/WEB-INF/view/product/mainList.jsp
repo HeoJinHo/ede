@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../css/header.css" rel="stylesheet">
+<link href="../css/productMain.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		$("#category").click(function(){
@@ -27,17 +28,16 @@
 	});
 </script>
 <style type="text/css">
-
 </style>
 </head>
 <body>
 	<%@ include file="../temp/header.jsp"%>
 	
-	<nav class="navbar navbar-inverse">
-	<ul class="nav navbar-nav">
-		<li><a href="#" id="category">Category</a></li>
-		<li><a href="#" id="brand">Brand</a></li>
-	</ul>
+	<nav class="navbar navbar-inverse nav-kj">
+		<ul class="nav navbar-nav">
+			<li><a href="#" id="category">Category</a></li>
+			<li><a href="#" id="brand">Brand</a></li>
+		</ul>
 	</nav>
 
 	<div class="container">
