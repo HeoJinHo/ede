@@ -11,8 +11,6 @@ public class MemberJoinService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		System.out.println("create memberJoinservice");
-		System.out.println("method : "+request.getMethod());
 		if(request.getMethod().equals("POST")) {
 			MemberDTO memberDTO = new MemberDTO();		
 			memberDTO.setId(request.getParameter("id"));
