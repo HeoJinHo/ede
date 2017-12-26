@@ -40,6 +40,7 @@ public class QnaListService implements Action {
 			List<BoardDTO> ar=noticeDAO.selectList(makeRow);
 			Pageing pageing = makePage.pageing();
 			
+			request.setAttribute("title", "Q & A");
 			request.setAttribute("board", "qna");
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageing);

@@ -48,7 +48,7 @@
 		<div class="container-fluid top">
 
 			<ul class="nav navbar-nav">
-				<li class="active">
+				<li class="active" >
 					<a href="<%=request.getContextPath()%>/notice/noticeList.notice">NOTICE</a>
 				</li>
 				<li class="active"><a href="<%=request.getContextPath()%>/qna/qnaList.qna">QNA</a></li>
@@ -74,51 +74,55 @@
 		</div>
 	</nav>
 
-
-	<!--<h2>${board}</h2>-->
-
-
-	<table>
-		<tr>
-			<td>NUM</td>
-			<td>TITLE</td>
-			<td>WRITER</td>
-			<td>DATE</td>
-			<td>HIT</td>
-		</tr>
-
-		<c:forEach items="${list}" var="i">
-			<tr>
-				<td>${i.num}</td>
-				<td><c:catch>
-						<c:if test="${i.depth eq 1}">
-					--[${i.ref}번의 답변]
-				</c:if>
-						<c:if test="${i.depth gt 1}">
-							<c:forEach begin="1" end="${i.depth}">--</c:forEach>
-					[${i.ref}번의 추가답변]
-				</c:if>
-					</c:catch> <a href="./${board}View.${board}?num=${i.num}">${i.title}</a></td>
-				<td>${i.writer}</td>
-				<td>${i.reg_date}</td>
-				<td>${i.hit}</td>
+<div class="container">
+  <h2>${title}</h2><br>
+	<table class="table table-hover">
+		<thead>
+			<tr style="border-bottom: 2px solid black;">
+				<td>NUM</td>
+				<td>TITLE</td>
+				<td>WRITER</td>
+				<td>DATE</td>
+				<td>HIT</td>
 			</tr>
-		</c:forEach>
+		</thead>
+		<tbody>
+			<c:forEach items="${list}" var="i">
+				<tr>
+					<td>${i.num}</td>
+					<td><c:catch>
+							<c:if test="${i.depth eq 1}">
+						--[${i.ref}번의 답변]
+					</c:if>
+							<c:if test="${i.depth gt 1}">
+								<c:forEach begin="1" end="${i.depth}">--</c:forEach>
+						[${i.ref}번의 추가답변]
+					</c:if>
+						</c:catch> <a href="./${board}View.${board}?num=${i.num}">${i.title}</a></td>
+					<td>${i.writer}</td>
+					<td>${i.reg_date}</td>
+					<td>${i.hit}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
+	</div>
 	<c:if test="${page.curBlock gt 1}">
-		<input type="button" class="list" title="${page.startNum-1}"
-			value="[이전]">
+		<input type="button" class="btn btn-default" title="${page.startNum-1}"
+			value="&#8249;">
 	</c:if>
 
 	<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-		<input type="button" class="list" title="${i}" value="${i}">
+		<input type="button" class="btn btn-primary" title="${i}" value="${i}">
 	</c:forEach>
 
 	<c:if test="${page.curBlock lt page.totalBlock}">
-		<input type="button" class="list" title="${page.lastNum+1}"
-			value="[다음]">
+		<input type="button" class="btn btn-default" title="${page.lastNum+1}"
+			value="&#8250;">
 	</c:if>
 	<a href="./${board}Write.${board}">Write</a>
+
+	<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
 

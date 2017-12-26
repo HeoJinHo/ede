@@ -5,24 +5,30 @@
 	background-color: white;
 	margin: 0 auto;
 	border-color: black;
+	margin-top: 20px;
 	margin-bottom: 50px;
 	float: none;
 }
 .container-fluid.top{
 	float: right;
 }
-table{
-	width: 50%;
-	height: 120px;
-	border: 1px solid black;
+.container>h2{
+	font-weight: bolder;
+	margin-left: 7%;
+}
+thead{
+	font-weight: bold;
+}
+
+.table.table-hover{
+	table-layout: fixed;
+	width: 90%;
+	height: 150px;
 	margin: auto;
 	text-align: center;
 }
-.list{
-	display: inline-block;
-	margin-right: auto;
-	margin-left: auto;
-}
+
+
 .navbar-inverse .navbar-nav > .active > a{
 	color: white;
 	background-color: black;
@@ -32,3 +38,5 @@ table{
   color: #fff;
   background-color: #ff80ff;
 }
+
+
