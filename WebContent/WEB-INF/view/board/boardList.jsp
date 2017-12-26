@@ -38,6 +38,7 @@
 			document.frm.submit();
 		});
 	});
+
 </script>
 </head>
 <body>
@@ -46,16 +47,15 @@
 
 	<nav class="navbar navbar-inverse top">
 		<div class="container-fluid top">
-
-			<ul class="nav navbar-nav">
-				<li class="active" >
-					<a href="<%=request.getContextPath()%>/notice/noticeList.notice">NOTICE</a>
-				</li>
-				<li class="active"><a href="<%=request.getContextPath()%>/qna/qnaList.qna">QNA</a></li>
-				<li class="active"><a href="<%=request.getContextPath()%>/help/helpList.help">1:1
-						문의</a></li>
-			</ul>
-			<form name="frm" class="navbar-form navbar-left" action="./${board}List.${board}">
+				<ul class="nav navbar-nav side">
+					<li class="menu-top">
+						<a href="<%=request.getContextPath()%>/notice/noticeList.notice">NOTICE</a>
+					</li>
+					<li class="menu-top"><a href="<%=request.getContextPath()%>/qna/qnaList.qna">QNA</a></li>
+					<li class="menu-top"><a href="<%=request.getContextPath()%>/help/helpList.help">1:1
+							문의</a></li>
+				</ul>
+			<form name="frm" class="navbar-form navbar-leftt" action="./${board}List.${board}">
 				<input type="hidden" name="curPage">
 					<select name="kind">
 						<option class="kind" value="title">TITLE</option>
@@ -107,21 +107,23 @@
 		</tbody>
 	</table>
 	</div>
-	<c:if test="${page.curBlock gt 1}">
-		<input type="button" class="btn btn-default" title="${page.startNum-1}"
-			value="&#8249;">
-	</c:if>
-
-	<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-		<input type="button" class="btn btn-primary" title="${i}" value="${i}">
-	</c:forEach>
-
-	<c:if test="${page.curBlock lt page.totalBlock}">
-		<input type="button" class="btn btn-default" title="${page.lastNum+1}"
-			value="&#8250;">
-	</c:if>
-	<a href="./${board}Write.${board}">Write</a>
-
+	
+	<div class="page-button">
+		<c:if test="${page.curBlock gt 1}">
+			<input type="button" class="list btn btn-default" title="${page.startNum-1}"
+				value="&#8249;">
+		</c:if>
+	
+		<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+			<input type="button" class="list btn btn-primary" title="${i}" value="${i}">
+		</c:forEach>
+	
+		<c:if test="${page.curBlock lt page.totalBlock}">
+			<input type="button" class="list btn btn-default" title="${page.lastNum+1}"
+				value="&#8250;">
+		</c:if>
+		<a href="./${board}Write.${board}">Write</a>
+	</div>
 	<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

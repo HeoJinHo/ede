@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .navbar.navbar-inverse.top {
-	height: 50px;
+	height: 52px;
 	width: 70%;
 	background-color: white;
 	margin: 0 auto;
@@ -10,6 +10,10 @@
 	float: none;
 }
 .container-fluid.top{
+	float: none;
+}
+.navbar-form.navbar-leftt{
+	width:50%;
 	float: right;
 }
 .container>h2{
@@ -27,16 +31,26 @@ thead{
 	margin: auto;
 	text-align: center;
 }
+.nav.navbar-nav.side{
+	width: 50%;
+	text-align: center;
+}
 
-
-.navbar-inverse .navbar-nav > .active > a{
+.nav.navbar-nav.side> li{
+	width : 95px;
+	float: none;
+	font-size: medium;
+	display: inline-block;
+}
+.nav.navbar-nav.side a:hover{
 	color: white;
 	background-color: black;
 }
-.navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: #ff80ff;
+.page-button{
+	float: none;
+	margin-top: 4%;
+	margin-bottom : 5%;
+	margin-left: 40%;
+	margin-right: auto;
 }
-
 
