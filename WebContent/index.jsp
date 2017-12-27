@@ -9,12 +9,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
+
+
 </head>
 <body>
+	<%@ include file="./temp/header.jsp" %>
 	<h1>team ede</h1>
 
 
-	<%@ include file="./temp/header.jsp" %>
 
 
 	<!-- category by kj -->
