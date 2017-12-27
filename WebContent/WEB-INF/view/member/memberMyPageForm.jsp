@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <link href="../css/header.css" rel="stylesheet">
+<link href="../css/member.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="../temp/header.jsp" %>
@@ -23,13 +24,15 @@
 	<h3>피부타입 : ${sessionScope.member.skin}</h3>
 	<h3>생년월일 : ${sessionScope.member.birth}</h3>
 	<h3>주 소 : ${sessionScope.member.addr}</h3> --%>
+	<div class="sidenav">
 	<form action="./memberUpdate.member" method="get">
-		<input type="submit" value="회원정보 변경">
+		<button class="button"><span>회원정보 변경 </span></button>
 	</form>
 <!-- 	<a href="./memberUpdate.member">정보수정</a> -->
 	<form action="./memberDelete.member">
-		<input type="submit" value="회원탈퇴">
+		<button class="button"><span>회원 탈퇴 </span></button>
 	</form>
+	</div>
 </body>
 </html>
 
