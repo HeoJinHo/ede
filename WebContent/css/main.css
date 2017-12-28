@@ -138,7 +138,7 @@
 
 /********** main 시작 *************/
 #myCarousel{
-	height: 300px;
+	height: 500px;
 	overflow: hidden;
 }
 .carousel-inner img {
@@ -152,7 +152,7 @@
     color: #fff;
 }
 .main_contents img{
-	 width: 70%;
+	width: 70%;
 	display: block;
 	margin-left: auto;	
 	margin-right: auto;	

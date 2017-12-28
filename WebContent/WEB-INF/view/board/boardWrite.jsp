@@ -63,13 +63,14 @@
 	<div class="center-contents">
 		<form id="frm" action="./${board}Write.${board}" method="post" enctype="multipart/form-data">
 			<p>Writer : <%=id%><input type="hidden" name="writer" value="<%=id%>"></p>
-			<p>Title : <input type="text" name="title"></p>
+			<p>Title : <input type="text" name="title" id="w-title" placeholder="Enter Title"></p>
 			<p><textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 			<div id="files">
-				<input type="file" name="f1">
+				<input type="file" class="btn btn-default file" name="f1">
 			</div>
-			<input type="button" id="btn" value="Add File">
-			<p><input type="button" value="Write" id="savebutton"></p>
+			<input type="button" class="btn btn-default file" id="btn" value="Add File">
+			<p><input type="button" class="btn btn-default write" value="Write" id="savebutton">
+			</p>
 		</form>
 	</div>	
 <%@ include file="../temp/footer.jsp" %>
