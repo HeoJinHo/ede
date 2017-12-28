@@ -42,16 +42,13 @@
 						<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 
 						<li class="dropdown">
-      						<a class="dropbtn" data-toggle="dropdown" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
+      						<a class="dropbtn" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
       						<span class="caret"></span></a>
-      						<ul class="dropdown-menu" id="dropdown-menu">
+      						<ul class="dropdown-content" id="dropdown-menu">
         						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
-
 								<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
       						</ul>
      					</li>
-
-
 						<li><a href="#">전문가</a></li>
 						<li><a href="#">Event</a></li>
 						<li><a href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>
