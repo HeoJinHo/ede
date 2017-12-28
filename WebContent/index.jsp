@@ -15,7 +15,6 @@
 </head>
 <body>
 
-
 	<%@ include file="./WEB-INF/view/temp/header.jsp"%>
 
 	<!-- main 시작 -->
