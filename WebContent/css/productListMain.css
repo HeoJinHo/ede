@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#wrap { margin: 0 auto; width: 1200px; }
+.filter { }
+
+.productList { }
+
+.brand {
+	font-size: 20px;
+}
+.pro_name {}
+.pro_price {}
+
+.capacity {}
+.evt {}
+.category {}
+.type {}
+.avg {}
+.reply {}

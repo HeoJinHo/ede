@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../css/header.css" rel="stylesheet">
+<link href="../css/productListMain.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		var type = [];
@@ -99,77 +100,65 @@
 </head>
 <body>
 <%@ include file="../temp/header.jsp"%>
+
+<div id="wrap">
 	<input type="hidden" name="del" value="${del}">
 	<input type="hidden" name="brand" value="${brand}">
-	<label class="checkbox-inline">
-	<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">건성
-	</label>
-    <label class="checkbox-inline">
-	<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">중성
-	</label>
-	<label class="checkbox-inline">
-	<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">지성
-	</label>
-	<label class="checkbox-inline">
-	<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">복합성
-	</label>
-	<label class="checkbox-inline">
-	<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">민감성
-	</label>
-	<br>
-	<label class="radio-inline">
-	<input type="radio" name="category" value="reviewCount" checked="checked" class="category">댓글순
-	</label>
-	<label class="radio-inline">
-	<input type="radio" name="category" value="avg" class="category">평점순
-	</label>
+	<div id="filter">
+		<label class="checkbox-inline">
+		<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">건성
+		</label>
+	    <label class="checkbox-inline">
+		<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">중성
+		</label>
+		<label class="checkbox-inline">
+		<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">지성
+		</label>
+		<label class="checkbox-inline">
+		<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">복합성
+		</label>
+		<label class="checkbox-inline">
+		<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">민감성
+		</label>
+	</div>
+	<div id="filter2">
+		<label class="radio-inline">
+		<input type="radio" name="category" value="reviewCount" checked="checked" class="category">댓글순
+		</label>
+		<label class="radio-inline">
+		<input type="radio" name="category" value="avg" class="category">평점순
+		</label>
+	</div>
 	
 	<div id="result">
-	<table class="table">
-	<tr>
-		<th>brand</th>
-		<th>pro_Name</th>
-		<th>pro_Price</th>
-		<th>capacity</th>
-		<th>info</th>
-		<th>grade1</th>
-		<th>grade2</th>
-		<th>grade3</th>
-		<th>grade4</th>
-		<th>grade5</th>
-		<th>pic_realName</th>
-		<th>pic_compName</th>
-		<th>evt</th>
-		<th>pro_num</th>
-		<th>category</th>
-		<th>type</th>
-		<th>avg</th>
-		<th>reply</th>
-	</tr>
-		<c:forEach items="${list}" var="i">
+		<table class="table">
 			<tr>
-				<td>${i.brand}</td>
-				<td><a href="./productView.product?pro_num=${i.pro_num}">${i.pro_name}</a></td>
-				<td>${i.pro_price}</td>
-				<td>${i.capacity}</td>
-				<td>${i.info}</td>
-				<td>${i.grade1}</td>
-				<td>${i.grade2}</td>
-				<td>${i.grade3}</td>
-				<td>${i.grade4}</td>
-				<td>${i.grade5}</td>
-				<td>${i.pic_realName}</td>
-				<td>${i.pic_compName}</td>
-				<td>${i.evt}</td>
-				<td>${i.pro_num}</td>
-				<td>${i.category }
-				<td>${i.type }</td>
-				<td>${i.avg }</td>
-				<td>${i.reply }</td>
+				<th>brand</th>
+				<th>pro_Name</th>
+				<th>pro_Price</th>
+				<th>capacity</th>
+				<th>evt</th>
+				<th>category</th>
+				<th>type</th>
+				<th>avg</th>
+				<th>reply</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach items="${list}" var="i">
+			<tr class="productList">
+				<td class="brand">${i.brand}</td>
+				<td class="pro_name"><a href="./productView.product?pro_num=${i.pro_num}">${i.pro_name}</a></td>
+				<td class="pro_price">${i.pro_price}</td>
+				<td class="capacity">${i.capacity}</td>
+				<td class="evt">${i.evt}</td>
+				<td class="category">${i.category }
+				<td class="type">${i.type }</td>
+				<td class="avg">${i.avg }</td>
+				<td class="reply">${i.reply }</td>
+			</tr>
+			</c:forEach>
+		</table>
 	</div>
+</div>
 	<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
