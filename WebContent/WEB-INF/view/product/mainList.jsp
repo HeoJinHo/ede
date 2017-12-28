@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../css/header.css" rel="stylesheet">
-<link href="../css/productMain.css" rel="stylesheet">
+<link href="../css/mainList.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		$("#category").click(function(){

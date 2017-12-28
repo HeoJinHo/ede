@@ -76,8 +76,6 @@ div{
 </script>
 </head>
 <body>
-		<p>${list.pic_realName}</p>
-		<p>${list.pic_compName}</p>
 		<p>${list.brand}</p>
 		<p id="name">${list.pro_name}</p>
 		<p>${list.pro_price}</p>
@@ -95,24 +93,48 @@ div{
 		
 		<button id="reply">reply</button><button id="blog">blog</button><button id="buy">buy</button>
 		
-		<div id="blog or buy">
-		<p>contents<input type="text" name="contents" value="" id="contents"></p>
-		<p>report<input type="text" name="report" value="" id="report"></p>
-		<p>grade<input type="text" name="grade" value="" id="grade"></p>
-		<button id="replyWrite">replyWrite</button>
-		
-		<div id="result">
-			<c:forEach items="${replyList}" var="i">
-				${i.id}
-				${i.contents}
-				${i.report}
-				${i.grade}
-				${i.pro_num}
-				<br>
-			</c:forEach>
-		</div>
+		<div class="tab_content">
+			<div class="reply">
+				<p>contents<input type="text" name="contents" value="" id="contents"></p>
+				<p>report<input type="text" name="report" value="" id="report"></p>
+				<p>grade<input type="text" name="grade" value="" id="grade"></p>
+				<button id="replyWrite">replyWrite</button>
+				
+				<div id="result">
+					<c:forEach items="${replyList}" var="i">
+						${i.id}
+						${i.contents}
+						${i.report}
+						${i.grade}
+						${i.pro_num}
+						<br>
+					</c:forEach>
+				</div>
+			</div>
+			<div class="blog">
+			</div>
+			<div class="buy">
+			</div>
 		</div>
 
+		<script>
+			$("#reply").on("click", function(){
+				$(".tab_content .reply").show();
+				$(".tab_content .blog").hide();
+				$(".tab_content .buy").hide();
+			})
+			$("#blog").on("click", function(){
+				$(".tab_content .reply").hide();
+				$(".tab_content .blog").show();
+				$(".tab_content .buy").hide();
+			})
+			$("#buy").on("click", function(){
+				$(".tab_content .reply").hide();
+				$(".tab_content .blog").hide();
+				$(".tab_content .buy").show();
+			})
+		</script>
+		
 		<button id="blog-btn">BLOG</button>
 		<div id="blog-info">BLOG</div>
 		
