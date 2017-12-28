@@ -7,61 +7,6 @@
 <!-- Header 시작 -->
 <body>
 
-	<header>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="glowpick">
-					<ul>
-						<li id="gp"><a id="glowpick"
-							href="<%=request.getContextPath()%>/index.jsp">GLOWPICK</a></li>
-					</ul>
-				</div>
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<div class="navbar-brand"></div>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<div class="bar-right">
-						<ul class="nav navbar-nav navbar-right">
-							<c:if test="${empty member}">
-								<li><a data-toggle="modal" data-target="#myModal">Login/Join</a></li>
-								<li><a href="<%=request.getContextPath()%>/notice/noticeList.notice">고객센터</a></li>
-							</c:if>
-							<c:if test="${not empty member}">
-								<li><a href="<%=request.getContextPath()%>/member/memberLogout.member">Logout</a></li>
-								<li><a href="<%=request.getContextPath()%>/member/memberMyPage.member">MyPage</a></li>
-								<li><a href="<%=request.getContextPath()%>/notice/noticeList.notice">고객센터</a></li>
-							</c:if>
-						</ul>
-					</div>
-					<ul class="nav navbar-nav navbar-center">
-						<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
-
-						<li class="dropdown">
-      						<a class="dropbtn" data-toggle="dropdown" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
-      						<span class="caret"></span></a>
-      						<ul class="dropdown-content" id="dropdown-menu">        						
-        						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
-<<<<<<< HEAD
-        					</ul>
-      						<ul class="dropdown-menu" id="dropdown-menu">
-        						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
-=======
->>>>>>> suin2
-								<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
-      						</ul>
-     					</li>
-
-
-						<li><a href="#">전문가</a></li>
-						<li><a href="#">Event</a></li>
-						<li><a href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>
-					</ul>
-
    <header>
       <nav class="navbar navbar-inverse">
          <div class="container-fluid">
@@ -77,7 +22,7 @@
                   <span class="icon-bar"></span> <span class="icon-bar"></span> <span
                      class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="#">Logo</a>
+               <div class="navbar-brand"></div>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                <div class="bar-right">
@@ -97,23 +42,17 @@
                   <li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 
                   <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
+                        <a class="dropbtn" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
                         <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-content" id="dropdown-menu">
                           <li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
-                       </ul>
-                        <ul class="dropdown-menu" id="dropdown-menu">
-                          <li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Category</a></li>
                         <li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
                         </ul>
                     </li>
-
-
                   <li><a href="#">전문가</a></li>
                   <li><a href="#">Event</a></li>
                   <li><a href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>
                </ul>
-
             </div>
          </div>
       </nav>
