@@ -137,6 +137,10 @@
 
 
 /********** main 시작 *************/
+#myCarousel{
+	height: 300px;
+	overflow: hidden;
+}
 .carousel-inner img {
     /*-webkit-filter: grayscale(90%);
     filter: grayscale(90%); make all photos black and white */ 

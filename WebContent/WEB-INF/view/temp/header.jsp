@@ -21,7 +21,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Logo</a>
+					<div class="navbar-brand"></div>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<div class="bar-right">

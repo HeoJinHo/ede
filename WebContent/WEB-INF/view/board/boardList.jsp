@@ -91,13 +91,11 @@
 				<tr>
 					<td>${i.num}</td>
 					<td><c:catch>
-							<c:if test="${i.depth eq 1}">
-						--[${i.ref}번의 답변]
-					</c:if>
+							<c:if test="${i.depth eq 1}">--[${i.ref}번의 답변]</c:if>
 							<c:if test="${i.depth gt 1}">
 								<c:forEach begin="1" end="${i.depth}">--</c:forEach>
-						[${i.ref}번의 추가답변]
-					</c:if>
+								[${i.ref}번의 추가답변]
+							</c:if>
 						</c:catch> <a href="./${board}View.${board}?num=${i.num}">${i.title}</a></td>
 					<td>${i.writer}</td>
 					<td>${i.reg_date}</td>
@@ -106,9 +104,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	</div>
+		<a class="btn btn-default write"  href="./${board}Write.${board}">Write 
+		<span class="glyphicon glyphicon-pencil"></span>
+		</a>
+</div>
 	
-	<div class="page-button">
+	<div class="center-block">
 		<c:if test="${page.curBlock gt 1}">
 			<input type="button" class="list btn btn-default" title="${page.startNum-1}"
 				value="&#8249;">
@@ -122,9 +123,8 @@
 			<input type="button" class="list btn btn-default" title="${page.lastNum+1}"
 				value="&#8250;">
 		</c:if>
-		<a href="./${board}Write.${board}">Write</a>
 	</div>
-	<%@ include file="../temp/footer.jsp"%>
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
 
