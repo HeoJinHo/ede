@@ -58,11 +58,6 @@
 .dropdown-menu{
 	background-color: black;
 }
-#dropdown-menu>uli>a{
-	color: orange;
-}
-
-
 .dropbtn {
     color: white;
     padding: 16px;
