@@ -20,7 +20,7 @@
 
 	<!-- main 시작 -->
 	<section id="main">
-
+		
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
@@ -46,7 +46,7 @@
 				</div>
 
 				<div class="item">
-					<img src="<%=request.getContextPath()%>/images/main/main_3.png"
+					<img src="<%=request.getContextPath()%>/images/main/main_3.jpg"
 						alt="glowpick" width="1200" height="250">
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 		</div>
 		<div class="main_contents">
 			<img src="<%=request.getContextPath()%>/images/main/main_contents.png">
-			<img src="<%=request.getContextPath()%>/images/main/main_contents2.png">
+			<img src="<%=request.getContextPath()%>/images/main/main_contents3.PNG">
 		</div>
 
 	</section>

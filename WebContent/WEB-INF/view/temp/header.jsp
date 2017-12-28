@@ -22,7 +22,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Logo</a>
+					<div class="navbar-brand"></div>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<div class="bar-right">
@@ -42,13 +42,16 @@
 						<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 
 						<li class="dropdown">
-      						<a class="dropdown-toggle" data-toggle="dropdown" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
+      						<a class="dropbtn" data-toggle="dropdown" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
       						<span class="caret"></span></a>
-      						<ul class="dropdown-menu">
+      						<ul class="dropdown-content" id="dropdown-menu">        						
         						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
+<<<<<<< HEAD
         					</ul>
       						<ul class="dropdown-menu" id="dropdown-menu">
         						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
+=======
+>>>>>>> suin2
 								<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
       						</ul>
      					</li>

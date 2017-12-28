@@ -29,7 +29,7 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into qna values(?,?,?,?,0,sysdate,?,0,0,0)";
+		String sql ="insert into qna values(?,?,?,?,0,sysdate,?,0,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
@@ -155,7 +155,7 @@ public class QnaDAO implements BoardDAO {
 	
 	public int replyInsert(QnaDTO qnaDTO, QnaDTO parent)throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,0)";
+		String sql ="insert into qna values(qna_seq.nextval,?,?,?,0,sysdate,?,?,?,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, qnaDTO.getTitle());
 		st.setString(2, qnaDTO.getContents());
