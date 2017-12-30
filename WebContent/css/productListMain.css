@@ -25,6 +25,7 @@ a, a:hover { text-decoration: none; }
 #result .resultWrap .productList { margin: 5px 0; padding: 0 2px; background: #fff; border-bottom: 1px solid #ccc; }
 #result .resultWrap .productList > div { float: left; padding: 0; color: #000; }
 #result .resultWrap .productList .pro_img_wrap { width: 100px; overflow: hidden;}
+#result .resultWrap .productList .pro_img_wrap img { width: 100px; height: 100px; overflow: hidden;}
 #result .resultWrap .productList .pro_desc_wrap { width: 85%;  }
 #result .resultWrap .productList .pro_desc_wrap a { display: block; height: 100px; padding: 15px 0 15px 5px; color: #000;}
 #result .resultWrap .productList .pro_desc_wrap a { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
@@ -47,6 +48,7 @@ a, a:hover { text-decoration: none; }
 	#result .resultWrap .productList { padding-bottom: 15px; }
 	#result .resultWrap .productList  .pro_desc_wrap a {  display: block; }
 	#result .resultWrap .productList .pro_img_wrap { margin-top: 15px; width: 25%; max-width: 100px;  }
+	#result .resultWrap .productList .pro_img_wrap img { width: 100%; max-width: 100px; height: 100%; max-height: 100px; }
 	#result .resultWrap .productList .pro_desc_wrap { width: 75%; }
 	#result .resultWrap .productList ._01 { width: 90%; vertical-align: top; margin-bottom: 10px;}
 	#result .resultWrap .productList ._02 { padding: 0 0 0px 0; width: 160px; margin-right: 10px; text-align: left; }

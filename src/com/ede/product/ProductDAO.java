@@ -86,8 +86,8 @@ public class ProductDAO {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setBrand(rs.getString("brand"));
 				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getInt("pro_price"));
-				productDTO.setCapacity(rs.getInt("capacity"));
+				productDTO.setPro_price(rs.getString("pro_price"));
+				productDTO.setCapacity(rs.getString("capacity"));
 				productDTO.setInfo(rs.getString("info"));
 				productDTO.setGrade1(rs.getInt("grade1"));
 				productDTO.setGrade2(rs.getInt("grade2"));
@@ -145,8 +145,8 @@ public class ProductDAO {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setBrand(rs.getString("brand"));
 				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getInt("pro_price"));
-				productDTO.setCapacity(rs.getInt("capacity"));
+				productDTO.setPro_price(rs.getString("pro_price"));
+				productDTO.setCapacity(rs.getString("capacity"));
 				productDTO.setInfo(rs.getString("info"));
 				productDTO.setGrade1(rs.getInt("grade1"));
 				productDTO.setGrade2(rs.getInt("grade2"));
@@ -239,7 +239,7 @@ public class ProductDAO {
 			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setBrand(rs.getString(1));
-				productDTO.setCapacity(rs.getInt(2)); // 등록된 갯수
+				productDTO.setCapacity(rs.getString(2)); // 등록된 갯수
 				ar.add(productDTO);
 			}
 			DBConnector.disConnect(rs, st, con);
@@ -266,8 +266,8 @@ public class ProductDAO {
 			ProductDTO productDTO = new ProductDTO();
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
-			productDTO.setPro_price(rs.getInt("pro_price"));
-			productDTO.setCapacity(rs.getInt("capacity"));
+			productDTO.setPro_price(rs.getString("pro_price"));
+			productDTO.setCapacity(rs.getString("capacity"));
 			productDTO.setInfo(rs.getString("info"));
 			productDTO.setGrade1(rs.getInt("grade1"));
 			productDTO.setGrade2(rs.getInt("grade2"));
@@ -295,8 +295,8 @@ public class ProductDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
-		st.setInt(3, productDTO.getPro_price());
-		st.setInt(4, productDTO.getCapacity());
+		st.setString(3, productDTO.getPro_price());
+		st.setString(4, productDTO.getCapacity());
 		st.setString(5, productDTO.getInfo());
 		st.setInt(6, productDTO.getEvt());
 		st.setInt(7, productDTO.getPro_num());
@@ -319,8 +319,8 @@ public class ProductDAO {
 			productDTO = new ProductDTO();
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
-			productDTO.setPro_price(rs.getInt("pro_price"));
-			productDTO.setCapacity(rs.getInt("capacity"));
+			productDTO.setPro_price(rs.getString("pro_price"));
+			productDTO.setCapacity(rs.getString("capacity"));
 			productDTO.setInfo(rs.getString("info"));
 			productDTO.setGrade1(rs.getInt("grade1"));
 			productDTO.setGrade2(rs.getInt("grade2"));
