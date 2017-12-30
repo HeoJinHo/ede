@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,30 +27,32 @@
 		});
 	});
 </script>
+<style type="text/css">
+</style>
 </head>
 <body>
 	<%@ include file="../temp/header.jsp"%>
 	
-	<nav class="nav_depth">
-		<ul>
+	<nav class="navbar navbar-inverse nav-kj">
+		<ul class="nav navbar-nav">
 			<li><a href="#" id="category">Category</a></li>
 			<li><a href="#" id="brand">Brand</a></li>
 		</ul>
 	</nav>
 
 	<div class="container">
-		<ul class="category_list clearfix">
-			<c:forEach items="${list}" var="i" varStatus="s">
-				<li class="col-sm-6 col-xs-12">
-					<a href="./productListMain.product?del=category">
-						<p class="title_name">${i.category }</p>
-						<p class="detail_name">${i.category }</p>
-					</a>
-				</li>
-			</c:forEach>
-		</ul>
-		<a href="./productRegist.product" class="register">Register</a>
+	<table class="table">
+	<c:forEach items="${list}" var="i" varStatus="s">
+		<tr>
+			<td><a href="./productListMain.product?del=category">${i.category }</a></td>
+			<td><a href="./productListMain.product?del=category">${i.category }</a></td>
+		</tr>
+	</c:forEach>
+	</table>
 	</div>
+	
+
+	<a href="./productRegist.product">Register</a>
 	
 	<%@ include file="../temp/footer.jsp"%>
 </body>

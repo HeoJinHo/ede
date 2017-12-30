@@ -41,11 +41,11 @@
 						<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 
 						<li class="dropdown">
-      						<a class="dropbtn" href="<%=request.getContextPath()%>/product/categoryList.product?del=category">Product
+      						<a class="dropbtn" href="<%=request.getContextPath()%>/product/mainList.product?del=category">Product
       						<span class="caret"></span></a>
       						<ul class="dropdown-content" id="dropdown-menu">
         						<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=category">Category</a></li>
-								<li><a href="<%=request.getContextPath()%>/product/categoryList.product?del=brand">Brand</a></li>
+								<li><a href="<%=request.getContextPath()%>/product/mainList.product?del=brand">Brand</a></li>
       						</ul>
      					</li>
 						<li><a href="#">전문가</a></li>

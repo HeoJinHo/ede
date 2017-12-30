@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -101,99 +101,64 @@
 <body>
 <%@ include file="../temp/header.jsp"%>
 
-<div class="container">
+<div id="wrap">
 	<input type="hidden" name="del" value="${del}">
 	<input type="hidden" name="brand" value="${brand}">
 	<div id="filter">
 		<label class="checkbox-inline">
-			<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">건성
+		<input type="checkbox" name="type" value="dry" id="dry" class="type" checked="checked">건성
 		</label>
 	    <label class="checkbox-inline">
-			<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">중성
+		<input type="checkbox" name="type" value="neutral" id="neutral" class="type" checked="checked">중성
 		</label>
 		<label class="checkbox-inline">
-			<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">지성
+		<input type="checkbox" name="type" value="oily" id="oily" class="type" checked="checked">지성
 		</label>
 		<label class="checkbox-inline">
-			<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">복합성
+		<input type="checkbox" name="type" value="complex" id="complex" class="type" checked="checked">복합성
 		</label>
 		<label class="checkbox-inline">
-			<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">민감성
+		<input type="checkbox" name="type" value="sensitive" id="sensitive" class="type" checked="checked">민감성
 		</label>
 	</div>
 	<div id="filter2">
 		<label class="radio-inline">
-			<input type="radio" name="category" value="reviewCount" checked="checked" class="category">댓글순
+		<input type="radio" name="category" value="reviewCount" checked="checked" class="category">댓글순
 		</label>
 		<label class="radio-inline">
-				<input type="radio" name="category" value="avg" class="category">평점순
+		<input type="radio" name="category" value="avg" class="category">평점순
 		</label>
 	</div>
 	
 	<div id="result">
-		<div class="resultWrap">
+		<table class="table">
+			<tr>
+				<th>brand</th>
+				<th>pro_Name</th>
+				<th>pro_Price</th>
+				<th>capacity</th>
+				<th>evt</th>
+				<th>category</th>
+				<th>type</th>
+				<th>avg</th>
+				<th>reply</th>
+			</tr>
 			<c:forEach items="${list}" var="i">
-			<div class="productList clearfix">
-				<div class="pro_img_wrap">
-					<img src="images/pro_img.png" alt="제품이미지" class="pro_img">
-				</div>
-				<div class="pro_desc_wrap">
-					<a href="./productView.product?pro_num=${i.pro_num}" class="clearfix">
-						<div class="_01">
-							<p class="brand">${i.brand}</p>
-							<p class="pro_name">${i.pro_name}</p>
-						</div>
-						<div class="_02">	
-							<p class="capacity">${i.capacity}</p>
-							<p class="pro_price">${i.pro_price}</p>
-						</div>
-						<div class="_03">	
-							<p class="avg">${i.avg }</p>
-							<p class="reply">${i.reply}</p>
-						</div>
-					</a>
-				</div>
-				<p class="evt">${i.evt}</p>
-				<p class="category">${i.category}</p>
-				<p class="type">${i.type }</p>
-			</div>
+			<tr class="productList">
+				<td class="brand">${i.brand}</td>
+				<td class="pro_name"><a href="./productView.product?pro_num=${i.pro_num}">${i.pro_name}</a></td>
+				<td class="pro_price">${i.pro_price}</td>
+				<td class="capacity">${i.capacity}</td>
+				<td class="evt">${i.evt}</td>
+				<td class="category">${i.category }
+				<td class="type">${i.type }</td>
+				<td class="avg">${i.avg }</td>
+				<td class="reply">${i.reply }</td>
+			</tr>
 			</c:forEach>
-		</div>
+		</table>
 	</div>
 </div>
 	<%@ include file="../temp/footer.jsp"%>
 </body>
-
-<!-- S : dowon -->
-<script>
-
-	// input check ( addClass - style ) 
-	var checkbox = $("#filter .checkbox-inline input[type='checkbox'], #filter2 .radio-inline input[type='radio']");
-
-	var checkboxCheck = function(checkbox){
-			checkbox.each(function(i){
-				if( $(this).is(":checked") ){
-					$(this).parent().addClass("checked");
-				}else{
-					$(this).parent().removeClass("checked");
-				}
-			})
-		}
-	$(function(){
-		checkboxCheck(checkbox);
-		
-		$("#filter .checkbox-inline input[type='checkbox'], #filter2 .radio-inline input[type='radio']").on("click", function(){
-			var checkbox = $(this);
-
-			if( $(this).attr("type") === "radio" ){
-				if( $(this).is(":checked") ){
-					$(this).parent().addClass("checked").siblings().removeClass("checked");
-					return false;
-				}
-			}
-			checkboxCheck(checkbox);
-		})
-	})
-</script>
-<!-- E : dowon -->
 </html>

@@ -4,52 +4,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- todo type을 어케 담아줄지 필요하다 -->
 	<!-- del brand 도 -->
-	
-	<table class="table">
-	<thead>
-	<tr>
-		<th>brand</th>
-		<th>pro_Name</th>
-		<th>pro_Price</th>
-		<th>capacity</th>
-		<th>info</th>
-		<th>grade1</th>
-		<th>grade2</th>
-		<th>grade3</th>
-		<th>grade4</th>
-		<th>grade5</th>
-		<th>pic_realName</th>
-		<th>pic_compName</th>
-		<th>evt</th>
-		<th>pro_num</th>
-		<th>category</th>
-		<th>type</th>
-		<th>avg</th>
-		<th>reply</th>
-	</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${list}" var="i">
-			<tr>
-				<td>${i.brand}</td>
-				<td><a href="./productView.product?pro_num=${i.pro_num}">${i.pro_name}</a></td>
-				<td>${i.pro_price}</td>
-				<td>${i.capacity}</td>
-				<td>${i.info}</td>
-				<td>${i.grade1}</td>
-				<td>${i.grade2}</td>
-				<td>${i.grade3}</td>
-				<td>${i.grade4}</td>
-				<td>${i.grade5}</td>
-				<td>${i.pic_realName}</td>
-				<td>${i.pic_compName}</td>
-				<td>${i.evt}</td>
-				<td>${i.pro_num}</td>
-				<td>${i.category }
-				<td>${i.type }</td>
-				<td>${i.avg }</td>
-				<td>${i.reply }</td>
-			</tr>
-		</c:forEach>
-	</tbody>
-	</table>
+	<div class="resultWrap">
+			<c:forEach items="${list}" var="i">
+			<div class="productList clearfix">
+				<div class="pro_img_wrap">
+					<img src="images/pro_img.png" alt="제품이미지" class="pro_img">
+				</div>
+				<div class="pro_desc_wrap">
+					<a href="./productView.product?pro_num=${i.pro_num}" class="clearfix">
+						<div class="_01">
+							<p class="brand">${i.brand}</p>
+							<p class="pro_name">${i.pro_name}</p>
+						</div>
+						<div class="_02">	
+							<p class="capacity">${i.capacity}</p>
+							<p class="pro_price">${i.pro_price}</p>
+						</div>
+						<div class="_03">	
+							<p class="avg">${i.avg }</p>
+							<p class="reply">${i.reply}</p>
+						</div>
+					</a>
+				</div>
+				<p class="evt">${i.evt}</p>
+				<p class="category">${i.category}</p>
+				<p class="type">${i.type }</p>
+			</div>
+			</c:forEach>
+		</div>
