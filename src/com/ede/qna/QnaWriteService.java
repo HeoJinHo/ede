@@ -99,6 +99,7 @@ public class QnaWriteService implements Action {
 		
 		else {
 			request.setAttribute("board", "qna");
+			request.setAttribute("title", "Q & A");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardWrite.jsp");
 		}

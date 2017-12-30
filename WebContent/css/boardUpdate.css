@@ -4,18 +4,6 @@
 	text-align: center;
 	font-weight: bold;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #e2e2e2;
-    opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #e2e2e2;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #e2e2e2;
-}
 .center-contents{
 	width: 650px;
 	min-height: 630px;

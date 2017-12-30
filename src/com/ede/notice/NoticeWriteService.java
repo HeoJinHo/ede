@@ -101,6 +101,7 @@ public class NoticeWriteService implements Action {
 		
 		else {
 			request.setAttribute("board", "notice");
+			request.setAttribute("title", "공지사항");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardWrite.jsp");
 		}

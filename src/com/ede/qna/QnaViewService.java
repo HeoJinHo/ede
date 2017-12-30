@@ -29,6 +29,7 @@ public class QnaViewService implements Action {
 		}
 		if(boardDTO != null) {
 			request.setAttribute("board", "qna");
+			request.setAttribute("title", "Q & A");
 			request.setAttribute("view", boardDTO);
 			actionFoward.setPath("../WEB-INF/view/board/boardView.jsp");
 		}else {

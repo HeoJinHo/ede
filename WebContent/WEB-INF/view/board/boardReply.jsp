@@ -16,6 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <link href="../css/header.css" rel="stylesheet">
+<link href="../css/boardWrite.css" rel="stylesheet">
 <script type="text/javascript" src="../SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
@@ -62,13 +63,18 @@
 </head>
 <body>
 <%@ include file="../temp/header.jsp" %>
+	<h2 id="tt">Q&A > ${title} write</h2>
+	<div class="center-contents">
 	<form id="frm" action="./${board}Reply.${board}" method="post">
 		<input type="hidden" value="<%=num%>" name="num">
-		<p>Writer : <input type="text" name="writer" value="<%=id%>" readonly="readonly"></p>
-		<p>Title : <input type="text" name="title"></p>
+		<p>Writer : <%=id%><input type="hidden" name="writer" value="<%=id%>"></p>
+		<p>Title : <input type="text" name="title" id="w-title" placeholder="Enter Title"></p>
 		<p><textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 		
-		<p><input type="button" value="Write" id="savebutton"></p>
+		<p><input type="button" class="btn btn-default write"  value="Write" id="savebutton"></p>
+		<a class="btn btn-default list" href="${board}List.${board}?num=${view.num}">Cancel</a>
 	</form>
+	</div>
+<%@ include file="../temp/footer.jsp" %>
 </body>
 </html>
