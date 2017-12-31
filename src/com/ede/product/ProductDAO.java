@@ -257,7 +257,7 @@ public class ProductDAO {
 			String sql = "select * from product order by reply desc";
 			st = con.prepareStatement(sql);
 		} else if (del.equals("brand")) {
-			String sql = "select * from product where brand=? order by reply desc ";
+			String sql = "select * from product where brand=? order by reply desc";
 			st = con.prepareStatement(sql);
 			st.setString(1, brand);
 		}

@@ -154,8 +154,6 @@
 					</a>
 				</div>
 				<p class="evt">${i.evt}</p>
-				<p class="category">${i.category}</p>
-				<p class="type">${i.type }</p>
 			</div>
 			</c:forEach>
 		</div>
