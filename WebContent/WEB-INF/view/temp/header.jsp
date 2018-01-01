@@ -53,13 +53,16 @@
 						<li><a href="#">Event</a></li>
 						<li><a href="<%=request.getContextPath()%>/meet/meetList.meet">모임</a></li>
 					</ul>
+					
             </div>
          </div>
       </nav>
+      
+					</div>
+
+
       <div class="modal fade" id="myModal" role="dialog">
          <div class="modal-dialog">
-
-
             <!-- Modal content-->
             <div class="modal-content" id="modal" style="background-color: #333; margin-top: 45%">
                <div class="modal-header">

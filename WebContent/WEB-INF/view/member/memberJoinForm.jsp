@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link href="https://fonts.googleapis.com/css?family=Caveat:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="js/bootstrap.js"></script>
 <link href="../css/header.css" rel="stylesheet">
 <link href="../css/member.css" rel="stylesheet">
@@ -46,81 +48,79 @@
 			}
 		});
 	});
+	
+
 </script>
 </head>
 <body>
 
 	<%@ include file="../temp/header.jsp"%>
 	<section id="join_div">
-		<h1>회 원 가 입</h1>
+		<h1 class="join_text">회 원 가 입</h1>
 		<form action="./memberJoin.member" method="post" name="frm">
+		
 			<input type="hidden" name="idCheck" value="0">
-			<p class="joinId">
-				<h3>아이디:</h3> <input type="text" name="id" id="id" placeholder="Enter ID" class="form-control" style="width: 30%">
-					<input type="button" id="check" value="중복확인">
-			</p>
+				아이디&nbsp&nbsp&nbsp<input type="text" name="id" id="id" placeholder="Enter ID"  style="width: 40%">
+				<input type="button" id="check" value="중복확인" class="btn btn-default">
 			
 			<p>
-				비밀번호: <input type="password" name="pw" placeholder="Enter PW"
-					id="pw" class="form-control" style="width: 14%">
+			비밀번호&nbsp&nbsp&nbsp<input type="password" name="pw" placeholder="Enter PW"
+					id="pw"  style="width: 40%">
 			</p>
 			<p id="pwcheck"></p>
 			<p>
-				비밀번호 확인 : <input type="password" placeholder="Enter PW" id="pw2"
-					class="form-control" style="width: 14%">
+			 비밀번호 확인&nbsp&nbsp&nbsp<input type="password" placeholder="Enter PW" id="pw2" style="width: 40%">
 			</p>
 			<p id="pwcheck2"></p>
 			<p>
-				이름: <input type="text" name="name" placeholder="Enter Name"
-					id="name" class="form-control" style="width: 14%">
+			이름&nbsp&nbsp&nbsp<input type="text" name="name" placeholder="Enter Name"
+					id="name"  style="width: 40%">
 			</p>
 			<p>
-				닉네임:<input type="text" name="nickname" placeholder="Enter Nick Name"
-					id="nickname" class="form-control" style="width: 14%">
+			닉네임&nbsp&nbsp&nbsp<input type="text" name="nickname" placeholder="Enter Nick Name"
+					id="nickname"  style="width: 40%">
 			</p>
 			<p>
-				이메일: <input type="email" name="email" placeholder="Enter Email"
-					id="email" class="form-control" style="width: 20%">
+			이메일&nbsp&nbsp&nbsp<input type="email" name="email" placeholder="Enter Email"
+					id="email" style="width: 40%">
 			</p>
 			<p>
-				핸 드 폰번호 <input type="text" name="phone"
-					placeholder="Enter Phone Number" id="phone" class="form-control"
-					style="width: 14%">
+			핸드폰&nbsp&nbsp&nbsp<input type="text" name="phone"
+					placeholder="Enter Phone Number" id="phone" style="width: 40%">
+			</p>
+			<p class="genderRadio">
+				성별&nbsp&nbsp&nbsp F <input type="radio" checked="checked" name="gender" value="F" id="gender">
+					 M <input type="radio" name="gender" value="M" id="gender">
 			</p>
 			<p>
-				성별: F <input type="radio" checked="checked" name="gender" value="F"
-					id="gender"> M <input type="radio" name="gender" value="M"
-					id="gender">
+			생년월일&nbsp&nbsp&nbsp<input type="date" name="birth" id="birth" style="width: 40%">
 			</p>
 			<p>
-				생년월일:<input type="date" name="birth" id="birth" class="form-control"
-					style="width: 14%">
-			</p>
-			<p>
-				피부타입: 건성 <input type="radio" name="skin" value="dry" id="skin">
+				피부타입&nbsp&nbsp&nbsp 건성 <input type="radio" name="skin" value="dry" id="skin">
 				중성 <input type="radio" name="skin" value="neutral" id="skin"><br>
 				지성 <input type="radio" name="skin" value="oily" id="skin">
 				민감성 <input type="radio" name="skin" value="complex" id="skin">
 				복합성 <input type="radio" name="skin" value="sensitive" id="skin">
 			</p>
 			<p>
-				주소:<input type="text" name="addr4" placeholder="우변번호" id="addr4"
-					class="form-control" style="width: 9%"> - <input
-					type="button" value="우편번호 찾기" id="nn">
+				주소&nbsp&nbsp&nbsp<input type="text" name="addr4" placeholder="우변번호" id="addr4"
+					style="width: 25%"> - <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default">
 			</p>
 			<p>
 				<input type="text" placeholder="도로명주소" name="addr" id="addr"
-					class="form-control" style="width: 20%">
+					style="width: 40%">
 			</p>
 			<p>
 				<input type="text" placeholder="나머지주소" name="addr2" id="addr2"
-					class="form-control" style="width: 20%">
+					style="width: 40%">
 			</p>
+	
 		</form>
-		<button id="btn">Join</button>
+		<button id="btn" class="btn btn-default">Join</button>
 		<form action="../index.jsp">
-			<button>회원가입 취소</button>
+			<button class="btn btn-default">회원가입 취소</button>
 		</form>
 </section>
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

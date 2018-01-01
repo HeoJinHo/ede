@@ -16,6 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <link href="../css/header.css" rel="stylesheet">
+<link href="../css/member.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function(){
 		$("#nn").click(function(){
@@ -35,10 +36,11 @@
 		닉네임 : <input type="text" name="nickname" value="${member.nickname}"><br><br>
 		생년월일 : <input type="date" name="birth" value="${member.birth}"><br><br>
 		<c:if test = "${sessionScope.member.gender eq 'M'}">
-		성별 : F<input type="radio" name="gender" value="F"> M<input type="radio" name="gender" checked="checked" value="M"><br><br>
+		성별 : F <input type="radio" name="gender" value="F"> M <input type="radio" name="gender" checked="checked" value="M"><br><br>
 		</c:if>
+		
 		<c:if test = "${sessionScope.member.gender eq 'F'}">
-		성별 : F<input type="radio" name="gender" value="F" checked="checked"> M<input type="radio" name="gender" value="M"><br>
+		성별 : F <input type="radio" name="gender" value="F" checked="checked"> M <input type="radio" name="gender" value="M"><br>
 		</c:if>		
 		
 		<c:if test = "${sessionScope.member.skin eq 'dry'}">
