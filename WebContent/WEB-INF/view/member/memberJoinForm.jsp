@@ -56,12 +56,12 @@
 
 	<%@ include file="../temp/header.jsp"%>
 	<section id="join_div">
-		<h1>회 원 가 입</h1>
+		<h1 class="join_text">회 원 가 입</h1>
 		<form action="./memberJoin.member" method="post" name="frm">
 		
 			<input type="hidden" name="idCheck" value="0">
 				아이디&nbsp&nbsp&nbsp<input type="text" name="id" id="id" placeholder="Enter ID"  style="width: 40%">
-				<input type="button" id="check" value="중복확인">
+				<input type="button" id="check" value="중복확인" class="btn btn-default">
 			
 			<p>
 			비밀번호&nbsp&nbsp&nbsp<input type="password" name="pw" placeholder="Enter PW"
@@ -104,8 +104,7 @@
 			</p>
 			<p>
 				주소&nbsp&nbsp&nbsp<input type="text" name="addr4" placeholder="우변번호" id="addr4"
-					style="width: 25%"> - <input
-					type="button" value="우편번호 찾기" id="nn">
+					style="width: 25%"> - <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default">
 			</p>
 			<p>
 				<input type="text" placeholder="도로명주소" name="addr" id="addr"
@@ -117,10 +116,11 @@
 			</p>
 	
 		</form>
-		<button id="btn">Join</button>
+		<button id="btn" class="btn btn-default">Join</button>
 		<form action="../index.jsp">
-			<button>회원가입 취소</button>
+			<button class="btn btn-default">회원가입 취소</button>
 		</form>
 </section>
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

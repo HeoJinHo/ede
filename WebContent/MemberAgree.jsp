@@ -18,6 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/member.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		$("#allCheck").click(function() {
@@ -28,19 +29,31 @@
 </script>
 
 </head>
-<body style="background-color: #f5f6f7;">
+<body>
 
 	<%@ include file="./WEB-INF/view/temp/header.jsp"%>
-	<h1 style="color: #25CBD3; text-align: center; float: center; font-weight: bolder;">GLOWPICK
-	</h1>
-	<div class="container" style="width: 30%">
-		<form action="./member/memberJoin.member" name="frm" id="frm">
+	
+	<div class="container top" style="border: solid 1px red;">
+	<!-- <h1 style="color: #25CBD3; text-align: center; float: center; font-weight: bolder;">GLOWPICK</h1> -->
+
+		<div id="join_tab">
+		<h5 id="ok1">약관동의</h5>
+		</div>
+		
+		<div id="join_tab2">
+		<h5 id="ok2">회원가입</h5>
+		</div>
+		
+		<div id="join_tab3">
+		<h5 id="ok3">가입인증</h5>
+		</div>
+
+		
 			<table class="table table-bordered">
 				<tr>
-					<td
-						style="font-size: 14px; font-weight: 700; line-height: 24px; color: #333;">이용약관,
-						개인정보 수집 및 어용,<br> 위치정보 이용약관(선택), 프로모션 안내<br> 메일 수신(선택)에
-						모두 동의 합니다.
+					<td style="font-size: 14px; font-weight: 700; line-height: 24px; color: #333;">이용약관,
+						개인정보 수집 및 어용,<br> 
+						위치정보 이용약관(선택), 프로모션 안내  메일 수신(선택)에 모두 동의 합니다.
 					</td>
 					<td>
 						<div class="btn-group" data-toggle="buttons">
@@ -51,8 +64,7 @@
 
 
 				<tr>
-					<td
-						style="font-size: 14px; font-weight: 800; line-height: 24px; color: #333;">글로우픽
+					<td style="font-size: 14px; font-weight: 800; line-height: 24px; color: #333;">글로우픽
 						이용약관 동의 <span
 						style="font-size: 12px; font-weight: 400; color: #08a600;">(필수)</span>
 					</td>
@@ -73,8 +85,7 @@
 							이 약관은 글로우픽 주식회사 ("회사" 또는 "글로우픽")가 제공하는 글로우픽 및 글로우픽 관련 제반 서비스의 이용과
 							관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.<br>
 
-							<h3
-								style="font-size: 12px; font-weight: 700; color: #666; line-height: 16px;">제
+							<h3 style="font-size: 12px; font-weight: 700; color: #666; line-height: 16px;">제
 								2 조 (정의)</h3>
 							이 약관에서 사용하는 용어의 정의는 다음과 같습니다.<br> ①"서비스"라 함은 구현되는 단말기(PC,
 							TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와<br> 상관없이 "회원"이 이용할 수 있는 글로우픽 및
@@ -308,21 +319,17 @@
 				</tr>
 
 			</table>
-			<hr class="colorgraph">
-			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6">
-					<button id="btn" class="btn btn-lg btn-success btn-block">동의</button>
-				</div>
-			</div>
-		</form>
-		<form action="./index.jsp">
-			<hr class="colorgraph">
-			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6">
+			
+			  		<a href="./member/memberJoin.member" class="btn btn-lg btn-success btn-block pull-left" style="width: 49%;" id="ok">동의</a>
+					<a href="./index.jsp" class="btn btn-lg btn-primary btn-block pull-right" style="width: 49%;">비동의</a>
+			
+	
+		<!-- <form action="./index.jsp">
+			<div class="row button2">
 					<button id="btn2" class="btn btn-lg btn-primary btn-block">비동의</button>
-				</div>
 			</div>
-		</form>
-	</div>
+		</form> -->
+		</div>
+	<%@ include file="./WEB-INF/view/temp/footer.jsp"%>
 </body>
 </html>
