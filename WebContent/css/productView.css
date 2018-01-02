@@ -82,3 +82,27 @@ a, a:hover { text-decoration: none; }
 
 	#result .result_wrap .user_id { display: block; }
 }
+
+.graph { display: inline-block }
+.graph #worst {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -100px no-repeat; }
+.graph #bad {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -75px no-repeat; }
+.graph #soso {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -50px no-repeat; }
+.graph #good {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -25px no-repeat; }
+.graph #best {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 0px no-repeat; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

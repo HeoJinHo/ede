@@ -19,6 +19,7 @@ public class ProductFilterService implements Action {
 		String category = request.getParameter("category");
 		String brand = request.getParameter("brand");
 		String[] type = request.getParameterValues("type");
+		String realCategory = request.getParameter("realCategory");
 		type = type[0].split(",");
 	/*	System.out.println("del : "+del);
 		System.out.println("category : "+category);
@@ -31,7 +32,7 @@ public class ProductFilterService implements Action {
 		if (del.equals("category")) {
 			productDAO = new ProductDAO();
 			try {
-				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand, realCategory);
 				request.setAttribute("list", ar);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -39,7 +40,7 @@ public class ProductFilterService implements Action {
 		} else if (del.equals("brand")) {
 			productDAO = new ProductDAO();
 			try {
-				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand);
+				List<ProductDTO> ar = productDAO.filterList(del, type, category, brand, realCategory);
 				request.setAttribute("list", ar);
 			} catch (Exception e) {
 				e.printStackTrace();

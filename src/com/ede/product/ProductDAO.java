@@ -41,15 +41,14 @@ public class ProductDAO {
 	}
 
 	// Fileter
-	public List<ProductDTO> filterList(String del, String[] type, String category, String brand) throws Exception {
-		
+	public List<ProductDTO> filterList(String del, String[] type, String category, String brand, String realCategory) throws Exception {
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
 		String sql = null;
 		if (del.equals("category")) {
 			PreparedStatement st = null;
 			if(category.equals("reviewCount")) {
-				sql = "select * from product where";
+				sql = "select * from (select rownum rank, n.* from (select * from product where";
 				if(type.length>0) {
 					sql=sql+"  type in (";
 					for(int i=0;i<type.length;i++) {
@@ -58,14 +57,14 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") order by reply desc";
+					sql=sql+") and category='"+realCategory+"' order by reply desc) N)";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
 					st.setString(i+1, type[i]);
 				}
 			} else if (category.equals("avg")) {
-				sql = "select * from product ";
+				sql = "select * from (select rownum rank, n.* from (select * from product ";
 				if(type.length>0) {
 					sql=sql+"where type in (";
 					for(int i=0;i<type.length;i++) {
@@ -74,7 +73,7 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") order by avg desc";
+					sql=sql+") and category='"+realCategory+"' order by reply desc) N)";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
@@ -84,9 +83,10 @@ public class ProductDAO {
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
+				productDTO.setRank(rs.getInt("rank"));
 				productDTO.setBrand(rs.getString("brand"));
 				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getString("pro_price"));
+				productDTO.setPro_price(rs.getInt("pro_price"));
 				productDTO.setCapacity(rs.getString("capacity"));
 				productDTO.setInfo(rs.getString("info"));
 				productDTO.setGrade1(rs.getInt("grade1"));
@@ -108,7 +108,7 @@ public class ProductDAO {
 		} else if (del.equals("brand")) {
 			PreparedStatement st =null;
 			if(category.equals("reviewCount")) {
-				sql = "select * from product where";
+				sql = "select * from (select rownum rank, n.* from (select * from product where";
 				if(type.length>0) {
 					sql=sql+"  type in (";
 					for(int i=0;i<type.length;i++) {
@@ -117,14 +117,14 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") and brand='"+brand+"' order by reply desc";
+					sql=sql+") and brand='"+brand+"' order by reply desc) N)";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
 					st.setString(i+1, type[i]);
 				}
 			} else if (category.equals("avg")) {
-				sql = "select * from product ";
+				sql = "select * from (select rownum rank, n.* from (select * from product ";
 				if(type.length>0) {
 					sql=sql+"where type in (";
 					for(int i=0;i<type.length;i++) {
@@ -133,7 +133,7 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") and brand='"+brand+"' order by avg desc";
+					sql=sql+") and brand='"+brand+"' order by avg desc) N)";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
@@ -143,9 +143,10 @@ public class ProductDAO {
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				ProductDTO productDTO = new ProductDTO();
+				productDTO.setRank(rs.getInt("rank"));
 				productDTO.setBrand(rs.getString("brand"));
 				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getString("pro_price"));
+				productDTO.setPro_price(rs.getInt("pro_price"));
 				productDTO.setCapacity(rs.getString("capacity"));
 				productDTO.setInfo(rs.getString("info"));
 				productDTO.setGrade1(rs.getInt("grade1"));
@@ -254,20 +255,21 @@ public class ProductDAO {
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		if (del.equals("category")) {
-			String sql = "select * from product where category=? order by reply desc";
+			String sql = "select * from (select rownum rank, N.* from (select * from product where category=? order by reply desc) N)";
 			st = con.prepareStatement(sql);
 			st.setString(1, category);
 		} else if (del.equals("brand")) {
-			String sql = "select * from product where brand=? order by reply desc";
+			String sql = "select * from (select rownum rank, N.* from (select * from product where brand=? order by reply desc) N)";
 			st = con.prepareStatement(sql);
 			st.setString(1, brand);
 		}
 		rs = st.executeQuery();
 		while (rs.next()) {
 			ProductDTO productDTO = new ProductDTO();
+			productDTO.setRank(rs.getInt("rank"));
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
-			productDTO.setPro_price(rs.getString("pro_price"));
+			productDTO.setPro_price(rs.getInt("pro_price"));
 			productDTO.setCapacity(rs.getString("capacity"));
 			productDTO.setInfo(rs.getString("info"));
 			productDTO.setGrade1(rs.getInt("grade1"));
@@ -296,7 +298,7 @@ public class ProductDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
-		st.setString(3, productDTO.getPro_price());
+		st.setInt(3, productDTO.getPro_price());
 		st.setString(4, productDTO.getCapacity());
 		st.setString(5, productDTO.getInfo());
 		st.setInt(6, productDTO.getEvt());
@@ -320,7 +322,7 @@ public class ProductDAO {
 			productDTO = new ProductDTO();
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
-			productDTO.setPro_price(rs.getString("pro_price"));
+			productDTO.setPro_price(rs.getInt("pro_price"));
 			productDTO.setCapacity(rs.getString("capacity"));
 			productDTO.setInfo(rs.getString("info"));
 			productDTO.setGrade1(rs.getInt("grade1"));
