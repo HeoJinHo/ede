@@ -11,6 +11,7 @@
 	text-align: center;
 	color: white;
 	float: left;
+	margin-bottom: 3%;
 }
 
 #ok1{
@@ -25,6 +26,7 @@
 	text-align: center;
 	color: white;
 	float: left;
+	margin-bottom: 3%;
 }
 
 #ok2{
@@ -39,12 +41,98 @@
 	text-align: center;
 	color: white;
 	float: left;
+	margin-bottom: 3%;
 }
 
 #ok3{
 	font-size: large;	
 	padding-top: 2%;
 }
+
+
+#join_div{
+	width: 1170px;
+	margin: 0 auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#member_tab{
+	width: 33.33%;
+	height: 5%;
+	background-color: gray;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#member1{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+#member_tab2{
+	width: 33.33%;
+	height: 5%;
+	background-color: #2c3940;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#member2{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+#member_tab3{
+	width: 33.33%;
+	height: 5%;
+	background-color: gray;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#member3{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+.join_td{
+	width: 20%;
+	text-align: 
+}
+
+.join_th{
+	width: 50%;
+}
+
+.join_tr{
+	height: 50px;;
+	border-bottom: 1px gray;
+}
+
+.join_table{
+	width: 80%;
+}
+
+.join_in{
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px dotted #2c3940 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -moz-transition: none !important;
+    -webkit-transition: none !important;
+    height: 30px;	
+}
+
 
 .genderRadio>input{
 	position: inherit;
@@ -61,6 +149,7 @@
 
 .join_text{
 	border-bottom: 2px;
+
 }
 
 .row.button{

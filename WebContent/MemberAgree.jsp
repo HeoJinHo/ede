@@ -33,9 +33,9 @@
 
 	<%@ include file="./WEB-INF/view/temp/header.jsp"%>
 	
-	<div class="container top" style="border: solid 1px red;">
+	<div class="container top">
 	<!-- <h1 style="color: #25CBD3; text-align: center; float: center; font-weight: bolder;">GLOWPICK</h1> -->
-
+	
 		<div id="join_tab">
 		<h5 id="ok1">약관동의</h5>
 		</div>
@@ -89,7 +89,7 @@
 								2 조 (정의)</h3>
 							이 약관에서 사용하는 용어의 정의는 다음과 같습니다.<br> ①"서비스"라 함은 구현되는 단말기(PC,
 							TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와<br> 상관없이 "회원"이 이용할 수 있는 글로우픽 및
-							글로우픽 관련 제반 서비스를 의미합니다. ②"회원"<br>이라 함은 회사의 "서비스"에 접속하여 이 약관에
+							글로우픽 관련 제반 서비스를 의미합니다.  ②"회원"<br>이라 함은 회사의 "서비스"에 접속하여 이 약관에
 							따라 "회사"와 이용계약을 체결하고 "회사"가<br> 제공하는 "서비스"를 이용하는 고객을 말합니다.
 							③"아이디(ID)"라 함은 "회원"의 식별과 "서비스" 이용을 위하여 "회원"이 정하고 "회사"가 승인하는 문자와
 							숫자의 조합을 의미합니다. ④"비밀번호"라 함은 "회원"이 부여 받은 "아이디와 일치되는 "회원"임을 확인하고
@@ -320,8 +320,8 @@
 
 			</table>
 			
-			  		<a href="./member/memberJoin.member" class="btn btn-lg btn-success btn-block pull-left" style="width: 49%;" id="ok">동의</a>
-					<a href="./index.jsp" class="btn btn-lg btn-primary btn-block pull-right" style="width: 49%;">비동의</a>
+			  		<a href="./member/memberJoin.member" class="btn btn-lg btn-block pull-left" style="width: 49%; background-color: #2c3940; color: white;" id="ok">동의</a>
+					<a href="./index.jsp" class="btn btn-lg btn-block pull-right" style="width: 49%; background-color: gray; color: white;">비동의</a>
 			
 	
 		<!-- <form action="./index.jsp">
