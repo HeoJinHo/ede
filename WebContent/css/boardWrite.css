@@ -38,10 +38,9 @@ form{
 #w-title:hover{
 	border-bottom: 2px solid black;
 }
-#files>input{
-	float: none; 
+#files>p>input{
+	display: inline-block;
 	margin-top: 2%;
-	margin-right: 6%;
 	margin-bottom: 1%;
 	background-color: transparent;
 	border-color: transparent;
@@ -49,6 +48,17 @@ form{
 	font-weight: bold;
 	font-size: small;
 	padding: 0 0 0 0; 
+}
+.ch{
+	display: inline-block;
+	margin-bottom: 1%;
+	border-style: none;
+	background:none;
+	color: red;
+	font-weight: bold;
+}
+.ch:hover{
+	text-shadow: gray;
 }
 #btn{
 	background-color: #0080ff;
@@ -58,6 +68,7 @@ form{
 	float: right; 
 	margin-top: 15%;
 	margin-right: 6%;
+	margin-bottom:12%;
 	border-color: #808080;
 	color: #808080; 
 	border-width: 2px;

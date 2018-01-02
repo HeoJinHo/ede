@@ -19,9 +19,14 @@
 	$(function(){
 		var i=2;
 		$("#btn").click(function(){
-			var f = '<input type="file" name="f'+i+'">';
+			var f = '<p><input type="file" name="f'+i+'"><button class="ch">X</button></p>';
 			$("#files").append(f);
 			i++;
+		});
+		
+		$("#files").on("click",".ch",function(){			
+			$(this).prev().remove();
+			$(this).remove();
 		});
 		
 		//////////////////////////////////////
@@ -67,15 +72,19 @@
 			<p>Title : <input type="text" name="title" id="w-title" placeholder="Enter Title"></p>
 			<p><textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 			<div id="files">
-				<input type="file" class="btn btn-default file" name="f1">
+				<p><input type="file" class="btn btn-default file" name="f1"><button class="ch">X</button></p>
 			</div>
 			<p>
 				<input type="button" class="btn btn-default file" id="btn" value="Add File">
 			</p>
-			<div>
-				<input type="button" class="btn btn-default write" value="Write" id="savebutton">
-				<a class="btn btn-default list" href="${board}List.${board}?num=${view.num}">Cancel</a>
+			<div class="row">
+				<div class="col-sm-8"></div>
+				<div class="col-sm-4">
+					<input type="button" class="btn btn-default write" value="Write" id="savebutton">
+					<a class="btn btn-default list" href="${board}List.${board}?num=${view.num}">Cancel</a>
+				</div>
 			</div>
+
 		</form>
 	</div>	
 <%@ include file="../temp/footer.jsp" %>

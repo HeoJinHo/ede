@@ -19,7 +19,7 @@ public class NoticeListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward= new ActionFoward();
 		MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
-		if(memberDTO!=null) {
+	
 
 			int curPage=1;
 			try {
@@ -53,12 +53,7 @@ public class NoticeListService implements Action {
 
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardList.jsp");
-		}else {			
-			request.setAttribute("message", "로그인하렴");
-			request.setAttribute("path", "../index.jsp");
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
-		}
+		
 		return actionFoward;
 	}
 
