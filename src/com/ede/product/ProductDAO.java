@@ -73,7 +73,7 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") and category='"+realCategory+"' order by reply desc) N)";
+					sql=sql+") and category='"+realCategory+"' order by avg desc) N)";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {

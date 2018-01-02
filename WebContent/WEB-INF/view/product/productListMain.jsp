@@ -151,8 +151,8 @@
 							<p class="pro_price">${i.pro_price}</p>
 						</div>
 						<div class="_03">	
-							<p class="avg">${i.avg }</p>
-							<p class="reply">${i.reply}</p>
+							<p class="avg">${i.avg }점 /</p>
+							<p class="reply">${i.reply} reviews</p>
 						</div>
 					</a>
 				</div>
