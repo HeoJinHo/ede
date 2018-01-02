@@ -30,6 +30,7 @@ public class NoticeViewService implements Action {
 		if(boardDTO != null) {
 
 			request.setAttribute("board", "notice");
+			request.setAttribute("title", "공지사항");
 			request.setAttribute("view", boardDTO);
 			actionFoward.setPath("../WEB-INF/view/board/boardView.jsp");
 		}else {

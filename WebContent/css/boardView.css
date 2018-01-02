@@ -1,0 +1,74 @@
+@charset "UTF-8";
+#tt{
+	margin-top:4%;
+	margin-bottom : 3%;
+	text-align: center;
+	font-weight: bold;
+}
+.container{
+	min-height: 500px;
+}
+.table.view{
+	table-layout: fixed;
+	width: 90%;
+	min-height: 400px;
+	margin: auto;
+	text-align: center;
+}
+thead{
+	font-weight: bold;
+	background-color: black;
+	color: white;
+}
+tbody>.head{
+	border-bottom: 1px dotted #bfbfbf;
+}
+.head{
+	height: 4%;
+}
+.td_title{
+	font-weight: bold;
+	width: 55%;
+}
+.contents{
+	font-size: large;
+	font-weight: 530;
+	border-bottom: 2px solid #bfbfbf;
+}
+
+.center-contents{
+	width: 650px;
+	min-height: 630px;
+	border: 2px solid black;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	padding-left: 30px;
+}
+.center-contents.h3{
+	
+}
+.btn.btn-default.delete,
+.btn.btn-default.update,
+.btn.btn-default.reply{
+	float: right; 
+	margin-top: 2%;
+	margin-right: 2%;
+	border-color: #808080;
+	color: #808080; 
+	border-width: 2px;
+	font-weight: bold;
+}
+.btn.btn-default.delete{
+	margin-right: 6%;
+}
+.btn.btn-default.list{
+	float: left; 
+	margin-top: 2%;
+	margin-left: 6%;
+	border-color: black;
+	background-color: black;
+	color: #ffffff; 
+	font-weight: bold;
+}

@@ -60,6 +60,7 @@
 </head>
 <body>
 <%@ include file="../temp/header.jsp" %>
+	<h2 id="tt">${title} Write</h2>
 	<div class="center-contents">
 		<form id="frm" action="./${board}Write.${board}" method="post" enctype="multipart/form-data">
 			<p>Writer : <%=id%><input type="hidden" name="writer" value="<%=id%>"></p>
@@ -68,9 +69,13 @@
 			<div id="files">
 				<input type="file" class="btn btn-default file" name="f1">
 			</div>
-			<input type="button" class="btn btn-default file" id="btn" value="Add File">
-			<p><input type="button" class="btn btn-default write" value="Write" id="savebutton">
+			<p>
+				<input type="button" class="btn btn-default file" id="btn" value="Add File">
 			</p>
+			<div>
+				<input type="button" class="btn btn-default write" value="Write" id="savebutton">
+				<a class="btn btn-default list" href="${board}List.${board}?num=${view.num}">Cancel</a>
+			</div>
 		</form>
 	</div>	
 <%@ include file="../temp/footer.jsp" %>

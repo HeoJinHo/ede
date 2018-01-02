@@ -10,6 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <link href="../css/header.css" rel="stylesheet">
+<link href="../css/boardUpdate.css" rel="stylesheet">
 <script type="text/javascript" src="../SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
@@ -57,22 +58,23 @@
 </head>
 <body>
 <%@ include file="../temp/header.jsp" %>
-	<h1>Update ${board}</h1>
-	 
-	<form id="frm" action="./${board}Update.${board}" method="post" enctype="multipart/form-data">
-		<p><input type="hidden" name="num" value="${view.num}"></p>
-		<div>작성자 : ${view.writer}</div>
-		<p>제목 : <input type="text" name="title" value="${view.title}"></p>
-		<p><textarea rows="" cols="" name="contents" id="contents" >${view.contents}</textarea></p>
-		<div id="files">
-			<input type="file" name="f1">
+		<h2 id="tt">${title} Update</h2>
+		<div class="center-contents">
+			<form id="frm" action="./${board}Update.${board}" method="post" enctype="multipart/form-data">
+				<p><input type="hidden" name="num" value="${view.num}"></p>
+				<p>Writer : ${view.writer}</p>
+				<p>Title : <input type="text" name="title" id="w-title" value="${view.title}"></p>
+				<p><textarea rows="" cols="" name="contents" id="contents" >${view.contents}</textarea></p>
+				<div id="files">
+					<input type="file" class="btn btn-default file" name="f1">
+				</div>
+				<input type="button" class="btn btn-default file" id="btn" value="Add File">
+				<input type="button" class="btn btn-default write" value="UPDATE" id="savebutton">
+				<a class="btn btn-default list" href="${board}List.${board}?num=${view.num}">Cancel</a>
+				
+			</form>
 		</div>
-		<input type="button" id="btn" value="Add File">
-		<input type="button" value="UPDATE" id="savebutton">
-		
-	</form>
-	
-
+<%@ include file="../temp/footer.jsp" %>
 </body>
 </html>
 
