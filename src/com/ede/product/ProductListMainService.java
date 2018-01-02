@@ -14,21 +14,23 @@ public class ProductListMainService implements Action{
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String del = request.getParameter("del");
-		String brand =request.getParameter("brand");
+		String brand = request.getParameter("brand");
+		String category = request.getParameter("category");
 		ProductDAO productDAO = null;
 		if(del.equals("category")) {
 			productDAO = new ProductDAO();
 			try {
-				List<ProductDTO> ar = productDAO.productList(del,brand);
+				List<ProductDTO> ar = productDAO.productList(del,brand,category);
 				request.setAttribute("list", ar);
 				request.setAttribute("del", "category");
+				request.setAttribute("category", category);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (del.equals("brand")) {
 			productDAO = new ProductDAO();
 			try {
-				List<ProductDTO> ar = productDAO.productList(del,brand);
+				List<ProductDTO> ar = productDAO.productList(del,brand,category);
 				request.setAttribute("list", ar);
 				request.setAttribute("del", "brand");
 				//System.out.println(brand+" : brand in productService");

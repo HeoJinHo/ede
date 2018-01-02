@@ -31,6 +31,7 @@ a, a:hover { text-decoration: none; }
 #result .resultWrap .productList .pro_desc_wrap a { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
 
 
+
 #result .resultWrap .productList ._01 { float: left; display:inline-block; width: 47%;}
 #result .resultWrap .productList ._02 { float: left; margin-right: 15px; padding: 15px 0; display:inline-block; width: 25%; text-align: right;}
 #result .resultWrap .productList ._03 { float: left; padding: 15px 0; display:inline-block; width: 25%; color: #02bcc5; text-align: right;}

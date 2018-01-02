@@ -1,0 +1,84 @@
+/* reset */
+@charset "utf-8";
+div, p, ul { margin: 0; padding: 0; list-style: none; }
+
+a, a:hover { text-decoration: none; }
+
+/* common */
+.clearfix::after { display: block; content: ''; clear: both; }
+/*a, button { background: transparent; }*/
+/* ============================== */
+
+
+.container { margin: 20px auto; width: 100%; max-width: 900px; }
+
+.tab_btn { margin-top: 10px; }
+.tab_btn button{ display: inline-block; padding: 10px; width: 33.3%; height: 45px; line-height: 30px; border: none; border-bottom: 3px solid #ccc; background: #fff; color: #ccc; font-size: 20px; font-weight: bold; text-align: center;}
+.tab_btn button.on { color: #25cbd3; border-bottom: 3px solid #25cbd3;}
+
+.tab_content > div { display: none; }
+.tab_content .on { display: block; }
+
+
+.reply .write_wrap { margin: 20px 0; width: 100%; /*border: 1px solid #ccc; border-radius: 5px;*/ }
+.reply .write_wrap .text { margin: 15px 0 5px 0; font-size: 20px; }
+
+.reply .write_wrap .reply { padding-left: 20px; height: 50px; line-height: 50px; background: #eee; font-size: 17px; }
+.reply .write_wrap .reply span { padding-left: 5px; font-size: 15px;}
+
+.reply .write_wrap .reply_innerwrap { padding: 15px; border: 2px solid #ddd;}
+
+
+.reply .write_wrap .text_wrap .form-control { display: inline-block }
+.reply .write_wrap .text_wrap button { display: inline-block }
+
+.reply .write_wrap .grade_wrap label { padding-top: 1px; padding-left: 33px; font-size: 12px; width: 60px; height: 34px; line-height: 35px; background: url("../images/common/ico_grade.png") no-repeat; cursor: pointer;}
+.reply .write_wrap .grade_wrap .grade1 { background-position: -210px -140px;  }
+.reply .write_wrap .grade_wrap .grade2 { background-position: -210px -105px;  }
+.reply .write_wrap .grade_wrap .grade3 { background-position: -210px -70px;  }
+.reply .write_wrap .grade_wrap .grade4 { background-position: -210px -35px;  }
+.reply .write_wrap .grade_wrap .grade5 { background-position: -210px 0;  }
+.reply .write_wrap .grade_wrap input { width: 0px; height: 1px; margin-left: -1px; }
+.reply .write_wrap .grade_wrap input:checked + label { background-position-x: -140px ;  }
+
+.reply .text_wrap {width: 100%;}
+.reply .text_wrap textarea { float: left; padding:10px; margin: 0; width: 87% !important; height: 60px; background:white; border:0; resize:none; font-size:13px; color:#10213e; border: 1px solid #ccc;}
+.reply .text_wrap button {float: left; padding: 10px; width: 13%; height: 60px; background: #25cbd3; color: #fff; border: none; font-size: 19px; font-weight: bold;}
+
+
+#result { border-top: 3px solid #25cbd3; }
+#result .result_wrap { padding: 20px 10px; border-bottom: 1px solid #ddd;}
+#result .result_wrap .grade5 { margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 0px no-repeat; }
+#result .result_wrap .grade5::after { display: block; font-size: 13px; font-weight: bold; content: "짱짱";}
+#result .result_wrap .grade4 { margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -25px no-repeat; }
+#result .result_wrap .grade4::after { display: block; font-size: 13px; font-weight: bold; content: "굿굿";}
+#result .result_wrap .grade3 { margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -50px no-repeat; }
+#result .result_wrap .grade3::after { display: block; font-size: 13px; font-weight: bold; content: "쏘쏘";}
+#result .result_wrap .grade2 { margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -75px no-repeat; }
+#result .result_wrap .grade2::after { display: block; font-size: 13px; font-weight: bold; content: "별로";}
+#result .result_wrap .grade1 { margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -100px no-repeat; }
+#result .result_wrap .grade1::after { display: block; font-size: 13px; font-weight: bold; content: "최악";}
+#result .result_wrap .user_id { margin-right: 10px; font-size: 18px; color: #25cbd3; font-weight: bold;}
+#result .result_wrap .user_info { color: #999; }
+
+#result .result_wrap .contents { margin-top: 10px;  }
+#result .result_wrap .btn_like { margin-top: 10px; background: url(../images/common/ico_heart.png) no-repeat;  }
+#result .result_wrap .btn_like button { padding-left: 26px; display: block; height: 25px; font-size: 17px; border: none; background: transparent; }
+
+@media screen and (max-width: 750px){
+	.container { width: 95% !important; }
+	.reply .write_wrap .reply_innerwrap { padding: 5px; border: 2px solid #ccc;}
+	.reply .text_wrap textarea { width: 80% !important; }
+	.reply .text_wrap button { width: 20%;}
+
+	.reply .write_wrap .grade_wrap label {  margin-top: 10px; padding-left: 27px; width: 53px; height: 25px; line-height: 25px; background: url("../images/common/ico_grade.png") no-repeat; }
+	.reply .write_wrap .grade_wrap .grade1 { background-position: -70px -100px;  }
+	.reply .write_wrap .grade_wrap .grade2 { background-position: -70px -75px;  }
+	.reply .write_wrap .grade_wrap .grade3 { background-position: -70px -50px;  }
+	.reply .write_wrap .grade_wrap .grade4 { background-position: -70px -25px;  }
+	.reply .write_wrap .grade_wrap .grade5 { background-position: -70px 0;  }
+	.reply .write_wrap .grade_wrap input:checked + label { background-position-x: 0px ;  }
+
+
+	#result .result_wrap .user_id { display: block; }
+}

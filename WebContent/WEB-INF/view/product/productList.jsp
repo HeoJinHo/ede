@@ -8,7 +8,7 @@
 			<c:forEach items="${list}" var="i">
 			<div class="productList clearfix">
 				<div class="pro_img_wrap">
-					<img src="images/pro_img.png" alt="제품이미지" class="pro_img">
+					<img src="${i.pic_realName}" alt="제품이미지" class="pro_img">
 				</div>
 				<div class="pro_desc_wrap">
 					<a href="./productView.product?pro_num=${i.pro_num}" class="clearfix">

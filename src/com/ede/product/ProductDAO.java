@@ -248,16 +248,17 @@ public class ProductDAO {
 	}
 
 	// productList
-	public List<ProductDTO> productList(String del, String brand) throws Exception {
+	public List<ProductDTO> productList(String del, String brand, String category) throws Exception {
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection con = DBConnector.getConnect();
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		if (del.equals("category")) {
-			String sql = "select * from product order by reply desc";
+			String sql = "select * from product where category=? order by reply desc";
 			st = con.prepareStatement(sql);
+			st.setString(1, category);
 		} else if (del.equals("brand")) {
-			String sql = "select * from product where brand=? order by reply desc ";
+			String sql = "select * from product where brand=? order by reply desc";
 			st = con.prepareStatement(sql);
 			st.setString(1, brand);
 		}
