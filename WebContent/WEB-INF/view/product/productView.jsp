@@ -119,15 +119,25 @@ $(function(){
 			<p>${list.pro_price}원</p>
 			<p>${list.capacity}ml</p>
 			<p>${list.info}</p>
-			<div>
 				<p>평균 ${list.avg}</p>
+			<div class="graph">
+				<div class="worst"></div>
+				<div class="bad"></div>
+				<div class="soso"></div>
+				<div class="good"></div>
+				<div class="best"></div>
 				<p>최악 ${list.grade1}</p>
 				<p>별로 ${list.grade2}</p>
 				<p>쏘쏘 ${list.grade3}</p>
 				<p>굿굿 ${list.grade4}</p>
 				<p>짱짱 ${list.grade5}</p>
-				<p>${list.evt}</p>
+				<div id="worst"></div>
+				<div id="bad"></div>
+				<div id="soso"></div>
+				<div id="good"></div>
+				<div id="best"></div>
 			</div>
+				<p>${list.evt}</p>
 	</div>
 		
 	<div class="tab_btn" >
