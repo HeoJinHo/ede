@@ -24,6 +24,7 @@ a, a:hover { text-decoration: none; }
 #result .resultWrap { background: #eee; width: 100%; padding: 10px 5px ; }
 #result .resultWrap .productList { margin: 5px 0; padding: 0 2px; background: #fff; border-bottom: 1px solid #ccc; }
 #result .resultWrap .productList > div { float: left; padding: 0; color: #000; }
+#result .resultWrap .productList .rank { width: 100px; overflow: hidden;}
 #result .resultWrap .productList .pro_img_wrap { width: 100px; overflow: hidden;}
 #result .resultWrap .productList .pro_img_wrap img { width: 100px; height: 100px; overflow: hidden;}
 #result .resultWrap .productList .pro_desc_wrap { width: 85%;  }

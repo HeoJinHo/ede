@@ -39,7 +39,7 @@
 		<ul class="category_list clearfix">
 			<c:forEach items="${list}" var="i" varStatus="s">
 				<li class="col-sm-6 col-xs-12">
-					<a href="./categoryList.product?del=category&category=${i.category })">
+					<a href="./productListMain.product?del=category&category=${i.category}">
 						<p class="title_name">${i.category }</p>
 						<p class="detail_name">${i.category }</p>
 					</a>

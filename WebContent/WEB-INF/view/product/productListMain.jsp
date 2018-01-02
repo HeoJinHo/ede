@@ -134,6 +134,9 @@
 		<div class="resultWrap">
 			<c:forEach items="${list}" var="i">
 			<div class="productList clearfix">
+				<div class="rank">
+					1
+				</div>
 				<div class="pro_img_wrap">
 					<img src="${i.pic_realName}" alt="제품이미지" class="pro_img">
 				</div>
@@ -153,7 +156,9 @@
 						</div>
 					</a>
 				</div>
-				<p class="evt">${i.evt}</p>
+				<%-- <p class="evt">${i.evt}</p>
+				<p class="category">${i.category}</p>
+				<p class="type">${i.type }</p> --%>
 			</div>
 			</c:forEach>
 		</div>
