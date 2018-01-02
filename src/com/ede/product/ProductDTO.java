@@ -3,7 +3,7 @@ package com.ede.product;
 public class ProductDTO {
 	private String brand;
 	private String pro_name;
-	private String pro_price;
+	private int pro_price;
 	private String capacity;
 	private String info;
 	private int grade1;
@@ -33,10 +33,10 @@ public class ProductDTO {
 	public void setPro_name(String pro_name) {
 		this.pro_name = pro_name;
 	}
-	public String getPro_price() {
+	public int getPro_price() {
 		return pro_price;
 	}
-	public void setPro_price(String pro_price) {
+	public void setPro_price(int pro_price) {
 		this.pro_price = pro_price;
 	}
 	public String getCapacity() {

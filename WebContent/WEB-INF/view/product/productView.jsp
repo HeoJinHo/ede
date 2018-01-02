@@ -139,16 +139,16 @@ $(function(){
 	      		<p class="text">댓글남기기</p>
 				<div class="reply_innerwrap">
 					<div class="grade_wrap">
-				  		<input type="radio" name="grade" value="grade5" id="grade5">
-				  		<label class="grade5" for="grade5">짱짱</label>
-				  		<input type="radio" name="grade" value="grade4" id="grade4">
-				  		<label class="grade4" for="grade4">굿굿</label>
-				  		<input type="radio" name="grade" value="grade3" id="grade3">
-				  		<label class="grade3" for="grade3">쏘쏘</label>
-				  		<input type="radio" name="grade" value="grade2" id="grade2">
-				  		<label class="grade2" for="grade2">별로</label>
 				  		<input type="radio" name="grade" value="grade1" id="grade1">
 				  		<label class="grade1" for="grade1">최악</label>
+				  		<input type="radio" name="grade" value="grade2" id="grade2">
+				  		<label class="grade2" for="grade2">별로</label>
+				  		<input type="radio" name="grade" value="grade3" id="grade3">
+				  		<label class="grade3" for="grade3">쏘쏘</label>
+				  		<input type="radio" name="grade" value="grade4" id="grade4">
+				  		<label class="grade4" for="grade4">굿굿</label>
+				  		<input type="radio" name="grade" value="grade5" id="grade5">
+				  		<label class="grade5" for="grade5">짱짱</label>
 					</div>
 					<div class="text_wrap clearfix">
 		      			<!-- <label for="contents">contents:</label> -->

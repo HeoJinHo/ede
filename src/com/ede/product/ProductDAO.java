@@ -86,7 +86,7 @@ public class ProductDAO {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setBrand(rs.getString("brand"));
 				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getString("pro_price"));
+				productDTO.setPro_price(rs.getInt("pro_price"));
 				productDTO.setCapacity(rs.getString("capacity"));
 				productDTO.setInfo(rs.getString("info"));
 				productDTO.setGrade1(rs.getInt("grade1"));
@@ -145,7 +145,7 @@ public class ProductDAO {
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setBrand(rs.getString("brand"));
 				productDTO.setPro_name(rs.getString("pro_name"));
-				productDTO.setPro_price(rs.getString("pro_price"));
+				productDTO.setPro_price(rs.getInt("pro_price"));
 				productDTO.setCapacity(rs.getString("capacity"));
 				productDTO.setInfo(rs.getString("info"));
 				productDTO.setGrade1(rs.getInt("grade1"));
@@ -267,7 +267,7 @@ public class ProductDAO {
 			ProductDTO productDTO = new ProductDTO();
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
-			productDTO.setPro_price(rs.getString("pro_price"));
+			productDTO.setPro_price(rs.getInt("pro_price"));
 			productDTO.setCapacity(rs.getString("capacity"));
 			productDTO.setInfo(rs.getString("info"));
 			productDTO.setGrade1(rs.getInt("grade1"));
@@ -296,7 +296,7 @@ public class ProductDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, productDTO.getBrand());
 		st.setString(2, productDTO.getPro_name());
-		st.setString(3, productDTO.getPro_price());
+		st.setInt(3, productDTO.getPro_price());
 		st.setString(4, productDTO.getCapacity());
 		st.setString(5, productDTO.getInfo());
 		st.setInt(6, productDTO.getEvt());
@@ -320,7 +320,7 @@ public class ProductDAO {
 			productDTO = new ProductDTO();
 			productDTO.setBrand(rs.getString("brand"));
 			productDTO.setPro_name(rs.getString("pro_name"));
-			productDTO.setPro_price(rs.getString("pro_price"));
+			productDTO.setPro_price(rs.getInt("pro_price"));
 			productDTO.setCapacity(rs.getString("capacity"));
 			productDTO.setInfo(rs.getString("info"));
 			productDTO.setGrade1(rs.getInt("grade1"));
