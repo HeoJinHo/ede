@@ -16,25 +16,26 @@ public class ProductDAO {
 		String sql=null;
 		if(grade==5) {
 			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade5=(select max(grade5)+1 grade5 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade5=(select max(grade5)+1 grade5 from product where pro_num=?) where pro_num=?";
 		} else if (grade==4) {
 			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product where pro_num=?) where pro_num=?";
 		} else if (grade==3) {
 			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product where pro_num=?) where pro_num=?";
 		} else if (grade==2) {
 			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product where pro_num=?) where pro_num=?";
 		} else if (grade==1) {
 			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product where pro_num=?) where pro_num=?";
 		}
 		//System.out.println(sql);
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		st.setInt(2, pro_num);
 		st.setInt(3, pro_num);
+		st.setInt(4, pro_num);
 		int result=st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
