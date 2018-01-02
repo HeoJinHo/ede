@@ -1,6 +1,7 @@
 package com.ede.product;
 
 public class ProductDTO {
+	private int rank;
 	private String brand;
 	private String pro_name;
 	private String pro_price;
@@ -21,6 +22,12 @@ public class ProductDTO {
 	private int reply;
 	
 	
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 	public String getBrand() {
 		return brand;
 	}

@@ -58,10 +58,10 @@ $(function(){
 	 	}
 	 	var pro_num = ${list.pro_num};
 		
-	 	alert('content :'+contents);
-	 	alert('report : '+report);
-	 	alert('grade : '+grade);
-	 	alert('pro_num : '+pro_num);
+	 	//alert('content :'+contents);
+	 	//alert('report : '+report);
+	 	//alert('grade : '+grade);
+	 	//alert('pro_num : '+pro_num);
 	 	$.get("./productWrite.product?contents="+contents+"&report="+report+"&grade="+grade+"&pro_num="+pro_num, function(data){
 	 		$("#result").html(data);
 	 	});
@@ -110,7 +110,7 @@ $(function(){
 </script>
 </head>
 <body>
-<!-- <%@ include file="../temp/header.jsp"%> -->
+<%@ include file="../temp/header.jsp"%>
 <div class="container" style="width : 70%">
 	<div class="text-center">
 			<img src="${list.pic_realName}">
