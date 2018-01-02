@@ -30,6 +30,15 @@ pageEncoding="UTF-8"%>
 </style>
 <script type="text/javascript">
 $(function(){
+	
+	$(".like").click(function(){
+		alert("click")
+		$.get("./productLike.product?num=${num}", function(data){
+			$(".btn_like").html(data);
+		});
+	});
+	
+	
 	$(".tab_btn #reply").addClass("on");
 	$(".tab_content .reply").addClass("on");
 
@@ -180,7 +189,7 @@ $(function(){
 						</div>
 						<div class="contents">${i.contents}</div>
 						<div class="btn_like">
-							<button>111</button>
+							<button class="like">${i.thumsup }</button>
 						</div>
 					</div>
 				</c:forEach>

@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.ede.util.DBConnector;
 
+import oracle.net.aso.r;
+
 public class ProductDAO {
 	
 	//avgUpdate
@@ -189,7 +191,7 @@ public class ProductDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, replyDTO.getId());
 		st.setString(2, replyDTO.getContents());
-		st.setString(3, replyDTO.getReport());
+		st.setInt(3, replyDTO.getThumsup());
 		st.setInt(4, replyDTO.getGrade());
 		st.setInt(5, replyDTO.getPro_num());
 		int result = st.executeUpdate();
@@ -211,7 +213,7 @@ public class ProductDAO {
 			replyDTO.setNum(rs.getInt("num"));
 			replyDTO.setId(rs.getString("id"));
 			replyDTO.setContents(rs.getString("contents"));
-			replyDTO.setReport(rs.getString("report"));
+			replyDTO.setThumsup(rs.getInt("thumsup"));
 			replyDTO.setGrade(rs.getInt("grade"));
 			replyDTO.setPro_num(pro_num);
 			ar.add(replyDTO);
@@ -341,6 +343,31 @@ public class ProductDAO {
 		}
 		DBConnector.disConnect(rs, st, con);
 		return productDTO;
+	}
+
+	public int updateThumsup(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		System.out.println("updateThumsup에  num :"+num);
+		String sql = "update reply set thumsup=thumsup+1 where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+
+	public int selectThumsup(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		int thumsup=0;
+		String sql = "select thumsup from reply where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			thumsup = rs.getInt("thumsup");
+		}
+		DBConnector.disConnect(rs, st, con);
+		return thumsup;
 	}
 
 }

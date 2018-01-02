@@ -4,10 +4,9 @@ public class ReplyDTO {
 	private int num;
 	private String id;
 	private String contents;
-	private String report;
+	private int thumsup;
 	private int grade;
 	private int pro_num;
-	
 	public int getNum() {
 		return num;
 	}
@@ -26,11 +25,11 @@ public class ReplyDTO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getReport() {
-		return report;
+	public int getThumsup() {
+		return thumsup;
 	}
-	public void setReport(String report) {
-		this.report = report;
+	public void setThumsup(int thumsup) {
+		this.thumsup = thumsup;
 	}
 	public int getGrade() {
 		return grade;
@@ -44,4 +43,5 @@ public class ReplyDTO {
 	public void setPro_num(int pro_num) {
 		this.pro_num = pro_num;
 	}
+	
 }
