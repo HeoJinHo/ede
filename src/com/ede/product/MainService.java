@@ -15,7 +15,7 @@ public class MainService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ProductDAO categoryDAO = new ProductDAO();
 		String del = request.getParameter("del");
-
+		
 		try {
 			List<ProductDTO> ar = categoryDAO.categoryList(del);
 			request.setAttribute("list", ar);
