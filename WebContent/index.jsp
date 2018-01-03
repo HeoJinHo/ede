@@ -34,10 +34,6 @@
 				<div class="item active">
 					<img src="<%=request.getContextPath()%>/images/main/main_1.png"
 						alt="glowpick" width="1200" height="250">
-					<div class="carousel-caption">
-						<h3>화질이 구려요</h3>
-						<p>사진은 좋은걸로 바꿉시다!!!! -수인-</p>
-					</div>
 				</div>
 
 				<div class="item">

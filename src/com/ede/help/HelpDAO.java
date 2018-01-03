@@ -88,6 +88,7 @@ public class HelpDAO implements BoardDAO {
 			helpDTO.setRef(rs.getInt("ref"));
 			helpDTO.setStep(rs.getInt("step"));
 			helpDTO.setDepth(rs.getInt("depth"));
+			helpDTO.setId(rs.getString("id"));
 
 		}
 		DBConnector.disConnect(rs, st, con);
@@ -176,7 +177,7 @@ public class HelpDAO implements BoardDAO {
 		st.setInt(4, parent.getRef());
 		st.setInt(5, parent.getStep()+1);
 		st.setInt(6, parent.getDepth()+1);
-		st.setString(7, parent.getWriter());
+		st.setString(7, parent.getId());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
