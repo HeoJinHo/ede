@@ -103,10 +103,14 @@
 }
 
 .join_td{
-	width: 20%;
-	text-align: 
+	width: 15%;
+	border-right: 1px solid #ddd;
+	background-color: #f6f6f6;
+	vertical-align: middle;
 }
-
+.join_tr>.join_td{
+	vertical-align: middle;
+}
 .join_th{
 	width: 50%;
 }
@@ -116,23 +120,20 @@
 	border-bottom: 1px gray;
 }
 
-.join_table{
-	width: 80%;
+.table.table-condensed.join_table{
+	width: 1170px;
 }
 
 .join_in{
     border-top: none !important;
     border-right: none !important;
     border-left: none !important;
-    border-bottom: 1px dotted #2c3940 !important;
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    -moz-transition: none !important;
-    -webkit-transition: none !important;
     height: 30px;	
 }
 
+#table_end{
+	border-bottom: 2px solid gray;
+}
 
 .genderRadio>input{
 	position: inherit;
@@ -158,71 +159,6 @@
 
 .form-control{
 	display: inline-block;
-}
-
-.sidenav input:hover {
-    color: #064579;
-}
-
-.sidenav input {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #25CBD3;
-    display: block;
-}
-
-.sidenav {
-    width: 15%;
-    height: 25%;
-    position: absolute;
-    z-index: 1;
-    top: auto;
-    left: 10px;
-    background: #eee;
-    overflow-x: hidden;
-    padding: 8px 0;
-}
-
-
-/* 사이드바 css */
-.button {
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 15px;
-  padding: 20px;
-  width: 170px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
 }
 
 
