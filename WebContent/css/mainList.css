@@ -9,10 +9,10 @@ a, a:hover { text-decoration: none; }
 
 /* S : nav depth */
 /* 異뷀썑 �떎瑜� �럹�씠吏��� 怨듯넻�쑝濡� �궗�슜 �떆 �궘�젣 */
-.nav_depth { width: 100%; background: #222; }
+.nav_depth { width: 70%; background: #25cbd3; margin-top:20px; margin-left: auto; margin-right: auto; }
 .nav_depth ul { /*width: 100%; max-width: 900px; margin: 0 auto;*/ text-align: center;}
 .nav_depth ul li { display: inline-block; }
-.nav_depth ul li a { padding: 15px 0px; display: block; width: 100px; color: #9d9d9d; text-decoration: none;}
+.nav_depth ul li a { font-size: large; font-weight: normal; padding: 15px 0px; display: block; width: 100px; color: #000000; text-decoration: none;}
 .nav_depth ul li a:hover, .nav_depth ul li a:focus { color: #fff; }
 /* E: nav depth*/
 
