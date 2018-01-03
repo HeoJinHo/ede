@@ -7,8 +7,10 @@
 	<div class="result_wrap">
 		<div class="grade${i.grade}"></div>
 		<div class="user_info">
-			<span class="user_id">${i.id}</span> <span class="age">age</span>/ <span
-				class="type">type</span>/ <span class="gender">gender</span>
+			<span class="user_id">${i.id}</span>
+			<span class="age">${i.birth }세</span>/
+			<span class="type">${i.skin }</span>/
+			<span class="gender">${i.gender }</span>
 		</div>
 		<div class="contents">${i.contents}</div>
 		<div class="btn_like">

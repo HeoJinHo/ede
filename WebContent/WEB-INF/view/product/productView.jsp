@@ -129,7 +129,7 @@ $(function(){
 			<p>${list.pro_price}원</p>
 			<p>${list.capacity}ml</p>
 			<p>${list.info}</p>
-			<p class="avg">평균 ${list.avg}점 <span> (0000명 평가) </span></p>
+			<p class="avg">평균 ${list.avg}점 <span> (${list.reply }명 평가) </span></p>
 			<div class="graph_area">
 				<div class="best clearfix">
 					<p class="text">
@@ -209,9 +209,9 @@ $(function(){
 						<div class="grade${i.grade}"></div>
 						<div class="user_info">
 							<span class="user_id">${i.id}</span>
-							<span class="age">${i.num }</span>/
-							<span class="type">type</span>/
-							<span class="gender">gender</span>
+							<span class="age">${i.birth }세</span>/
+							<span class="type">${i.skin }</span>/
+							<span class="gender">${i.gender }</span>
 						</div>
 						<div class="contents">${i.contents}</div>
 						<div class="btn_like">

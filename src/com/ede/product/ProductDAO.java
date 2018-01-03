@@ -187,13 +187,16 @@ public class ProductDAO {
 	// review
 	public int review(ReplyDTO replyDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?)";
+		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, replyDTO.getId());
 		st.setString(2, replyDTO.getContents());
 		st.setInt(3, replyDTO.getThumsup());
 		st.setInt(4, replyDTO.getGrade());
 		st.setInt(5, replyDTO.getPro_num());
+		st.setString(6, replyDTO.getBirth());
+		st.setString(7, replyDTO.getGender());
+		st.setString(8, replyDTO.getSkin());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
@@ -216,6 +219,9 @@ public class ProductDAO {
 			replyDTO.setThumsup(rs.getInt("thumsup"));
 			replyDTO.setGrade(rs.getInt("grade"));
 			replyDTO.setPro_num(pro_num);
+			replyDTO.setBirth(rs.getString("birth"));
+			replyDTO.setGender(rs.getString("gender"));
+			replyDTO.setSkin(rs.getString("skin"));
 			ar.add(replyDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
@@ -340,6 +346,7 @@ public class ProductDAO {
 			productDTO.setCategory(rs.getString("category"));
 			productDTO.setType(rs.getString("type"));
 			productDTO.setAvg(rs.getDouble("avg"));
+			productDTO.setReply(rs.getInt("reply"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return productDTO;
