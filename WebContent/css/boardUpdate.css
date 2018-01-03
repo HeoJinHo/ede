@@ -4,18 +4,6 @@
 	text-align: center;
 	font-weight: bold;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #e2e2e2;
-    opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #e2e2e2;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #e2e2e2;
-}
 .center-contents{
 	width: 650px;
 	min-height: 630px;
@@ -38,9 +26,10 @@ form{
 #w-title:hover{
 	border-bottom: 2px solid black;
 }
-#files>p>input{
-	display: inline-block;
+#files>input{
+	float: none; 
 	margin-top: 2%;
+	margin-right: 6%;
 	margin-bottom: 1%;
 	background-color: transparent;
 	border-color: transparent;
@@ -48,17 +37,6 @@ form{
 	font-weight: bold;
 	font-size: small;
 	padding: 0 0 0 0; 
-}
-.ch{
-	display: inline-block;
-	margin-bottom: 1%;
-	border-style: none;
-	background:none;
-	color: red;
-	font-weight: bold;
-}
-.ch:hover{
-	text-shadow: gray;
 }
 #btn{
 	background-color: #0080ff;
@@ -68,7 +46,6 @@ form{
 	float: right; 
 	margin-top: 15%;
 	margin-right: 6%;
-	margin-bottom:12%;
 	border-color: #808080;
 	color: #808080; 
 	border-width: 2px;

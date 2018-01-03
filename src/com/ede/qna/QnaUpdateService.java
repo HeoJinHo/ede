@@ -64,6 +64,7 @@ public class QnaUpdateService implements Action {
 				request.setAttribute("view", boardDTO);
 				actionFoward.setPath("../WEB-INF/view/board/boardUpdate.jsp");
 				request.setAttribute("board", "qna");
+				request.setAttribute("title", "Q & A");
 			}else {
 				request.setAttribute("message", "Fail");
 				request.setAttribute("path", "./qnaList.qna");

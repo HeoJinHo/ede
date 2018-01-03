@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
+import com.ede.member.MemberDTO;
 /**
  * Servlet implementation class NoticeController
  */
@@ -77,9 +78,16 @@ public class NoticeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
 		Action action = null;
-		ActionFoward actionFoward = null;
+		ActionFoward actionFoward =null;
+		MemberDTO memberDTO=(MemberDTO)request.getSession().getAttribute("member");
 		action = (Action)command.get(path);
 		actionFoward = action.doProcess(request, response);
+		if(memberDTO==null) {			
+			request.setAttribute("message", "로그인 하십시오");
+			request.setAttribute("path", "../index.jsp");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		}
 		if(actionFoward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
 			view.forward(request, response);

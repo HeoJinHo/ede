@@ -29,6 +29,7 @@ public class HelpViewService implements Action {
 		}
 		if(boardDTO != null) {
 			request.setAttribute("board", "help");
+			request.setAttribute("title", "1:1 문의 게시판");
 			request.setAttribute("view", boardDTO);
 			actionFoward.setPath("../WEB-INF/view/board/boardView.jsp");
 		}else {

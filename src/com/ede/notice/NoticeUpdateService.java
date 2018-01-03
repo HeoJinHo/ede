@@ -64,6 +64,7 @@ public class NoticeUpdateService implements Action {
 				request.setAttribute("view", boardDTO);
 				actionFoward.setPath("../WEB-INF/view/board/boardUpdate.jsp");
 				request.setAttribute("board", "notice");
+				request.setAttribute("title", "공지사항");
 			}else {
 				request.setAttribute("message", "Fail");
 				request.setAttribute("path", "./noticeList.notice");

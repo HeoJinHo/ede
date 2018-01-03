@@ -46,6 +46,7 @@ public class QnaReplyService implements Action {
 			
 		}else {
 			request.setAttribute("board", "qna");
+			request.setAttribute("title", "reply");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardReply.jsp");
 						

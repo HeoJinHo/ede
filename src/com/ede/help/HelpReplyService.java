@@ -45,6 +45,7 @@ public class HelpReplyService implements Action {
 			
 		}else {
 			request.setAttribute("board", "help");
+			request.setAttribute("title", "1:1 문의 게시판");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/board/boardReply.jsp");
 						

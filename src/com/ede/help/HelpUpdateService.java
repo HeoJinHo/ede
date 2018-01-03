@@ -64,6 +64,7 @@ public class HelpUpdateService implements Action {
 				request.setAttribute("view", boardDTO);
 				actionFoward.setPath("../WEB-INF/view/board/boardUpdate.jsp");
 				request.setAttribute("board", "help");
+				request.setAttribute("title", "1:1 문의 게시판");
 			}else {
 				request.setAttribute("message", "Fail");
 				request.setAttribute("path", "./helpList.help");

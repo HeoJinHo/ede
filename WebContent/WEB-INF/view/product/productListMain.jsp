@@ -26,7 +26,7 @@
 					type.push($(this).val());
 				};
 			});
-			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category+"&realCategory=${category}", function(data){
 				$("#result").html(data);
 			});
 		});
@@ -38,7 +38,7 @@
 					type.push($(this).val());
 				};
 			});
-			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category+"&realCategory=${category}", function(data){
 				$("#result").html(data);
 			});
 		});
@@ -50,7 +50,7 @@
 					type.push($(this).val());
 				};
 			});
-			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category+"&realCategory=${category}", function(data){
 				$("#result").html(data);
 			});
 		});
@@ -62,7 +62,7 @@
 					type.push($(this).val());
 				};
 			});
-			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category+"&realCategory=${category}", function(data){
 				$("#result").html(data);
 			});
 		});
@@ -74,7 +74,7 @@
 					type.push($(this).val());
 				};
 			});
-			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category+"&realCategory=${category}", function(data){
 				$("#result").html(data);
 			});
 		});
@@ -87,7 +87,7 @@
 					type.push($(this).val());
 				};
 			});
-			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category, function(data){
+			$.get("./productFilter.product?del=${del}&brand=${brand}&type="+type+"&category="+category+"&realCategory=${category}", function(data){
 				$("#result").html(data);
 			});
 		});
@@ -135,7 +135,7 @@
 			<c:forEach items="${list}" var="i">
 			<div class="productList clearfix">
 				<div class="rank">
-					1
+					${i.rank}
 				</div>
 				<div class="pro_img_wrap">
 					<img src="${i.pic_realName}" alt="제품이미지" class="pro_img">
