@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.ede.util.DBConnector;
 
+import oracle.net.aso.r;
+
 public class ProductDAO {
 	
 	//avgUpdate
@@ -16,25 +18,26 @@ public class ProductDAO {
 		String sql=null;
 		if(grade==5) {
 			sql = "update product set avg=(select ((grade5+1)*5+grade4*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade5=(select max(grade5)+1 grade5 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade5=(select max(grade5)+1 grade5 from product where pro_num=?) where pro_num=?";
 		} else if (grade==4) {
 			sql = "update product set avg=(select (grade5*5+(grade4+1)*4+grade3*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade4=(select max(grade4)+1 grade4 from product where pro_num=?) where pro_num=?";
 		} else if (grade==3) {
 			sql = "update product set avg=(select (grade5*5+grade4*4+(grade3+1)*3+grade2*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade3=(select max(grade3)+1 grade3 from product where pro_num=?) where pro_num=?";
 		} else if (grade==2) {
 			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+(grade2+1)*2+grade1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade2=(select max(grade2)+1 grade2 from product where pro_num=?) where pro_num=?";
 		} else if (grade==1) {
 			sql = "update product set avg=(select (grade5*5+grade4*4+grade3*3+grade2*2+grade1+1)/(grade5+grade4+grade3+grade2+grade1+1) avg from product where pro_num=?)\r\n" + 
-					",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product) where pro_num=?";
+					",reply=(select max(reply)+1 reply from product where pro_num=?),grade1=(select max(grade1)+1 grade1 from product where pro_num=?) where pro_num=?";
 		}
 		//System.out.println(sql);
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		st.setInt(2, pro_num);
 		st.setInt(3, pro_num);
+		st.setInt(4, pro_num);
 		int result=st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
@@ -73,7 +76,7 @@ public class ProductDAO {
 							sql=sql+",";
 						}
 					}
-					sql=sql+") and category='"+realCategory+"' order by reply desc) N)";
+					sql=sql+") and category='"+realCategory+"' order by avg desc) N)";
 				}
 				st = con.prepareStatement(sql);
 				for(int i=0;i<type.length;i++) {
@@ -184,13 +187,16 @@ public class ProductDAO {
 	// review
 	public int review(ReplyDTO replyDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?)";
+		String sql = "insert into reply values(inc_seq.nextval,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, replyDTO.getId());
 		st.setString(2, replyDTO.getContents());
-		st.setString(3, replyDTO.getReport());
+		st.setInt(3, replyDTO.getThumsup());
 		st.setInt(4, replyDTO.getGrade());
 		st.setInt(5, replyDTO.getPro_num());
+		st.setString(6, replyDTO.getBirth());
+		st.setString(7, replyDTO.getGender());
+		st.setString(8, replyDTO.getSkin());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
@@ -201,7 +207,7 @@ public class ProductDAO {
 		ReplyDTO replyDTO = null;
 		List<ReplyDTO> ar = new ArrayList<ReplyDTO>();
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from reply where pro_num=?";
+		String sql = "select * from reply where pro_num=? order by num desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		ResultSet rs = st.executeQuery();
@@ -210,9 +216,12 @@ public class ProductDAO {
 			replyDTO.setNum(rs.getInt("num"));
 			replyDTO.setId(rs.getString("id"));
 			replyDTO.setContents(rs.getString("contents"));
-			replyDTO.setReport(rs.getString("report"));
+			replyDTO.setThumsup(rs.getInt("thumsup"));
 			replyDTO.setGrade(rs.getInt("grade"));
 			replyDTO.setPro_num(pro_num);
+			replyDTO.setBirth(rs.getString("birth"));
+			replyDTO.setGender(rs.getString("gender"));
+			replyDTO.setSkin(rs.getString("skin"));
 			ar.add(replyDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
@@ -337,9 +346,22 @@ public class ProductDAO {
 			productDTO.setCategory(rs.getString("category"));
 			productDTO.setType(rs.getString("type"));
 			productDTO.setAvg(rs.getDouble("avg"));
+			productDTO.setReply(rs.getInt("reply"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return productDTO;
 	}
+
+	public int updateThumsup(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		System.out.println("updateThumsup에  num :"+num);
+		String sql = "update reply set thumsup=thumsup+1 where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+
 
 }

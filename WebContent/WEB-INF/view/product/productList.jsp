@@ -21,11 +21,11 @@
 						</div>
 						<div class="_02">	
 							<p class="capacity">${i.capacity}</p>
-							<p class="pro_price">${i.pro_price}</p>
+							<p class="pro_price">${i.pro_price}원</p>
 						</div>
 						<div class="_03">	
-							<p class="avg">${i.avg }</p>
-							<p class="reply">${i.reply}</p>
+							<p class="avg">${i.avg }점 /</p>
+							<p class="reply">${i.reply} reviews</p>
 						</div>
 					</a>
 				</div>

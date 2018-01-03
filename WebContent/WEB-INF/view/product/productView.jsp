@@ -30,6 +30,9 @@ pageEncoding="UTF-8"%>
 </style>
 <script type="text/javascript">
 $(function(){
+	
+	var pro_num = ${list.pro_num};
+	
 	$(".tab_btn #reply").addClass("on");
 	$(".tab_content .reply").addClass("on");
 
@@ -39,6 +42,14 @@ $(function(){
 		$(this).addClass("on").siblings().removeClass("on");
 		$(".tab_content > div").eq(index).addClass("on").siblings().removeClass("on");
 	})
+	
+	$(document).on('click','.like', function(){
+		var num = $(this).val();
+		alert(num);
+		$.get("./productLike.product?num="+num+"&pro_num="+pro_num, function(data){
+			$("#result").html(data);
+		});
+	});
 	
 	$("#replyWrite").click(function(){
 	 	var contents = $("#contents").val();
@@ -56,7 +67,6 @@ $(function(){
 	 	} else {
 	 		grade=5;
 	 	}
-	 	var pro_num = ${list.pro_num};
 		
 	 	//alert('content :'+contents);
 	 	//alert('report : '+report);
@@ -119,25 +129,50 @@ $(function(){
 			<p>${list.pro_price}원</p>
 			<p>${list.capacity}ml</p>
 			<p>${list.info}</p>
-				<p>평균 ${list.avg}</p>
-			<div class="graph">
-				<div class="worst"></div>
-				<div class="bad"></div>
-				<div class="soso"></div>
-				<div class="good"></div>
-				<div class="best"></div>
-				<p>최악 ${list.grade1}</p>
-				<p>별로 ${list.grade2}</p>
-				<p>쏘쏘 ${list.grade3}</p>
-				<p>굿굿 ${list.grade4}</p>
-				<p>짱짱 ${list.grade5}</p>
-				<div id="worst"></div>
-				<div id="bad"></div>
-				<div id="soso"></div>
-				<div id="good"></div>
-				<div id="best"></div>
+			<p class="avg">평균 ${list.avg}점 <span> (${list.reply }명 평가) </span></p>
+			<div class="graph_area">
+				<div class="best clearfix">
+					<p class="text">
+						<span class="grade grade5">짱짱</span><span class="num num5">${list.grade5}</span>
+					</p>
+					<div class="graph">
+						<div class="bar"></div>
+					</div>
+				</div>
+				<div class="good clearfix">
+					<p class="text">
+						<span class="grade grade4">굿굿</span><span class="num num4">${list.grade4}</span>
+					</p>
+					<div class="graph">
+						<div class="bar"></div>
+					</div>
+				</div>
+				<div class="soso clearfix">
+					<p class="text">
+						<span class="grade grade3">쏘소</span><span class="num num3">${list.grade3}</span>
+					</p>
+					<div class="graph">
+						<div class="bar"></div>
+					</div>
+				</div>
+				<div class="bad clearfix">
+					<p class="text">
+						<span class="grade grade2">별로</span><span class="num num2">${list.grade2}</span>
+					</p>
+					<div class="graph">
+						<div class="bar"></div>
+					</div>
+				</div>
+				<div class="worst clearfix">
+					<p class="text">
+						<span class="grade grade1">최악</span><span class="num num1">${list.grade1}</span>
+					</p>
+					<div class="graph">
+						<div class="bar"></div>
+					</div>
+				</div>
 			</div>
-				<p>${list.evt}</p>
+				<%-- <p>${list.evt}</p> --%>
 	</div>
 		
 	<div class="tab_btn" >
@@ -174,13 +209,13 @@ $(function(){
 						<div class="grade${i.grade}"></div>
 						<div class="user_info">
 							<span class="user_id">${i.id}</span>
-							<span class="age">age</span>/
-							<span class="type">type</span>/
-							<span class="gender">gender</span>
+							<span class="age">${i.birth }세</span>/
+							<span class="type">${i.skin }</span>/
+							<span class="gender">${i.gender }</span>
 						</div>
 						<div class="contents">${i.contents}</div>
 						<div class="btn_like">
-							<button>111</button>
+							<button class="like" value="${i.num }">${i.thumsup }</button>
 						</div>
 					</div>
 				</c:forEach>
@@ -198,6 +233,29 @@ $(function(){
 		</div>
 	</div>
 </div>
+<script>
+
+	// 평점 그래프 
+	var gradeGraph = function(){
+		var gradeList = $(".graph_area .text .num");
+		var totalData = 0;
+
+		for( var i = 0; i < gradeList.length; i++ ){
+			var data = parseInt(gradeList.eq(i).text());
+			totalData = totalData + data;
+		}
+
+		gradeList.each(function() {
+		    var data = $(this).text();
+			var dataPercent = ( data/totalData ) *100
+		    $(this).parent().siblings().find(".bar").css("width", dataPercent + "%");
+		});
+		
+	}
+	$(function(){
+		gradeGraph();
+	})
+</script>
 
 </body>
 </html>

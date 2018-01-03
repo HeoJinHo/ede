@@ -123,10 +123,10 @@
 	</div>
 	<div id="filter2">
 		<label class="radio-inline">
-			<input type="radio" name="category" value="reviewCount" checked="checked" class="category">댓글순
+				<input type="radio" name="category" value="avg" checked="checked" class="category">평점순
 		</label>
 		<label class="radio-inline">
-				<input type="radio" name="category" value="avg" class="category">평점순
+			<input type="radio" name="category" value="reviewCount"  class="category">댓글순
 		</label>
 	</div>
 	
@@ -148,11 +148,11 @@
 						</div>
 						<div class="_02">	
 							<p class="capacity">${i.capacity}</p>
-							<p class="pro_price">${i.pro_price}</p>
+							<p class="pro_price">${i.pro_price}원</p>
 						</div>
 						<div class="_03">	
-							<p class="avg">${i.avg }</p>
-							<p class="reply">${i.reply}</p>
+							<p class="avg">${i.avg }점 /</p>
+							<p class="reply">${i.reply} reviews</p>
 						</div>
 					</a>
 				</div>

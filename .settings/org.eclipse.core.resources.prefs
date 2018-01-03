@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/view/product/mainList.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/product/mainList2.jsp=UTF-8
 encoding//WebContent/WEB-INF/view/product/productView.jsp=UTF-8
 encoding//WebContent/WEB-INF/view/product/productViewBlog.jsp=UTF-8
 encoding//WebContent/css/mainList.css=UTF-8
+encoding//WebContent/css/productListMain.css=UTF-8
 encoding//WebContent/css/productView.css=UTF-8
 encoding//src/com/ede/product/ProductViewBlogService.java=UTF-8
 encoding/<project>=UTF-8
