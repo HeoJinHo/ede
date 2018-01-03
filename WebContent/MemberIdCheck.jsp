@@ -30,14 +30,14 @@
 </script>
 </head>
 <body>
-	<h1>ID Check</h1>
+	<h4>회원 아이디 중복 검사</h4>
 	<form action="MemberIdCheck.jsp">
 		<input type="text" name="id">
-		<button>중복확인</button>
+		<button class="btn btn-default">중복확인</button>
 	</form>
-	<h3><%= s %></h3>
+	<h4><%= s %></h4>
 	<%if(check){ %>
-		<button id="btn">사용하기</button>
+		<button id="btn" class="btn btn-default">사용하기</button>
 	<%} %>
 </body>
 </html>

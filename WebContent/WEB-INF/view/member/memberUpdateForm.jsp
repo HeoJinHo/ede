@@ -174,16 +174,10 @@
 		</td>
 		<td class="join_th">		
 		<input type="text" name="addr" value="${member.addr}" class="join_in" style="width: 40%;"> - <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default">
-		</td>
-	</tr>
-	
-	<tr class="join_tr">
-		<td class="join_td">
-		</td>
-		<td class="join_th">	
 			 <input type="text" name="addr2" value="${member.addr2}" class="join_in" style="width: 56%;">
 		</td>
 	</tr>
+	
 		
 	<tr class="join_tr">
 		<td class="join_td">
@@ -195,15 +189,15 @@
 	</tr>
 	
 	<tr class="join_tr">
-		<td class="join_td">		
+		<td class="join_td" id="table_end">		
 		이메일
 		</td>
-		<td class="join_th">		
+		<td class="join_th" id="table_end">		
 		<input type="email" name="email" value="${member.email}" class="join_in" style="width: 40%;">
 		</td>
 	</tr>
 	</table>
-		<input type="submit" value="회원정보 수정" id="btn" class="btn btn-default">
+		<input type="submit" value="회원정보 수정" id="btn" class="btn btn-default" style="float: right;">
 	</form>
 	</section>
 	

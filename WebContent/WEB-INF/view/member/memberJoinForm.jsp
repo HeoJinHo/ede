@@ -65,89 +65,100 @@
 		</div>
 		
 		<div id="member_tab2">
-		<h5 id="member2">회원가입</h5>
+		<h5 id="member2">회원가입</h5> 
 		</div>
 		<div id="member_tab3">
 		<h5 id="member3">가입인증</h5>
 		</div>
+		
+		<span style="float: right;"><span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px; t">
+							* </span>는 필수사항 입니다</span>
 		<form action="./memberJoin.member" method="post" name="frm">
-			<table class="join_table table table-condensed">
+			<table class="table table-condensed join_table">
 				<tr class="join_tr">
 					<td class="join_td">
 						<input type="hidden" name="idCheck" value="0" >
-						아이디
+						<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>아이디
 					</td>
 				<td class="join_th">
-					<input type="text" name="id" id="id" placeholder="Enter ID"  class="join_in">
+					<input type="text" name="id" id="id" placeholder="Enter ID"  class="join_in" style="width: 56%;">
 					<input type="button" id="check" value="중복확인" class="btn btn-default">
 				</td>
 				</tr>
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					비밀번호
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>비밀번호
 				</td>
 				
 				<td class="join_th">
-					<input type="password" name="pw" placeholder="Enter PW" id="pw" class="join_in">
+					<input type="password" name="pw" placeholder="Enter PW" id="pw" class="join_in" style="width: 56%;">
 					<p id="pwcheck"></p>
 				</td>
 			</tr>
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					 비밀번호 확인 
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>비밀번호 확인 
 				</td>
 			
 				<td class="join_th">
-					 <input type="password" placeholder="Enter PW" id="pw2" class="join_in">
+					 <input type="password" placeholder="Enter PW" id="pw2" class="join_in" style="width: 56%;">
 					 <p id="pwcheck2"></p>
-				<td>
-			</tr>
-			
-			<tr class="join_tr">
-				<td class="join_td">
-					이름
-				</td>
-				
-				<td class="join_th">
-					<input type="text" name="name" placeholder="Enter Name" id="name"  class="join_in">
 				</td>
 			</tr>
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					닉네임
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>이름
 				</td>
 				
 				<td class="join_th">
-					<input type="text" name="nickname" placeholder="Enter Nick Name" id="nickname" class="join_in">
+					<input type="text" name="name" placeholder="Enter Name" id="name"  class="join_in" style="width: 56%;">
+				</td>
+			</tr>
+			
+			<tr class="join_tr">
+				<td class="join_td">
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>닉네임
+				</td>
+				
+				<td class="join_th">
+					<input type="text" name="nickname" placeholder="Enter Nick Name" id="nickname" class="join_in" style="width: 56%;">
 				</td>
 			</tr>	
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					이메일
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>이메일
 				</td>
 			
 				<td class="join_th">
-					<input type="email" name="email" placeholder="Enter Email" id="email" class="join_in">
+					<input type="email" name="email" placeholder="Enter Email" id="email" class="join_in" style="width: 56%;">
 				</td>
 			</tr>	
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					핸드폰
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>핸드폰
 				</td>
 			
 				<td class="join_th">
-					<input type="text" name="phone" placeholder="Enter Phone Number" id="phone" class="join_in">
+					<input type="text" name="phone" placeholder="Enter Phone Number" id="phone" class="join_in" style="width: 56%;">
 				</td>
 			</tr>
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					성별 
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>성별 
 				</td>
 				
 				<td class="join_th">
@@ -158,18 +169,20 @@
 				 
 			<tr class="join_tr">
 				<td class="join_td">
-					생년월일
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>생년월일
 				</td>
 			
 				<td class="join_th">
-					<input type="date" name="birth" id="birth" class="form-control join_in">
+					<input type="date" name="birth" id="birth" class="form-control join_in" style="width: 56%;">
 				</td>
 			</tr>
 				
 		
 			<tr class="join_tr">
 				<td class="join_td">
-					피부타입
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>피부타입
 				</td>
 				
 				<td class="join_th">
@@ -182,38 +195,23 @@
 			</tr>
 				
 			<tr class="join_tr">
-				<td class="join_td">
-					주소
+				<td class="join_td" rowspan="3" id="table_end">
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>주소
 				</td>
 				
-				<td class="join_th">
-					<input type="text" name="addr4" placeholder="우변번호" id="addr4" class="join_in"> - <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default">
+				<td class="join_th" id="table_end">
+					<input type="text" name="addr4" placeholder="우변번호" id="addr4" class="join_in"> - <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default"><br>
+					<input type="text" placeholder="도로명주소" name="addr" id="addr" class="join_in" style="width: 56%;"><br>
+					<input type="text" placeholder="나머지주소" name="addr2" id="addr2" class="join_in" style="width: 56%;">
 				</td>
 			</tr>
 			
-			<tr class="join_tr">
-				<td class="join_td">
-				</td>
-				
-				<td class="join_th">
-					<input type="text" placeholder="도로명주소" name="addr" id="addr" class="join_in">
-				</td>
-			</tr>	
-				
-			<tr class="join_tr">
-				<td class="join_td">
-				</td>	
-				
-				<td class="join_th">
-					<input type="text" placeholder="나머지주소" name="addr2" id="addr2" class="join_in">
-				</td>	
-			</tr>
+		
 			</table>
 		</form>
-		<button id="btn" class="btn btn-default">Join</button>
-		<form action="../index.jsp">
-			<button class="btn btn-default">회원가입 취소</button>
-		</form>
+		<a href="../index.jsp" class="btn btn-default">회원가입 취소</a>
+		<button id="btn" class="btn btn-default" style="float: right;">회원가입</button>
 </section>
 <%@ include file="../temp/footer.jsp"%>
 </body>
