@@ -42,7 +42,7 @@ public class MemberJoinService implements Action {
 			}
 		} else {
 			actionFoward.setCheck(true);
-			actionFoward.setPath("./WEB-INF/view/member/memberJoinForm.jsp");
+			actionFoward.setPath("../WEB-INF/view/member/memberJoinForm.jsp");
 		}
 		return actionFoward;
 	}
