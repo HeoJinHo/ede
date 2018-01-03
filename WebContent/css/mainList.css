@@ -13,7 +13,7 @@ a, a:hover { text-decoration: none; }
 .nav_depth ul { /*width: 100%; max-width: 900px; margin: 0 auto;*/ text-align: center;}
 .nav_depth ul li { display: inline-block; }
 .nav_depth ul li a { padding: 15px 0px; display: block; width: 100px; color: #9d9d9d; text-decoration: none;}
-.nav_depth ul li.acitve a, .nav_depth ul li a:hover, .nav_depth ul li a:focus { color: #fff; }
+.nav_depth ul li a:hover, .nav_depth ul li a:focus { color: #fff; }
 /* E: nav depth*/
 
 
@@ -27,4 +27,13 @@ a, a:hover { text-decoration: none; }
 .category_list li .title_name { font-size: 21px; }
 .category_list li .detail_name { font-size: 17px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
 
+.category_list.brand .title_name, .category_list.brand .detail_name { display: inline-block;  }
+.category_list.brand .title_name {  width: 70%; display: inline-block; vertical-align: middle; }
+.category_list.brand .detail_name { width: 25%; display: inline-block; vertical-align: middle;  overflow: visible;}
+
+
 .register { display: block; color: #222; }
+
+@media screen and (max-width: 640px){
+	.category_list li a { padding: 10px 10px; }		
+}

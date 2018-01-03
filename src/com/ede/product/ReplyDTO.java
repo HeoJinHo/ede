@@ -65,6 +65,5 @@ public class ReplyDTO {
 	public void setPro_num(int pro_num) {
 		this.pro_num = pro_num;
 	}
-
 	
 }

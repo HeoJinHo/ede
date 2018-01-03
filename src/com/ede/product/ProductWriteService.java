@@ -39,17 +39,14 @@ public class ProductWriteService implements Action {
 			birth = year-birthyear+1+"";
 			System.out.println(birth);
 			
-			
 			replyDTO.setId(id);
 			replyDTO.setGender(gender);
 			replyDTO.setSkin(skin);
 			replyDTO.setBirth(birth);
-			
 			replyDTO.setContents(request.getParameter("contents"));
 			replyDTO.setGrade(grade);
 			replyDTO.setThumsup(0);
 			replyDTO.setPro_num(Integer.parseInt(request.getParameter("pro_num")));
-			
 			result = productDAO.review(replyDTO);	//새 댓글 insert
 			productDAO.avgUpdate(grade, pro_num);	//avg update
 			List<ReplyDTO> ar = productDAO.reviewList(pro_num);
