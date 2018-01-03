@@ -204,7 +204,7 @@ public class ProductDAO {
 		ReplyDTO replyDTO = null;
 		List<ReplyDTO> ar = new ArrayList<ReplyDTO>();
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from reply where pro_num=?";
+		String sql = "select * from reply where pro_num=? order by num desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pro_num);
 		ResultSet rs = st.executeQuery();
@@ -356,18 +356,5 @@ public class ProductDAO {
 		return result;
 	}
 
-	public int selectThumsup(int num) throws Exception {
-		Connection con = DBConnector.getConnect();
-		int thumsup=0;
-		String sql = "select thumsup from reply where num=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
-		ResultSet rs = st.executeQuery();
-		if(rs.next()) {
-			thumsup = rs.getInt("thumsup");
-		}
-		DBConnector.disConnect(rs, st, con);
-		return thumsup;
-	}
 
 }
