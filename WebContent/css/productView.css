@@ -1,6 +1,6 @@
 /* reset */
 @charset "utf-8";
-div, p, ul { margin: 0; padding: 0; list-style: none; }
+.container div, .container p, .container ul { margin: 0; padding: 0; list-style: none; }
 
 a, a:hover { text-decoration: none; }
 
@@ -11,7 +11,7 @@ a, a:hover { text-decoration: none; }
 
 
 .container { margin: 20px auto; width: 100%; max-width: 900px; }
-.container .avg { font-size: 24px; font-weight: bold; }
+.container .avg { margin: 40px 0 20px 0; font-size: 24px; font-weight: bold; }
 .container .avg span { font-size: 16px; font-weight: normal;}
 .container .graph_area { margin: 0 auto; display: block; width: 80% ; text-align: left; }
 .container .graph_area > div { margin-bottom: 5px; height: 50px; }
@@ -27,12 +27,12 @@ a, a:hover { text-decoration: none; }
 .container .graph_area .graph { float: left; margin-top: 5px; width: 90%; }
 .container .graph_area .graph .bar {display: inline-block;  height: 25px; background: red; border-radius: 3px; }
 
-.tab_btn { margin-top: 10px; }
-.tab_btn button{ display: inline-block; padding: 10px; width: 33.3%; height: 45px; line-height: 30px; border: none; border-bottom: 3px solid #ccc; background: #fff; color: #ccc; font-size: 20px; font-weight: bold; text-align: center;}
-.tab_btn button.on { color: #25cbd3; border-bottom: 3px solid #25cbd3;}
+.container .tab_btn { margin-top: 30px; }
+.container .tab_btn button{ display: inline-block; padding: 10px; width: 33.3%; height: 45px; line-height: 30px; border: none; border-bottom: 3px solid #ccc; background: #fff; color: #ccc; font-size: 20px; font-weight: bold; text-align: center;}
+.container .tab_btn button.on { color: #25cbd3; border-bottom: 3px solid #25cbd3;}
 
-.tab_content > div { display: none; }
-.tab_content .on { display: block; }
+.container .tab_content > div { display: none; }
+.container .tab_content .on { display: block; }
 
 .reply .write_wrap { margin: 20px 0; width: 100%; /*border: 1px solid #ccc; border-radius: 5px;*/ }
 .reply .write_wrap .text { margin: 15px 0 5px 0; font-size: 20px; }
