@@ -6,7 +6,7 @@
 	<c:forEach items="${list}" var="i" varStatus="s">
 		<li class="col-sm-12 col-xs-12"><a href="./productListMain.product?del=brand&brand=${i.brand}">
 				<p class="title_name 2">${i.brand}</p>
-				<p class="detail_name 2">${i.capacity}</p>
+				<p class="detail_name 2">${i.capacity} 개 제품</p>
 		</a></li>
 	</c:forEach>
 </ul>
