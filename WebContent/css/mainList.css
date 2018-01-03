@@ -1,0 +1,41 @@
+/* reset */
+ul { margin: 0; padding: 0; list-style: none; }
+a, a:hover { text-decoration: none; }
+
+/* common */
+.clearfix::after { display: block; content: ''; clear: both; }
+/*a, button { background: transparent; }*/
+/* ============================== */
+
+/* S : nav depth */
+
+/* 異뷀썑 �떎瑜� �럹�씠吏��� 怨듯넻�쑝濡� �궗�슜 �떆 �궘�젣 */
+.nav_depth { width: 70%; background: #25cbd3; margin-top:20px; margin-left: auto; margin-right: auto; }
+
+.nav_depth ul { /*width: 100%; max-width: 900px; margin: 0 auto;*/ text-align: center;}
+.nav_depth ul li { display: inline-block; }
+.nav_depth ul li a { font-size: large; font-weight: normal; padding: 15px 0px; display: block; width: 100px; color: #000000; text-decoration: none;}
+.nav_depth ul li a:hover, .nav_depth ul li a:focus { color: #fff; }
+/* E: nav depth*/
+
+
+.container { margin: 20px auto; width: 100%; max-width: 900px; }
+.category_list { background: #eee; width: 100%; padding: 10px 3px ; }
+.category_list li { float: left; margin: 3px 0; padding: 0 2px;}
+.category_list li a {position: relative; margin: 0; padding: 10px 30px; display: block; width: 100%; background: #fff; border-bottom : 1px solid #ccc; overflow: hidden;}
+.category_list li a::after { position: absolute; top: 0; left: -100%;  display: block; width: 100%; border-top : 3px solid #25cbd3; content: '';  }
+.category_list li a:hover::after { left: 0; transition: left 1s;}
+.category_list li p { margin: 0; padding: 0; color: #000;}
+.category_list li .title_name { font-size: 21px; }
+.category_list li .detail_name { font-size: 17px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+
+.category_list.brand .title_name, .category_list.brand .detail_name { display: inline-block;  }
+.category_list.brand .title_name {  width: 70%; display: inline-block; vertical-align: middle; }
+.category_list.brand .detail_name { width: 25%; display: inline-block; vertical-align: middle;  overflow: visible;}
+
+
+.register { display: block; color: #222; }
+
+@media screen and (max-width: 640px){
+	.category_list li a { padding: 10px 10px; }		
+}

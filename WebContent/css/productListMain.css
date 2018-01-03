@@ -1,0 +1,64 @@
+/* reset */
+div, p, ul { margin: 0; padding: 0; list-style: none; }
+
+a, a:hover { text-decoration: none; }
+
+/* common */
+.clearfix::after { display: block; content: ''; clear: both; }
+/*a, button { background: transparent; }*/
+/* ============================== */
+
+
+.container { margin: 20px auto; width: 100%; max-width: 900px; }
+#filter { margin-bottom: 5px; }
+#filter .checkbox-inline { margin: 0 10px 5px 0px; padding: 0; width: 80px; height: 30px; line-height: 31px; background: #fff; color: #25cbd3; font-weight: bold; border: 1px solid #25cbd3; border-radius: 3px; text-align: center;}
+#filter .checkbox-inline.checked { background: #25cbd3; color: #fff;}
+#filter .checkbox-inline input { width: 1px; height: 1px; margin-left: -1px; }
+
+#filter2 { margin-bottom: 10px; }
+#filter2 .radio-inline { padding: 0; width: 80px; height: 30px; line-height: 30px; border-bottom: 3px solid #ccc; background: #fff; color: #ccc; font-weight: bold; text-align: center;}
+#filter2 .radio-inline.checked { color: #25cbd3; border-bottom: 3px solid #25cbd3;}
+#filter2 .radio-inline input { width: 1px; height: 1px; margin-left: -1px; }
+
+
+#result .resultWrap { background: #eee; width: 100%; padding: 10px 5px ; }
+#result .resultWrap .productList { margin: 5px 0; padding: 0 2px; background: #fff; border-bottom: 1px solid #ccc; }
+#result .resultWrap .productList { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+#result .resultWrap .productList > div { float: left; padding: 0; color: #000; }
+#result .resultWrap .productList .rank { /*padding: 32px 0 32px 3px;*/ width: 46px; font-size: 24px; text-align: center;}
+#result .resultWrap .productList .pro_img_wrap { width: 100px; overflow: hidden;}
+#result .resultWrap .productList .pro_img_wrap img { width: 100px; height: 100px; overflow: hidden;}
+#result .resultWrap .productList .pro_desc_wrap { width: 77%;  }
+#result .resultWrap .productList .pro_desc_wrap a { display: block; height: 100px; padding: 15px 0 15px 5px; color: #000;}
+#result .resultWrap .productList .pro_desc_wrap a { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+
+
+
+#result .resultWrap .productList ._01 { float: left; display:inline-block; width: 47%;}
+#result .resultWrap .productList ._02 { float: left; margin-right: 15px; padding: 15px 0; display:inline-block; width: 25%; text-align: right;}
+#result .resultWrap .productList ._03 { float: left; padding: 15px 0; display:inline-block; width: 25%; color: #02bcc5; text-align: right;}
+
+#result .resultWrap .productList .brand { margin-bottom: 5px; font-size: 13px; }
+#result .resultWrap .productList .pro_name { font-size: 17px; font-weight: bold; }
+#result .resultWrap .productList .capacity {  margin-right: 10px; display: inline-block; }
+#result .resultWrap .productList .pro_price { display: inline-block;}
+#result .resultWrap .productList .avg { margin-right: 5px; display: inline-block;  }
+#result .resultWrap .productList .reply { display: inline-block; }
+
+
+
+@media screen and (max-width: 750px){
+	.container { padding: 0; }
+	#result .resultWrap .productList { padding-bottom: 15px; }
+	#result .resultWrap .productList  .pro_desc_wrap a {  display: block; }
+	#result .resultWrap .productList .pro_img_wrap { margin-top: 15px; width: 25%; max-width: 100px;  }
+	#result .resultWrap .productList .pro_img_wrap img { width: 100%; max-width: 100px; height: 100%; max-height: 100px; }
+	#result .resultWrap .productList .pro_desc_wrap { width: 65%; }
+	#result .resultWrap .productList ._01 { width: 90%; vertical-align: top; margin-bottom: 10px;}
+	#result .resultWrap .productList ._02 { padding: 0 0 0px 0; width: 160px; margin-right: 10px; text-align: left; }
+	#result .resultWrap .productList ._03 { padding: 0 0 0px 0; width: 160px; text-align: left; }
+}
+
+@media screen and (max-width: 640px){
+	#result .resultWrap .productList .pro_desc_wrap { width: 60%; }
+}

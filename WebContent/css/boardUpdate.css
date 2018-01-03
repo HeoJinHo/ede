@@ -1,0 +1,62 @@
+@charset "UTF-8";
+#tt{
+	margin-top:3%;
+	text-align: center;
+	font-weight: bold;
+}
+.center-contents{
+	width: 650px;
+	min-height: 630px;
+	border: 2px solid black;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	padding-left: 30px;
+}
+form{
+	margin-top: 4%;
+	font-size: medium;
+}
+#w-title{
+	border: none;
+	border-bottom: 2px solid #808080;	
+	font-size: medium;
+}
+#w-title:hover{
+	border-bottom: 2px solid black;
+}
+#files>input{
+	float: none; 
+	margin-top: 2%;
+	margin-right: 6%;
+	margin-bottom: 1%;
+	background-color: transparent;
+	border-color: transparent;
+	color: #0080ff; 
+	font-weight: bold;
+	font-size: small;
+	padding: 0 0 0 0; 
+}
+#btn{
+	background-color: #0080ff;
+	color: white; 
+}
+.btn.btn-default.write{
+	float: right; 
+	margin-top: 15%;
+	margin-right: 6%;
+	border-color: #808080;
+	color: #808080; 
+	border-width: 2px;
+	font-weight: bold;
+}
+.btn.btn-default.list{
+	float: right; 
+	margin-top: 15%;
+	margin-right:2%;
+	border-color: #808080;
+	color: #808080; 
+	border-width: 2px;
+	font-weight: bold;
+}

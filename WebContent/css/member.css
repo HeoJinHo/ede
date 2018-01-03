@@ -1,0 +1,185 @@
+@charset "UTF-8";
+.container.top{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#join_tab{
+	width: 33.33%;
+	height: 5%;
+	background-color: #2c3940;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#ok1{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+#join_tab2{
+	width: 33.33%;
+	height: 5%;
+	background-color: gray;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#ok2{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+#join_tab3{
+	width: 33.33%;
+	height: 5%;
+	background-color: gray;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#ok3{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+
+#join_div{
+	width: 1170px;
+	margin: 0 auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#member_tab{
+	width: 33.33%;
+	height: 5%;
+	background-color: gray;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#member1{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+#member_tab2{
+	width: 33.33%;
+	height: 5%;
+	background-color: #2c3940;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#member2{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+#member_tab3{
+	width: 33.33%;
+	height: 5%;
+	background-color: gray;
+	text-align: center;
+	color: white;
+	float: left;
+	margin-bottom: 3%;
+}
+
+#member3{
+	font-size: large;	
+	padding-top: 2%;
+}
+
+.join_td{
+	width: 15%;
+	border-right: 1px solid #ddd;
+	background-color: #f6f6f6;
+	vertical-align: middle;
+}
+.join_tr>.join_td{
+	vertical-align: middle;
+}
+.join_th{
+	width: 50%;
+}
+
+.join_tr{
+	height: 50px;;
+	border-bottom: 1px gray;
+}
+
+.table.table-condensed.join_table{
+	width: 1170px;
+}
+
+.join_in{
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    height: 30px;	
+}
+
+#table_end{
+	border-bottom: 2px solid gray;
+}
+
+.genderRadio>input{
+	position: inherit;
+	visibility: visible;
+}
+[type="radio"]:not(:checked), [type="radio"]:checked{
+	position: inherit;
+	visibility: visible;
+}
+
+#ok{
+	margin-top: 5px;
+}
+
+.join_text{
+	border-bottom: 2px;
+
+}
+
+.row.button{
+	float: right;
+}
+
+.form-control{
+	display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
