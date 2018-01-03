@@ -2,6 +2,7 @@ package com.ede.product;
 
 import java.io.BufferedReader;
 
+
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -50,7 +51,6 @@ public class ProductViewBlogService implements Action {
                 getResult.append(inputLine);
             }
             br.close();
-            System.out.println(getResult.toString());
             request.setAttribute("result", getResult.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
