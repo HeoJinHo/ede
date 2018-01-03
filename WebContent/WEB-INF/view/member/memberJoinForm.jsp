@@ -71,15 +71,15 @@
 		<h5 id="member3">가입인증</h5>
 		</div>
 		
+		<span style="float: right;"><span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px; t">
+							* </span>는 필수사항 입니다</span>
 		<form action="./memberJoin.member" method="post" name="frm">
 			<table class="table table-condensed join_table">
 				<tr class="join_tr">
 					<td class="join_td">
 						<input type="hidden" name="idCheck" value="0" >
-						<span	style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
-							*
-							</span>
-						<p>아이디</p>
+						<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>아이디
 					</td>
 				<td class="join_th">
 					<input type="text" name="id" id="id" placeholder="Enter ID"  class="join_in" style="width: 56%;">
@@ -89,7 +89,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					비밀번호
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>비밀번호
 				</td>
 				
 				<td class="join_th">
@@ -100,7 +101,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					 비밀번호 확인 
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>비밀번호 확인 
 				</td>
 			
 				<td class="join_th">
@@ -111,7 +113,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					이름
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>이름
 				</td>
 				
 				<td class="join_th">
@@ -121,7 +124,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					닉네임
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>닉네임
 				</td>
 				
 				<td class="join_th">
@@ -131,7 +135,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					이메일
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>이메일
 				</td>
 			
 				<td class="join_th">
@@ -141,7 +146,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					핸드폰
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>핸드폰
 				</td>
 			
 				<td class="join_th">
@@ -151,7 +157,8 @@
 			
 			<tr class="join_tr">
 				<td class="join_td">
-					성별 
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>성별 
 				</td>
 				
 				<td class="join_th">
@@ -162,7 +169,8 @@
 				 
 			<tr class="join_tr">
 				<td class="join_td">
-					생년월일
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>생년월일
 				</td>
 			
 				<td class="join_th">
@@ -173,7 +181,8 @@
 		
 			<tr class="join_tr">
 				<td class="join_td">
-					피부타입
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>피부타입
 				</td>
 				
 				<td class="join_th">
@@ -187,7 +196,8 @@
 				
 			<tr class="join_tr">
 				<td class="join_td" rowspan="3" id="table_end">
-					주소
+				<span style="font-size: 12px; font-weight: 700; color: red; line-height: 16px;">
+							* </span>주소
 				</td>
 				
 				<td class="join_th" id="table_end">
