@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,11 +16,13 @@
 <script type="text/javascript">
 	$(function(){
 		$("#category").click(function(){
+			$(this).parent().addClass("active").siblings().removeClass("active");
 			$.get("./categoryList.product?del=category", function(data){
 				$(".container").html(data);
 			});
 		});
 		$("#brand").click(function(){
+			$(this).parent().addClass("active").siblings().removeClass("active");
 			$.get("./categoryList.product?del=brand", function(data){
 				$(".container").html(data);
 			});
@@ -32,8 +35,8 @@
 	
 	<nav class="nav_depth">
 		<ul>
-			<li><a id="category">Category</a></li>
-			<li><a id="brand">Brand</a></li>
+			<li><a href="#" id="category">Category</a></li>
+			<li><a href="#" id="brand">Brand</a></li>
 		</ul>
 	</nav>
 
@@ -41,9 +44,9 @@
 		<ul class="category_list clearfix">
 			<c:forEach items="${list}" var="i" varStatus="s">
 				<li class="col-sm-6 col-xs-12">
-					<a href="./productListMain.product?del=category&category=${i.category}">
+					<a href="./productListMain.product?del=category">
 						<p class="title_name">${i.category }</p>
-						<p class="detail_name">${i.category } 등</p>
+						<p class="detail_name">${i.category }</p>
 					</a>
 				</li>
 			</c:forEach>
