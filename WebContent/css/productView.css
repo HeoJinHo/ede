@@ -78,6 +78,13 @@ a, a:hover { text-decoration: none; }
 #result .result_wrap .btn_like button { padding-left: 26px; display: block; height: 25px; font-size: 17px; border: none; background: transparent; }
 
 
+#blog-count { border-bottom: 3px solid #25cbd3; }
+#blog-info .blog-inner { padding: 20px 10px; border-bottom: 1px solid #ddd;}
+#blog-info .blog-inner .blog-title{ display: block; font-size: 20px; font-weight: bold; color: #337ab7;}
+
+
+
+
 
 @media screen and (max-width: 750px){
 	.container { width: 95% !important; }

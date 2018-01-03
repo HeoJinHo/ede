@@ -23,10 +23,7 @@ pageEncoding="UTF-8"%>
 	border: solid 1px red;
 } */
 
-.blog-inner{
-	border-color: blue;
-	width : 70%;
-}
+
 </style>
 <script type="text/javascript">
 $(function(){
@@ -82,20 +79,49 @@ $(function(){
 	 	var query = $("#name").text();
 	 	$.get("./productViewBlog.product?query="+query+"&start=1&display=10", function(data){
 	 		var result = JSON.parse(data);
-	 		$("#blog-info").text("BLOG 검색결과 총 "+result.total+" 개");
+	 		$("#blog-info").html("<div id='blog-count'><h3><b>BLOG 검색결과 총 "+result.total+" 개</b></h3><div>");
 	 		for(var i = 0;i<10;i++){
 	 			$("#blog-info").append("<div class='blog-inner'></div>");
-	 			var title = $("<p></p>").html("<b style='color:blue'>title</b> "+result.items[i].title);
+	 			var title = $("<a href="+result.items[i].link+" class='blog-title'></a>").html("<b>"+result.items[i].title+"</b> ");
 	 			var description = $("<p></p>").html(result.items[i].description);
-	 			var link = $("<p></p>").html("<b style='color:blue'>link</b> "+result.items[i].link);
-	 			var bloggername = $("<p></p>").html("<b style='color:blue'>blog by</b> "+result.items[i].bloggername);
-	 			var postdate = $("<p></p>").html("<b style='color:blue'>date</b> "+result.items[i].postdate);
-	 			$(".blog-inner:last-child").append(title, description, link, bloggername, postdate);
-	 			$("#blog-more").show(); // blog-btn을 누르면 더보기 버튼 나타남
+	 			var bloggername = $("<p></p>").html("<b style='color:#25cbd3'>written by</b> "+result.items[i].bloggername);
+	 			var postdate = $("<p></p>").html("<b style='color:#25cbd3'>date</b> "+result.items[i].postdate);
+	 			$(".blog-inner:last-child").append(title, description, bloggername, postdate);
 	 		}
 	 	});
+	 	
+	 	// blog 스크롤 페이징 이벤트
+		 $(window).scroll(function() {
+		    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+		 	var a=$(".blog").css("display");
+		    	if(a=="block"){
+		    		var query = $("#name").text();
+		    	 	var start = $(".blog-inner").length + 1; // .blog-inner의 갯수를 읽어옴
+		    	// 	//alert(start);  -> 10 출력
+		    	 	$.get("./productViewBlog.product?query="+query+"&start="+start+"1&display=10", function(data){
+		    	 		var result = JSON.parse(data);
+		    	// 		//alert(data);
+		    			if(result.items[0].title != null){
+			    	 		for(var i = 0;i<10;i++){
+			    	 			$("#blog-info").append("<div class='blog-inner'></div>");
+			    	 			var title = $("<a href="+result.items[i].link+" class='blog-title'></a>").html("<b>"+result.items[i].title+"</b> ");
+			    	 			var description = $("<p></p>").html(result.items[i].description);
+			    	 			var bloggername = $("<p></p>").html("<b style='color:#25cbd3'>written by</b> "+result.items[i].bloggername);
+			    	 			var postdate = $("<p></p>").html("<b style='color:#25cbd3'>date</b> "+result.items[i].postdate);
+			    	 			$(".blog-inner:last-child").append(title, description, bloggername, postdate);
+			    	 		}
+		    			}else{
+		    				alert("더 이상 결과가 없습니다.");
+		    			}
+		    	 	});
+		    	}
+		    }
+		});
+	 	
+	 	
 	 });
 	
+/* 	 
 	// // blog 글 11번 ~ : 더보기 버튼 function
 	 $("#blog-more").click(function(){
 	 	var query = $("#name").text();
@@ -106,15 +132,15 @@ $(function(){
 	// 		//alert(data);
 	 		for(var i = 0;i<10;i++){
 	 			$("#blog-info").append("<div class='blog-inner'></div>");
-	 			var title = $("<p></p>").html("<b style='color:blue'>title</b> "+result.items[i].title);
+	 			var title = $("<a href="+result.items[i].link+" class='blog-title'></a>").html("<b>"+result.items[i].title+"</b> ");
 	 			var description = $("<p></p>").html(result.items[i].description);
-	 			var link = $("<p></p>").html("<b style='color:blue'>link</b> "+result.items[i].link);
-	 			var bloggername = $("<p></p>").html("<b style='color:blue'>blog by</b> "+result.items[i].bloggername);
-	 			var postdate = $("<p></p>").html(result.items[i].postdate);
-	 			$(".blog-inner:last-child").append(title, description, link, bloggername, postdate);
+	 			var bloggername = $("<p></p>").html("<b style='color:#25cbd3'>blog by</b> "+result.items[i].bloggername);
+	 			var postdate = $("<p></p>").html("<b style='color:#25cbd3'>date</b> "+result.items[i].postdate);
+	 			$(".blog-inner:last-child").append(title, description, bloggername, postdate);
 	 		}
 	 	});
 	 });
+*/
 	
 });
 </script>
@@ -225,7 +251,6 @@ $(function(){
 		<div class="blog">
 			<div id="blog-open">
 				<div id="blog-info">BLOG</div>
-				<button id="blog-more" style="display: none">더보기</button><br>
 			</div>
 		</div>
 		<div class="buy">
