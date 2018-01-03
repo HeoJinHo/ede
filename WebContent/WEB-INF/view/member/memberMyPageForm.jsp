@@ -15,24 +15,100 @@
 </head>
 <body>
 <%@ include file="../temp/header.jsp" %>
-	<%-- <h3>아이디 : ${sessionScope.member.id}</h3>
-	<h3>이 름 : ${sessionScope.member.name}</h3>
-	<h3>닉네임 : ${sessionScope.member.nickname}</h3>
-	<h3>이메일 : ${sessionScope.member.email}</h3>
-	<h3>핸드폰 번호 : ${sessionScope.member.phone}</h3>
-	<h3>성 별 : ${sessionScope.member.gender}</h3>
-	<h3>피부타입 : ${sessionScope.member.skin}</h3>
-	<h3>생년월일 : ${sessionScope.member.birth}</h3>
-	<h3>주 소 : ${sessionScope.member.addr}</h3> --%>
-	<div class="sidenav">
+
+	<section id="join_div">
+	<table class="table table-condensed join_table">
+				<tr class="join_tr">
+					<td class="join_td">
+					아이디
+					</td>
+					<td class="join_th">
+					${sessionScope.member.id}
+					</td>
+				</tr>
+					
+				<tr class="join_tr">
+					<td class="join_td">
+					이 름
+					</td>
+					<td class="join_th">
+					${sessionScope.member.name}
+					</td>
+				</tr>
+				
+				<tr class="join_tr">
+					<td class="join_td">
+					닉네임
+					</td>
+					<td class="join_th">
+					${sessionScope.member.nickname}
+					</td>
+				</tr>
+				
+				<tr class="join_tr">
+					<td class="join_td">
+					이메일
+					</td>
+					<td class="join_th">
+					${sessionScope.member.email}
+					</td>
+				</tr>	
+				
+				<tr class="join_tr">
+					<td class="join_td">
+					핸드폰 번호
+					</td>
+					<td class="join_th">
+					${sessionScope.member.phone}
+					</td>
+				</tr>
+				
+				<tr class="join_tr">
+					<td class="join_td">
+					성별
+					</td>
+					<td class="join_th">
+					${sessionScope.member.gender}
+					</td>
+				</tr>
+				
+				<tr class="join_tr">
+					<td class="join_td">
+					피부타입
+					</td>
+					<td class="join_th">
+					${sessionScope.member.skin}
+					</td>
+				</tr>
+				
+				<tr class="join_tr">
+					<td class="join_td">
+					생년월일
+					</td>
+					<td class="join_th">
+					${sessionScope.member.birth}
+					</td>
+				</tr>
+				
+				<tr class="join_tr">
+					<td class="join_td"  id="table_end">
+					주 소
+					</td>
+					<td class="join_th" id="table_end">
+					${sessionScope.member.addr} ${sessionScope.member.addr2}
+					</td>
+				</tr>
+		</table>
 	<form action="./memberUpdate.member" method="get">
-		<button class="button"><span>회원정보 변경 </span></button>
+		<button style="float: right;" class="btn btn-default">회원정보 변경</button>
 	</form>
-<!-- 	<a href="./memberUpdate.member">정보수정</a> -->
 	<form action="./memberDelete.member">
-		<button class="button"><span>회원 탈퇴 </span></button>
+		<button class="btn btn-default">회원 탈퇴</button>
 	</form>
-	</div>
+	</section>
+	
+	
+
 </body>
 </html>
 
