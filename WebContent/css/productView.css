@@ -11,6 +11,21 @@ a, a:hover { text-decoration: none; }
 
 
 .container { margin: 20px auto; width: 100%; max-width: 900px; }
+.container .avg { font-size: 24px; font-weight: bold; }
+.container .avg span { font-size: 16px; font-weight: normal;}
+.container .graph_area { margin: 0 auto; display: block; width: 80% ; text-align: left; }
+.container .graph_area > div { margin-bottom: 5px; height: 50px; }
+
+.container .graph_area .text { float: left; display: inline-block; margin-right: 5px; text-align: center; }
+.container .graph_area .text .grade { display: block; width: 34px; height: 34px; background: url("../images/ico_grade.png") no-repeat; text-indent: -9999px; }
+.container .graph_area .text .grade5 { background-position: -140px 0;  }
+.container .graph_area .text .grade4 { background-position: -140px -35px;  }
+.container .graph_area .text .grade3 { background-position: -140px -70px;  }
+.container .graph_area .text .grade2 { background-position: -140px -105px;  }
+.container .graph_area .text .grade1 { background-position: -140px -140px;  }
+.container .graph_area .text .num { margin-left: -4px;  }
+.container .graph_area .graph { float: left; margin-top: 5px; width: 90%; }
+.container .graph_area .graph .bar {display: inline-block;  height: 25px; background: red; border-radius: 3px; }
 
 .tab_btn { margin-top: 10px; }
 .tab_btn button{ display: inline-block; padding: 10px; width: 33.3%; height: 45px; line-height: 30px; border: none; border-bottom: 3px solid #ccc; background: #fff; color: #ccc; font-size: 20px; font-weight: bold; text-align: center;}
@@ -19,7 +34,6 @@ a, a:hover { text-decoration: none; }
 .tab_content > div { display: none; }
 .tab_content .on { display: block; }
 
-
 .reply .write_wrap { margin: 20px 0; width: 100%; /*border: 1px solid #ccc; border-radius: 5px;*/ }
 .reply .write_wrap .text { margin: 15px 0 5px 0; font-size: 20px; }
 
@@ -27,7 +41,6 @@ a, a:hover { text-decoration: none; }
 .reply .write_wrap .reply span { padding-left: 5px; font-size: 15px;}
 
 .reply .write_wrap .reply_innerwrap { padding: 15px; border: 2px solid #ddd;}
-
 
 .reply .write_wrap .text_wrap .form-control { display: inline-block }
 .reply .write_wrap .text_wrap button { display: inline-block }
@@ -44,7 +57,6 @@ a, a:hover { text-decoration: none; }
 .reply .text_wrap {width: 100%;}
 .reply .text_wrap textarea { float: left; padding:10px; margin: 0; width: 87% !important; height: 60px; background:white; border:0; resize:none; font-size:13px; color:#10213e; border: 1px solid #ccc;}
 .reply .text_wrap button {float: left; padding: 10px; width: 13%; height: 60px; background: #25cbd3; color: #fff; border: none; font-size: 19px; font-weight: bold;}
-
 
 #result { border-top: 3px solid #25cbd3; }
 #result .result_wrap { padding: 20px 10px; border-bottom: 1px solid #ddd;}
@@ -65,6 +77,8 @@ a, a:hover { text-decoration: none; }
 #result .result_wrap .btn_like { margin-top: 10px; background: url(../images/common/ico_heart.png) no-repeat;  }
 #result .result_wrap .btn_like button { padding-left: 26px; display: block; height: 25px; font-size: 17px; border: none; background: transparent; }
 
+
+
 @media screen and (max-width: 750px){
 	.container { width: 95% !important; }
 	.reply .write_wrap .reply_innerwrap { padding: 5px; border: 2px solid #ccc;}
@@ -79,18 +93,15 @@ a, a:hover { text-decoration: none; }
 	.reply .write_wrap .grade_wrap .grade5 { background-position: -70px 0;  }
 	.reply .write_wrap .grade_wrap input:checked + label { background-position-x: 0px ;  }
 
-
 	#result .result_wrap .user_id { display: block; }
 }
 
-.graph { display: inline-block }
-.graph #worst {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -100px no-repeat; }
-.graph #bad {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -75px no-repeat; }
-.graph #soso {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -50px no-repeat; }
-.graph #good {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 -25px no-repeat; }
-.graph #best {  margin-bottom: 7px; padding-left: 27px; width: 70px; height: 25px; line-height: 27px; background: url(../images/common/ico_grade.png) 0 0px no-repeat; }
-
-
+@media screen and (max-width: 640px){
+	.container { margin: 20px auto; width: 100% !important; }
+	.container .graph_area { width: 100%; }
+	.container .graph_area > div .graph { width: 85%; }
+	
+}
 
 
 

@@ -23,7 +23,7 @@ public class ProductRegistService implements Action{
 			productDTO.setPro_num(num);
 			productDTO.setBrand(request.getParameter("brand"));
 			productDTO.setPro_name(request.getParameter("pro_name"));
-			productDTO.setPro_price(request.getParameter("pro_price"));
+			productDTO.setPro_price(Integer.parseInt(request.getParameter("pro_price")));
 			productDTO.setCapacity(request.getParameter("capacity"));
 			productDTO.setInfo(request.getParameter("info"));
 			productDTO.setEvt(Integer.parseInt(request.getParameter("evt")));

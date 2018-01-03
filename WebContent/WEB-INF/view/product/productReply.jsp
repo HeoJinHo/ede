@@ -12,7 +12,7 @@
 		</div>
 		<div class="contents">${i.contents}</div>
 		<div class="btn_like">
-			<button class="like">${i.thumsup}</button>
+			<button class="like" value="${i.num }">${i.thumsup}</button>
 		</div>
 	</div>
 </c:forEach>

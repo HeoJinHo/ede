@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" -->
+<!-- pageEncoding="UTF-8"%> -->
+<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,7 @@ pageEncoding="UTF-8"%>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- <link href="../css/header.css" rel="stylesheet"> -->
-<link href="../css/header.css" rel="stylesheet">
-<link href="../css/productView.css" rel="stylesheet">
+<link href="productView.css" rel="stylesheet">
 
 <style type="text/css">
 
@@ -30,9 +30,6 @@ pageEncoding="UTF-8"%>
 </style>
 <script type="text/javascript">
 $(function(){
-	
-	var pro_num = ${list.pro_num};
-	
 	$(".tab_btn #reply").addClass("on");
 	$(".tab_content .reply").addClass("on");
 
@@ -42,15 +39,7 @@ $(function(){
 		$(this).addClass("on").siblings().removeClass("on");
 		$(".tab_content > div").eq(index).addClass("on").siblings().removeClass("on");
 	})
-	
-	$(document).on('click','.like', function(){
-		var num = $(this).val();
-		alert(num);
-		$.get("./productLike.product?num="+num+"&pro_num="+pro_num, function(data){
-			$("#result").html(data);
-		});
-	});
-	
+/*	
 	$("#replyWrite").click(function(){
 	 	var contents = $("#contents").val();
 	 	var report = $("#report").val();
@@ -67,6 +56,7 @@ $(function(){
 	 	} else {
 	 		grade=5;
 	 	}
+	 	var pro_num = ${list.pro_num};
 		
 	 	//alert('content :'+contents);
 	 	//alert('report : '+report);
@@ -114,13 +104,13 @@ $(function(){
 	 			$(".blog-inner:last-child").append(title, description, link, bloggername, postdate);
 	 		}
 	 	});
-	 });
+	 });*/
 	
 });
 </script>
 </head>
 <body>
-<%@ include file="../temp/header.jsp"%>
+<!-- <%@ include file="../temp/header.jsp"%> -->
 <div class="container" style="width : 70%">
 	<div class="text-center">
 			<img src="${list.pic_realName}">
@@ -172,67 +162,69 @@ $(function(){
 					</div>
 				</div>
 			</div>
-				<%-- <p>${list.evt}</p> --%>
+			<!-- <p>${list.evt}</p> -->
 	</div>
 		
-	<div class="tab_btn" >
-		<button id="reply">reply</button><button id="blog-btn">blog</button><button id="buy">buy</button>
-	</div>
-	<div class="tab_content">
-		<div class="reply">
-			<div class="write_wrap">			
-	      		<p class="text">댓글남기기</p>
-				<div class="reply_innerwrap">
-					<div class="grade_wrap">
-				  		<input type="radio" name="grade" value="grade5" id="grade5">
-				  		<label class="grade5" for="grade5">짱짱</label>
-				  		<input type="radio" name="grade" value="grade4" id="grade4">
-				  		<label class="grade4" for="grade4">굿굿</label>
-				  		<input type="radio" name="grade" value="grade3" id="grade3">
-				  		<label class="grade3" for="grade3">쏘쏘</label>
-				  		<input type="radio" name="grade" value="grade2" id="grade2">
-				  		<label class="grade2" for="grade2">별로</label>
-				  		<input type="radio" name="grade" value="grade1" id="grade1">
-				  		<label class="grade1" for="grade1">최악</label>
-					</div>
-					<div class="text_wrap clearfix">
-		      			<!-- <label for="contents">contents:</label> -->
-		      			<textarea rows="2" id="contents" style="width:100%" placeholder="고객님의 소중한 리뷰를 남겨주세요!"></textarea>
-						<button id="replyWrite">등록</button>
-					</div>
+<!-- 	<div class="tab_btn" >
+	<button id="reply">reply</button><button id="blog-btn">blog</button><button id="buy">buy</button>
+</div>
+<div class="tab_content">
+	<div class="reply">
+		<div class="write_wrap">			
+      		<p class="text">댓글남기기</p>
+			<div class="reply_innerwrap">
+				<div class="grade_wrap">
+			  		<input type="radio" name="grade" value="grade5" id="grade5">
+			  		<label class="grade5" for="grade5">짱짱</label>
+			  		<input type="radio" name="grade" value="grade4" id="grade4">
+			  		<label class="grade4" for="grade4">굿굿</label>
+			  		<input type="radio" name="grade" value="grade3" id="grade3">
+			  		<label class="grade3" for="grade3">쏘쏘</label>
+			  		<input type="radio" name="grade" value="grade2" id="grade2">
+			  		<label class="grade2" for="grade2">별로</label>
+			  		<input type="radio" name="grade" value="grade1" id="grade1">
+			  		<label class="grade1" for="grade1">최악</label>
+				</div>
+				<div class="text_wrap clearfix">
+	      			<label for="contents">contents:</label>
+	      			<textarea rows="2" id="contents" style="width:100%" placeholder="고객님의 소중한 리뷰를 남겨주세요!"></textarea>
+					<button id="replyWrite">등록</button>
 				</div>
 			</div>
-			
-			<div id="result">
-				<c:forEach items="${replyList}" var="i">
-					<div class="result_wrap">
-						<div class="grade${i.grade}"></div>
-						<div class="user_info">
-							<span class="user_id">${i.id}</span>
-							<span class="age">${i.num }</span>/
-							<span class="type">type</span>/
-							<span class="gender">gender</span>
-						</div>
-						<div class="contents">${i.contents}</div>
-						<div class="btn_like">
-							<button class="like" value="${i.num }">${i.thumsup }</button>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
 		</div>
 		
-		<div class="blog">
-			<div id="blog-open">
-				<div id="blog-info">BLOG</div>
-				<button id="blog-more" style="display: none">더보기</button><br>
-			</div>
-		</div>
-		<div class="buy">
-			<button id="buy-btn" onclick="location.href='http://shopping.naver.com/search/all_search.nhn?query=${list.pro_name}&amp;sort=price_asc'">BUY_INFO</button>
+		<div id="result">
+			<c:forEach items="${replyList}" var="i">
+				<div class="result_wrap">
+					<div class="grade${i.grade}"></div>
+					<div class="user_info">
+						<span class="user_id">${i.id}</span>
+						<span class="age">age</span>/
+						<span class="type">type</span>/
+						<span class="gender">gender</span>
+					</div>
+					<div class="contents">${i.contents}</div>
+					<div class="btn_like">
+						<button>${i.thumsup }</button>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
+	
+	<div class="blog">
+		<div id="blog-open">
+			<div id="blog-info">BLOG</div>
+			<button id="blog-more" style="display: none">더보기</button><br>
+		</div>
+	</div>
+	<div class="buy">
+		<button id="buy-btn" onclick="location.href='http://shopping.naver.com/search/all_search.nhn?query=${list.pro_name}&amp;sort=price_asc'">BUY_INFO</button>
+	</div>
+</div> -->
 </div>
+
+
 <script>
 
 	// 평점 그래프 
@@ -256,6 +248,5 @@ $(function(){
 		gradeGraph();
 	})
 </script>
-
 </body>
 </html>

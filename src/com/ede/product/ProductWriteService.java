@@ -15,30 +15,24 @@ public class ProductWriteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		ProductDAO productDAO = new ProductDAO();
-		ProductDTO productDTO = new ProductDTO();
 		ReplyDTO replyDTO = new ReplyDTO();
 		int pro_num = Integer.parseInt(request.getParameter("pro_num"));
 		int grade = Integer.parseInt(request.getParameter("grade"));
 		int result=0;
-		int num=0;
 		try {
 			MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 			String id = memberDTO.getId();
+			
 			replyDTO.setId(id);
 			replyDTO.setContents(request.getParameter("contents"));
 			replyDTO.setGrade(grade);
 			replyDTO.setThumsup(0);
 			replyDTO.setPro_num(Integer.parseInt(request.getParameter("pro_num")));
 			result = productDAO.review(replyDTO);	//새 댓글 insert
-			//System.out.println("after insert review 'grade' : "+grade);//들어옴
-			//System.out.println("after insert review 'pro_num' : "+pro_num);//들어옴
 			productDAO.avgUpdate(grade, pro_num);	//avg update
-			//System.out.println("update done");
 			List<ReplyDTO> ar = productDAO.reviewList(pro_num);
-			num = ar.get(0).getNum();
 			if(result >0) {
 				request.setAttribute("replyList", ar);
-				request.setAttribute("num", num);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/product/productReply.jsp");
 			} else {
