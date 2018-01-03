@@ -24,8 +24,6 @@ public class MemberJoinService implements Action {
 			memberDTO.setGender(request.getParameter("gender"));
 			memberDTO.setEmail(request.getParameter("email"));
 			memberDTO.setSkin(request.getParameter("skin"));
-		/*	memberDTO.setPic_name(request.getParameter("pic_name"));
-			memberDTO.setPic_path(request.getParameter("pic_path"));*/
 			MemberDAO memberDAO = new MemberDAO();
 			int result=0;
 			try {
@@ -44,7 +42,7 @@ public class MemberJoinService implements Action {
 			}
 		} else {
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/member/memberJoinForm.jsp");
+			actionFoward.setPath("./WEB-INF/view/member/memberJoinForm.jsp");
 		}
 		return actionFoward;
 	}
