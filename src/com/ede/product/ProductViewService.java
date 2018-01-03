@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.ede.action.Action;
 import com.ede.action.ActionFoward;
 
-import oracle.net.aso.r;
-
 public class ProductViewService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
