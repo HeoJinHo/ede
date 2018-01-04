@@ -67,6 +67,5 @@
 	<!-- main 끝   -->
 	<%@ include file="./WEB-INF/view/temp/footer.jsp"%>
 
-
 </body>
 </html>
