@@ -31,7 +31,7 @@ a, a:hover { text-decoration: none; }
 
 .category_list.brand .title_name, .category_list.brand .detail_name { display: inline-block;  }
 .category_list.brand .title_name {  width: 70%; display: inline-block; vertical-align: middle; }
-.category_list.brand .detail_name { width: 25%; display: inline-block; vertical-align: middle;  overflow: visible;}
+.category_list.brand .detail_name { width: 25%; display: inline-block; vertical-align: middle;  overflow: visible; text-align: right; }
 
 
 .register { display: block; color: #222; }

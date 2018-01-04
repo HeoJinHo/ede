@@ -32,7 +32,7 @@ public class MemberLoginService implements Action {
 				actionFoward.setPath("../index.jsp");
 			}else {
 				request.setAttribute("message", "Fail");
-				request.setAttribute("path", "./memberLogin.member");
+				request.setAttribute("path", "../index.jsp");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
