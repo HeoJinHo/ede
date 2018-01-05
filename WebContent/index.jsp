@@ -35,6 +35,8 @@
 					<img src="<%=request.getContextPath()%>/images/main/main_1.png"
 						alt="glowpick" width="1200" height="250">
 				</div>
+				
+				
 
 				<div class="item">
 					<img src="<%=request.getContextPath()%>/images/main/main_2.png"
