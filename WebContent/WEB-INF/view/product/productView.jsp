@@ -42,7 +42,6 @@ $(function(){
 	
 	$(document).on('click','.like', function(){
 		var num = $(this).val();
-		alert(num);
 		$.get("./productLike.product?num="+num+"&pro_num="+pro_num, function(data){
 			$("#result").html(data);
 		});
