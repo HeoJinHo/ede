@@ -252,8 +252,14 @@ $(function(){
 				<div id="blog-info">BLOG</div>
 			</div>
 		</div>
-		<div class="buy">
-			<button id="buy-btn" onclick="location.href='http://shopping.naver.com/search/all_search.nhn?query=${list.pro_name}&amp;sort=price_asc'">BUY_INFO</button>
+		<div class="buy container">
+			<div style="margin : 30px 20px;">
+				<label  class="information-label2"><img src="https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/web/icon_price.png"> 인터넷 최저가</label>
+				<a style="margin-top: 8px;" id="buy-btn" href="http://shopping.naver.com/search/all_search.nhn?query=${list.pro_name}&amp;sort=price_asc" target="_blank" class="plus_more pull-right">더보기 <img src="https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/web/icon_arrow_more.png"></a>
+				<%-- 
+				<button id="buy-btn" class  onclick="location.href='http://shopping.naver.com/search/all_search.nhn?query=${list.pro_name}&amp;sort=price_asc'">BUY_INFO</button>
+				 --%>
+			</div>
 		</div>
 	</div>
 </div>
