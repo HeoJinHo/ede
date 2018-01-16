@@ -19,12 +19,11 @@ public class QnaReplyService implements Action {
 			qnaDTO.setTitle(request.getParameter("title"));
 			qnaDTO.setContents(request.getParameter("contents"));
 			qnaDTO.setWriter(request.getParameter("writer"));
-			System.out.println(qnaDTO);
 			QnaDAO qnaDAO = new QnaDAO();
 			QnaDTO parent;
 			int result =0;
 			try {
-				parent = (QnaDTO) qnaDAO.selectOne(qnaDTO.getNum());
+				parent = (QnaDTO)qnaDAO.selectOne(qnaDTO.getNum());
 				qnaDAO.replyUpdate(parent);
 				result = qnaDAO.replyInsert(qnaDTO, parent);
 			} catch (Exception e) {
